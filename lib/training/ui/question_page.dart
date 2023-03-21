@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gip_test/training/bloc/question_bloc.dart';
 
 import 'question_map.dart';
 
@@ -26,19 +28,25 @@ class _QuestionPageState extends State<QuestionPage> {
       appBar: AppBar(
         title: const Text('Внимание, вопрос'),
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 64, child: QuestionMap()),
-          Expanded(
-            child: PageView.builder(
-                controller: pageController,
-                itemCount: 40,
-                itemBuilder: (context, index) => const Placeholder()),
-          ),
-        ],
+      body: BlocProvider(
+        create: (context) => QuestionBloc(),
+        child: BlocBuilder<QuestionBloc, QuestionState>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                SizedBox(
+                    height: 40, child: QuestionMap(current: _currentQuestion)),
+                Expanded(
+                  child: PageView.builder(
+                      controller: pageController,
+                      itemCount: 40,
+                      itemBuilder: (context, index) => const Placeholder()),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
 }
-
-
