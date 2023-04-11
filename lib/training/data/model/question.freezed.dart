@@ -23,7 +23,7 @@ mixin _$Question {
   int get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   List<String> get possibleAnswers => throw _privateConstructorUsedError;
-  List<int> get correctAnswerIndices => throw _privateConstructorUsedError;
+  Set<int> get correctAnswerIndices => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +40,7 @@ abstract class $QuestionCopyWith<$Res> {
       {int id,
       String text,
       List<String> possibleAnswers,
-      List<int> correctAnswerIndices});
+      Set<int> correctAnswerIndices});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
       correctAnswerIndices: null == correctAnswerIndices
           ? _value.correctAnswerIndices
           : correctAnswerIndices // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as Set<int>,
     ) as $Val);
   }
 }
@@ -93,7 +93,7 @@ abstract class _$$_QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
       {int id,
       String text,
       List<String> possibleAnswers,
-      List<int> correctAnswerIndices});
+      Set<int> correctAnswerIndices});
 }
 
 /// @nodoc
@@ -128,7 +128,7 @@ class __$$_QuestionCopyWithImpl<$Res>
       correctAnswerIndices: null == correctAnswerIndices
           ? _value._correctAnswerIndices
           : correctAnswerIndices // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as Set<int>,
     ));
   }
 }
@@ -140,7 +140,7 @@ class _$_Question implements _Question {
       {required this.id,
       required this.text,
       required final List<String> possibleAnswers,
-      required final List<int> correctAnswerIndices})
+      required final Set<int> correctAnswerIndices})
       : _possibleAnswers = possibleAnswers,
         _correctAnswerIndices = correctAnswerIndices;
 
@@ -159,13 +159,13 @@ class _$_Question implements _Question {
     return EqualUnmodifiableListView(_possibleAnswers);
   }
 
-  final List<int> _correctAnswerIndices;
+  final Set<int> _correctAnswerIndices;
   @override
-  List<int> get correctAnswerIndices {
-    if (_correctAnswerIndices is EqualUnmodifiableListView)
+  Set<int> get correctAnswerIndices {
+    if (_correctAnswerIndices is EqualUnmodifiableSetView)
       return _correctAnswerIndices;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_correctAnswerIndices);
+    return EqualUnmodifiableSetView(_correctAnswerIndices);
   }
 
   @override
@@ -214,7 +214,7 @@ abstract class _Question implements Question {
       {required final int id,
       required final String text,
       required final List<String> possibleAnswers,
-      required final List<int> correctAnswerIndices}) = _$_Question;
+      required final Set<int> correctAnswerIndices}) = _$_Question;
 
   factory _Question.fromJson(Map<String, dynamic> json) = _$_Question.fromJson;
 
@@ -225,7 +225,7 @@ abstract class _Question implements Question {
   @override
   List<String> get possibleAnswers;
   @override
-  List<int> get correctAnswerIndices;
+  Set<int> get correctAnswerIndices;
   @override
   @JsonKey(ignore: true)
   _$$_QuestionCopyWith<_$_Question> get copyWith =>
