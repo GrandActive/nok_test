@@ -1,16 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'training/ui/training_start_page.dart';
+import 'package:gip_test/navigation.gr.dart';
 
 class ModeSelectPage extends StatelessWidget {
-  const ModeSelectPage({super.key, required this.title});
-
-  final String title;
+  const ModeSelectPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: const Text("ГИП"),
       ),
       body: Column(
         children: [
@@ -26,11 +25,8 @@ class ModeSelectPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       FilledButton.tonal(
-                          onPressed: () => {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        const TrainingStartPage()))
-                              },
+                          onPressed: () =>
+                              context.router.push(const TrainingStartRoute()),
                           child: const Text('Тренировка')),
                       const SizedBox(width: 16),
                       FilledButton.tonal(

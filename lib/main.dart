@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
-
-import 'mode_select_page.dart';
+import 'package:gip_test/injection.dart';
+import 'package:gip_test/navigation.gr.dart';
 
 void main() {
-  runApp(const MyApp());
+  configureDependencies();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
       title: 'Flutter Demo',
       theme: ThemeData(
         colorSchemeSeed: const Color(0x00277adb),
       ),
-      home: const ModeSelectPage(title: 'ГИП'),
     );
   }
 }
-
