@@ -9,7 +9,7 @@ part 'test_question.g.dart';
 class TestQuestion with _$TestQuestion {
   factory TestQuestion({
     required Question source,
-    @Default(null) Set<int>? userAnswers,
+    @Default({}) Set<int> userAnswers,
     required bool? isAnsweredCorrectly,
   }) = _TestQuestion;
 

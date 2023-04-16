@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gip_test/navigation.gr.dart';
 import 'package:gip_test/training/bloc/test_bloc.dart';
 import 'package:gip_test/training/domain/model/test_question.dart';
+import 'package:gip_test/training/ui/widgets/answer_list.dart';
 
 class Question extends StatelessWidget {
   const Question({super.key, required this.question});
@@ -33,26 +34,26 @@ class Question extends StatelessWidget {
 
           final selectedQuestion = state.questions[state.selectedIndex!];
 
-          int? selectedAnswer;
-          if (selectedQuestion.userAnswers != null) {
-            selectedAnswer = selectedQuestion.userAnswers!.first;
+          Set<int> selectedAnswers;
+          if (selectedQuestion.userAnswers.isNotEmpty) {
+            selectedAnswers = Set.from(selectedQuestion.userAnswers);
           } else {
-            selectedAnswer = state.selectedAnswers?.first;
+            selectedAnswers = Set.from(state.selectedAnswers);
           }
+
+          final isMultipleAnswers = selectedQuestion.source.correctAnswerIndices.length > 1;
 
           return Column(
             children: [
               Text(question.source.text),
               AnswerList(
                 possibleAnswers: selectedQuestion.source.possibleAnswers,
-                selectedIndex: selectedAnswer,
-                onChanged: selectedQuestion.isAnsweredCorrectly != null
-                    ? null
-                    : (index) => bloc
-                        .add(TestEvent.answersSelected(answers: index == null ? null : {index})),
+                selectedIndices: selectedAnswers,
+                isMultipleAnswers: isMultipleAnswers,
+                isAnswered: selectedQuestion.isAnsweredCorrectly != null,
               ),
               FilledButton.tonal(
-                onPressed: selectedAnswer == null
+                onPressed: selectedAnswers.isEmpty
                     ? null
                     : selectedQuestion.isAnsweredCorrectly != null
                         ? state.selectedIndex == state.questions.length - 1
@@ -74,38 +75,6 @@ class Question extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-}
-
-class AnswerList extends StatelessWidget {
-  const AnswerList({
-    super.key,
-    required this.possibleAnswers,
-    required this.selectedIndex,
-    required this.onChanged,
-  });
-
-  final List<String> possibleAnswers;
-  final int? selectedIndex;
-  final void Function(int?)? onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    final optionsIndexes = List.generate(
-      possibleAnswers.length,
-      (index) => index,
-    );
-
-    return Column(
-      children: [
-        ...optionsIndexes.map(
-          (index) => ListTile(
-            leading: Radio(value: index, groupValue: selectedIndex, onChanged: onChanged),
-            title: Text(possibleAnswers[index]),
-          ),
-        ),
-      ],
     );
   }
 }

@@ -20,7 +20,7 @@ mixin _$TestEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
-    required TResult Function(Set<int>? answers) answersSelected,
+    required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
   }) =>
@@ -29,7 +29,7 @@ mixin _$TestEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
-    TResult? Function(Set<int>? answers)? answersSelected,
+    TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
   }) =>
@@ -38,7 +38,7 @@ mixin _$TestEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
-    TResult Function(Set<int>? answers)? answersSelected,
+    TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
     required TResult orElse(),
@@ -136,7 +136,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
-    required TResult Function(Set<int>? answers) answersSelected,
+    required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
   }) {
@@ -148,7 +148,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
-    TResult? Function(Set<int>? answers)? answersSelected,
+    TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
   }) {
@@ -160,7 +160,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
-    TResult Function(Set<int>? answers)? answersSelected,
+    TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
     required TResult orElse(),
@@ -290,7 +290,7 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
-    required TResult Function(Set<int>? answers) answersSelected,
+    required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
   }) {
@@ -302,7 +302,7 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
-    TResult? Function(Set<int>? answers)? answersSelected,
+    TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
   }) {
@@ -314,7 +314,7 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
-    TResult Function(Set<int>? answers)? answersSelected,
+    TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
     required TResult orElse(),
@@ -381,7 +381,7 @@ abstract class _$$_AnswersSelectedCopyWith<$Res> {
           _$_AnswersSelected value, $Res Function(_$_AnswersSelected) then) =
       __$$_AnswersSelectedCopyWithImpl<$Res>;
   @useResult
-  $Res call({Set<int>? answers});
+  $Res call({Set<int> answers});
 }
 
 /// @nodoc
@@ -395,13 +395,13 @@ class __$$_AnswersSelectedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? answers = freezed,
+    Object? answers = null,
   }) {
     return _then(_$_AnswersSelected(
-      answers: freezed == answers
+      answers: null == answers
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
-              as Set<int>?,
+              as Set<int>,
     ));
   }
 }
@@ -411,17 +411,15 @@ class __$$_AnswersSelectedCopyWithImpl<$Res>
 class _$_AnswersSelected
     with DiagnosticableTreeMixin
     implements _AnswersSelected {
-  const _$_AnswersSelected({required final Set<int>? answers})
+  const _$_AnswersSelected({required final Set<int> answers})
       : _answers = answers;
 
-  final Set<int>? _answers;
+  final Set<int> _answers;
   @override
-  Set<int>? get answers {
-    final value = _answers;
-    if (value == null) return null;
+  Set<int> get answers {
     if (_answers is EqualUnmodifiableSetView) return _answers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(value);
+    return EqualUnmodifiableSetView(_answers);
   }
 
   @override
@@ -460,7 +458,7 @@ class _$_AnswersSelected
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
-    required TResult Function(Set<int>? answers) answersSelected,
+    required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
   }) {
@@ -472,7 +470,7 @@ class _$_AnswersSelected
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
-    TResult? Function(Set<int>? answers)? answersSelected,
+    TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
   }) {
@@ -484,7 +482,7 @@ class _$_AnswersSelected
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
-    TResult Function(Set<int>? answers)? answersSelected,
+    TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
     required TResult orElse(),
@@ -537,10 +535,10 @@ class _$_AnswersSelected
 }
 
 abstract class _AnswersSelected implements TestEvent {
-  const factory _AnswersSelected({required final Set<int>? answers}) =
+  const factory _AnswersSelected({required final Set<int> answers}) =
       _$_AnswersSelected;
 
-  Set<int>? get answers;
+  Set<int> get answers;
   @JsonKey(ignore: true)
   _$$_AnswersSelectedCopyWith<_$_AnswersSelected> get copyWith =>
       throw _privateConstructorUsedError;
@@ -592,7 +590,7 @@ class _$_AnswersSent with DiagnosticableTreeMixin implements _AnswersSent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
-    required TResult Function(Set<int>? answers) answersSelected,
+    required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
   }) {
@@ -604,7 +602,7 @@ class _$_AnswersSent with DiagnosticableTreeMixin implements _AnswersSent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
-    TResult? Function(Set<int>? answers)? answersSelected,
+    TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
   }) {
@@ -616,7 +614,7 @@ class _$_AnswersSent with DiagnosticableTreeMixin implements _AnswersSent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
-    TResult Function(Set<int>? answers)? answersSelected,
+    TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
     required TResult orElse(),
@@ -718,7 +716,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
-    required TResult Function(Set<int>? answers) answersSelected,
+    required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
   }) {
@@ -730,7 +728,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
-    TResult? Function(Set<int>? answers)? answersSelected,
+    TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
   }) {
@@ -742,7 +740,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
-    TResult Function(Set<int>? answers)? answersSelected,
+    TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
     required TResult orElse(),
@@ -802,7 +800,7 @@ abstract class _Finished implements TestEvent {
 mixin _$TestState {
   List<TestQuestion> get questions => throw _privateConstructorUsedError;
   int? get selectedIndex => throw _privateConstructorUsedError;
-  Set<int>? get selectedAnswers => throw _privateConstructorUsedError;
+  Set<int> get selectedAnswers => throw _privateConstructorUsedError;
   bool get isFinished => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
@@ -820,7 +818,7 @@ abstract class $TestStateCopyWith<$Res> {
   $Res call(
       {List<TestQuestion> questions,
       int? selectedIndex,
-      Set<int>? selectedAnswers,
+      Set<int> selectedAnswers,
       bool isFinished,
       bool isLoading,
       String? errorMessage});
@@ -841,7 +839,7 @@ class _$TestStateCopyWithImpl<$Res, $Val extends TestState>
   $Res call({
     Object? questions = null,
     Object? selectedIndex = freezed,
-    Object? selectedAnswers = freezed,
+    Object? selectedAnswers = null,
     Object? isFinished = null,
     Object? isLoading = null,
     Object? errorMessage = freezed,
@@ -855,10 +853,10 @@ class _$TestStateCopyWithImpl<$Res, $Val extends TestState>
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
-      selectedAnswers: freezed == selectedAnswers
+      selectedAnswers: null == selectedAnswers
           ? _value.selectedAnswers
           : selectedAnswers // ignore: cast_nullable_to_non_nullable
-              as Set<int>?,
+              as Set<int>,
       isFinished: null == isFinished
           ? _value.isFinished
           : isFinished // ignore: cast_nullable_to_non_nullable
@@ -885,7 +883,7 @@ abstract class _$$_TestStateCopyWith<$Res> implements $TestStateCopyWith<$Res> {
   $Res call(
       {List<TestQuestion> questions,
       int? selectedIndex,
-      Set<int>? selectedAnswers,
+      Set<int> selectedAnswers,
       bool isFinished,
       bool isLoading,
       String? errorMessage});
@@ -904,7 +902,7 @@ class __$$_TestStateCopyWithImpl<$Res>
   $Res call({
     Object? questions = null,
     Object? selectedIndex = freezed,
-    Object? selectedAnswers = freezed,
+    Object? selectedAnswers = null,
     Object? isFinished = null,
     Object? isLoading = null,
     Object? errorMessage = freezed,
@@ -918,10 +916,10 @@ class __$$_TestStateCopyWithImpl<$Res>
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
-      selectedAnswers: freezed == selectedAnswers
+      selectedAnswers: null == selectedAnswers
           ? _value._selectedAnswers
           : selectedAnswers // ignore: cast_nullable_to_non_nullable
-              as Set<int>?,
+              as Set<int>,
       isFinished: null == isFinished
           ? _value.isFinished
           : isFinished // ignore: cast_nullable_to_non_nullable
@@ -944,7 +942,7 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
   const _$_TestState(
       {final List<TestQuestion> questions = const [],
       this.selectedIndex = null,
-      final Set<int>? selectedAnswers = null,
+      final Set<int> selectedAnswers = const {},
       this.isFinished = false,
       this.isLoading = true,
       this.errorMessage = null})
@@ -963,15 +961,13 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
   @override
   @JsonKey()
   final int? selectedIndex;
-  final Set<int>? _selectedAnswers;
+  final Set<int> _selectedAnswers;
   @override
   @JsonKey()
-  Set<int>? get selectedAnswers {
-    final value = _selectedAnswers;
-    if (value == null) return null;
+  Set<int> get selectedAnswers {
     if (_selectedAnswers is EqualUnmodifiableSetView) return _selectedAnswers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(value);
+    return EqualUnmodifiableSetView(_selectedAnswers);
   }
 
   @override
@@ -1042,7 +1038,7 @@ abstract class _TestState implements TestState {
   const factory _TestState(
       {final List<TestQuestion> questions,
       final int? selectedIndex,
-      final Set<int>? selectedAnswers,
+      final Set<int> selectedAnswers,
       final bool isFinished,
       final bool isLoading,
       final String? errorMessage}) = _$_TestState;
@@ -1052,7 +1048,7 @@ abstract class _TestState implements TestState {
   @override
   int? get selectedIndex;
   @override
-  Set<int>? get selectedAnswers;
+  Set<int> get selectedAnswers;
   @override
   bool get isFinished;
   @override

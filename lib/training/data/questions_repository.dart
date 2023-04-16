@@ -21,7 +21,7 @@ class QuestionsRepository {
       id: 2,
       text: "Question 2",
       possibleAnswers: ["OneTwo", "Two", "Three"],
-      correctAnswerIndices: {1},
+      correctAnswerIndices: {1, 2},
     ),
     const Question(
       id: 3,

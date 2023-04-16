@@ -22,8 +22,8 @@ TestQuestion _$TestQuestionFromJson(Map<String, dynamic> json) {
 mixin _$TestQuestion {
   Question get source => throw _privateConstructorUsedError;
   set source(Question value) => throw _privateConstructorUsedError;
-  Set<int>? get userAnswers => throw _privateConstructorUsedError;
-  set userAnswers(Set<int>? value) => throw _privateConstructorUsedError;
+  Set<int> get userAnswers => throw _privateConstructorUsedError;
+  set userAnswers(Set<int> value) => throw _privateConstructorUsedError;
   bool? get isAnsweredCorrectly => throw _privateConstructorUsedError;
   set isAnsweredCorrectly(bool? value) => throw _privateConstructorUsedError;
 
@@ -39,8 +39,7 @@ abstract class $TestQuestionCopyWith<$Res> {
           TestQuestion value, $Res Function(TestQuestion) then) =
       _$TestQuestionCopyWithImpl<$Res, TestQuestion>;
   @useResult
-  $Res call(
-      {Question source, Set<int>? userAnswers, bool? isAnsweredCorrectly});
+  $Res call({Question source, Set<int> userAnswers, bool? isAnsweredCorrectly});
 
   $QuestionCopyWith<$Res> get source;
 }
@@ -59,7 +58,7 @@ class _$TestQuestionCopyWithImpl<$Res, $Val extends TestQuestion>
   @override
   $Res call({
     Object? source = null,
-    Object? userAnswers = freezed,
+    Object? userAnswers = null,
     Object? isAnsweredCorrectly = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,10 +66,10 @@ class _$TestQuestionCopyWithImpl<$Res, $Val extends TestQuestion>
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
               as Question,
-      userAnswers: freezed == userAnswers
+      userAnswers: null == userAnswers
           ? _value.userAnswers
           : userAnswers // ignore: cast_nullable_to_non_nullable
-              as Set<int>?,
+              as Set<int>,
       isAnsweredCorrectly: freezed == isAnsweredCorrectly
           ? _value.isAnsweredCorrectly
           : isAnsweredCorrectly // ignore: cast_nullable_to_non_nullable
@@ -95,8 +94,7 @@ abstract class _$$_TestQuestionCopyWith<$Res>
       __$$_TestQuestionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Question source, Set<int>? userAnswers, bool? isAnsweredCorrectly});
+  $Res call({Question source, Set<int> userAnswers, bool? isAnsweredCorrectly});
 
   @override
   $QuestionCopyWith<$Res> get source;
@@ -114,7 +112,7 @@ class __$$_TestQuestionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? source = null,
-    Object? userAnswers = freezed,
+    Object? userAnswers = null,
     Object? isAnsweredCorrectly = freezed,
   }) {
     return _then(_$_TestQuestion(
@@ -122,10 +120,10 @@ class __$$_TestQuestionCopyWithImpl<$Res>
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
               as Question,
-      userAnswers: freezed == userAnswers
+      userAnswers: null == userAnswers
           ? _value.userAnswers
           : userAnswers // ignore: cast_nullable_to_non_nullable
-              as Set<int>?,
+              as Set<int>,
       isAnsweredCorrectly: freezed == isAnsweredCorrectly
           ? _value.isAnsweredCorrectly
           : isAnsweredCorrectly // ignore: cast_nullable_to_non_nullable
@@ -139,7 +137,7 @@ class __$$_TestQuestionCopyWithImpl<$Res>
 class _$_TestQuestion implements _TestQuestion {
   _$_TestQuestion(
       {required this.source,
-      this.userAnswers = null,
+      this.userAnswers = const {},
       required this.isAnsweredCorrectly});
 
   factory _$_TestQuestion.fromJson(Map<String, dynamic> json) =>
@@ -149,7 +147,7 @@ class _$_TestQuestion implements _TestQuestion {
   Question source;
   @override
   @JsonKey()
-  Set<int>? userAnswers;
+  Set<int> userAnswers;
   @override
   bool? isAnsweredCorrectly;
 
@@ -175,7 +173,7 @@ class _$_TestQuestion implements _TestQuestion {
 abstract class _TestQuestion implements TestQuestion {
   factory _TestQuestion(
       {required Question source,
-      Set<int>? userAnswers,
+      Set<int> userAnswers,
       required bool? isAnsweredCorrectly}) = _$_TestQuestion;
 
   factory _TestQuestion.fromJson(Map<String, dynamic> json) =
@@ -185,8 +183,8 @@ abstract class _TestQuestion implements TestQuestion {
   Question get source;
   set source(Question value);
   @override
-  Set<int>? get userAnswers;
-  set userAnswers(Set<int>? value);
+  Set<int> get userAnswers;
+  set userAnswers(Set<int> value);
   @override
   bool? get isAnsweredCorrectly;
   set isAnsweredCorrectly(bool? value);

@@ -12,13 +12,13 @@ _$_TestQuestion _$$_TestQuestionFromJson(Map<String, dynamic> json) =>
       userAnswers: (json['userAnswers'] as List<dynamic>?)
               ?.map((e) => e as int)
               .toSet() ??
-          null,
+          const {},
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );
 
 Map<String, dynamic> _$$_TestQuestionToJson(_$_TestQuestion instance) =>
     <String, dynamic>{
       'source': instance.source,
-      'userAnswers': instance.userAnswers?.toList(),
+      'userAnswers': instance.userAnswers.toList(),
       'isAnsweredCorrectly': instance.isAnsweredCorrectly,
     };
