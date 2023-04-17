@@ -53,6 +53,12 @@ class TestBloc extends Bloc<TestEvent, TestState> {
             selectedIndex: null,
           ));
         },
+        selectNextQuestion: () {
+          if (state.selectedIndex != null) {
+            final newIndex = state.selectedIndex! + 1;
+            emit(state.copyWith(selectedIndex: newIndex));
+          }
+        },
       );
     });
   }

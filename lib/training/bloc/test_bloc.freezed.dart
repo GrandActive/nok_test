@@ -20,6 +20,7 @@ mixin _$TestEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
+    required TResult Function() selectNextQuestion,
     required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
@@ -29,6 +30,7 @@ mixin _$TestEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
+    TResult? Function()? selectNextQuestion,
     TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
@@ -38,6 +40,7 @@ mixin _$TestEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
+    TResult Function()? selectNextQuestion,
     TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
@@ -48,6 +51,7 @@ mixin _$TestEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Selected value) selected,
+    required TResult Function(_SelectNextQuestion value) selectNextQuestion,
     required TResult Function(_AnswersSelected value) answersSelected,
     required TResult Function(_AnswersSent value) answersSent,
     required TResult Function(_Finished value) finished,
@@ -57,6 +61,7 @@ mixin _$TestEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Selected value)? selected,
+    TResult? Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult? Function(_AnswersSelected value)? answersSelected,
     TResult? Function(_AnswersSent value)? answersSent,
     TResult? Function(_Finished value)? finished,
@@ -66,6 +71,7 @@ mixin _$TestEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Selected value)? selected,
+    TResult Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult Function(_AnswersSelected value)? answersSelected,
     TResult Function(_AnswersSent value)? answersSent,
     TResult Function(_Finished value)? finished,
@@ -136,6 +142,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
+    required TResult Function() selectNextQuestion,
     required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
@@ -148,6 +155,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
+    TResult? Function()? selectNextQuestion,
     TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
@@ -160,6 +168,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
+    TResult Function()? selectNextQuestion,
     TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
@@ -176,6 +185,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Selected value) selected,
+    required TResult Function(_SelectNextQuestion value) selectNextQuestion,
     required TResult Function(_AnswersSelected value) answersSelected,
     required TResult Function(_AnswersSent value) answersSent,
     required TResult Function(_Finished value) finished,
@@ -188,6 +198,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Selected value)? selected,
+    TResult? Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult? Function(_AnswersSelected value)? answersSelected,
     TResult? Function(_AnswersSent value)? answersSent,
     TResult? Function(_Finished value)? finished,
@@ -200,6 +211,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Selected value)? selected,
+    TResult Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult Function(_AnswersSelected value)? answersSelected,
     TResult Function(_AnswersSent value)? answersSent,
     TResult Function(_Finished value)? finished,
@@ -290,6 +302,7 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
+    required TResult Function() selectNextQuestion,
     required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
@@ -302,6 +315,7 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
+    TResult? Function()? selectNextQuestion,
     TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
@@ -314,6 +328,7 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
+    TResult Function()? selectNextQuestion,
     TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
@@ -330,6 +345,7 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Selected value) selected,
+    required TResult Function(_SelectNextQuestion value) selectNextQuestion,
     required TResult Function(_AnswersSelected value) answersSelected,
     required TResult Function(_AnswersSent value) answersSent,
     required TResult Function(_Finished value) finished,
@@ -342,6 +358,7 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Selected value)? selected,
+    TResult? Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult? Function(_AnswersSelected value)? answersSelected,
     TResult? Function(_AnswersSent value)? answersSent,
     TResult? Function(_Finished value)? finished,
@@ -354,6 +371,7 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Selected value)? selected,
+    TResult Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult Function(_AnswersSelected value)? answersSelected,
     TResult Function(_AnswersSent value)? answersSent,
     TResult Function(_Finished value)? finished,
@@ -373,6 +391,140 @@ abstract class _Selected implements TestEvent {
   @JsonKey(ignore: true)
   _$$_SelectedCopyWith<_$_Selected> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SelectNextQuestionCopyWith<$Res> {
+  factory _$$_SelectNextQuestionCopyWith(_$_SelectNextQuestion value,
+          $Res Function(_$_SelectNextQuestion) then) =
+      __$$_SelectNextQuestionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SelectNextQuestionCopyWithImpl<$Res>
+    extends _$TestEventCopyWithImpl<$Res, _$_SelectNextQuestion>
+    implements _$$_SelectNextQuestionCopyWith<$Res> {
+  __$$_SelectNextQuestionCopyWithImpl(
+      _$_SelectNextQuestion _value, $Res Function(_$_SelectNextQuestion) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SelectNextQuestion
+    with DiagnosticableTreeMixin
+    implements _SelectNextQuestion {
+  const _$_SelectNextQuestion();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'TestEvent.selectNextQuestion()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'TestEvent.selectNextQuestion'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SelectNextQuestion);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int index) selected,
+    required TResult Function() selectNextQuestion,
+    required TResult Function(Set<int> answers) answersSelected,
+    required TResult Function() answersSent,
+    required TResult Function() finished,
+  }) {
+    return selectNextQuestion();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int index)? selected,
+    TResult? Function()? selectNextQuestion,
+    TResult? Function(Set<int> answers)? answersSelected,
+    TResult? Function()? answersSent,
+    TResult? Function()? finished,
+  }) {
+    return selectNextQuestion?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int index)? selected,
+    TResult Function()? selectNextQuestion,
+    TResult Function(Set<int> answers)? answersSelected,
+    TResult Function()? answersSent,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    if (selectNextQuestion != null) {
+      return selectNextQuestion();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Selected value) selected,
+    required TResult Function(_SelectNextQuestion value) selectNextQuestion,
+    required TResult Function(_AnswersSelected value) answersSelected,
+    required TResult Function(_AnswersSent value) answersSent,
+    required TResult Function(_Finished value) finished,
+  }) {
+    return selectNextQuestion(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Selected value)? selected,
+    TResult? Function(_SelectNextQuestion value)? selectNextQuestion,
+    TResult? Function(_AnswersSelected value)? answersSelected,
+    TResult? Function(_AnswersSent value)? answersSent,
+    TResult? Function(_Finished value)? finished,
+  }) {
+    return selectNextQuestion?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Selected value)? selected,
+    TResult Function(_SelectNextQuestion value)? selectNextQuestion,
+    TResult Function(_AnswersSelected value)? answersSelected,
+    TResult Function(_AnswersSent value)? answersSent,
+    TResult Function(_Finished value)? finished,
+    required TResult orElse(),
+  }) {
+    if (selectNextQuestion != null) {
+      return selectNextQuestion(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectNextQuestion implements TestEvent {
+  const factory _SelectNextQuestion() = _$_SelectNextQuestion;
 }
 
 /// @nodoc
@@ -458,6 +610,7 @@ class _$_AnswersSelected
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
+    required TResult Function() selectNextQuestion,
     required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
@@ -470,6 +623,7 @@ class _$_AnswersSelected
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
+    TResult? Function()? selectNextQuestion,
     TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
@@ -482,6 +636,7 @@ class _$_AnswersSelected
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
+    TResult Function()? selectNextQuestion,
     TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
@@ -498,6 +653,7 @@ class _$_AnswersSelected
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Selected value) selected,
+    required TResult Function(_SelectNextQuestion value) selectNextQuestion,
     required TResult Function(_AnswersSelected value) answersSelected,
     required TResult Function(_AnswersSent value) answersSent,
     required TResult Function(_Finished value) finished,
@@ -510,6 +666,7 @@ class _$_AnswersSelected
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Selected value)? selected,
+    TResult? Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult? Function(_AnswersSelected value)? answersSelected,
     TResult? Function(_AnswersSent value)? answersSent,
     TResult? Function(_Finished value)? finished,
@@ -522,6 +679,7 @@ class _$_AnswersSelected
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Selected value)? selected,
+    TResult Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult Function(_AnswersSelected value)? answersSelected,
     TResult Function(_AnswersSent value)? answersSent,
     TResult Function(_Finished value)? finished,
@@ -590,6 +748,7 @@ class _$_AnswersSent with DiagnosticableTreeMixin implements _AnswersSent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
+    required TResult Function() selectNextQuestion,
     required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
@@ -602,6 +761,7 @@ class _$_AnswersSent with DiagnosticableTreeMixin implements _AnswersSent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
+    TResult? Function()? selectNextQuestion,
     TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
@@ -614,6 +774,7 @@ class _$_AnswersSent with DiagnosticableTreeMixin implements _AnswersSent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
+    TResult Function()? selectNextQuestion,
     TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
@@ -630,6 +791,7 @@ class _$_AnswersSent with DiagnosticableTreeMixin implements _AnswersSent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Selected value) selected,
+    required TResult Function(_SelectNextQuestion value) selectNextQuestion,
     required TResult Function(_AnswersSelected value) answersSelected,
     required TResult Function(_AnswersSent value) answersSent,
     required TResult Function(_Finished value) finished,
@@ -642,6 +804,7 @@ class _$_AnswersSent with DiagnosticableTreeMixin implements _AnswersSent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Selected value)? selected,
+    TResult? Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult? Function(_AnswersSelected value)? answersSelected,
     TResult? Function(_AnswersSent value)? answersSent,
     TResult? Function(_Finished value)? finished,
@@ -654,6 +817,7 @@ class _$_AnswersSent with DiagnosticableTreeMixin implements _AnswersSent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Selected value)? selected,
+    TResult Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult Function(_AnswersSelected value)? answersSelected,
     TResult Function(_AnswersSent value)? answersSent,
     TResult Function(_Finished value)? finished,
@@ -716,6 +880,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int index) selected,
+    required TResult Function() selectNextQuestion,
     required TResult Function(Set<int> answers) answersSelected,
     required TResult Function() answersSent,
     required TResult Function() finished,
@@ -728,6 +893,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(int index)? selected,
+    TResult? Function()? selectNextQuestion,
     TResult? Function(Set<int> answers)? answersSelected,
     TResult? Function()? answersSent,
     TResult? Function()? finished,
@@ -740,6 +906,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int index)? selected,
+    TResult Function()? selectNextQuestion,
     TResult Function(Set<int> answers)? answersSelected,
     TResult Function()? answersSent,
     TResult Function()? finished,
@@ -756,6 +923,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Selected value) selected,
+    required TResult Function(_SelectNextQuestion value) selectNextQuestion,
     required TResult Function(_AnswersSelected value) answersSelected,
     required TResult Function(_AnswersSent value) answersSent,
     required TResult Function(_Finished value) finished,
@@ -768,6 +936,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Selected value)? selected,
+    TResult? Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult? Function(_AnswersSelected value)? answersSelected,
     TResult? Function(_AnswersSent value)? answersSent,
     TResult? Function(_Finished value)? finished,
@@ -780,6 +949,7 @@ class _$_Finished with DiagnosticableTreeMixin implements _Finished {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Selected value)? selected,
+    TResult Function(_SelectNextQuestion value)? selectNextQuestion,
     TResult Function(_AnswersSelected value)? answersSelected,
     TResult Function(_AnswersSent value)? answersSent,
     TResult Function(_Finished value)? finished,
