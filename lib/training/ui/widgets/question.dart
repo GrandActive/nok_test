@@ -1,10 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gip_test/navigation.gr.dart';
 import 'package:gip_test/training/bloc/test_bloc.dart';
 import 'package:gip_test/training/domain/model/test_question.dart';
 import 'package:gip_test/training/ui/widgets/answer_list.dart';
+import 'package:gip_test/training/ui/widgets/submit_button.dart';
 
 class Question extends StatelessWidget {
   const Question({super.key, required this.question});
@@ -30,8 +29,6 @@ class Question extends StatelessWidget {
       child: BlocBuilder<TestBloc, TestState>(
         buildWhen: (_, current) => !current.isFinished,
         builder: (context, state) {
-          final bloc = context.read<TestBloc>();
-
           final selectedQuestion = state.questions[state.selectedIndex!];
 
           Set<int> selectedAnswers;
@@ -42,6 +39,7 @@ class Question extends StatelessWidget {
           }
 
           final isMultipleAnswers = selectedQuestion.source.correctAnswerIndices.length > 1;
+          final isAnswered = selectedQuestion.isAnsweredCorrectly != null;
 
           return Column(
             children: [
@@ -50,26 +48,13 @@ class Question extends StatelessWidget {
                 possibleAnswers: selectedQuestion.source.possibleAnswers,
                 selectedIndices: selectedAnswers,
                 isMultipleAnswers: isMultipleAnswers,
-                isAnswered: selectedQuestion.isAnsweredCorrectly != null,
+                isActive: !isAnswered && !state.isFinished,
               ),
-              FilledButton.tonal(
-                onPressed: selectedAnswers.isEmpty
-                    ? null
-                    : selectedQuestion.isAnsweredCorrectly != null
-                        ? state.selectedIndex == state.questions.length - 1
-                            ? () {
-                                bloc.add(const TestEvent.finished());
-                                context.router.replace(const TestResultsRoute());
-                              }
-                            : () => bloc.add(TestEvent.selected(index: state.selectedIndex! + 1))
-                        : () => bloc.add(const TestEvent.answersSent()),
-                child: Text(
-                  selectedQuestion.isAnsweredCorrectly == null
-                      ? "Ответить"
-                      : state.selectedIndex == state.questions.length - 1
-                          ? "Завершить"
-                          : "Далее",
-                ),
+              SubmitButton(
+                isAnswered: isAnswered,
+                isLastQuestion: state.selectedIndex == state.questions.length - 1,
+                areAnswersSelected: selectedAnswers.isNotEmpty,
+                isTestFinished: state.isFinished,
               ),
             ],
           );
