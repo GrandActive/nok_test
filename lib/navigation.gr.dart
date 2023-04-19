@@ -15,8 +15,8 @@ import 'package:auto_route/auto_route.dart' as _i6;
 import 'package:flutter/material.dart' as _i7;
 
 import 'mode_select_page.dart' as _i1;
-import 'training/ui/pages/test_page.dart' as _i4;
-import 'training/ui/pages/test_results_page.dart' as _i5;
+import 'training/ui/pages/test_page/test_page.dart' as _i4;
+import 'training/ui/pages/test_results_page/test_results_page.dart' as _i5;
 import 'training/ui/pages/test_wrapper_page.dart' as _i3;
 import 'training/ui/pages/training_start_page.dart' as _i2;
 

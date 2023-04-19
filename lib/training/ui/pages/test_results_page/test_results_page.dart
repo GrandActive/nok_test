@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gip_test/navigation.gr.dart';
 import 'package:gip_test/training/bloc/test_bloc.dart';
-import 'package:gip_test/training/ui/widgets/question_map_item.dart';
+import 'package:gip_test/training/ui/pages/test_page/widgets/question_map_item.dart';
 
 class TestResultsPage extends StatelessWidget {
   const TestResultsPage({super.key});

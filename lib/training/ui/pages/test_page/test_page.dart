@@ -5,8 +5,8 @@ import 'package:gip_test/navigation.gr.dart';
 import 'package:gip_test/training/bloc/test_bloc.dart';
 import 'package:gip_test/training/ui/pages/abort_test_dialog.dart';
 import 'package:gip_test/training/ui/pages/finish_test_dialog.dart';
-import 'package:gip_test/training/ui/widgets/questions_pager.dart';
-import 'package:gip_test/training/ui/widgets/question_map.dart';
+import 'package:gip_test/training/ui/pages/test_page/widgets/questions_pager.dart';
+import 'package:gip_test/training/ui/pages/test_page/widgets/question_map.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key});

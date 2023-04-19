@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gip_test/training/bloc/test_bloc.dart';
 import 'package:gip_test/training/domain/model/test_question.dart';
-import 'package:gip_test/training/ui/widgets/answer_list.dart';
-import 'package:gip_test/training/ui/widgets/submit_button.dart';
+import 'package:gip_test/training/ui/pages/test_page/widgets/answer_list.dart';
+import 'package:gip_test/training/ui/pages/test_page/widgets/submit_button.dart';
 
 class Question extends StatelessWidget {
   const Question({super.key, required this.question});
