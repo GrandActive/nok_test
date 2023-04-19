@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gip_test/navigation.gr.dart';
 import 'package:gip_test/training/bloc/test_bloc.dart';
+import 'package:gip_test/training/ui/pages/finish_test_dialog.dart';
 
 class SubmitButton extends StatelessWidget {
   const SubmitButton({
@@ -11,20 +12,35 @@ class SubmitButton extends StatelessWidget {
     required this.isAnswered,
     required this.isLastQuestion,
     required this.isTestFinished,
+    required this.hasUnansweredQuestions,
   });
 
   final bool areAnswersSelected;
   final bool isAnswered;
   final bool isLastQuestion;
   final bool isTestFinished;
+  final bool hasUnansweredQuestions;
 
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<TestBloc>();
 
     void finishTest() {
-      bloc.add(const TestEvent.finished());
-      context.router.replace(const TestResultsRoute());
+      if (!hasUnansweredQuestions) {
+        context.read<TestBloc>().add(const TestEvent.finished());
+        context.replaceRoute(const TestResultsRoute());
+        return;
+      }
+
+      showDialog<bool>(
+        context: context,
+        builder: (_) => const FinishTestDialog(),
+      ).then((value) {
+        if (value!) {
+          context.read<TestBloc>().add(const TestEvent.finished());
+          context.replaceRoute(const TestResultsRoute());
+        }
+      });
     }
 
     void selectNextQuestion() {

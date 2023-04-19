@@ -55,6 +55,7 @@ class Question extends StatelessWidget {
                 isLastQuestion: state.selectedIndex == state.questions.length - 1,
                 areAnswersSelected: selectedAnswers.isNotEmpty,
                 isTestFinished: state.isFinished,
+                hasUnansweredQuestions: state.questions.any((q) => q.isAnsweredCorrectly == null),
               ),
             ],
           );
