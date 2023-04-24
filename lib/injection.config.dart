@@ -10,9 +10,10 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
-import 'package:gip_test/training/data/questions_repository.dart' as _i3;
+import 'package:gip_test/training/data/firebase_data_source.dart' as _i3;
+import 'package:gip_test/training/data/questions_repository.dart' as _i4;
 import 'package:gip_test/training/domain/get_random_questions_for_test.dart'
-    as _i4;
+    as _i5;
 import 'package:injectable/injectable.dart' as _i2;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -26,10 +27,12 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    gh.factory<_i3.QuestionsRepository>(() => _i3.QuestionsRepository());
-    gh.factory<_i4.GetRandomQuestionsForTest>(() =>
-        _i4.GetRandomQuestionsForTest(
-            repository: gh<_i3.QuestionsRepository>()));
+    gh.factory<_i3.FirebaseDataSource>(() => _i3.FirebaseDataSource());
+    gh.factory<_i4.QuestionsRepository>(
+        () => _i4.QuestionsRepository(gh<_i3.FirebaseDataSource>()));
+    gh.factory<_i5.GetRandomQuestionsForTest>(() =>
+        _i5.GetRandomQuestionsForTest(
+            repository: gh<_i4.QuestionsRepository>()));
     return this;
   }
 }

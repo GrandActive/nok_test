@@ -38,7 +38,7 @@ class Question extends StatelessWidget {
             selectedAnswers = Set.from(state.selectedAnswers);
           }
 
-          final isMultipleAnswers = selectedQuestion.source.correctAnswerIndices.length > 1;
+          final isMultipleAnswers = selectedQuestion.source.correctAnswerIds.length > 1;
           final isAnswered = selectedQuestion.isAnsweredCorrectly != null;
 
           return Column(

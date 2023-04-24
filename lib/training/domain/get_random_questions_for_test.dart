@@ -10,8 +10,10 @@ class GetRandomQuestionsForTest {
 
   final QuestionsRepository repository;
 
-  Future<List<TestQuestion>> call({int count = 3}) async {
-    final questions = (await repository.getAllQuestions())
+  Future<List<TestQuestion>> call({int count = 50}) async {
+    final repoQuestions = await repository.getAllQuestions();
+    if (repoQuestions == null) throw Exception("Received no questions");
+    final questions = repoQuestions
         .map((question) => TestQuestion(source: question, isAnsweredCorrectly: null))
         .toList(growable: false);
     final random = Random();

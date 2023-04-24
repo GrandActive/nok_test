@@ -22,8 +22,10 @@ Question _$QuestionFromJson(Map<String, dynamic> json) {
 mixin _$Question {
   int get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
-  List<String> get possibleAnswers => throw _privateConstructorUsedError;
-  Set<int> get correctAnswerIndices => throw _privateConstructorUsedError;
+  List<PossibleAnswer> get possibleAnswers =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "correctAnswers")
+  Set<int> get correctAnswerIds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,8 +41,8 @@ abstract class $QuestionCopyWith<$Res> {
   $Res call(
       {int id,
       String text,
-      List<String> possibleAnswers,
-      Set<int> correctAnswerIndices});
+      List<PossibleAnswer> possibleAnswers,
+      @JsonKey(name: "correctAnswers") Set<int> correctAnswerIds});
 }
 
 /// @nodoc
@@ -59,7 +61,7 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
     Object? id = null,
     Object? text = null,
     Object? possibleAnswers = null,
-    Object? correctAnswerIndices = null,
+    Object? correctAnswerIds = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -73,10 +75,10 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
       possibleAnswers: null == possibleAnswers
           ? _value.possibleAnswers
           : possibleAnswers // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      correctAnswerIndices: null == correctAnswerIndices
-          ? _value.correctAnswerIndices
-          : correctAnswerIndices // ignore: cast_nullable_to_non_nullable
+              as List<PossibleAnswer>,
+      correctAnswerIds: null == correctAnswerIds
+          ? _value.correctAnswerIds
+          : correctAnswerIds // ignore: cast_nullable_to_non_nullable
               as Set<int>,
     ) as $Val);
   }
@@ -92,8 +94,8 @@ abstract class _$$_QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
   $Res call(
       {int id,
       String text,
-      List<String> possibleAnswers,
-      Set<int> correctAnswerIndices});
+      List<PossibleAnswer> possibleAnswers,
+      @JsonKey(name: "correctAnswers") Set<int> correctAnswerIds});
 }
 
 /// @nodoc
@@ -110,7 +112,7 @@ class __$$_QuestionCopyWithImpl<$Res>
     Object? id = null,
     Object? text = null,
     Object? possibleAnswers = null,
-    Object? correctAnswerIndices = null,
+    Object? correctAnswerIds = null,
   }) {
     return _then(_$_Question(
       id: null == id
@@ -124,10 +126,10 @@ class __$$_QuestionCopyWithImpl<$Res>
       possibleAnswers: null == possibleAnswers
           ? _value._possibleAnswers
           : possibleAnswers // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      correctAnswerIndices: null == correctAnswerIndices
-          ? _value._correctAnswerIndices
-          : correctAnswerIndices // ignore: cast_nullable_to_non_nullable
+              as List<PossibleAnswer>,
+      correctAnswerIds: null == correctAnswerIds
+          ? _value._correctAnswerIds
+          : correctAnswerIds // ignore: cast_nullable_to_non_nullable
               as Set<int>,
     ));
   }
@@ -139,10 +141,11 @@ class _$_Question implements _Question {
   const _$_Question(
       {required this.id,
       required this.text,
-      required final List<String> possibleAnswers,
-      required final Set<int> correctAnswerIndices})
+      required final List<PossibleAnswer> possibleAnswers,
+      @JsonKey(name: "correctAnswers")
+          required final Set<int> correctAnswerIds})
       : _possibleAnswers = possibleAnswers,
-        _correctAnswerIndices = correctAnswerIndices;
+        _correctAnswerIds = correctAnswerIds;
 
   factory _$_Question.fromJson(Map<String, dynamic> json) =>
       _$$_QuestionFromJson(json);
@@ -151,26 +154,26 @@ class _$_Question implements _Question {
   final int id;
   @override
   final String text;
-  final List<String> _possibleAnswers;
+  final List<PossibleAnswer> _possibleAnswers;
   @override
-  List<String> get possibleAnswers {
+  List<PossibleAnswer> get possibleAnswers {
     if (_possibleAnswers is EqualUnmodifiableListView) return _possibleAnswers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_possibleAnswers);
   }
 
-  final Set<int> _correctAnswerIndices;
+  final Set<int> _correctAnswerIds;
   @override
-  Set<int> get correctAnswerIndices {
-    if (_correctAnswerIndices is EqualUnmodifiableSetView)
-      return _correctAnswerIndices;
+  @JsonKey(name: "correctAnswers")
+  Set<int> get correctAnswerIds {
+    if (_correctAnswerIds is EqualUnmodifiableSetView) return _correctAnswerIds;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_correctAnswerIndices);
+    return EqualUnmodifiableSetView(_correctAnswerIds);
   }
 
   @override
   String toString() {
-    return 'Question(id: $id, text: $text, possibleAnswers: $possibleAnswers, correctAnswerIndices: $correctAnswerIndices)';
+    return 'Question(id: $id, text: $text, possibleAnswers: $possibleAnswers, correctAnswerIds: $correctAnswerIds)';
   }
 
   @override
@@ -183,7 +186,7 @@ class _$_Question implements _Question {
             const DeepCollectionEquality()
                 .equals(other._possibleAnswers, _possibleAnswers) &&
             const DeepCollectionEquality()
-                .equals(other._correctAnswerIndices, _correctAnswerIndices));
+                .equals(other._correctAnswerIds, _correctAnswerIds));
   }
 
   @JsonKey(ignore: true)
@@ -193,7 +196,7 @@ class _$_Question implements _Question {
       id,
       text,
       const DeepCollectionEquality().hash(_possibleAnswers),
-      const DeepCollectionEquality().hash(_correctAnswerIndices));
+      const DeepCollectionEquality().hash(_correctAnswerIds));
 
   @JsonKey(ignore: true)
   @override
@@ -213,8 +216,9 @@ abstract class _Question implements Question {
   const factory _Question(
       {required final int id,
       required final String text,
-      required final List<String> possibleAnswers,
-      required final Set<int> correctAnswerIndices}) = _$_Question;
+      required final List<PossibleAnswer> possibleAnswers,
+      @JsonKey(name: "correctAnswers")
+          required final Set<int> correctAnswerIds}) = _$_Question;
 
   factory _Question.fromJson(Map<String, dynamic> json) = _$_Question.fromJson;
 
@@ -223,9 +227,10 @@ abstract class _Question implements Question {
   @override
   String get text;
   @override
-  List<String> get possibleAnswers;
+  List<PossibleAnswer> get possibleAnswers;
   @override
-  Set<int> get correctAnswerIndices;
+  @JsonKey(name: "correctAnswers")
+  Set<int> get correctAnswerIds;
   @override
   @JsonKey(ignore: true)
   _$$_QuestionCopyWith<_$_Question> get copyWith =>

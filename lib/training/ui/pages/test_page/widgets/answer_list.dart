@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gip_test/training/bloc/test_bloc.dart';
+import 'package:gip_test/training/data/model/possible_answer.dart';
 
 class AnswerList extends StatelessWidget {
   const AnswerList({
@@ -11,36 +12,31 @@ class AnswerList extends StatelessWidget {
     required this.isActive,
   });
 
-  final List<String> possibleAnswers;
+  final List<PossibleAnswer> possibleAnswers;
   final Set<int> selectedIndices;
   final bool isMultipleAnswers;
   final bool isActive;
 
   @override
   Widget build(BuildContext context) {
-    final optionsIndexes = List.generate(
-      possibleAnswers.length,
-      (index) => index,
-    );
-
     return Column(
       children: [
         ...isMultipleAnswers
-            ? optionsIndexes.map(
-                (index) => MultipleSelectAnswerItem(
+            ? possibleAnswers.map(
+                (answer) => MultipleSelectAnswerItem(
                   selectedIndices: selectedIndices,
                   isActive: isActive,
-                  title: possibleAnswers[index],
-                  index: index,
-                  value: selectedIndices.contains(index),
+                  text: answer.text,
+                  index: answer.index,
+                  value: selectedIndices.contains(answer.index),
                 ),
               )
-            : optionsIndexes.map(
-                (index) => SingleSelectAnswerItem(
-                  selectedIndices: selectedIndices,
+            : possibleAnswers.map(
+                (answer) => SingleSelectAnswerItem(
+                  selectedIndex: selectedIndices,
                   isActive: isActive,
-                  possibleAnswers: possibleAnswers,
-                  index: index,
+                  index: answer.index,
+                  text: answer.text,
                 ),
               ),
       ],
@@ -54,7 +50,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
     required this.selectedIndices,
     required this.isActive,
     required this.index,
-    required this.title,
+    required this.text,
     required this.value,
   });
 
@@ -62,7 +58,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
   final bool? value;
   final Set<int> selectedIndices;
   final bool isActive;
-  final String title;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +75,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
       controlAffinity: ListTileControlAffinity.leading,
       value: value,
       onChanged: isActive ? setSelected : null,
-      title: Text(title),
+      title: Text(text),
     );
   }
 }
@@ -87,16 +83,16 @@ class MultipleSelectAnswerItem extends StatelessWidget {
 class SingleSelectAnswerItem extends StatelessWidget {
   const SingleSelectAnswerItem({
     super.key,
-    required this.selectedIndices,
+    required this.selectedIndex,
     required this.isActive,
-    required this.possibleAnswers,
     required this.index,
+    required this.text,
   });
 
   final int index;
-  final Set<int> selectedIndices;
+  final Set<int> selectedIndex;
   final bool isActive;
-  final List<String> possibleAnswers;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +104,9 @@ class SingleSelectAnswerItem extends StatelessWidget {
 
     return RadioListTile(
       value: index,
-      groupValue: selectedIndices.isNotEmpty ? selectedIndices.first : null,
+      groupValue: selectedIndex.isNotEmpty ? selectedIndex.first : null,
       onChanged: isActive ? setSelected : null,
-      title: Text(possibleAnswers[index]),
+      title: Text(text),
     );
   }
 }

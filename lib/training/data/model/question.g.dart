@@ -10,9 +10,9 @@ _$_Question _$$_QuestionFromJson(Map<String, dynamic> json) => _$_Question(
       id: json['id'] as int,
       text: json['text'] as String,
       possibleAnswers: (json['possibleAnswers'] as List<dynamic>)
-          .map((e) => e as String)
+          .map((e) => PossibleAnswer.fromJson(e as Map<String, dynamic>))
           .toList(),
-      correctAnswerIndices: (json['correctAnswerIndices'] as List<dynamic>)
+      correctAnswerIds: (json['correctAnswers'] as List<dynamic>)
           .map((e) => e as int)
           .toSet(),
     );
@@ -22,5 +22,5 @@ Map<String, dynamic> _$$_QuestionToJson(_$_Question instance) =>
       'id': instance.id,
       'text': instance.text,
       'possibleAnswers': instance.possibleAnswers,
-      'correctAnswerIndices': instance.correctAnswerIndices.toList(),
+      'correctAnswers': instance.correctAnswerIds.toList(),
     };

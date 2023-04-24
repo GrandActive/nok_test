@@ -19,10 +19,7 @@ class TestBloc extends Bloc<TestEvent, TestState> {
         started: () async {
           emit(const TestState());
           try {
-            final questions = await Future.delayed(
-              const Duration(milliseconds: 500),
-              () => getQuestions(count: 4),
-            );
+            final questions = await getQuestions(count: 50);
             emit(state.copyWith(questions: questions, isLoading: false, selectedIndex: 0));
           } catch (e) {
             emit(state.copyWith(errorMessage: e.toString(), isLoading: false));
@@ -43,7 +40,7 @@ class TestBloc extends Bloc<TestEvent, TestState> {
           final question = state.questions[state.selectedIndex!];
           question.userAnswers = state.selectedAnswers;
           question.isAnsweredCorrectly =
-              setEquals(state.selectedAnswers, question.source.correctAnswerIndices);
+              setEquals(state.selectedAnswers, question.source.correctAnswerIds);
           emit(state.copyWith(selectedAnswers: {}));
         },
         finished: () {
