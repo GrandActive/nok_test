@@ -41,23 +41,31 @@ class Question extends StatelessWidget {
           final isMultipleAnswers = selectedQuestion.source.correctAnswerIds.length > 1;
           final isAnswered = selectedQuestion.isAnsweredCorrectly != null;
 
-          return Column(
-            children: [
-              Text(question.source.text),
-              AnswerList(
-                possibleAnswers: selectedQuestion.source.possibleAnswers,
-                selectedIndices: selectedAnswers,
-                isMultipleAnswers: isMultipleAnswers,
-                isActive: !isAnswered && !state.isFinished,
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
+              child: Column(
+                children: [
+                  Text(question.source.text),
+                  const SizedBox(height: 40),
+                  AnswerList(
+                    possibleAnswers: selectedQuestion.source.possibleAnswers,
+                    selectedIndices: selectedAnswers,
+                    isMultipleAnswers: isMultipleAnswers,
+                    isActive: !isAnswered && !state.isFinished,
+                  ),
+                  const SizedBox(height: 40),
+                  SubmitButton(
+                    isAnswered: isAnswered,
+                    isLastQuestion: state.selectedIndex == state.questions.length - 1,
+                    areAnswersSelected: selectedAnswers.isNotEmpty,
+                    isTestFinished: state.isFinished,
+                    hasUnansweredQuestions:
+                        state.questions.any((q) => q.isAnsweredCorrectly == null),
+                  ),
+                ],
               ),
-              SubmitButton(
-                isAnswered: isAnswered,
-                isLastQuestion: state.selectedIndex == state.questions.length - 1,
-                areAnswersSelected: selectedAnswers.isNotEmpty,
-                isTestFinished: state.isFinished,
-                hasUnansweredQuestions: state.questions.any((q) => q.isAnsweredCorrectly == null),
-              ),
-            ],
+            ),
           );
         },
       ),

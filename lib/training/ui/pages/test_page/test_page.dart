@@ -102,10 +102,8 @@ class TestPage extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   height: 48,
-                  margin: const EdgeInsets.symmetric(horizontal: 16),
                   child: const QuestionMap(),
                 ),
-                const SizedBox(height: 24),
                 Expanded(
                   child: QuestionsPager(),
                 ),

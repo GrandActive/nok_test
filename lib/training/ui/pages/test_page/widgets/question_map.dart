@@ -10,7 +10,7 @@ class QuestionMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TestBloc, TestState>(
       builder: (context, state) => ListView.separated(
-        padding: const EdgeInsets.only(top: 8, bottom: 8),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         separatorBuilder: (context, index) => const SizedBox(width: 8),
         itemCount: state.questions.length,
         scrollDirection: Axis.horizontal,
