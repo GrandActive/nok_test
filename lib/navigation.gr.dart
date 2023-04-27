@@ -16,11 +16,11 @@ import 'package:flutter/material.dart' as _i8;
 
 import 'main_page/main_page.dart' as _i1;
 import 'mode_select_page.dart' as _i2;
-import 'training/domain/model/test_mode.dart' as _i9;
-import 'training/ui/pages/test_page/test_page.dart' as _i5;
-import 'training/ui/pages/test_results_page/test_results_page.dart' as _i6;
-import 'training/ui/pages/test_wrapper_page.dart' as _i4;
-import 'training/ui/pages/training_start_page.dart' as _i3;
+import 'testing/domain/model/test_mode.dart' as _i9;
+import 'testing/ui/pages/test_page/test_page.dart' as _i5;
+import 'testing/ui/pages/test_results_page/test_results_page.dart' as _i6;
+import 'testing/ui/pages/test_wrapper_page.dart' as _i4;
+import 'testing/ui/pages/training_start_page.dart' as _i3;
 
 class AppRouter extends _i7.RootStackRouter {
   AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])

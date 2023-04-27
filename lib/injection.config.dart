@@ -10,9 +10,9 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
-import 'package:gip_test/training/data/firebase_data_source.dart' as _i3;
-import 'package:gip_test/training/data/questions_repository.dart' as _i4;
-import 'package:gip_test/training/domain/get_random_questions_for_test.dart'
+import 'package:gip_test/testing/data/firebase_data_source.dart' as _i3;
+import 'package:gip_test/testing/data/questions_repository.dart' as _i4;
+import 'package:gip_test/testing/domain/get_random_questions_for_test.dart'
     as _i5;
 import 'package:injectable/injectable.dart' as _i2;
 
