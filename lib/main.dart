@@ -25,6 +25,8 @@ class MyApp extends StatelessWidget {
       routeInformationParser: _appRouter.defaultRouteParser(),
       title: 'Flutter Demo',
       theme: ThemeData(
+        useMaterial3: true,
+        appBarTheme: const AppBarTheme(color: Color(0xff277ADB), foregroundColor: Colors.white),
         colorSchemeSeed: const Color(0x00277adb),
       ),
     );
