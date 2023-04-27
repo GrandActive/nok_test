@@ -1,9 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gip_test/navigation.gr.dart';
 import 'package:gip_test/training/bloc/test_bloc.dart';
-import 'package:gip_test/training/ui/pages/test_page/widgets/question_map_item.dart';
+import 'package:gip_test/training/ui/pages/test_results_page/widgets/restart_test_dialog.dart';
+import 'package:gip_test/training/ui/pages/test_results_page/widgets/test_results_grid.dart';
 
 class TestResultsPage extends StatelessWidget {
   const TestResultsPage({super.key});
@@ -38,79 +37,6 @@ class TestResultsPage extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-}
-
-class TestResultsGrid extends StatelessWidget {
-  const TestResultsGrid({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TestBloc, TestState>(
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 232),
-            child: Wrap(
-              direction: Axis.horizontal,
-              spacing: 8,
-              runSpacing: 8,
-              children: List.generate(
-                state.questions.length,
-                (index) => QuestionMapItem(
-                  size: 40,
-                  index: index,
-                  isSelected: state.selectedIndex == index && !state.isFinished,
-                  isAnsweredCorrectly: state.questions[index].isAnsweredCorrectly,
-                  onPressed: () {
-                    context.read<TestBloc>().add(TestEvent.selected(index: index));
-                    context.router.push(const TestRoute());
-                  },
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class RestartTestDialog extends StatelessWidget {
-  const RestartTestDialog({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Text("Пройти заново?"),
-        const SizedBox(height: 24),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            OutlinedButton(
-              onPressed: () {
-                context.router.replaceAll([const ModeSelectRoute()]);
-              },
-              child: const Text("Нет"),
-            ),
-            const SizedBox(width: 16),
-            FilledButton(
-              onPressed: () {
-                context.read<TestBloc>().add(const TestEvent.started());
-                context.router.replace(const TestRoute());
-              },
-              child: const Text("Да"),
-            )
-          ],
-        )
-      ],
     );
   }
 }
