@@ -102,7 +102,7 @@ class TestPage extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   height: 48,
-                  child: const QuestionMap(),
+                  child: QuestionMap(),
                 ),
                 Expanded(
                   child: QuestionsPager(),
