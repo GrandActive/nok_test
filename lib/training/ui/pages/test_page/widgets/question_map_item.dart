@@ -7,12 +7,14 @@ class QuestionMapItem extends StatelessWidget {
     required this.isAnsweredCorrectly,
     required this.isSelected,
     required this.onPressed,
+    this.size = 32,
   });
 
   final int index;
   final bool? isAnsweredCorrectly;
   final bool isSelected;
   final void Function() onPressed;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +32,8 @@ class QuestionMapItem extends StatelessWidget {
     }
 
     return SizedBox(
-      height: 32,
-      width: 32,
+      height: size,
+      width: size,
       child: FilledButton.tonal(
         style: ButtonStyle(
           shape: const MaterialStatePropertyAll(
