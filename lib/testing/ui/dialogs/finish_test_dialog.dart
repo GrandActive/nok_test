@@ -7,6 +7,7 @@ class FinishTestDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      surfaceTintColor: Colors.white,
       title: const Text("Завершить тест?"),
       content: const Text("Вы ответили не на все вопросы"),
       actions: [

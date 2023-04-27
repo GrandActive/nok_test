@@ -7,6 +7,7 @@ class AbortTestDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      surfaceTintColor: Colors.white,
       title: const Text("Прервать тест?"),
       content: const Text("Результат не сохранится"),
       actions: [
