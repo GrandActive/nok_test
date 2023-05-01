@@ -26,7 +26,7 @@ class TestPage extends StatelessWidget {
           builder: (_) => const AbortTestDialog(),
         ).then((value) {
           if (value!) {
-            context.router.replaceAll([const ModeSelectRoute()]);
+            context.router.replaceAll([const MainRoute()]);
           }
           return value;
         });
@@ -48,7 +48,7 @@ class TestPage extends StatelessWidget {
                         builder: (_) => const AbortTestDialog(),
                       ).then((value) {
                         if (value!) {
-                          context.router.replaceAll([const ModeSelectRoute()]);
+                          context.router.replaceAll([const MainRoute()]);
                         }
                       });
                     }

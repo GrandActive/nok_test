@@ -24,7 +24,7 @@ class RestartTestDialog extends StatelessWidget {
           children: [
             OutlinedButton(
               onPressed: () {
-                context.router.replaceAll([const ModeSelectRoute()]);
+                context.router.replaceAll([const MainRoute()]);
               },
               child: const Text("Нет"),
             ),
