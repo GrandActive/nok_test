@@ -24,7 +24,8 @@ class TestResultsGrid extends StatelessWidget {
               runSpacing: 8,
               children: List.generate(
                 state.questions.length,
-                    (index) => QuestionMapItem(
+                (index) => QuestionMapItem(
+                  showAnswerCorrectness: true,
                   size: 40,
                   index: index,
                   isSelected: state.selectedIndex == index && !state.isFinished,

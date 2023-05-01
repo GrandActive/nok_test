@@ -36,6 +36,7 @@ class QuestionMap extends StatelessWidget {
           itemCount: state.questions.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => QuestionMapItem(
+            showAnswerCorrectness: state.isFinished,
             index: index,
             isSelected: state.selectedIndex == index,
             isAnsweredCorrectly: state.questions[index].isAnsweredCorrectly,

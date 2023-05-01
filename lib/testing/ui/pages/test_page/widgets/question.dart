@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gip_test/testing/bloc/test_bloc.dart';
 import 'package:gip_test/testing/domain/model/test_question.dart';
 import 'package:gip_test/testing/ui/pages/test_page/widgets/answer_list.dart';
+import 'package:gip_test/testing/ui/pages/test_page/widgets/question_text.dart';
 import 'package:gip_test/testing/ui/pages/test_page/widgets/submit_button.dart';
 
 class Question extends StatelessWidget {
@@ -12,63 +13,49 @@ class Question extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<TestBloc, TestState>(
-      listenWhen: (previous, current) => !current.isFinished,
-      listener: (context, state) {
+    return BlocBuilder<TestBloc, TestState>(
+      buildWhen: (_, current) => !current.isFinished,
+      builder: (context, state) {
         final selectedQuestion = state.questions[state.selectedIndex!];
-        if (selectedQuestion.isAnsweredCorrectly != null) {
-          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          if (selectedQuestion.isAnsweredCorrectly!) {
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Правильно!")));
-          } else {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text("Неправильно :(")));
-          }
+
+        Set<int> selectedAnswers;
+        if (selectedQuestion.userAnswers.isNotEmpty) {
+          selectedAnswers = Set.from(selectedQuestion.userAnswers);
+        } else {
+          selectedAnswers = Set.from(state.selectedAnswers);
         }
-      },
-      child: BlocBuilder<TestBloc, TestState>(
-        buildWhen: (_, current) => !current.isFinished,
-        builder: (context, state) {
-          final selectedQuestion = state.questions[state.selectedIndex!];
 
-          Set<int> selectedAnswers;
-          if (selectedQuestion.userAnswers.isNotEmpty) {
-            selectedAnswers = Set.from(selectedQuestion.userAnswers);
-          } else {
-            selectedAnswers = Set.from(state.selectedAnswers);
-          }
+        final isMultipleAnswers = selectedQuestion.source.correctAnswerIds.length > 1;
+        final isAnswered = selectedQuestion.isAnsweredCorrectly != null;
 
-          final isMultipleAnswers = selectedQuestion.source.correctAnswerIds.length > 1;
-          final isAnswered = selectedQuestion.isAnsweredCorrectly != null;
-
-          return SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
-              child: Column(
-                children: [
-                  Text(question.source.text),
-                  const SizedBox(height: 40),
-                  AnswerList(
-                    possibleAnswers: selectedQuestion.source.possibleAnswers,
-                    selectedIndices: selectedAnswers,
-                    isMultipleAnswers: isMultipleAnswers,
-                    isActive: !isAnswered && !state.isFinished,
-                  ),
-                  const SizedBox(height: 40),
-                  SubmitButton(
-                    isAnswered: isAnswered,
-                    isLastQuestion: state.selectedIndex == state.questions.length - 1,
-                    areAnswersSelected: selectedAnswers.isNotEmpty,
-                    isTestFinished: state.isFinished,
-                    hasUnansweredQuestions:
-                        state.questions.any((q) => q.isAnsweredCorrectly == null),
-                  ),
-                ],
-              ),
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
+            child: Column(
+              children: [
+                QuestionText(text: question.source.text),
+                const SizedBox(height: 40),
+                AnswerList(
+                  possibleAnswers: selectedQuestion.source.possibleAnswers,
+                  selectedIndices: selectedAnswers,
+                  isMultipleAnswers: isMultipleAnswers,
+                  isActive: !isAnswered && !state.isFinished,
+                  isAnsweredCorrectly:
+                      state.isFinished ? selectedQuestion.isAnsweredCorrectly : null,
+                ),
+                const SizedBox(height: 40),
+                SubmitButton(
+                  isAnswered: isAnswered,
+                  isLastQuestion: state.selectedIndex == state.questions.length - 1,
+                  areAnswersSelected: selectedAnswers.isNotEmpty,
+                  isTestFinished: state.isFinished,
+                  hasUnansweredQuestions: state.questions.any((q) => q.isAnsweredCorrectly == null),
+                ),
+              ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

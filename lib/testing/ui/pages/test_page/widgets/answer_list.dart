@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gip_test/styles/colors.dart';
 import 'package:gip_test/testing/bloc/test_bloc.dart';
 import 'package:gip_test/testing/data/model/possible_answer.dart';
 
@@ -10,38 +11,52 @@ class AnswerList extends StatelessWidget {
     required this.selectedIndices,
     required this.isMultipleAnswers,
     required this.isActive,
+    required this.isAnsweredCorrectly,
   });
 
   final List<PossibleAnswer> possibleAnswers;
   final Set<int> selectedIndices;
   final bool isMultipleAnswers;
   final bool isActive;
+  final bool? isAnsweredCorrectly;
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ...isMultipleAnswers
-            ? possibleAnswers.map(
-                (answer) => MultipleSelectAnswerItem(
-                  selectedIndices: selectedIndices,
-                  isActive: isActive,
-                  text: answer.text,
-                  index: answer.index,
-                  value: selectedIndices.contains(answer.index),
-                ),
-              )
-            : possibleAnswers.map(
-                (answer) => SingleSelectAnswerItem(
-                  selectedIndex: selectedIndices,
-                  isActive: isActive,
-                  index: answer.index,
-                  text: answer.text,
-                ),
-              ),
-      ],
-    );
-  }
+  Widget build(BuildContext context) => isMultipleAnswers
+      ? ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            final answer = possibleAnswers[index];
+            return MultipleSelectAnswerItem(
+              selectedIndices: selectedIndices,
+              isActive: isActive,
+              text: answer.text,
+              index: answer.index,
+              value: selectedIndices.contains(answer.index),
+              isSelectedAsCorrectAnswer:
+                  selectedIndices.contains(answer.index) ? isAnsweredCorrectly : null,
+            );
+          },
+          separatorBuilder: (context, index) => const SizedBox(height: 16),
+          itemCount: possibleAnswers.length,
+        )
+      : ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            final answer = possibleAnswers[index];
+            return SingleSelectAnswerItem(
+              selectedIndex: selectedIndices.isNotEmpty ? selectedIndices.first : null,
+              isActive: isActive,
+              index: answer.index,
+              text: answer.text,
+              isSelectedAsCorrectAnswer:
+                  selectedIndices.contains(answer.index) ? isAnsweredCorrectly : null,
+            );
+          },
+          separatorBuilder: (context, index) => const SizedBox(height: 16),
+          itemCount: possibleAnswers.length,
+        );
 }
 
 class MultipleSelectAnswerItem extends StatelessWidget {
@@ -52,6 +67,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
     required this.index,
     required this.text,
     required this.value,
+    required this.isSelectedAsCorrectAnswer,
   });
 
   final int index;
@@ -59,6 +75,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
   final Set<int> selectedIndices;
   final bool isActive;
   final String text;
+  final bool? isSelectedAsCorrectAnswer;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +92,22 @@ class MultipleSelectAnswerItem extends StatelessWidget {
       controlAffinity: ListTileControlAffinity.leading,
       value: value,
       onChanged: isActive ? setSelected : null,
-      title: Text(text),
+      title: Text(text, style: const TextStyle(fontWeight: FontWeight.w400)),
+      shape: RoundedRectangleBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        side: BorderSide(
+          color: isSelectedAsCorrectAnswer != null
+              ? isSelectedAsCorrectAnswer!
+                  ? correctAnswerColor
+                  : wrongAnswerColor
+              : const Color(0xff66A1E5),
+        ),
+      ),
+      side: const BorderSide(width: 2, color: Color(0xff277ADB)),
+      checkboxShape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(2)),
+      ),
+      contentPadding: EdgeInsets.zero,
     );
   }
 }
@@ -87,12 +119,14 @@ class SingleSelectAnswerItem extends StatelessWidget {
     required this.isActive,
     required this.index,
     required this.text,
+    required this.isSelectedAsCorrectAnswer,
   });
 
   final int index;
-  final Set<int> selectedIndex;
+  final int? selectedIndex;
   final bool isActive;
   final String text;
+  final bool? isSelectedAsCorrectAnswer;
 
   @override
   Widget build(BuildContext context) {
@@ -104,9 +138,22 @@ class SingleSelectAnswerItem extends StatelessWidget {
 
     return RadioListTile(
       value: index,
-      groupValue: selectedIndex.isNotEmpty ? selectedIndex.first : null,
+      groupValue: selectedIndex,
       onChanged: isActive ? setSelected : null,
-      title: Text(text),
+      title: Text(text, style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16)),
+      shape: RoundedRectangleBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        side: BorderSide(
+          width: 1,
+          color: isSelectedAsCorrectAnswer != null
+              ? isSelectedAsCorrectAnswer!
+                  ? correctAnswerColor
+                  : wrongAnswerColor
+              : const Color(0xff277ADB),
+        ),
+      ),
+      visualDensity: VisualDensity.compact,
+      contentPadding: EdgeInsets.zero,
     );
   }
 }
