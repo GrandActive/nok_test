@@ -19,7 +19,7 @@ class StartTestButton extends StatelessWidget {
         ),
       ),
       style: const ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(Color(0xff277ADB)),
+        minimumSize: MaterialStatePropertyAll(Size(156, 41)),
       ),
       child: const Text("Начать тест"),
     );

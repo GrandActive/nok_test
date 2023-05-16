@@ -61,6 +61,9 @@ class SubmitButton extends StatelessWidget {
                 : !isLastQuestion
                     ? selectNextQuestion
                     : finishTest,
+        style: const ButtonStyle(
+          minimumSize: MaterialStatePropertyAll(Size(156, 41)),
+        ),
         child: Text(
           !isAnswered
               ? "Ответить"
