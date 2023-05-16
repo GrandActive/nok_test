@@ -14,27 +14,24 @@ class TestResultsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TestBloc, TestState>(
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 232),
-            child: Wrap(
-              direction: Axis.horizontal,
-              spacing: 8,
-              runSpacing: 8,
-              children: List.generate(
-                state.questions.length,
-                (index) => QuestionMapItem(
-                  showAnswerCorrectness: true,
-                  size: 40,
-                  index: index,
-                  isSelected: state.selectedIndex == index && !state.isFinished,
-                  isAnsweredCorrectly: state.questions[index].isAnsweredCorrectly,
-                  onPressed: () {
-                    context.read<TestBloc>().add(TestEvent.selected(index: index));
-                    context.router.push(TestRoute(mode: state.mode));
-                  },
-                ),
+        return ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 232),
+          child: Wrap(
+            direction: Axis.horizontal,
+            spacing: 8,
+            runSpacing: 8,
+            children: List.generate(
+              state.questions.length,
+              (index) => QuestionMapItem(
+                showAnswerCorrectness: true,
+                size: 40,
+                index: index,
+                isSelected: state.selectedIndex == index && !state.isFinished,
+                isAnsweredCorrectly: state.questions[index].isAnsweredCorrectly,
+                onPressed: () {
+                  context.read<TestBloc>().add(TestEvent.selected(index: index));
+                  context.router.push(TestRoute(mode: state.mode));
+                },
               ),
             ),
           ),
