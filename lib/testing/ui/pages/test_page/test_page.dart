@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gip_test/navigation.gr.dart';
 import 'package:gip_test/testing/bloc/test_bloc.dart';
+import 'package:gip_test/testing/bloc/timer_bloc/timer_bloc.dart';
 import 'package:gip_test/testing/domain/model/test_mode.dart';
 import 'package:gip_test/testing/ui/dialogs/abort_test_dialog.dart';
 import 'package:gip_test/testing/ui/dialogs/finish_test_dialog.dart';
 import 'package:gip_test/testing/ui/pages/test_page/widgets/questions_pager.dart';
 import 'package:gip_test/testing/ui/pages/test_page/widgets/question_map.dart';
+import 'package:gip_test/testing/ui/pages/test_page/widgets/test_timer.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key, required this.mode});
@@ -48,12 +50,15 @@ class TestPage extends StatelessWidget {
                         builder: (_) => const AbortTestDialog(),
                       ).then((value) {
                         if (value!) {
+                          context.read<TimerBloc>().add(const TimerEvent.stopped());
                           context.router.replaceAll([const MainRoute()]);
                         }
                       });
                     }
                   },
                 ),
+                title: const TestTimer(),
+                centerTitle: true,
                 actions: state.isFinished
                     ? null
                     : [
