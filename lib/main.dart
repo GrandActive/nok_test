@@ -27,8 +27,21 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
-        filledButtonTheme:
-            FilledButtonThemeData(style: ButtonStyle(backgroundColor: ButtonColor())),
+        filledButtonTheme: FilledButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: ButtonColor(),
+            textStyle: const MaterialStatePropertyAll(
+              TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            ),
+          ),
+        ),
+        textButtonTheme: const TextButtonThemeData(
+          style: ButtonStyle(
+            textStyle: MaterialStatePropertyAll(
+              TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            ),
+          ),
+        ),
         radioTheme: const RadioThemeData(fillColor: MaterialStatePropertyAll(Color(0xff277ADB))),
         appBarTheme: const AppBarTheme(color: Color(0xff277ADB), foregroundColor: Colors.white),
         colorSchemeSeed: const Color(0x00277adb),
