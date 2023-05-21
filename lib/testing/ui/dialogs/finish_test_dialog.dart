@@ -8,8 +8,9 @@ class FinishTestDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       surfaceTintColor: Colors.white,
-      title: const Text("Завершить тест?"),
-      content: const Text("Вы ответили не на все вопросы"),
+      title: const Text("Завершить тест?", style: TextStyle(color: Color(0xff464646))),
+      content:
+          const Text("Вы ответили не на все вопросы.", style: TextStyle(color: Color(0xff464646))),
       actions: [
         TextButton(
           onPressed: () => context.popRoute(false),

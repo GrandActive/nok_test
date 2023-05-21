@@ -57,8 +57,10 @@ class TestPage extends StatelessWidget {
                     }
                   },
                 ),
-                title: const TestTimer(),
-                centerTitle: true,
+                title: state.isFinished && state.selectedIndex != null
+                    ? Text("Вопрос ${(state.selectedIndex ?? 0) + 1}")
+                    : const TestTimer(),
+                centerTitle: !state.isFinished,
                 actions: state.isFinished
                     ? null
                     : [
@@ -107,10 +109,14 @@ class TestPage extends StatelessWidget {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Container(
-                  alignment: Alignment.centerLeft,
-                  height: 48,
-                  child: QuestionMap(),
+                Visibility(
+                  visible: !state.isFinished,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    height: 48,
+                    margin: const EdgeInsets.only(top: 16),
+                    child: QuestionMap(),
+                  ),
                 ),
                 Expanded(
                   child: QuestionsPager(),

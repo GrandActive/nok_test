@@ -42,6 +42,7 @@ class Question extends StatelessWidget {
                   isActive: !isAnswered && !state.isFinished,
                   isAnsweredCorrectly:
                       state.isFinished ? selectedQuestion.isAnsweredCorrectly : null,
+                  shouldShowCorrectness: state.isFinished,
                 ),
                 const SizedBox(height: 40),
                 SubmitButton(
