@@ -11,7 +11,13 @@ class QuestionMap extends StatelessWidget {
   final double _itemSize = 32;
   final double _separatorSize = 8;
 
+  bool _shouldScroll = true;
+
   void _scrollToIndex(int index, double screenWidth) {
+    if (!_shouldScroll) {
+      _shouldScroll = true;
+      return;
+    }
     final double scroll =
         ((_itemSize + _separatorSize) * index + _separatorSize - screenWidth / 2).toDouble();
     _scrollController.animateTo(
@@ -24,6 +30,7 @@ class QuestionMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<TestBloc, TestState>(
+      listenWhen: (previous, current) => previous.selectedIndex != current.selectedIndex,
       listener: (context, state) {
         final screenWidth = MediaQuery.of(context).size.width;
         if (state.selectedIndex != null) _scrollToIndex(state.selectedIndex!, screenWidth);
@@ -40,7 +47,10 @@ class QuestionMap extends StatelessWidget {
             index: index,
             isSelected: state.selectedIndex == index,
             isAnsweredCorrectly: state.questions[index].isAnsweredCorrectly,
-            onPressed: () => context.read<TestBloc>().add(TestEvent.selected(index: index)),
+            onPressed: () {
+              _shouldScroll = false;
+              context.read<TestBloc>().add(TestEvent.selected(index: index));
+            },
             size: _itemSize,
           ),
         ),
