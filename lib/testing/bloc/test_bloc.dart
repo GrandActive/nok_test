@@ -32,19 +32,20 @@ class TestBloc extends Bloc<TestEvent, TestState> {
           if (state.selectedIndex != index) {
             emit(state.copyWith(
               selectedIndex: index,
-              selectedAnswers: {},
+              selectedAnswers: state.questions[index].userAnswers,
             ));
           }
         },
         answersSelected: (Set<int> answers) {
-          emit(state.copyWith(selectedAnswers: answers));
-        },
-        answersSent: () {
           final question = state.questions[state.selectedIndex!];
-          question.userAnswers = state.selectedAnswers;
-          question.isAnsweredCorrectly =
-              setEquals(state.selectedAnswers, question.source.correctAnswerIds);
-          emit(state.copyWith(selectedAnswers: {}));
+          question.userAnswers = answers;
+          if (answers.isEmpty) {
+            question.isAnsweredCorrectly = null;
+          } else {
+            question.isAnsweredCorrectly =
+                setEquals(state.selectedAnswers, question.source.correctAnswerIds);
+          }
+          emit(state.copyWith(selectedAnswers: question.userAnswers));
         },
         finished: () {
           emit(state.copyWith(
@@ -55,8 +56,12 @@ class TestBloc extends Bloc<TestEvent, TestState> {
         },
         selectNextQuestion: () {
           if (state.selectedIndex != null) {
-            final newIndex = state.selectedIndex! + 1;
-            emit(state.copyWith(selectedIndex: newIndex));
+            final nextIndex = state.selectedIndex! + 1;
+            final nextQuestion = state.questions[nextIndex];
+            emit(state.copyWith(
+              selectedIndex: nextIndex,
+              selectedAnswers: nextQuestion.userAnswers,
+            ));
           }
         },
       );

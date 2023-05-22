@@ -10,7 +10,5 @@ class TestEvent with _$TestEvent {
 
   const factory TestEvent.answersSelected({required Set<int> answers}) = _AnswersSelected;
 
-  const factory TestEvent.answersSent() = _AnswersSent;
-
   const factory TestEvent.finished() = _Finished;
 }

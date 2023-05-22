@@ -26,7 +26,6 @@ class Question extends StatelessWidget {
         }
 
         final isMultipleAnswers = selectedQuestion.source.correctAnswerIds.length > 1;
-        final isAnswered = selectedQuestion.isAnsweredCorrectly != null;
 
         return SingleChildScrollView(
           child: Padding(
@@ -39,14 +38,13 @@ class Question extends StatelessWidget {
                   possibleAnswers: selectedQuestion.source.possibleAnswers,
                   selectedIndices: selectedAnswers,
                   isMultipleAnswers: isMultipleAnswers,
-                  isActive: !isAnswered && !state.isFinished,
+                  isActive: !state.isFinished,
                   isAnsweredCorrectly:
                       state.isFinished ? selectedQuestion.isAnsweredCorrectly : null,
                   shouldShowCorrectness: state.isFinished,
                 ),
                 const SizedBox(height: 40),
                 SubmitButton(
-                  isAnswered: isAnswered,
                   isLastQuestion: state.selectedIndex == state.questions.length - 1,
                   areAnswersSelected: selectedAnswers.isNotEmpty,
                   isTestFinished: state.isFinished,

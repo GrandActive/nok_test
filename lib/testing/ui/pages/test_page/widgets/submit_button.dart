@@ -9,14 +9,12 @@ class SubmitButton extends StatelessWidget {
   const SubmitButton({
     super.key,
     required this.areAnswersSelected,
-    required this.isAnswered,
     required this.isLastQuestion,
     required this.isTestFinished,
     required this.hasUnansweredQuestions,
   });
 
   final bool areAnswersSelected;
-  final bool isAnswered;
   final bool isLastQuestion;
   final bool isTestFinished;
   final bool hasUnansweredQuestions;
@@ -47,30 +45,18 @@ class SubmitButton extends StatelessWidget {
       bloc.add(const TestEvent.selectNextQuestion());
     }
 
-    void submitAnswers() {
-      bloc.add(const TestEvent.answersSent());
-    }
-
     return Visibility(
       visible: !isTestFinished,
       child: FilledButton(
         onPressed: !areAnswersSelected
             ? null
-            : !isAnswered
-                ? submitAnswers
-                : !isLastQuestion
-                    ? selectNextQuestion
-                    : finishTest,
+            : !isLastQuestion
+                ? selectNextQuestion
+                : finishTest,
         style: const ButtonStyle(
           minimumSize: MaterialStatePropertyAll(Size(156, 41)),
         ),
-        child: Text(
-          !isAnswered
-              ? "Ответить"
-              : !isLastQuestion
-                  ? "Далее"
-                  : "Завершить",
-        ),
+        child: Text(!isLastQuestion ? "Далее" : "Завершить"),
       ),
     );
   }
