@@ -13,8 +13,6 @@ class MainPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
           child: Column(
             children: const [
-              MainPageHeading(),
-              SizedBox(height: 24),
               SubjectSelect(),
               SizedBox(height: 24),
               TopicSelect(),

@@ -8,8 +8,10 @@ class AbortTestDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       surfaceTintColor: Colors.white,
-      title: const Text("Выйти из теста?", style: TextStyle(color: Color(0xff464646))),
-      content: const Text("Результат не сохранится.", style: TextStyle(color: Color(0xff464646))),
+      title:
+          const Text("Выйти из теста?", style: TextStyle(color: Color(0xff464646), fontSize: 20)),
+      content: const Text("Результат не сохранится.",
+          style: TextStyle(color: Color(0xff464646), fontSize: 16)),
       actions: [
         TextButton(
           onPressed: () => context.popRoute(false),

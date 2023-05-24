@@ -35,6 +35,13 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        outlinedButtonTheme: const OutlinedButtonThemeData(
+          style: ButtonStyle(
+            textStyle: MaterialStatePropertyAll(
+              TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            ),
+          ),
+        ),
         textButtonTheme: const TextButtonThemeData(
           style: ButtonStyle(
             textStyle: MaterialStatePropertyAll(

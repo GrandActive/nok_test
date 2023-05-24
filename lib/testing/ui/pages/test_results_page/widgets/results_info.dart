@@ -17,7 +17,7 @@ class ResultsInfo extends StatelessWidget {
       children: [
         Text(
           "Правильных ответов: $correctAnswersCount",
-          style: const TextStyle(fontSize: 18),
+          style: const TextStyle(fontSize: 16),
         ),
         const SizedBox(height: 8),
         BlocBuilder<TimerBloc, TimerState>(
@@ -89,7 +89,7 @@ class TimePassed extends StatelessWidget {
       minutesStr == null
           ? "Затраченное время: $secondsStr"
           : "Затраченное время: $minutesStr $secondsStr",
-      style: const TextStyle(fontSize: 18),
+      style: const TextStyle(fontSize: 16),
     );
   }
 }

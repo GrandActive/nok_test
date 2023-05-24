@@ -60,7 +60,7 @@ class QuestionMapItem extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           (index + 1).toString(),
-          style: TextStyle(color: textColor),
+          style: TextStyle(color: textColor, fontSize: 12),
         ),
       ),
     );
