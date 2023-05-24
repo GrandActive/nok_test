@@ -1,0 +1,4 @@
+enum TestMode {
+  exam,
+  training,
+}

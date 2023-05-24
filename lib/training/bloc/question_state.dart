@@ -1,9 +1,0 @@
-part of 'question_bloc.dart';
-
-@freezed
-class QuestionState with _$QuestionState {
-  const factory QuestionState.initial() = _Initial;
-
-  const factory QuestionState.selected({required Question question}) =
-      _Selected;
-}
