@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gip_test/testing/domain/get_random_questions_for_test.dart';
-import 'package:gip_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/testing/domain/get_random_questions_for_test.dart';
+import 'package:nok_test/testing/domain/model/test_question.dart';
 
 import 'dart:core';
 
-import 'package:gip_test/testing/domain/model/test_mode.dart';
+import 'package:nok_test/testing/domain/model/test_mode.dart';
 
 part 'test_event.dart';
 

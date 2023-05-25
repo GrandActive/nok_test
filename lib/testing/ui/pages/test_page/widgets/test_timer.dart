@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gip_test/testing/bloc/timer_bloc/timer_bloc.dart';
+import 'package:nok_test/testing/bloc/timer_bloc/timer_bloc.dart';
 
 class TestTimer extends StatelessWidget {
   const TestTimer({

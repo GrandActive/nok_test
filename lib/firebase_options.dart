@@ -54,7 +54,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCqZHOOY15wV8v6n7vtrHcbH01fg5tsUvI',
-    appId: '1:989887299127:android:6d717d1ae6d4251e0589b2',
+    appId: '1:989887299127:android:be39ea71b9b3a6ba0589b2',
     messagingSenderId: '989887299127',
     projectId: 'test-gip',
     databaseURL: 'https://test-gip-default-rtdb.europe-west1.firebasedatabase.app',

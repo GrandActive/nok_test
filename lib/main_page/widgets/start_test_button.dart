@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:gip_test/navigation.gr.dart';
-import 'package:gip_test/testing/domain/model/test_mode.dart';
+import 'package:nok_test/navigation.gr.dart';
+import 'package:nok_test/testing/domain/model/test_mode.dart';
 
 class StartTestButton extends StatelessWidget {
   const StartTestButton({

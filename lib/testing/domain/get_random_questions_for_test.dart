@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:gip_test/testing/domain/model/test_question.dart';
-import 'package:gip_test/testing/data/questions_repository.dart';
+import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/testing/data/questions_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
