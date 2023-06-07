@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "989887299127",
+    "firebase_url": "https://test-gip-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "test-gip",
+    "storage_bucket": "test-gip.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989887299127:android:be39ea71b9b3a6ba0589b2",
+        "android_client_info": {
+          "package_name": "ru.nok_test.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989887299127-a5hrquo69i3rpcsav5qfufifdaf8g8sj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqZHOOY15wV8v6n7vtrHcbH01fg5tsUvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989887299127-a5hrquo69i3rpcsav5qfufifdaf8g8sj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

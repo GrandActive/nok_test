@@ -1,7 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.grandactive.giptest.gip_test">
+    package="ru.nok_test.mobile">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
    <application
-        android:label="gip_test"
+        android:label="Тест НОК"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
