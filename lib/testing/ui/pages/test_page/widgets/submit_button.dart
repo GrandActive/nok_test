@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gip_test/navigation.gr.dart';
-import 'package:gip_test/testing/bloc/test_bloc.dart';
-import 'package:gip_test/testing/ui/dialogs/finish_test_dialog.dart';
+import 'package:nok_test/navigation.gr.dart';
+import 'package:nok_test/testing/bloc/test_bloc.dart';
+import 'package:nok_test/testing/ui/dialogs/finish_test_dialog.dart';
 
 class SubmitButton extends StatelessWidget {
   const SubmitButton({

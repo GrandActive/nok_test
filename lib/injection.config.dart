@@ -10,12 +10,12 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
-import 'package:gip_test/testing/data/firebase_data_source.dart' as _i3;
-import 'package:gip_test/testing/data/questions_repository.dart' as _i4;
-import 'package:gip_test/testing/domain/get_random_questions_for_test.dart'
-    as _i6;
-import 'package:gip_test/testing/domain/ticker.dart' as _i5;
 import 'package:injectable/injectable.dart' as _i2;
+import 'package:nok_test/testing/data/firebase_data_source.dart' as _i3;
+import 'package:nok_test/testing/data/questions_repository.dart' as _i4;
+import 'package:nok_test/testing/domain/get_random_questions_for_test.dart'
+    as _i6;
+import 'package:nok_test/testing/domain/ticker.dart' as _i5;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt

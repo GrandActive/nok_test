@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gip_test/testing/data/model/possible_answer.dart';
+import 'package:nok_test/testing/data/model/possible_answer.dart';
 
 part 'question.freezed.dart';
 

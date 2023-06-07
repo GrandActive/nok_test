@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gip_test/testing/bloc/test_bloc.dart';
-import 'package:gip_test/testing/ui/pages/test_page/widgets/question.dart';
+import 'package:nok_test/testing/bloc/test_bloc.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/question.dart';
 
 class QuestionsPager extends StatelessWidget {
   QuestionsPager({super.key});

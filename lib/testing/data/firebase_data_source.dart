@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:firebase_database/firebase_database.dart';
-import 'package:gip_test/testing/data/model/question.dart';
+import 'package:nok_test/testing/data/model/question.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

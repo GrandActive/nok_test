@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gip_test/styles/colors.dart';
+import 'package:nok_test/styles/colors.dart';
 
 class QuestionMapItem extends StatelessWidget {
   const QuestionMapItem({

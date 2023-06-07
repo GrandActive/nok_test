@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gip_test/main_page/widgets/widgets.dart';
+import 'package:nok_test/main_page/widgets/widgets.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gip_test/testing/data/model/possible_answer.dart';
-import 'package:gip_test/testing/ui/pages/test_page/widgets/multiple_select_answer_item.dart';
-import 'package:gip_test/testing/ui/pages/test_page/widgets/single_select_answer_item.dart';
+import 'package:nok_test/testing/data/model/possible_answer.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/multiple_select_answer_item.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/single_select_answer_item.dart';
 
 class AnswerList extends StatelessWidget {
   const AnswerList({

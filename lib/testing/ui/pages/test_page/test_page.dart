@@ -1,15 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gip_test/navigation.gr.dart';
-import 'package:gip_test/testing/bloc/test_bloc.dart';
-import 'package:gip_test/testing/bloc/timer_bloc/timer_bloc.dart';
-import 'package:gip_test/testing/domain/model/test_mode.dart';
-import 'package:gip_test/testing/ui/dialogs/abort_test_dialog.dart';
-import 'package:gip_test/testing/ui/dialogs/finish_test_dialog.dart';
-import 'package:gip_test/testing/ui/pages/test_page/widgets/questions_pager.dart';
-import 'package:gip_test/testing/ui/pages/test_page/widgets/question_map.dart';
-import 'package:gip_test/testing/ui/pages/test_page/widgets/test_timer.dart';
+import 'package:nok_test/navigation.gr.dart';
+import 'package:nok_test/testing/bloc/test_bloc.dart';
+import 'package:nok_test/testing/bloc/timer_bloc/timer_bloc.dart';
+import 'package:nok_test/testing/domain/model/test_mode.dart';
+import 'package:nok_test/testing/ui/dialogs/abort_test_dialog.dart';
+import 'package:nok_test/testing/ui/dialogs/finish_test_dialog.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/questions_pager.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/question_map.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/test_timer.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key, required this.mode});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gip_test/styles/colors.dart';
-import 'package:gip_test/testing/bloc/test_bloc.dart';
+import 'package:nok_test/styles/colors.dart';
+import 'package:nok_test/testing/bloc/test_bloc.dart';
 
 class SingleSelectAnswerItem extends StatelessWidget {
   const SingleSelectAnswerItem({

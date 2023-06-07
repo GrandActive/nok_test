@@ -1,4 +1,4 @@
-package ru.grandactive.giptest.gip_test
+package ru.nok_test.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 

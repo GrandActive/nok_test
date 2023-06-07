@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gip_test/testing/bloc/test_bloc.dart';
-import 'package:gip_test/testing/domain/model/test_question.dart';
-import 'package:gip_test/testing/ui/pages/test_page/widgets/answer_list.dart';
-import 'package:gip_test/testing/ui/pages/test_page/widgets/question_text.dart';
-import 'package:gip_test/testing/ui/pages/test_page/widgets/submit_button.dart';
+import 'package:nok_test/testing/bloc/test_bloc.dart';
+import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/answer_list.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/question_text.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/submit_button.dart';
 
 class Question extends StatelessWidget {
   const Question({super.key, required this.question});

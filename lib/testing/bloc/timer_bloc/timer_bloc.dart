@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gip_test/testing/domain/ticker.dart';
+import 'package:nok_test/testing/domain/ticker.dart';
 
 part 'timer_event.dart';
 
