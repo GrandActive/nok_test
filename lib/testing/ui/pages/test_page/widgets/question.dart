@@ -18,42 +18,50 @@ class Question extends StatelessWidget {
       builder: (context, state) {
         final selectedQuestion = state.questions[state.selectedIndex!];
 
-        Set<int> selectedAnswers;
-        if (selectedQuestion.userAnswers.isNotEmpty) {
-          selectedAnswers = Set.from(selectedQuestion.userAnswers);
-        } else {
-          selectedAnswers = Set.from(state.selectedAnswers);
+        switch (selectedQuestion) {
+          case TestSelectionQuestion():
+            Set<int> selectedAnswers;
+            if (selectedQuestion.userAnswers.isNotEmpty) {
+              selectedAnswers = Set.from(selectedQuestion.userAnswers);
+            } else {
+              selectedAnswers = Set.from(state.selectedAnswers);
+            }
+
+            final isMultipleAnswers = selectedQuestion.source.correctAnswerIds.length > 1;
+
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
+                child: Column(
+                  children: [
+                    QuestionText(text: selectedQuestion.source.text),
+                    const SizedBox(height: 40),
+                    AnswerList(
+                      possibleAnswers: selectedQuestion.source.possibleAnswers,
+                      selectedIndices: selectedAnswers,
+                      isMultipleAnswers: isMultipleAnswers,
+                      isActive: !state.isFinished,
+                      isAnsweredCorrectly:
+                          state.isFinished ? selectedQuestion.isAnsweredCorrectly : null,
+                      shouldShowCorrectness: state.isFinished,
+                    ),
+                    const SizedBox(height: 40),
+                    SubmitButton(
+                      isLastQuestion: state.selectedIndex == state.questions.length - 1,
+                      areAnswersSelected: selectedAnswers.isNotEmpty,
+                      isTestFinished: state.isFinished,
+                      hasUnansweredQuestions:
+                          state.questions.any((q) => q.isAnsweredCorrectly == null),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          default:
+            return const Center(
+              child: Text("(пока) Неподдерживаемый тип вопроса"),
+            );
         }
-
-        final isMultipleAnswers = selectedQuestion.source.correctAnswerIds.length > 1;
-
-        return SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
-            child: Column(
-              children: [
-                QuestionText(text: question.source.text),
-                const SizedBox(height: 40),
-                AnswerList(
-                  possibleAnswers: selectedQuestion.source.possibleAnswers,
-                  selectedIndices: selectedAnswers,
-                  isMultipleAnswers: isMultipleAnswers,
-                  isActive: !state.isFinished,
-                  isAnsweredCorrectly:
-                      state.isFinished ? selectedQuestion.isAnsweredCorrectly : null,
-                  shouldShowCorrectness: state.isFinished,
-                ),
-                const SizedBox(height: 40),
-                SubmitButton(
-                  isLastQuestion: state.selectedIndex == state.questions.length - 1,
-                  areAnswersSelected: selectedAnswers.isNotEmpty,
-                  isTestFinished: state.isFinished,
-                  hasUnansweredQuestions: state.questions.any((q) => q.isAnsweredCorrectly == null),
-                ),
-              ],
-            ),
-          ),
-        );
       },
     );
   }

@@ -30,22 +30,37 @@ class TestBloc extends Bloc<TestEvent, TestState> {
         },
         selected: (index) {
           if (state.selectedIndex != index) {
-            emit(state.copyWith(
-              selectedIndex: index,
-              selectedAnswers: state.questions[index].userAnswers,
-            ));
+            final currentQuestion = state.questions[index];
+            switch (currentQuestion) {
+              case TestSelectionQuestion():
+                emit(state.copyWith(
+                  selectedIndex: index,
+                  selectedAnswers: currentQuestion.userAnswers,
+                ));
+                break;
+              default:
+                // TODO: add other questions
+                break;
+            }
           }
         },
         answersSelected: (Set<int> answers) {
           final question = state.questions[state.selectedIndex!];
-          question.userAnswers = answers;
-          if (answers.isEmpty) {
-            question.isAnsweredCorrectly = null;
-          } else {
-            question.isAnsweredCorrectly =
-                setEquals(state.selectedAnswers, question.source.correctAnswerIds);
+          switch (question) {
+            case TestSelectionQuestion():
+              question.userAnswers = answers;
+              if (answers.isEmpty) {
+                question.isAnsweredCorrectly = null;
+              } else {
+                question.isAnsweredCorrectly =
+                    setEquals(state.selectedAnswers, question.source.correctAnswerIds);
+              }
+              emit(state.copyWith(selectedAnswers: question.userAnswers));
+              break;
+            default:
+              // TODO: add other questions
+              break;
           }
-          emit(state.copyWith(selectedAnswers: question.userAnswers));
         },
         finished: () {
           emit(state.copyWith(
@@ -58,10 +73,17 @@ class TestBloc extends Bloc<TestEvent, TestState> {
           if (state.selectedIndex != null) {
             final nextIndex = state.selectedIndex! + 1;
             final nextQuestion = state.questions[nextIndex];
-            emit(state.copyWith(
-              selectedIndex: nextIndex,
-              selectedAnswers: nextQuestion.userAnswers,
-            ));
+            switch (nextQuestion) {
+              case TestSelectionQuestion():
+                emit(state.copyWith(
+                  selectedIndex: nextIndex,
+                  selectedAnswers: nextQuestion.userAnswers,
+                ));
+                break;
+              default:
+                // TODO: add other questions
+                break;
+            }
           }
         },
       );

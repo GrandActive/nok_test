@@ -5,13 +5,54 @@ part 'test_question.freezed.dart';
 
 part 'test_question.g.dart';
 
+sealed class TestQuestion {
+  bool? get isAnsweredCorrectly;
+}
+
 @unfreezed
-class TestQuestion with _$TestQuestion {
-  factory TestQuestion({
-    required Question source,
+class TestSelectionQuestion with _$TestSelectionQuestion implements TestQuestion {
+  factory TestSelectionQuestion({
+    required SelectionQuestion source,
     @Default({}) Set<int> userAnswers,
-    required bool? isAnsweredCorrectly,
+    bool? isAnsweredCorrectly,
   }) = _TestQuestion;
 
-  factory TestQuestion.fromJson(Map<String, dynamic> json) => _$TestQuestionFromJson(json);
+  factory TestSelectionQuestion.fromJson(Map<String, dynamic> json) =>
+      _$TestSelectionQuestionFromJson(json);
+}
+
+@unfreezed
+class TestUserInputQuestion with _$TestUserInputQuestion implements TestQuestion {
+  factory TestUserInputQuestion({
+    required UserInputQuestion source,
+    String? userAnswer,
+    bool? isAnsweredCorrectly,
+  }) = _TestUserInputQuestion;
+
+  factory TestUserInputQuestion.fromJson(Map<String, dynamic> json) =>
+      _$TestUserInputQuestionFromJson(json);
+}
+
+@unfreezed
+class TestSequenceQuestion with _$TestSequenceQuestion implements TestQuestion {
+  factory TestSequenceQuestion({
+    required SequenceQuestion source,
+    List<int>? userAnswer,
+    bool? isAnsweredCorrectly,
+  }) = _TestSequenceQuestion;
+
+  factory TestSequenceQuestion.fromJson(Map<String, dynamic> json) =>
+      _$TestSequenceQuestionFromJson(json);
+}
+
+@unfreezed
+class TestMatchingQuestion with _$TestMatchingQuestion implements TestQuestion {
+  factory TestMatchingQuestion({
+    required MatchingQuestion source,
+    Map<int, int?>? userAnswer,
+    bool? isAnsweredCorrectly,
+  }) = _TestMatchingQuestion;
+
+  factory TestMatchingQuestion.fromJson(Map<String, dynamic> json) =>
+      _$TestMatchingQuestionFromJson(json);
 }

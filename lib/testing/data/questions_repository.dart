@@ -8,7 +8,6 @@ class QuestionsRepository {
 
   final FirebaseDataSource firebase;
 
-  Future<List<Question>?> getAllQuestions() => firebase.getAllQuestions();
-
-  Future<Question?> getQuestion(int id) => firebase.getQuestion(id);
+  Future<List<Question>?> getAllQuestions({required String topic}) =>
+      firebase.getAllQuestions(topic);
 }

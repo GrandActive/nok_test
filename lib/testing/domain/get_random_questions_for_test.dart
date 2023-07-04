@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:nok_test/testing/data/model/question.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
 import 'package:nok_test/testing/data/questions_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -11,10 +12,15 @@ class GetRandomQuestionsForTest {
   final QuestionsRepository repository;
 
   Future<List<TestQuestion>> call({int count = 50}) async {
-    final repoQuestions = await repository.getAllQuestions();
+    final repoQuestions = await repository.getAllQuestions(topic: "gip");
     if (repoQuestions == null) throw Exception("Received no questions");
     final questions = repoQuestions
-        .map((question) => TestQuestion(source: question, isAnsweredCorrectly: null))
+        .map((question) => switch (question) {
+              SelectionQuestion() => TestSelectionQuestion(source: question),
+              SequenceQuestion() => TestSequenceQuestion(source: question),
+              UserInputQuestion() => TestUserInputQuestion(source: question),
+              MatchingQuestion() => TestMatchingQuestion(source: question),
+            })
         .toList(growable: false);
     final random = Random();
     final result = <TestQuestion>[];
