@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/services.dart';
 import 'package:nok_test/testing/data/model/question.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,8 +10,8 @@ class FirebaseDataSource {
   FirebaseDatabase get _database => FirebaseDatabase.instance;
 
   Future<List<Question>?> getAllQuestions(String topic) async {
-    final dataEvent = await _database.ref().once();
-    final Map data = jsonDecode(jsonEncode(dataEvent.snapshot.value));
+    final fileContents = await rootBundle.loadString("assets/sample_db_v1.1.0.json");
+    final Map data = jsonDecode(fileContents);
 
     final Map questions = data["questions"];
     final Map topics = data["topics"];
