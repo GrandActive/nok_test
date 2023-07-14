@@ -23,8 +23,8 @@ TestSelectionQuestion _$TestSelectionQuestionFromJson(
 mixin _$TestSelectionQuestion {
   SelectionQuestion get source => throw _privateConstructorUsedError;
   set source(SelectionQuestion value) => throw _privateConstructorUsedError;
-  Set<int> get userAnswers => throw _privateConstructorUsedError;
-  set userAnswers(Set<int> value) => throw _privateConstructorUsedError;
+  Set<int>? get userAnswers => throw _privateConstructorUsedError;
+  set userAnswers(Set<int>? value) => throw _privateConstructorUsedError;
   bool? get isAnsweredCorrectly => throw _privateConstructorUsedError;
   set isAnsweredCorrectly(bool? value) => throw _privateConstructorUsedError;
 
@@ -42,7 +42,7 @@ abstract class $TestSelectionQuestionCopyWith<$Res> {
   @useResult
   $Res call(
       {SelectionQuestion source,
-      Set<int> userAnswers,
+      Set<int>? userAnswers,
       bool? isAnsweredCorrectly});
 
   $SelectionQuestionCopyWith<$Res> get source;
@@ -63,7 +63,7 @@ class _$TestSelectionQuestionCopyWithImpl<$Res,
   @override
   $Res call({
     Object? source = null,
-    Object? userAnswers = null,
+    Object? userAnswers = freezed,
     Object? isAnsweredCorrectly = freezed,
   }) {
     return _then(_value.copyWith(
@@ -71,10 +71,10 @@ class _$TestSelectionQuestionCopyWithImpl<$Res,
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
               as SelectionQuestion,
-      userAnswers: null == userAnswers
+      userAnswers: freezed == userAnswers
           ? _value.userAnswers
           : userAnswers // ignore: cast_nullable_to_non_nullable
-              as Set<int>,
+              as Set<int>?,
       isAnsweredCorrectly: freezed == isAnsweredCorrectly
           ? _value.isAnsweredCorrectly
           : isAnsweredCorrectly // ignore: cast_nullable_to_non_nullable
@@ -101,7 +101,7 @@ abstract class _$$_TestQuestionCopyWith<$Res>
   @useResult
   $Res call(
       {SelectionQuestion source,
-      Set<int> userAnswers,
+      Set<int>? userAnswers,
       bool? isAnsweredCorrectly});
 
   @override
@@ -120,7 +120,7 @@ class __$$_TestQuestionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? source = null,
-    Object? userAnswers = null,
+    Object? userAnswers = freezed,
     Object? isAnsweredCorrectly = freezed,
   }) {
     return _then(_$_TestQuestion(
@@ -128,10 +128,10 @@ class __$$_TestQuestionCopyWithImpl<$Res>
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
               as SelectionQuestion,
-      userAnswers: null == userAnswers
+      userAnswers: freezed == userAnswers
           ? _value.userAnswers
           : userAnswers // ignore: cast_nullable_to_non_nullable
-              as Set<int>,
+              as Set<int>?,
       isAnsweredCorrectly: freezed == isAnsweredCorrectly
           ? _value.isAnsweredCorrectly
           : isAnsweredCorrectly // ignore: cast_nullable_to_non_nullable
@@ -144,9 +144,7 @@ class __$$_TestQuestionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TestQuestion implements _TestQuestion {
   _$_TestQuestion(
-      {required this.source,
-      this.userAnswers = const {},
-      this.isAnsweredCorrectly});
+      {required this.source, this.userAnswers, this.isAnsweredCorrectly});
 
   factory _$_TestQuestion.fromJson(Map<String, dynamic> json) =>
       _$$_TestQuestionFromJson(json);
@@ -154,8 +152,7 @@ class _$_TestQuestion implements _TestQuestion {
   @override
   SelectionQuestion source;
   @override
-  @JsonKey()
-  Set<int> userAnswers;
+  Set<int>? userAnswers;
   @override
   bool? isAnsweredCorrectly;
 
@@ -181,7 +178,7 @@ class _$_TestQuestion implements _TestQuestion {
 abstract class _TestQuestion implements TestSelectionQuestion {
   factory _TestQuestion(
       {required SelectionQuestion source,
-      Set<int> userAnswers,
+      Set<int>? userAnswers,
       bool? isAnsweredCorrectly}) = _$_TestQuestion;
 
   factory _TestQuestion.fromJson(Map<String, dynamic> json) =
@@ -191,8 +188,8 @@ abstract class _TestQuestion implements TestSelectionQuestion {
   SelectionQuestion get source;
   set source(SelectionQuestion value);
   @override
-  Set<int> get userAnswers;
-  set userAnswers(Set<int> value);
+  Set<int>? get userAnswers;
+  set userAnswers(Set<int>? value);
   @override
   bool? get isAnsweredCorrectly;
   set isAnsweredCorrectly(bool? value);

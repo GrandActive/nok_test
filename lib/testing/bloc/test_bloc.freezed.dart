@@ -836,7 +836,7 @@ mixin _$TestState {
   TestMode get mode => throw _privateConstructorUsedError;
   List<TestQuestion> get questions => throw _privateConstructorUsedError;
   int? get selectedIndex => throw _privateConstructorUsedError;
-  Set<int> get selectedAnswers => throw _privateConstructorUsedError;
+  dynamic get selectedAnswers => throw _privateConstructorUsedError;
   bool get isFinished => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
@@ -855,7 +855,7 @@ abstract class $TestStateCopyWith<$Res> {
       {TestMode mode,
       List<TestQuestion> questions,
       int? selectedIndex,
-      Set<int> selectedAnswers,
+      dynamic selectedAnswers,
       bool isFinished,
       bool isLoading,
       String? errorMessage});
@@ -877,7 +877,7 @@ class _$TestStateCopyWithImpl<$Res, $Val extends TestState>
     Object? mode = null,
     Object? questions = null,
     Object? selectedIndex = freezed,
-    Object? selectedAnswers = null,
+    Object? selectedAnswers = freezed,
     Object? isFinished = null,
     Object? isLoading = null,
     Object? errorMessage = freezed,
@@ -895,10 +895,10 @@ class _$TestStateCopyWithImpl<$Res, $Val extends TestState>
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
-      selectedAnswers: null == selectedAnswers
+      selectedAnswers: freezed == selectedAnswers
           ? _value.selectedAnswers
           : selectedAnswers // ignore: cast_nullable_to_non_nullable
-              as Set<int>,
+              as dynamic,
       isFinished: null == isFinished
           ? _value.isFinished
           : isFinished // ignore: cast_nullable_to_non_nullable
@@ -926,7 +926,7 @@ abstract class _$$_TestStateCopyWith<$Res> implements $TestStateCopyWith<$Res> {
       {TestMode mode,
       List<TestQuestion> questions,
       int? selectedIndex,
-      Set<int> selectedAnswers,
+      dynamic selectedAnswers,
       bool isFinished,
       bool isLoading,
       String? errorMessage});
@@ -946,7 +946,7 @@ class __$$_TestStateCopyWithImpl<$Res>
     Object? mode = null,
     Object? questions = null,
     Object? selectedIndex = freezed,
-    Object? selectedAnswers = null,
+    Object? selectedAnswers = freezed,
     Object? isFinished = null,
     Object? isLoading = null,
     Object? errorMessage = freezed,
@@ -964,10 +964,10 @@ class __$$_TestStateCopyWithImpl<$Res>
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
-      selectedAnswers: null == selectedAnswers
-          ? _value._selectedAnswers
+      selectedAnswers: freezed == selectedAnswers
+          ? _value.selectedAnswers
           : selectedAnswers // ignore: cast_nullable_to_non_nullable
-              as Set<int>,
+              as dynamic,
       isFinished: null == isFinished
           ? _value.isFinished
           : isFinished // ignore: cast_nullable_to_non_nullable
@@ -991,12 +991,11 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
       {required this.mode,
       final List<TestQuestion> questions = const [],
       this.selectedIndex = null,
-      final Set<int> selectedAnswers = const {},
+      this.selectedAnswers,
       this.isFinished = false,
       this.isLoading = true,
       this.errorMessage = null})
-      : _questions = questions,
-        _selectedAnswers = selectedAnswers;
+      : _questions = questions;
 
   @override
   final TestMode mode;
@@ -1012,15 +1011,8 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
   @override
   @JsonKey()
   final int? selectedIndex;
-  final Set<int> _selectedAnswers;
   @override
-  @JsonKey()
-  Set<int> get selectedAnswers {
-    if (_selectedAnswers is EqualUnmodifiableSetView) return _selectedAnswers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_selectedAnswers);
-  }
-
+  final dynamic selectedAnswers;
   @override
   @JsonKey()
   final bool isFinished;
@@ -1061,7 +1053,7 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
             (identical(other.selectedIndex, selectedIndex) ||
                 other.selectedIndex == selectedIndex) &&
             const DeepCollectionEquality()
-                .equals(other._selectedAnswers, _selectedAnswers) &&
+                .equals(other.selectedAnswers, selectedAnswers) &&
             (identical(other.isFinished, isFinished) ||
                 other.isFinished == isFinished) &&
             (identical(other.isLoading, isLoading) ||
@@ -1076,7 +1068,7 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
       mode,
       const DeepCollectionEquality().hash(_questions),
       selectedIndex,
-      const DeepCollectionEquality().hash(_selectedAnswers),
+      const DeepCollectionEquality().hash(selectedAnswers),
       isFinished,
       isLoading,
       errorMessage);
@@ -1093,7 +1085,7 @@ abstract class _TestState implements TestState {
       {required final TestMode mode,
       final List<TestQuestion> questions,
       final int? selectedIndex,
-      final Set<int> selectedAnswers,
+      final dynamic selectedAnswers,
       final bool isFinished,
       final bool isLoading,
       final String? errorMessage}) = _$_TestState;
@@ -1105,7 +1097,7 @@ abstract class _TestState implements TestState {
   @override
   int? get selectedIndex;
   @override
-  Set<int> get selectedAnswers;
+  dynamic get selectedAnswers;
   @override
   bool get isFinished;
   @override

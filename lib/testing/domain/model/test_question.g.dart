@@ -10,17 +10,15 @@ _$_TestQuestion _$$_TestQuestionFromJson(Map<String, dynamic> json) =>
     _$_TestQuestion(
       source:
           SelectionQuestion.fromJson(json['source'] as Map<String, dynamic>),
-      userAnswers: (json['userAnswers'] as List<dynamic>?)
-              ?.map((e) => e as int)
-              .toSet() ??
-          const {},
+      userAnswers:
+          (json['userAnswers'] as List<dynamic>?)?.map((e) => e as int).toSet(),
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );
 
 Map<String, dynamic> _$$_TestQuestionToJson(_$_TestQuestion instance) =>
     <String, dynamic>{
       'source': instance.source,
-      'userAnswers': instance.userAnswers.toList(),
+      'userAnswers': instance.userAnswers?.toList(),
       'isAnsweredCorrectly': instance.isAnsweredCorrectly,
     };
 

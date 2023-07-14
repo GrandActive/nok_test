@@ -6,14 +6,14 @@ part 'test_question.freezed.dart';
 part 'test_question.g.dart';
 
 sealed class TestQuestion {
-  bool? get isAnsweredCorrectly;
+  bool? isAnsweredCorrectly;
 }
 
 @unfreezed
-class TestSelectionQuestion with _$TestSelectionQuestion implements TestQuestion {
+class TestSelectionQuestion extends TestQuestion with _$TestSelectionQuestion  {
   factory TestSelectionQuestion({
     required SelectionQuestion source,
-    @Default({}) Set<int> userAnswers,
+    Set<int>? userAnswers,
     bool? isAnsweredCorrectly,
   }) = _TestQuestion;
 

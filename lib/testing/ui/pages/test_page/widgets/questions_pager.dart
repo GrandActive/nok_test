@@ -27,7 +27,7 @@ class QuestionsPager extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           itemCount: state.questions.length,
-          itemBuilder: (context, index) => Question(question: state.questions[index]),
+          itemBuilder: (context, index) => const Question(),
         );
       },
     );
