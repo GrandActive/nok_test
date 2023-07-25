@@ -43,7 +43,7 @@ class TestBloc extends Bloc<TestEvent, TestState> {
             question.isAnsweredCorrectly = null;
           } else {
             question.isAnsweredCorrectly =
-                setEquals(state.selectedAnswers, question.source.correctAnswerIds);
+                setEquals(answers, question.source.correctAnswerIds);
           }
           emit(state.copyWith(selectedAnswers: question.userAnswers));
         },

@@ -32,7 +32,7 @@ class Question extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
             child: Column(
               children: [
-                QuestionText(text: question.source.text),
+                QuestionText(text: selectedQuestion.source.text),
                 const SizedBox(height: 40),
                 AnswerList(
                   possibleAnswers: selectedQuestion.source.possibleAnswers,
