@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/styles/colors.dart';
-import 'package:nok_test/testing/bloc/test_bloc.dart';
+import 'package:nok_test/testing/bloc/question_bloc/question_bloc.dart';
 
 class MultipleSelectAnswerItem extends StatelessWidget {
   const MultipleSelectAnswerItem({
@@ -49,7 +49,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
       } else {
         selectedIndices.remove(index);
       }
-      context.read<TestBloc>().add(TestEvent.answersSelected(answers: selectedIndices));
+      context.read<QuestionBloc>().add(QuestionEvent.answerSelected(answer: selectedIndices));
     }
 
     return Material(

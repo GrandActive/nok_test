@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/navigation.gr.dart';
-import 'package:nok_test/testing/bloc/test_bloc.dart';
+import 'package:nok_test/testing/bloc/test_bloc/test_bloc.dart';
 import 'package:nok_test/testing/bloc/timer_bloc/timer_bloc.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/testing/ui/dialogs/abort_test_dialog.dart';
@@ -19,19 +19,11 @@ class TestPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async {
-        if (context.read<TestBloc>().state.isFinished) {
-          return true;
-        }
+      onWillPop: () {
         return showDialog<bool>(
           context: context,
           builder: (_) => const AbortTestDialog(),
-        ).then((value) {
-          if (value!) {
-            context.router.replaceAll([const MainRoute()]);
-          }
-          return value;
-        });
+        ).then((shouldPop) => shouldPop ?? false);
       },
       child: Scaffold(
         appBar: PreferredSize(
@@ -40,63 +32,54 @@ class TestPage extends StatelessWidget {
             builder: (context, state) {
               return AppBar(
                 leading: IconButton(
-                  icon: Icon(state.isFinished ? Icons.arrow_back : Icons.close),
+                  icon: const Icon(Icons.close),
                   onPressed: () {
-                    if (state.isFinished) {
-                      context.popRoute();
-                    } else {
-                      showDialog<bool>(
-                        context: context,
-                        builder: (_) => const AbortTestDialog(),
-                      ).then((value) {
-                        if (value!) {
-                          context.read<TimerBloc>().add(const TimerEvent.stopped());
-                          context.router.replaceAll([const MainRoute()]);
-                        }
-                      });
-                    }
+                    showDialog<bool>(
+                      context: context,
+                      builder: (_) => const AbortTestDialog(),
+                    ).then((value) {
+                      if (value ?? false) {
+                        context.read<TimerBloc>().add(const TimerEvent.stopped());
+                        context.router.replaceAll([const MainRoute()]);
+                      }
+                    });
                   },
                 ),
-                title: state.isFinished && state.selectedIndex != null
-                    ? Text("Вопрос ${(state.selectedIndex ?? 0) + 1}")
-                    : const TestTimer(),
-                centerTitle: !state.isFinished,
-                actions: state.isFinished
-                    ? null
-                    : [
-                        TextButton(
-                          style: const ButtonStyle(
-                            foregroundColor: MaterialStatePropertyAll(Colors.white),
-                          ),
-                          onPressed: () {
-                            final hasUnansweredQuestions =
-                                state.questions.any((q) => q.isAnsweredCorrectly == null);
+                title: const TestTimer(),
+                centerTitle: true,
+                actions: [
+                  TextButton(
+                    style: const ButtonStyle(
+                      foregroundColor: MaterialStatePropertyAll(Colors.white),
+                    ),
+                    onPressed: () {
+                      final hasUnansweredQuestions =
+                          state.questions.any((q) => q.isAnsweredCorrectly == null);
 
-                            if (!hasUnansweredQuestions) {
-                              context.read<TestBloc>().add(const TestEvent.finished());
-                              context.replaceRoute(const TestResultsRoute());
-                              return;
-                            }
+                      if (!hasUnansweredQuestions) {
+                        context.read<TestBloc>().add(const TestEvent.finished());
+                        context.replaceRoute(const TestResultsRoute());
+                        return;
+                      }
 
-                            showDialog<bool>(
-                              context: context,
-                              builder: (_) => const FinishTestDialog(),
-                            ).then((value) {
-                              if (value!) {
-                                context.read<TestBloc>().add(const TestEvent.finished());
-                                context.replaceRoute(const TestResultsRoute());
-                              }
-                            });
-                          },
-                          child: const Text("Завершить"),
-                        ),
-                      ],
+                      showDialog<bool>(
+                        context: context,
+                        builder: (_) => const FinishTestDialog(),
+                      ).then((value) {
+                        if (value!) {
+                          context.read<TestBloc>().add(const TestEvent.finished());
+                          context.replaceRoute(const TestResultsRoute());
+                        }
+                      });
+                    },
+                    child: const Text("Завершить"),
+                  ),
+                ],
               );
             },
           ),
         ),
         body: BlocBuilder<TestBloc, TestState>(
-          buildWhen: (_, current) => !current.isFinished,
           builder: (context, state) {
             if (state.errorMessage != null) {
               return Center(child: Text(state.errorMessage!));
@@ -109,14 +92,11 @@ class TestPage extends StatelessWidget {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Visibility(
-                  visible: !state.isFinished,
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    height: 48,
-                    margin: const EdgeInsets.only(top: 16),
-                    child: QuestionMap(),
-                  ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  height: 48,
+                  margin: const EdgeInsets.only(top: 16),
+                  child: QuestionMap(),
                 ),
                 Expanded(
                   child: QuestionsPager(),

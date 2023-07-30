@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/navigation.gr.dart';
-import 'package:nok_test/testing/bloc/test_bloc.dart';
+import 'package:nok_test/testing/bloc/test_bloc/test_bloc.dart';
 import 'package:nok_test/testing/ui/pages/test_page/widgets/question_map_item.dart';
 
 class TestResultsGrid extends StatelessWidget {
@@ -29,8 +29,7 @@ class TestResultsGrid extends StatelessWidget {
                 isSelected: state.selectedIndex == index && !state.isFinished,
                 isAnsweredCorrectly: state.questions[index].isAnsweredCorrectly,
                 onPressed: () {
-                  context.read<TestBloc>().add(TestEvent.selected(index: index));
-                  context.router.push(TestRoute(mode: state.mode));
+                  context.router.push(QuestionReviewRoute(question: state.questions[index], index: index));
                 },
               ),
             ),
