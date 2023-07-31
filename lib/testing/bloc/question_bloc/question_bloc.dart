@@ -30,6 +30,14 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
               ));
               break;
             case TestUserInputQuestion():
+              final userAnswer = answer == null || answer == "" ? null : answer;
+              question.userAnswer = userAnswer;
+              question.isAnsweredCorrectly = answer == question.source.correctAnswer;
+              emit(QuestionState.inProgress(
+                question: question,
+                isLast: state.isLast,
+                selectedAnswers: userAnswer,
+              ));
               break;
             default:
               // TODO: add other questions
