@@ -49,7 +49,7 @@ class TestWrapperPage extends StatelessWidget {
             listener: (context, state) {
               state.maybeWhen(
                 finished: () {
-                  context.read<TestBloc>().add(const TestEvent.finished());
+                  context.read<TestBloc>().add(const TestEvent.finishRequested());
                 },
                 orElse: () {},
               );

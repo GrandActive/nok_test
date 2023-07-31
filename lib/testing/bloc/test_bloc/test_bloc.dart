@@ -40,11 +40,27 @@ class TestBloc extends Bloc<TestEvent, TestState> {
             emit(state.copyWith(selectedIndex: nextIndex));
           }
         },
-        finished: () {
-          emit(state.copyWith(
-            isFinished: true,
-            selectedIndex: null,
-          ));
+        finishRequested: () {
+          final hasUnansweredQuestions = state.questions.any((q) => q.isAnsweredCorrectly == null);
+          if (hasUnansweredQuestions) {
+            emit(state.copyWith(needFinishConfirmation: true));
+          } else {
+            emit(state.copyWith(
+              isFinished: true,
+              selectedIndex: null,
+            ));
+          }
+        },
+        gotFinishConfirmationAnswer: (confirm) {
+          if (confirm) {
+            emit(state.copyWith(
+              isFinished: true,
+              selectedIndex: null,
+              needFinishConfirmation: false,
+            ));
+          } else {
+            emit(state.copyWith(needFinishConfirmation: false));
+          }
         },
       );
     });

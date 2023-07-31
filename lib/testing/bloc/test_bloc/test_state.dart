@@ -9,5 +9,6 @@ class TestState with _$TestState {
     @Default(false) bool isFinished,
     @Default(true) bool isLoading,
     @Default(null) String? errorMessage,
+    @Default(false) bool needFinishConfirmation,
   }) = _TestState;
 }

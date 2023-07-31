@@ -4,7 +4,7 @@ import 'package:nok_test/testing/bloc/question_bloc/question_bloc.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
 import 'package:nok_test/testing/ui/pages/test_page/widgets/answer_list.dart';
 import 'package:nok_test/testing/ui/pages/test_page/widgets/question_text.dart';
-import 'package:nok_test/testing/ui/pages/test_page/widgets/submit_button.dart';
+import 'package:nok_test/testing/ui/widgets/submit_button.dart';
 
 class SelectionQuestion extends StatelessWidget {
   const SelectionQuestion({super.key});
@@ -43,9 +43,8 @@ class SelectionQuestion extends StatelessWidget {
                     ),
                     const SizedBox(height: 40),
                     SubmitButton(
-                      isLastQuestion: state.isLast,
-                      areAnswersSelected: selectedAnswers?.isNotEmpty ?? false,
-                      isTestFinished: false,
+                      isActive: selectedAnswers?.isNotEmpty ?? false,
+                      isFinishing: state.isLast,
                     ),
                   ],
                 ),
