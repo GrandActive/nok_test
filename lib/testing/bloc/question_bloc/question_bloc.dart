@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nok_test/testing/data/model/possible_answer.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
 
 part 'question_event.dart';
@@ -15,6 +16,9 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
       await event.when(
         started: (question, isLast) async {
           emit(QuestionState.inProgress(question: question, isLast: isLast));
+          if (question is TestSequenceQuestion) {
+            add(QuestionEvent.answerSelected(answer: question.source.answers));
+          }
         },
         answerSelected: (answer) async {
           final question = state.question;
@@ -39,6 +43,17 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
                 selectedAnswers: userAnswer,
               ));
               break;
+            case TestSequenceQuestion():
+              final userAnswer = (answer as List<PossibleAnswer>)
+                  .map((answer) => answer.index)
+                  .toList(growable: false);
+              question.isAnsweredCorrectly = listEquals(userAnswer, question.source.correctOrder);
+              question.userAnswer = userAnswer;
+              emit(QuestionState.inProgress(
+                question: question,
+                isLast: state.isLast,
+                selectedAnswers: answer,
+              ));
             default:
               // TODO: add other questions
               break;

@@ -16,7 +16,9 @@ class FinishedQuestionPage extends StatelessWidget {
       case TestSelectionQuestion():
         return FinishedSelectionQuestion(question: question as TestSelectionQuestion);
       case TestUserInputQuestion():
-        return FinishedUserInputQuestion(question: question as TestUserInputQuestion,);
+        return FinishedUserInputQuestion(question: question as TestUserInputQuestion);
+      case TestSequenceQuestion():
+        return FinishedSequenceQuestion(question: question as TestSequenceQuestion);
       default:
         return const Center(
           child: Text("(пока) Неподдерживаемый тип вопроса"),

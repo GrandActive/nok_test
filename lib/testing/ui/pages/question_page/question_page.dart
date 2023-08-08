@@ -36,6 +36,8 @@ class _QuestionPageState extends State<QuestionPage> with AutomaticKeepAliveClie
               return const SelectionQuestion();
             case TestUserInputQuestion():
               return const UserInputQuestion();
+            case TestSequenceQuestion():
+              return const SequenceQuestion();
             default:
               return const Center(
                 child: Text("(пока) Неподдерживаемый тип вопроса"),
