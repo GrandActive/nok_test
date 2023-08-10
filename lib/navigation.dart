@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:nok_test/main_page/main_page.dart';
+import 'package:nok_test/testing/ui/pages/question_review_page/question_review_page.dart';
 import 'package:nok_test/testing/ui/pages/test_page/test_page.dart';
 import 'package:nok_test/testing/ui/pages/test_results_page/test_results_page.dart';
 import 'package:nok_test/testing/ui/pages/test_wrapper_page.dart';
@@ -11,6 +12,7 @@ import 'package:nok_test/testing/ui/pages/test_wrapper_page.dart';
     children: [
       AutoRoute(page: TestPage),
       AutoRoute(page: TestResultsPage),
+      AutoRoute(page: QuestionReviewPage),
     ],
   ),
 ])

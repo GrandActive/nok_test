@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/navigation.gr.dart';
 import 'package:nok_test/styles/colors.dart';
-import 'package:nok_test/testing/bloc/test_bloc.dart';
+import 'package:nok_test/testing/bloc/test_bloc/test_bloc.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 
 class RestartTestDialog extends StatelessWidget {

@@ -6,9 +6,9 @@ class TestState with _$TestState {
     required TestMode mode,
     @Default([]) List<TestQuestion> questions,
     @Default(null) int? selectedIndex,
-    @Default({}) Set<int> selectedAnswers,
     @Default(false) bool isFinished,
     @Default(true) bool isLoading,
     @Default(null) String? errorMessage,
+    @Default(false) bool needFinishConfirmation,
   }) = _TestState;
 }
