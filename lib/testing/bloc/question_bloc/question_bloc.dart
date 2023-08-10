@@ -19,6 +19,11 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
           if (question is TestSequenceQuestion) {
             add(QuestionEvent.answerSelected(answer: question.source.answers));
           }
+          if (question is TestMatchingQuestion) {
+            final answer = <int, int?>{};
+            answer.addEntries(question.source.questions.map((e) => MapEntry(e.index, null)));
+            add(QuestionEvent.answerSelected(answer: answer));
+          }
         },
         answerSelected: (answer) async {
           final question = state.question;
@@ -54,8 +59,34 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
                 isLast: state.isLast,
                 selectedAnswers: answer,
               ));
-            default:
-              // TODO: add other questions
+              break;
+            case TestMatchingQuestion():
+              final oldAnswer = state.selectedAnswers as Map<int, int?>;
+              final newAnswer = answer as Map<int, int?>;
+              final changedQuestionIndex = () {
+                for (var i = 0; i < oldAnswer.entries.length; i++) {
+                  final oldValue = oldAnswer.entries.toList()[i];
+                  final newValue = newAnswer.entries.toList()[i];
+                  if (oldValue.key == newValue.key && oldValue.value != newValue.value) {
+                    return oldValue.key;
+                  }
+                }
+              }();
+
+              //TODO: find question where the answer was before
+              if (changedQuestionIndex != null) {}
+
+              //TODO: nullify that value
+
+              question.isAnsweredCorrectly = mapEquals(newAnswer, question.source.correctMatch);
+              question.userAnswer = newAnswer;
+              emit(QuestionState.inProgress(
+                question: question,
+                isLast: state.isLast,
+                selectedAnswers: newAnswer,
+              ));
+              break;
+            case null:
               break;
           }
         },
