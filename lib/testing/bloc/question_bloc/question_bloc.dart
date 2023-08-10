@@ -61,24 +61,10 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
               ));
               break;
             case TestMatchingQuestion():
-              final oldAnswer = state.selectedAnswers as Map<int, int?>;
               final newAnswer = answer as Map<int, int?>;
-              final changedQuestionIndex = () {
-                for (var i = 0; i < oldAnswer.entries.length; i++) {
-                  final oldValue = oldAnswer.entries.toList()[i];
-                  final newValue = newAnswer.entries.toList()[i];
-                  if (oldValue.key == newValue.key && oldValue.value != newValue.value) {
-                    return oldValue.key;
-                  }
-                }
-              }();
-
-              //TODO: find question where the answer was before
-              if (changedQuestionIndex != null) {}
-
-              //TODO: nullify that value
-
-              question.isAnsweredCorrectly = mapEquals(newAnswer, question.source.correctMatch);
+              question.isAnsweredCorrectly = newAnswer.values.any((element) => element != null)
+                  ? mapEquals(newAnswer, question.source.correctMatch)
+                  : null;
               question.userAnswer = newAnswer;
               emit(QuestionState.inProgress(
                 question: question,
