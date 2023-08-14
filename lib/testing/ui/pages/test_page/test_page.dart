@@ -24,19 +24,32 @@ class TestPage extends StatelessWidget {
     );
   }
 
+  void _hideKeyboard() {
+    FocusManager.instance.primaryFocus?.unfocus();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocListener<TestBloc, TestState>(
-      listener: (context, state) {
-        if (state.needFinishConfirmation) {
-          showDialog<bool>(
-            context: context,
-            builder: (_) => const FinishTestDialog(),
-          ).then((shouldFinish) => context
-              .read<TestBloc>()
-              .add(TestEvent.gotFinishConfirmationAnswer(confirm: shouldFinish ?? false)));
-        }
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<TestBloc, TestState>(
+          listener: (context, state) {
+            if (state.needFinishConfirmation) {
+              showDialog<bool>(
+                context: context,
+                builder: (_) => const FinishTestDialog(),
+              ).then((shouldFinish) =>
+                  context
+                      .read<TestBloc>()
+                      .add(TestEvent.gotFinishConfirmationAnswer(confirm: shouldFinish ?? false)));
+            }
+          },
+        ),
+        BlocListener<TestBloc, TestState>(
+          listenWhen: (previous, current) => previous.selectedIndex != current.selectedIndex,
+          listener: (context, state) => _hideKeyboard(),
+        ),
+      ],
       child: WillPopScope(
         onWillPop: () => showAbortTestDialog(context).then((shouldPop) => shouldPop ?? false),
         child: Scaffold(
