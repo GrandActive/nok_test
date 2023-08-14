@@ -63,12 +63,27 @@ class QuestionAnswerPair extends StatelessWidget {
   final List<PossibleAnswer> answers;
   final Map<int, int?> selectedAnswers;
 
+  void _setValue(BuildContext context, PossibleAnswer? value) {
+    final answer = Map<int, int?>.from(selectedAnswers);
+    if (value != null) {
+      final oldValueKey = answer.entries.firstWhereOrNull((e) => e.value == value.index)?.key;
+      if (oldValueKey != null) {
+        answer[oldValueKey] = null;
+      }
+    }
+    answer[question.index] = value?.index;
+    context.read<QuestionBloc>().add(QuestionEvent.answerSelected(answer: answer));
+  }
+
   @override
   Widget build(BuildContext context) {
     final answersWithSeparators = List<PossibleAnswer?>.from(answers);
     for (var i = 1; i < answersWithSeparators.length; i += 2) {
       answersWithSeparators.insert(i, null);
     }
+
+    final value =
+        answers.firstWhereOrNull((answer) => answer.index == selectedAnswers[question.index]);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,6 +98,15 @@ class QuestionAnswerPair extends StatelessWidget {
           child: ButtonTheme(
             alignedDropdown: true,
             child: DropdownButton(
+              icon: value == null
+                  ? const Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Icon(Icons.arrow_drop_down),
+                    )
+                  : IconButton(
+                      onPressed: () => _setValue(context, null),
+                      icon: const Icon(Icons.close),
+                    ),
               isExpanded: true,
               itemHeight: null,
               borderRadius: const BorderRadius.all(Radius.circular(4)),
@@ -92,8 +116,7 @@ class QuestionAnswerPair extends StatelessWidget {
                 "Выберите ответ",
                 style: TextStyle(color: Color(0xFF9D9D9D), fontWeight: FontWeight.w400),
               ),
-              value: answers
-                  .firstWhereOrNull((answer) => answer.index == selectedAnswers[question.index]),
+              value: value,
               selectedItemBuilder: (context) => answersWithSeparators
                   .map((answer) => Align(
                         alignment: Alignment.centerLeft,
@@ -118,18 +141,7 @@ class QuestionAnswerPair extends StatelessWidget {
                               style: const TextStyle(fontWeight: FontWeight.w400),
                             )))
                   .toList(),
-              onChanged: (value) {
-                final answer = Map<int, int?>.from(selectedAnswers);
-                if (value != null) {
-                  final oldValueKey =
-                      answer.entries.firstWhereOrNull((e) => e.value == value.index)?.key;
-                  if (oldValueKey != null) {
-                    answer[oldValueKey] = null;
-                  }
-                }
-                answer[question.index] = value?.index;
-                context.read<QuestionBloc>().add(QuestionEvent.answerSelected(answer: answer));
-              },
+              onChanged: (value) => _setValue(context, value),
             ),
           ),
         ),
