@@ -41,7 +41,8 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
             case TestUserInputQuestion():
               final userAnswer = answer == null || answer == "" ? null : answer;
               question.userAnswer = userAnswer;
-              question.isAnsweredCorrectly = answer == question.source.correctAnswer;
+              question.isAnsweredCorrectly =
+                  userAnswer == null ? null : userAnswer == question.source.correctAnswer;
               emit(QuestionState.inProgress(
                 question: question,
                 isLast: state.isLast,
