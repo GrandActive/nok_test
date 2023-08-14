@@ -34,6 +34,7 @@ class UserInputQuestion extends StatelessWidget {
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Введите ответ",
+                        hintStyle: TextStyle(color: Color(0xFF9D9D9D), fontWeight: FontWeight.w400),
                         isDense: true,
                       ),
                       keyboardType: TextInputType.text,
