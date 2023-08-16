@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/styles/colors.dart';
-import 'package:nok_test/testing/bloc/test_bloc.dart';
+import 'package:nok_test/testing/bloc/question_bloc/question_bloc.dart';
 
 class SingleSelectAnswerItem extends StatelessWidget {
   const SingleSelectAnswerItem({
@@ -43,8 +43,8 @@ class SingleSelectAnswerItem extends StatelessWidget {
 
     void setSelected(int? index) {
       context
-          .read<TestBloc>()
-          .add(TestEvent.answersSelected(answers: index != null ? {index} : {}));
+          .read<QuestionBloc>()
+          .add(QuestionEvent.answerSelected(answer: index != null ? {index} : <int>{}));
     }
 
     return Material(
