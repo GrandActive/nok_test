@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nok_test/testing/bloc/question_bloc/question_bloc.dart';
 import 'package:nok_test/testing/data/model/possible_answer.dart';
 import 'package:nok_test/testing/ui/pages/test_page/widgets/multiple_select_answer_item.dart';
 import 'package:nok_test/testing/ui/pages/test_page/widgets/single_select_answer_item.dart';
@@ -28,15 +30,23 @@ class AnswerList extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             final answer = possibleAnswers[index];
+            final isSelected = selectedIndices.contains(answer.index);
             return MultipleSelectAnswerItem(
-              selectedIndices: selectedIndices,
               isActive: isActive,
               text: answer.text,
-              index: answer.index,
-              value: selectedIndices.contains(answer.index),
-              isSelectedAsCorrectAnswer:
-                  selectedIndices.contains(answer.index) ? isAnsweredCorrectly : null,
+              isSelectedAsCorrectAnswer: isSelected ? isAnsweredCorrectly : null,
               shouldShowCorrectness: shouldShowCorrectness,
+              onChanged: (isSelected) {
+                if (isSelected!) {
+                  selectedIndices.add(answer.index);
+                } else {
+                  selectedIndices.remove(answer.index);
+                }
+                context
+                    .read<QuestionBloc>()
+                    .add(QuestionEvent.answerSelected(answer: selectedIndices));
+              },
+              isSelected: isSelected,
             );
           },
           separatorBuilder: (context, index) => const SizedBox(height: 16),
