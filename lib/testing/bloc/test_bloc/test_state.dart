@@ -10,5 +10,6 @@ class TestState with _$TestState {
     @Default(true) bool isLoading,
     @Default(null) String? errorMessage,
     @Default(false) bool needFinishConfirmation,
+    @Default(false) bool isUpdateNeeded,
   }) = _TestState;
 }
