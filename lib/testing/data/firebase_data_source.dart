@@ -50,11 +50,17 @@ class FirebaseDataSource {
   Future<void> _checkVersion() async {
     final packageInfo = await PackageInfo.fromPlatform();
     final appVersion = packageInfo.version;
+    final appVersionParts = appVersion.split(".");
+    final appMajorVersion = appVersionParts[0];
+    final appMinorVersion = appVersionParts[1];
 
     final dbVersionEvent = await _database.ref("version").once();
     final dbVersion = dbVersionEvent.snapshot.value as String;
+    final dbVersionParts = dbVersion.split(".");
+    final dbMajorVersion = dbVersionParts[0];
+    final dbMinorVersion = dbVersionParts[1];
 
-    if (dbVersion != appVersion) throw WrongDbVersionException();
+    if (dbMajorVersion != appMajorVersion || dbMinorVersion != appMinorVersion) throw WrongDbVersionException();
   }
 }
 
