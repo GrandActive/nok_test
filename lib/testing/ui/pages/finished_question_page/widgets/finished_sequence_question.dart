@@ -23,11 +23,14 @@ class FinishedSequenceQuestion extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               children: [
-                ...question.source.answers.indexed.map((answer) {
+                ...question.userAnswer!.indexed.map((a) {
+                  final answerOrder = a.$1;
+                  final answer = question.source.answers.firstWhere((e) => e.index == a.$2);
+
                   Color borderColor;
                   if (question.isAnsweredCorrectly == null) {
                     borderColor = const Color(0xFFDBE9F9);
-                  } else if (question.source.correctOrder[answer.$1] == answer.$2.index) {
+                  } else if (question.source.correctOrder[answerOrder] == answer.index) {
                     borderColor = correctAnswerColor;
                   } else {
                     borderColor = wrongAnswerColor;
@@ -38,7 +41,7 @@ class FinishedSequenceQuestion extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: ListTile(
                         dense: true,
-                        title: Text(answer.$2.text, style: const TextStyle(fontSize: 14)),
+                        title: Text(answer.text, style: const TextStyle(fontSize: 14)),
                         shape: RoundedRectangleBorder(
                           borderRadius: const BorderRadius.all(Radius.circular(8)),
                           side: BorderSide(
