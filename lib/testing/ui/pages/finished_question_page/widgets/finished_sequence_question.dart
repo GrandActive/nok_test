@@ -17,7 +17,10 @@ class FinishedSequenceQuestion extends StatelessWidget {
         padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
         child: Column(
           children: [
-            Text(question.source.title),
+            Text(
+              question.source.title,
+              style: const TextStyle(fontSize: 16),
+            ),
             const SizedBox(height: 24),
             ListView(
               physics: const NeverScrollableScrollPhysics(),
@@ -41,7 +44,7 @@ class FinishedSequenceQuestion extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: ListTile(
                         dense: true,
-                        title: Text(answer.text, style: const TextStyle(fontSize: 14)),
+                        title: Text(answer.text, style: const TextStyle(fontSize: 16)),
                         shape: RoundedRectangleBorder(
                           borderRadius: const BorderRadius.all(Radius.circular(8)),
                           side: BorderSide(

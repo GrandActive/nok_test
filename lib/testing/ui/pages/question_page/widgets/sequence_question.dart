@@ -21,14 +21,21 @@ class SequenceQuestion extends StatelessWidget {
 
             return SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36),
+                padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
                 child: Column(
                   children: [
-                    Text(question.source.title),
+                    Text(
+                      question.source.title,
+                      style: const TextStyle(fontSize: 16),
+                    ),
                     const SizedBox(height: 24),
-                    const Text("Для перетаскивания зажмите вариант ответа"),
+                    const Text(
+                      "Для перетаскивания зажмите вариант ответа",
+                      style: TextStyle(fontSize: 16),
+                    ),
                     const SizedBox(height: 8),
                     ReorderableListView(
+                      onReorderStart: (index) {},
                       proxyDecorator: (child, index, animation) => child,
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -50,7 +57,7 @@ class SequenceQuestion extends StatelessWidget {
                             child: Material(
                               child: ListTile(
                                 dense: true,
-                                title: Text(answer.text, style: const TextStyle(fontSize: 14)),
+                                title: Text(answer.text, style: const TextStyle(fontSize: 16)),
                                 shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(8)),
                                   side: BorderSide(color: Color(0xFFDBE9F9)),
