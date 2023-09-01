@@ -19,10 +19,13 @@ class MatchingQuestion extends StatelessWidget {
             final selectedAnswers = state.selectedAnswers as Map<int, int?>;
             return SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 40),
+                padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 40),
                 child: Column(
                   children: [
-                    Text(question.source.text),
+                    Text(
+                      question.source.text,
+                      style: const TextStyle(fontSize: 16),
+                    ),
                     const SizedBox(height: 40),
                     ListView.separated(
                       shrinkWrap: true,
@@ -88,7 +91,10 @@ class QuestionAnswerPair extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(question.text),
+        Text(
+          question.text,
+          style: const TextStyle(fontSize: 16),
+        ),
         const SizedBox(height: 8),
         DecoratedBox(
           decoration: BoxDecoration(

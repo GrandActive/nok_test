@@ -8,6 +8,7 @@ import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/testing/ui/dialogs/abort_test_dialog.dart';
 import 'package:nok_test/testing/ui/dialogs/finish_test_dialog.dart';
 import 'package:nok_test/testing/ui/pages/test_page/widgets/widgets.dart';
+import 'package:nok_test/testing/ui/pages/update_needed_page/update_needed_page.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({
@@ -38,10 +39,9 @@ class TestPage extends StatelessWidget {
               showDialog<bool>(
                 context: context,
                 builder: (_) => const FinishTestDialog(),
-              ).then((shouldFinish) =>
-                  context
-                      .read<TestBloc>()
-                      .add(TestEvent.gotFinishConfirmationAnswer(confirm: shouldFinish ?? false)));
+              ).then((shouldFinish) => context
+                  .read<TestBloc>()
+                  .add(TestEvent.gotFinishConfirmationAnswer(confirm: shouldFinish ?? false)));
             }
           },
         ),
@@ -68,19 +68,28 @@ class TestPage extends StatelessWidget {
             title: const TestTimer(),
             centerTitle: true,
             actions: [
-              TextButton(
-                style: const ButtonStyle(
-                  foregroundColor: MaterialStatePropertyAll(Colors.white),
+              BlocBuilder<TestBloc, TestState>(
+                builder: (context, state) => Visibility(
+                  visible: !state.isLoading && !state.isUpdateNeeded,
+                  child: TextButton(
+                    style: const ButtonStyle(
+                      foregroundColor: MaterialStatePropertyAll(Colors.white),
+                    ),
+                    onPressed: () {
+                      context.read<TestBloc>().add(const TestEvent.finishRequested());
+                    },
+                    child: const Text("Завершить"),
+                  ),
                 ),
-                onPressed: () {
-                  context.read<TestBloc>().add(const TestEvent.finishRequested());
-                },
-                child: const Text("Завершить"),
               ),
             ],
           ),
           body: BlocBuilder<TestBloc, TestState>(
             builder: (context, state) {
+              if (state.isUpdateNeeded) {
+                return const UpdateNeededPage();
+              }
+
               if (state.errorMessage != null) {
                 return Center(child: Text(state.errorMessage!));
               }

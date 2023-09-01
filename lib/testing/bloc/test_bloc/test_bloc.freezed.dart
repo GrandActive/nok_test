@@ -857,6 +857,7 @@ mixin _$TestState {
   bool get isLoading => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   bool get needFinishConfirmation => throw _privateConstructorUsedError;
+  bool get isUpdateNeeded => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TestStateCopyWith<TestState> get copyWith =>
@@ -875,7 +876,8 @@ abstract class $TestStateCopyWith<$Res> {
       bool isFinished,
       bool isLoading,
       String? errorMessage,
-      bool needFinishConfirmation});
+      bool needFinishConfirmation,
+      bool isUpdateNeeded});
 }
 
 /// @nodoc
@@ -898,6 +900,7 @@ class _$TestStateCopyWithImpl<$Res, $Val extends TestState>
     Object? isLoading = null,
     Object? errorMessage = freezed,
     Object? needFinishConfirmation = null,
+    Object? isUpdateNeeded = null,
   }) {
     return _then(_value.copyWith(
       mode: null == mode
@@ -928,6 +931,10 @@ class _$TestStateCopyWithImpl<$Res, $Val extends TestState>
           ? _value.needFinishConfirmation
           : needFinishConfirmation // ignore: cast_nullable_to_non_nullable
               as bool,
+      isUpdateNeeded: null == isUpdateNeeded
+          ? _value.isUpdateNeeded
+          : isUpdateNeeded // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -946,7 +953,8 @@ abstract class _$$_TestStateCopyWith<$Res> implements $TestStateCopyWith<$Res> {
       bool isFinished,
       bool isLoading,
       String? errorMessage,
-      bool needFinishConfirmation});
+      bool needFinishConfirmation,
+      bool isUpdateNeeded});
 }
 
 /// @nodoc
@@ -967,6 +975,7 @@ class __$$_TestStateCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? errorMessage = freezed,
     Object? needFinishConfirmation = null,
+    Object? isUpdateNeeded = null,
   }) {
     return _then(_$_TestState(
       mode: null == mode
@@ -997,6 +1006,10 @@ class __$$_TestStateCopyWithImpl<$Res>
           ? _value.needFinishConfirmation
           : needFinishConfirmation // ignore: cast_nullable_to_non_nullable
               as bool,
+      isUpdateNeeded: null == isUpdateNeeded
+          ? _value.isUpdateNeeded
+          : isUpdateNeeded // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1011,7 +1024,8 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
       this.isFinished = false,
       this.isLoading = true,
       this.errorMessage = null,
-      this.needFinishConfirmation = false})
+      this.needFinishConfirmation = false,
+      this.isUpdateNeeded = false})
       : _questions = questions;
 
   @override
@@ -1040,10 +1054,13 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
   @override
   @JsonKey()
   final bool needFinishConfirmation;
+  @override
+  @JsonKey()
+  final bool isUpdateNeeded;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TestState(mode: $mode, questions: $questions, selectedIndex: $selectedIndex, isFinished: $isFinished, isLoading: $isLoading, errorMessage: $errorMessage, needFinishConfirmation: $needFinishConfirmation)';
+    return 'TestState(mode: $mode, questions: $questions, selectedIndex: $selectedIndex, isFinished: $isFinished, isLoading: $isLoading, errorMessage: $errorMessage, needFinishConfirmation: $needFinishConfirmation, isUpdateNeeded: $isUpdateNeeded)';
   }
 
   @override
@@ -1057,8 +1074,9 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
       ..add(DiagnosticsProperty('isFinished', isFinished))
       ..add(DiagnosticsProperty('isLoading', isLoading))
       ..add(DiagnosticsProperty('errorMessage', errorMessage))
-      ..add(DiagnosticsProperty(
-          'needFinishConfirmation', needFinishConfirmation));
+      ..add(
+          DiagnosticsProperty('needFinishConfirmation', needFinishConfirmation))
+      ..add(DiagnosticsProperty('isUpdateNeeded', isUpdateNeeded));
   }
 
   @override
@@ -1078,7 +1096,9 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.needFinishConfirmation, needFinishConfirmation) ||
-                other.needFinishConfirmation == needFinishConfirmation));
+                other.needFinishConfirmation == needFinishConfirmation) &&
+            (identical(other.isUpdateNeeded, isUpdateNeeded) ||
+                other.isUpdateNeeded == isUpdateNeeded));
   }
 
   @override
@@ -1090,7 +1110,8 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
       isFinished,
       isLoading,
       errorMessage,
-      needFinishConfirmation);
+      needFinishConfirmation,
+      isUpdateNeeded);
 
   @JsonKey(ignore: true)
   @override
@@ -1107,7 +1128,8 @@ abstract class _TestState implements TestState {
       final bool isFinished,
       final bool isLoading,
       final String? errorMessage,
-      final bool needFinishConfirmation}) = _$_TestState;
+      final bool needFinishConfirmation,
+      final bool isUpdateNeeded}) = _$_TestState;
 
   @override
   TestMode get mode;
@@ -1123,6 +1145,8 @@ abstract class _TestState implements TestState {
   String? get errorMessage;
   @override
   bool get needFinishConfirmation;
+  @override
+  bool get isUpdateNeeded;
   @override
   @JsonKey(ignore: true)
   _$$_TestStateCopyWith<_$_TestState> get copyWith =>

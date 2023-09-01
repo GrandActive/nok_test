@@ -16,10 +16,13 @@ class FinishedMatchingQuestion extends StatelessWidget {
 
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 36),
+        padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
         child: Column(
           children: [
-            Text(question.source.text),
+            Text(
+              question.source.text,
+              style: const TextStyle(fontSize: 16),
+            ),
             const SizedBox(height: 40),
             ListView.separated(
               shrinkWrap: true,
@@ -43,7 +46,10 @@ class FinishedMatchingQuestion extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(q.text),
+                    Text(
+                      q.text,
+                      style: const TextStyle(fontSize: 16),
+                    ),
                     const SizedBox(height: 8),
                     DecoratedBox(
                       decoration: BoxDecoration(
@@ -52,7 +58,10 @@ class FinishedMatchingQuestion extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(16),
-                        child: Text(answerText),
+                        child: Text(
+                          answerText,
+                          style: const TextStyle(fontSize: 16),
+                        ),
                       ),
                     )
                   ],
