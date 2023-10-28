@@ -71,6 +71,22 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        free {
+            dimension "default"
+            resValue "string", "app_name", "nok_test_free"
+            applicationIdSuffix ".free"
+        }
+        paid {
+            dimension "default"
+            resValue "string", "app_name", "nok_test_paid"
+            applicationIdSuffix ".paid"
+        }
+    }
+
 }
 
 flutter {
