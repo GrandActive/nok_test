@@ -4,8 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: type=lint
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
@@ -19,7 +18,7 @@ import 'package:nok_test/testing/domain/get_random_questions_for_test.dart'
 import 'package:nok_test/testing/domain/ticker.dart' as _i5;
 
 extension GetItInjectableX on _i1.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   _i1.GetIt init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
@@ -32,7 +31,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i3.FirebaseDataSource>(() => _i3.FirebaseDataSource());
     gh.factory<_i4.QuestionsRepository>(
         () => _i4.QuestionsRepository(gh<_i3.FirebaseDataSource>()));
-    gh.factory<_i5.Ticker>(() => _i5.Ticker());
+    gh.factory<_i5.Ticker>(() => const _i5.Ticker());
     gh.factory<_i6.GetRandomQuestionsForTest>(() =>
         _i6.GetRandomQuestionsForTest(
             repository: gh<_i4.QuestionsRepository>()));

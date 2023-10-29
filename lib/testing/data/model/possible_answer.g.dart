@@ -6,13 +6,14 @@ part of 'possible_answer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PossibleAnswer _$$_PossibleAnswerFromJson(Map<String, dynamic> json) =>
-    _$_PossibleAnswer(
+_$PossibleAnswerImpl _$$PossibleAnswerImplFromJson(Map<String, dynamic> json) =>
+    _$PossibleAnswerImpl(
       index: json['index'] as int,
       text: json['text'] as String,
     );
 
-Map<String, dynamic> _$$_PossibleAnswerToJson(_$_PossibleAnswer instance) =>
+Map<String, dynamic> _$$PossibleAnswerImplToJson(
+        _$PossibleAnswerImpl instance) =>
     <String, dynamic>{
       'index': instance.index,
       'text': instance.text,

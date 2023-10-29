@@ -75,19 +75,20 @@ class _$QuestionEventCopyWithImpl<$Res, $Val extends QuestionEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TestQuestion question, bool isLast});
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$QuestionEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$QuestionEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +97,7 @@ class __$$_StartedCopyWithImpl<$Res>
     Object? question = null,
     Object? isLast = null,
   }) {
-    return _then(_$_Started(
+    return _then(_$StartedImpl(
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
@@ -111,8 +112,8 @@ class __$$_StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started with DiagnosticableTreeMixin implements _Started {
-  const _$_Started({required this.question, required this.isLast});
+class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
+  const _$StartedImpl({required this.question, required this.isLast});
 
   @override
   final TestQuestion question;
@@ -137,7 +138,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Started &&
+            other is _$StartedImpl &&
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.isLast, isLast) || other.isLast == isLast));
@@ -149,8 +150,8 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
-      __$$_StartedCopyWithImpl<_$_Started>(this, _$identity);
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -218,30 +219,30 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
 abstract class _Started implements QuestionEvent {
   const factory _Started(
       {required final TestQuestion question,
-      required final bool isLast}) = _$_Started;
+      required final bool isLast}) = _$StartedImpl;
 
   TestQuestion get question;
   bool get isLast;
   @JsonKey(ignore: true)
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AnswerSelectedCopyWith<$Res> {
-  factory _$$_AnswerSelectedCopyWith(
-          _$_AnswerSelected value, $Res Function(_$_AnswerSelected) then) =
-      __$$_AnswerSelectedCopyWithImpl<$Res>;
+abstract class _$$AnswerSelectedImplCopyWith<$Res> {
+  factory _$$AnswerSelectedImplCopyWith(_$AnswerSelectedImpl value,
+          $Res Function(_$AnswerSelectedImpl) then) =
+      __$$AnswerSelectedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({dynamic answer});
 }
 
 /// @nodoc
-class __$$_AnswerSelectedCopyWithImpl<$Res>
-    extends _$QuestionEventCopyWithImpl<$Res, _$_AnswerSelected>
-    implements _$$_AnswerSelectedCopyWith<$Res> {
-  __$$_AnswerSelectedCopyWithImpl(
-      _$_AnswerSelected _value, $Res Function(_$_AnswerSelected) _then)
+class __$$AnswerSelectedImplCopyWithImpl<$Res>
+    extends _$QuestionEventCopyWithImpl<$Res, _$AnswerSelectedImpl>
+    implements _$$AnswerSelectedImplCopyWith<$Res> {
+  __$$AnswerSelectedImplCopyWithImpl(
+      _$AnswerSelectedImpl _value, $Res Function(_$AnswerSelectedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -249,7 +250,7 @@ class __$$_AnswerSelectedCopyWithImpl<$Res>
   $Res call({
     Object? answer = freezed,
   }) {
-    return _then(_$_AnswerSelected(
+    return _then(_$AnswerSelectedImpl(
       answer: freezed == answer
           ? _value.answer
           : answer // ignore: cast_nullable_to_non_nullable
@@ -260,10 +261,10 @@ class __$$_AnswerSelectedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AnswerSelected
+class _$AnswerSelectedImpl
     with DiagnosticableTreeMixin
     implements _AnswerSelected {
-  const _$_AnswerSelected({required this.answer});
+  const _$AnswerSelectedImpl({required this.answer});
 
   @override
   final dynamic answer;
@@ -285,7 +286,7 @@ class _$_AnswerSelected
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnswerSelected &&
+            other is _$AnswerSelectedImpl &&
             const DeepCollectionEquality().equals(other.answer, answer));
   }
 
@@ -296,8 +297,9 @@ class _$_AnswerSelected
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnswerSelectedCopyWith<_$_AnswerSelected> get copyWith =>
-      __$$_AnswerSelectedCopyWithImpl<_$_AnswerSelected>(this, _$identity);
+  _$$AnswerSelectedImplCopyWith<_$AnswerSelectedImpl> get copyWith =>
+      __$$AnswerSelectedImplCopyWithImpl<_$AnswerSelectedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -364,11 +366,11 @@ class _$_AnswerSelected
 
 abstract class _AnswerSelected implements QuestionEvent {
   const factory _AnswerSelected({required final dynamic answer}) =
-      _$_AnswerSelected;
+      _$AnswerSelectedImpl;
 
   dynamic get answer;
   @JsonKey(ignore: true)
-  _$$_AnswerSelectedCopyWith<_$_AnswerSelected> get copyWith =>
+  _$$AnswerSelectedImplCopyWith<_$AnswerSelectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -439,24 +441,25 @@ class _$QuestionStateCopyWithImpl<$Res, $Val extends QuestionState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$QuestionStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$QuestionStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial extends _Initial with DiagnosticableTreeMixin {
-  const _$_Initial() : super._();
+class _$InitialImpl extends _Initial with DiagnosticableTreeMixin {
+  const _$InitialImpl() : super._();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -472,7 +475,7 @@ class _$_Initial extends _Initial with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -548,25 +551,25 @@ class _$_Initial extends _Initial with DiagnosticableTreeMixin {
 }
 
 abstract class _Initial extends QuestionState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
   const _Initial._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_InProgressCopyWith<$Res> {
-  factory _$$_InProgressCopyWith(
-          _$_InProgress value, $Res Function(_$_InProgress) then) =
-      __$$_InProgressCopyWithImpl<$Res>;
+abstract class _$$InProgressImplCopyWith<$Res> {
+  factory _$$InProgressImplCopyWith(
+          _$InProgressImpl value, $Res Function(_$InProgressImpl) then) =
+      __$$InProgressImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TestQuestion question, bool isLast, dynamic selectedAnswers});
 }
 
 /// @nodoc
-class __$$_InProgressCopyWithImpl<$Res>
-    extends _$QuestionStateCopyWithImpl<$Res, _$_InProgress>
-    implements _$$_InProgressCopyWith<$Res> {
-  __$$_InProgressCopyWithImpl(
-      _$_InProgress _value, $Res Function(_$_InProgress) _then)
+class __$$InProgressImplCopyWithImpl<$Res>
+    extends _$QuestionStateCopyWithImpl<$Res, _$InProgressImpl>
+    implements _$$InProgressImplCopyWith<$Res> {
+  __$$InProgressImplCopyWithImpl(
+      _$InProgressImpl _value, $Res Function(_$InProgressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -576,7 +579,7 @@ class __$$_InProgressCopyWithImpl<$Res>
     Object? isLast = null,
     Object? selectedAnswers = freezed,
   }) {
-    return _then(_$_InProgress(
+    return _then(_$InProgressImpl(
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
@@ -595,8 +598,8 @@ class __$$_InProgressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InProgress extends _InProgress with DiagnosticableTreeMixin {
-  const _$_InProgress(
+class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
+  const _$InProgressImpl(
       {required this.question, required this.isLast, this.selectedAnswers})
       : super._();
 
@@ -626,7 +629,7 @@ class _$_InProgress extends _InProgress with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InProgress &&
+            other is _$InProgressImpl &&
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.isLast, isLast) || other.isLast == isLast) &&
@@ -641,8 +644,8 @@ class _$_InProgress extends _InProgress with DiagnosticableTreeMixin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InProgressCopyWith<_$_InProgress> get copyWith =>
-      __$$_InProgressCopyWithImpl<_$_InProgress>(this, _$identity);
+  _$$InProgressImplCopyWith<_$InProgressImpl> get copyWith =>
+      __$$InProgressImplCopyWithImpl<_$InProgressImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -717,13 +720,13 @@ abstract class _InProgress extends QuestionState {
   const factory _InProgress(
       {required final TestQuestion question,
       required final bool isLast,
-      final dynamic selectedAnswers}) = _$_InProgress;
+      final dynamic selectedAnswers}) = _$InProgressImpl;
   const _InProgress._() : super._();
 
   TestQuestion get question;
   bool get isLast;
   dynamic get selectedAnswers;
   @JsonKey(ignore: true)
-  _$$_InProgressCopyWith<_$_InProgress> get copyWith =>
+  _$$InProgressImplCopyWith<_$InProgressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

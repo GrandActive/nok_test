@@ -92,11 +92,11 @@ class _$TestSelectionQuestionCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TestQuestionCopyWith<$Res>
+abstract class _$$TestQuestionImplCopyWith<$Res>
     implements $TestSelectionQuestionCopyWith<$Res> {
-  factory _$$_TestQuestionCopyWith(
-          _$_TestQuestion value, $Res Function(_$_TestQuestion) then) =
-      __$$_TestQuestionCopyWithImpl<$Res>;
+  factory _$$TestQuestionImplCopyWith(
+          _$TestQuestionImpl value, $Res Function(_$TestQuestionImpl) then) =
+      __$$TestQuestionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +109,11 @@ abstract class _$$_TestQuestionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TestQuestionCopyWithImpl<$Res>
-    extends _$TestSelectionQuestionCopyWithImpl<$Res, _$_TestQuestion>
-    implements _$$_TestQuestionCopyWith<$Res> {
-  __$$_TestQuestionCopyWithImpl(
-      _$_TestQuestion _value, $Res Function(_$_TestQuestion) _then)
+class __$$TestQuestionImplCopyWithImpl<$Res>
+    extends _$TestSelectionQuestionCopyWithImpl<$Res, _$TestQuestionImpl>
+    implements _$$TestQuestionImplCopyWith<$Res> {
+  __$$TestQuestionImplCopyWithImpl(
+      _$TestQuestionImpl _value, $Res Function(_$TestQuestionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$_TestQuestionCopyWithImpl<$Res>
     Object? userAnswers = freezed,
     Object? isAnsweredCorrectly = freezed,
   }) {
-    return _then(_$_TestQuestion(
+    return _then(_$TestQuestionImpl(
       source: null == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
@@ -142,12 +142,12 @@ class __$$_TestQuestionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TestQuestion implements _TestQuestion {
-  _$_TestQuestion(
+class _$TestQuestionImpl implements _TestQuestion {
+  _$TestQuestionImpl(
       {required this.source, this.userAnswers, this.isAnsweredCorrectly});
 
-  factory _$_TestQuestion.fromJson(Map<String, dynamic> json) =>
-      _$$_TestQuestionFromJson(json);
+  factory _$TestQuestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TestQuestionImplFromJson(json);
 
   @override
   SelectionQuestion source;
@@ -164,12 +164,12 @@ class _$_TestQuestion implements _TestQuestion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TestQuestionCopyWith<_$_TestQuestion> get copyWith =>
-      __$$_TestQuestionCopyWithImpl<_$_TestQuestion>(this, _$identity);
+  _$$TestQuestionImplCopyWith<_$TestQuestionImpl> get copyWith =>
+      __$$TestQuestionImplCopyWithImpl<_$TestQuestionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TestQuestionToJson(
+    return _$$TestQuestionImplToJson(
       this,
     );
   }
@@ -179,10 +179,10 @@ abstract class _TestQuestion implements TestSelectionQuestion {
   factory _TestQuestion(
       {required SelectionQuestion source,
       Set<int>? userAnswers,
-      bool? isAnsweredCorrectly}) = _$_TestQuestion;
+      bool? isAnsweredCorrectly}) = _$TestQuestionImpl;
 
   factory _TestQuestion.fromJson(Map<String, dynamic> json) =
-      _$_TestQuestion.fromJson;
+      _$TestQuestionImpl.fromJson;
 
   @override
   SelectionQuestion get source;
@@ -195,7 +195,7 @@ abstract class _TestQuestion implements TestSelectionQuestion {
   set isAnsweredCorrectly(bool? value);
   @override
   @JsonKey(ignore: true)
-  _$$_TestQuestionCopyWith<_$_TestQuestion> get copyWith =>
+  _$$TestQuestionImplCopyWith<_$TestQuestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -277,11 +277,12 @@ class _$TestUserInputQuestionCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TestUserInputQuestionCopyWith<$Res>
+abstract class _$$TestUserInputQuestionImplCopyWith<$Res>
     implements $TestUserInputQuestionCopyWith<$Res> {
-  factory _$$_TestUserInputQuestionCopyWith(_$_TestUserInputQuestion value,
-          $Res Function(_$_TestUserInputQuestion) then) =
-      __$$_TestUserInputQuestionCopyWithImpl<$Res>;
+  factory _$$TestUserInputQuestionImplCopyWith(
+          _$TestUserInputQuestionImpl value,
+          $Res Function(_$TestUserInputQuestionImpl) then) =
+      __$$TestUserInputQuestionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -294,11 +295,12 @@ abstract class _$$_TestUserInputQuestionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TestUserInputQuestionCopyWithImpl<$Res>
-    extends _$TestUserInputQuestionCopyWithImpl<$Res, _$_TestUserInputQuestion>
-    implements _$$_TestUserInputQuestionCopyWith<$Res> {
-  __$$_TestUserInputQuestionCopyWithImpl(_$_TestUserInputQuestion _value,
-      $Res Function(_$_TestUserInputQuestion) _then)
+class __$$TestUserInputQuestionImplCopyWithImpl<$Res>
+    extends _$TestUserInputQuestionCopyWithImpl<$Res,
+        _$TestUserInputQuestionImpl>
+    implements _$$TestUserInputQuestionImplCopyWith<$Res> {
+  __$$TestUserInputQuestionImplCopyWithImpl(_$TestUserInputQuestionImpl _value,
+      $Res Function(_$TestUserInputQuestionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -308,7 +310,7 @@ class __$$_TestUserInputQuestionCopyWithImpl<$Res>
     Object? userAnswer = freezed,
     Object? isAnsweredCorrectly = freezed,
   }) {
-    return _then(_$_TestUserInputQuestion(
+    return _then(_$TestUserInputQuestionImpl(
       source: null == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
@@ -327,12 +329,12 @@ class __$$_TestUserInputQuestionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TestUserInputQuestion implements _TestUserInputQuestion {
-  _$_TestUserInputQuestion(
+class _$TestUserInputQuestionImpl implements _TestUserInputQuestion {
+  _$TestUserInputQuestionImpl(
       {required this.source, this.userAnswer, this.isAnsweredCorrectly});
 
-  factory _$_TestUserInputQuestion.fromJson(Map<String, dynamic> json) =>
-      _$$_TestUserInputQuestionFromJson(json);
+  factory _$TestUserInputQuestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TestUserInputQuestionImplFromJson(json);
 
   @override
   UserInputQuestion source;
@@ -349,13 +351,13 @@ class _$_TestUserInputQuestion implements _TestUserInputQuestion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TestUserInputQuestionCopyWith<_$_TestUserInputQuestion> get copyWith =>
-      __$$_TestUserInputQuestionCopyWithImpl<_$_TestUserInputQuestion>(
-          this, _$identity);
+  _$$TestUserInputQuestionImplCopyWith<_$TestUserInputQuestionImpl>
+      get copyWith => __$$TestUserInputQuestionImplCopyWithImpl<
+          _$TestUserInputQuestionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TestUserInputQuestionToJson(
+    return _$$TestUserInputQuestionImplToJson(
       this,
     );
   }
@@ -365,10 +367,10 @@ abstract class _TestUserInputQuestion implements TestUserInputQuestion {
   factory _TestUserInputQuestion(
       {required UserInputQuestion source,
       String? userAnswer,
-      bool? isAnsweredCorrectly}) = _$_TestUserInputQuestion;
+      bool? isAnsweredCorrectly}) = _$TestUserInputQuestionImpl;
 
   factory _TestUserInputQuestion.fromJson(Map<String, dynamic> json) =
-      _$_TestUserInputQuestion.fromJson;
+      _$TestUserInputQuestionImpl.fromJson;
 
   @override
   UserInputQuestion get source;
@@ -381,8 +383,8 @@ abstract class _TestUserInputQuestion implements TestUserInputQuestion {
   set isAnsweredCorrectly(bool? value);
   @override
   @JsonKey(ignore: true)
-  _$$_TestUserInputQuestionCopyWith<_$_TestUserInputQuestion> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TestUserInputQuestionImplCopyWith<_$TestUserInputQuestionImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 TestSequenceQuestion _$TestSequenceQuestionFromJson(Map<String, dynamic> json) {
@@ -462,11 +464,11 @@ class _$TestSequenceQuestionCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TestSequenceQuestionCopyWith<$Res>
+abstract class _$$TestSequenceQuestionImplCopyWith<$Res>
     implements $TestSequenceQuestionCopyWith<$Res> {
-  factory _$$_TestSequenceQuestionCopyWith(_$_TestSequenceQuestion value,
-          $Res Function(_$_TestSequenceQuestion) then) =
-      __$$_TestSequenceQuestionCopyWithImpl<$Res>;
+  factory _$$TestSequenceQuestionImplCopyWith(_$TestSequenceQuestionImpl value,
+          $Res Function(_$TestSequenceQuestionImpl) then) =
+      __$$TestSequenceQuestionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -479,11 +481,11 @@ abstract class _$$_TestSequenceQuestionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TestSequenceQuestionCopyWithImpl<$Res>
-    extends _$TestSequenceQuestionCopyWithImpl<$Res, _$_TestSequenceQuestion>
-    implements _$$_TestSequenceQuestionCopyWith<$Res> {
-  __$$_TestSequenceQuestionCopyWithImpl(_$_TestSequenceQuestion _value,
-      $Res Function(_$_TestSequenceQuestion) _then)
+class __$$TestSequenceQuestionImplCopyWithImpl<$Res>
+    extends _$TestSequenceQuestionCopyWithImpl<$Res, _$TestSequenceQuestionImpl>
+    implements _$$TestSequenceQuestionImplCopyWith<$Res> {
+  __$$TestSequenceQuestionImplCopyWithImpl(_$TestSequenceQuestionImpl _value,
+      $Res Function(_$TestSequenceQuestionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -493,7 +495,7 @@ class __$$_TestSequenceQuestionCopyWithImpl<$Res>
     Object? userAnswer = freezed,
     Object? isAnsweredCorrectly = freezed,
   }) {
-    return _then(_$_TestSequenceQuestion(
+    return _then(_$TestSequenceQuestionImpl(
       source: null == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
@@ -512,12 +514,12 @@ class __$$_TestSequenceQuestionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TestSequenceQuestion implements _TestSequenceQuestion {
-  _$_TestSequenceQuestion(
+class _$TestSequenceQuestionImpl implements _TestSequenceQuestion {
+  _$TestSequenceQuestionImpl(
       {required this.source, this.userAnswer, this.isAnsweredCorrectly});
 
-  factory _$_TestSequenceQuestion.fromJson(Map<String, dynamic> json) =>
-      _$$_TestSequenceQuestionFromJson(json);
+  factory _$TestSequenceQuestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TestSequenceQuestionImplFromJson(json);
 
   @override
   SequenceQuestion source;
@@ -534,13 +536,14 @@ class _$_TestSequenceQuestion implements _TestSequenceQuestion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TestSequenceQuestionCopyWith<_$_TestSequenceQuestion> get copyWith =>
-      __$$_TestSequenceQuestionCopyWithImpl<_$_TestSequenceQuestion>(
-          this, _$identity);
+  _$$TestSequenceQuestionImplCopyWith<_$TestSequenceQuestionImpl>
+      get copyWith =>
+          __$$TestSequenceQuestionImplCopyWithImpl<_$TestSequenceQuestionImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TestSequenceQuestionToJson(
+    return _$$TestSequenceQuestionImplToJson(
       this,
     );
   }
@@ -550,10 +553,10 @@ abstract class _TestSequenceQuestion implements TestSequenceQuestion {
   factory _TestSequenceQuestion(
       {required SequenceQuestion source,
       List<int>? userAnswer,
-      bool? isAnsweredCorrectly}) = _$_TestSequenceQuestion;
+      bool? isAnsweredCorrectly}) = _$TestSequenceQuestionImpl;
 
   factory _TestSequenceQuestion.fromJson(Map<String, dynamic> json) =
-      _$_TestSequenceQuestion.fromJson;
+      _$TestSequenceQuestionImpl.fromJson;
 
   @override
   SequenceQuestion get source;
@@ -566,8 +569,8 @@ abstract class _TestSequenceQuestion implements TestSequenceQuestion {
   set isAnsweredCorrectly(bool? value);
   @override
   @JsonKey(ignore: true)
-  _$$_TestSequenceQuestionCopyWith<_$_TestSequenceQuestion> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TestSequenceQuestionImplCopyWith<_$TestSequenceQuestionImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 TestMatchingQuestion _$TestMatchingQuestionFromJson(Map<String, dynamic> json) {
@@ -647,11 +650,11 @@ class _$TestMatchingQuestionCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TestMatchingQuestionCopyWith<$Res>
+abstract class _$$TestMatchingQuestionImplCopyWith<$Res>
     implements $TestMatchingQuestionCopyWith<$Res> {
-  factory _$$_TestMatchingQuestionCopyWith(_$_TestMatchingQuestion value,
-          $Res Function(_$_TestMatchingQuestion) then) =
-      __$$_TestMatchingQuestionCopyWithImpl<$Res>;
+  factory _$$TestMatchingQuestionImplCopyWith(_$TestMatchingQuestionImpl value,
+          $Res Function(_$TestMatchingQuestionImpl) then) =
+      __$$TestMatchingQuestionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -664,11 +667,11 @@ abstract class _$$_TestMatchingQuestionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TestMatchingQuestionCopyWithImpl<$Res>
-    extends _$TestMatchingQuestionCopyWithImpl<$Res, _$_TestMatchingQuestion>
-    implements _$$_TestMatchingQuestionCopyWith<$Res> {
-  __$$_TestMatchingQuestionCopyWithImpl(_$_TestMatchingQuestion _value,
-      $Res Function(_$_TestMatchingQuestion) _then)
+class __$$TestMatchingQuestionImplCopyWithImpl<$Res>
+    extends _$TestMatchingQuestionCopyWithImpl<$Res, _$TestMatchingQuestionImpl>
+    implements _$$TestMatchingQuestionImplCopyWith<$Res> {
+  __$$TestMatchingQuestionImplCopyWithImpl(_$TestMatchingQuestionImpl _value,
+      $Res Function(_$TestMatchingQuestionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -678,7 +681,7 @@ class __$$_TestMatchingQuestionCopyWithImpl<$Res>
     Object? userAnswer = freezed,
     Object? isAnsweredCorrectly = freezed,
   }) {
-    return _then(_$_TestMatchingQuestion(
+    return _then(_$TestMatchingQuestionImpl(
       source: null == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
@@ -697,12 +700,12 @@ class __$$_TestMatchingQuestionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TestMatchingQuestion implements _TestMatchingQuestion {
-  _$_TestMatchingQuestion(
+class _$TestMatchingQuestionImpl implements _TestMatchingQuestion {
+  _$TestMatchingQuestionImpl(
       {required this.source, this.userAnswer, this.isAnsweredCorrectly});
 
-  factory _$_TestMatchingQuestion.fromJson(Map<String, dynamic> json) =>
-      _$$_TestMatchingQuestionFromJson(json);
+  factory _$TestMatchingQuestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TestMatchingQuestionImplFromJson(json);
 
   @override
   MatchingQuestion source;
@@ -719,13 +722,14 @@ class _$_TestMatchingQuestion implements _TestMatchingQuestion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TestMatchingQuestionCopyWith<_$_TestMatchingQuestion> get copyWith =>
-      __$$_TestMatchingQuestionCopyWithImpl<_$_TestMatchingQuestion>(
-          this, _$identity);
+  _$$TestMatchingQuestionImplCopyWith<_$TestMatchingQuestionImpl>
+      get copyWith =>
+          __$$TestMatchingQuestionImplCopyWithImpl<_$TestMatchingQuestionImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TestMatchingQuestionToJson(
+    return _$$TestMatchingQuestionImplToJson(
       this,
     );
   }
@@ -735,10 +739,10 @@ abstract class _TestMatchingQuestion implements TestMatchingQuestion {
   factory _TestMatchingQuestion(
       {required MatchingQuestion source,
       Map<int, int?>? userAnswer,
-      bool? isAnsweredCorrectly}) = _$_TestMatchingQuestion;
+      bool? isAnsweredCorrectly}) = _$TestMatchingQuestionImpl;
 
   factory _TestMatchingQuestion.fromJson(Map<String, dynamic> json) =
-      _$_TestMatchingQuestion.fromJson;
+      _$TestMatchingQuestionImpl.fromJson;
 
   @override
   MatchingQuestion get source;
@@ -751,6 +755,6 @@ abstract class _TestMatchingQuestion implements TestMatchingQuestion {
   set isAnsweredCorrectly(bool? value);
   @override
   @JsonKey(ignore: true)
-  _$$_TestMatchingQuestionCopyWith<_$_TestMatchingQuestion> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TestMatchingQuestionImplCopyWith<_$TestMatchingQuestionImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

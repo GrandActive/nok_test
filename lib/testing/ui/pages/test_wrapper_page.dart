@@ -2,17 +2,23 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/injection.dart';
-import 'package:nok_test/navigation.gr.dart';
+import 'package:nok_test/navigation.dart';
 import 'package:nok_test/testing/bloc/test_bloc/test_bloc.dart';
 import 'package:nok_test/testing/bloc/timer_bloc/timer_bloc.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/testing/domain/ticker.dart';
 
-class TestWrapperPage extends StatelessWidget {
+@RoutePage()
+class TestWrapperPage extends StatelessWidget implements AutoRouteWrapper {
   const TestWrapperPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return const AutoRouter();
+  }
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<TestBloc>(
@@ -56,7 +62,7 @@ class TestWrapperPage extends StatelessWidget {
             },
           ),
         ],
-        child: const AutoRouter(),
+        child: this,
       ),
     );
   }

@@ -6,8 +6,8 @@ part of 'test_question.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TestQuestion _$$_TestQuestionFromJson(Map<String, dynamic> json) =>
-    _$_TestQuestion(
+_$TestQuestionImpl _$$TestQuestionImplFromJson(Map<String, dynamic> json) =>
+    _$TestQuestionImpl(
       source:
           SelectionQuestion.fromJson(json['source'] as Map<String, dynamic>),
       userAnswers:
@@ -15,50 +15,50 @@ _$_TestQuestion _$$_TestQuestionFromJson(Map<String, dynamic> json) =>
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );
 
-Map<String, dynamic> _$$_TestQuestionToJson(_$_TestQuestion instance) =>
+Map<String, dynamic> _$$TestQuestionImplToJson(_$TestQuestionImpl instance) =>
     <String, dynamic>{
       'source': instance.source,
       'userAnswers': instance.userAnswers?.toList(),
       'isAnsweredCorrectly': instance.isAnsweredCorrectly,
     };
 
-_$_TestUserInputQuestion _$$_TestUserInputQuestionFromJson(
+_$TestUserInputQuestionImpl _$$TestUserInputQuestionImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TestUserInputQuestion(
+    _$TestUserInputQuestionImpl(
       source:
           UserInputQuestion.fromJson(json['source'] as Map<String, dynamic>),
       userAnswer: json['userAnswer'] as String?,
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );
 
-Map<String, dynamic> _$$_TestUserInputQuestionToJson(
-        _$_TestUserInputQuestion instance) =>
+Map<String, dynamic> _$$TestUserInputQuestionImplToJson(
+        _$TestUserInputQuestionImpl instance) =>
     <String, dynamic>{
       'source': instance.source,
       'userAnswer': instance.userAnswer,
       'isAnsweredCorrectly': instance.isAnsweredCorrectly,
     };
 
-_$_TestSequenceQuestion _$$_TestSequenceQuestionFromJson(
+_$TestSequenceQuestionImpl _$$TestSequenceQuestionImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TestSequenceQuestion(
+    _$TestSequenceQuestionImpl(
       source: SequenceQuestion.fromJson(json['source'] as Map<String, dynamic>),
       userAnswer:
           (json['userAnswer'] as List<dynamic>?)?.map((e) => e as int).toList(),
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );
 
-Map<String, dynamic> _$$_TestSequenceQuestionToJson(
-        _$_TestSequenceQuestion instance) =>
+Map<String, dynamic> _$$TestSequenceQuestionImplToJson(
+        _$TestSequenceQuestionImpl instance) =>
     <String, dynamic>{
       'source': instance.source,
       'userAnswer': instance.userAnswer,
       'isAnsweredCorrectly': instance.isAnsweredCorrectly,
     };
 
-_$_TestMatchingQuestion _$$_TestMatchingQuestionFromJson(
+_$TestMatchingQuestionImpl _$$TestMatchingQuestionImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TestMatchingQuestion(
+    _$TestMatchingQuestionImpl(
       source: MatchingQuestion.fromJson(json['source'] as Map<String, dynamic>),
       userAnswer: (json['userAnswer'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(int.parse(k), e as int?),
@@ -66,8 +66,8 @@ _$_TestMatchingQuestion _$$_TestMatchingQuestionFromJson(
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );
 
-Map<String, dynamic> _$$_TestMatchingQuestionToJson(
-        _$_TestMatchingQuestion instance) =>
+Map<String, dynamic> _$$TestMatchingQuestionImplToJson(
+        _$TestMatchingQuestionImpl instance) =>
     <String, dynamic>{
       'source': instance.source,
       'userAnswer':

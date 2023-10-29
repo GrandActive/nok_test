@@ -1,19 +1,30 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:nok_test/main_page/main_page.dart';
+import 'package:nok_test/testing/domain/model/test_mode.dart';
+import 'package:nok_test/testing/domain/model/test_question.dart';
 import 'package:nok_test/testing/ui/pages/question_review_page/question_review_page.dart';
 import 'package:nok_test/testing/ui/pages/test_page/test_page.dart';
 import 'package:nok_test/testing/ui/pages/test_results_page/test_results_page.dart';
 import 'package:nok_test/testing/ui/pages/test_wrapper_page.dart';
 
-@MaterialAutoRouter(replaceInRouteName: 'Page,Route', routes: [
-  AutoRoute(page: MainPage, initial: true),
-  AutoRoute(
-    page: TestWrapperPage,
-    children: [
-      AutoRoute(page: TestPage),
-      AutoRoute(page: TestResultsPage),
-      AutoRoute(page: QuestionReviewPage),
-    ],
-  ),
-])
-class $AppRouter {}
+part 'navigation.gr.dart';
+
+@AutoRouterConfig()
+class AppRouter extends _$AppRouter {
+  @override
+  RouteType get defaultRouteType => const RouteType.material();
+
+  @override
+  List<AutoRoute> get routes => [
+        AutoRoute(page: MainRoute.page, initial: true),
+        AutoRoute(
+          page: TestWrapperRoute.page,
+          children: [
+            AutoRoute(page: TestingRoute.page),
+            AutoRoute(page: TestResultsRoute.page),
+            AutoRoute(page: QuestionReviewRoute.page),
+          ],
+        ),
+      ];
+}

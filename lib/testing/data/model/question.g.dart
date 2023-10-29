@@ -6,7 +6,8 @@ part of 'question.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Question _$$_QuestionFromJson(Map<String, dynamic> json) => _$_Question(
+_$QuestionImpl _$$QuestionImplFromJson(Map<String, dynamic> json) =>
+    _$QuestionImpl(
       text: json['text'] as String,
       possibleAnswers: (json['possibleAnswers'] as List<dynamic>)
           .map((e) => PossibleAnswer.fromJson(e as Map<String, dynamic>))
@@ -16,15 +17,16 @@ _$_Question _$$_QuestionFromJson(Map<String, dynamic> json) => _$_Question(
           .toSet(),
     );
 
-Map<String, dynamic> _$$_QuestionToJson(_$_Question instance) =>
+Map<String, dynamic> _$$QuestionImplToJson(_$QuestionImpl instance) =>
     <String, dynamic>{
       'text': instance.text,
       'possibleAnswers': instance.possibleAnswers,
       'correctAnswers': instance.correctAnswerIds.toList(),
     };
 
-_$_SequenceQuestion _$$_SequenceQuestionFromJson(Map<String, dynamic> json) =>
-    _$_SequenceQuestion(
+_$SequenceQuestionImpl _$$SequenceQuestionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SequenceQuestionImpl(
       title: json['title'] as String,
       answers: (json['answers'] as List<dynamic>)
           .map((e) => PossibleAnswer.fromJson(e as Map<String, dynamic>))
@@ -33,30 +35,33 @@ _$_SequenceQuestion _$$_SequenceQuestionFromJson(Map<String, dynamic> json) =>
           (json['correctOrder'] as List<dynamic>).map((e) => e as int).toList(),
     );
 
-Map<String, dynamic> _$$_SequenceQuestionToJson(_$_SequenceQuestion instance) =>
+Map<String, dynamic> _$$SequenceQuestionImplToJson(
+        _$SequenceQuestionImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'answers': instance.answers,
       'correctOrder': instance.correctOrder,
     };
 
-_$_UserInputQuestion _$$_UserInputQuestionFromJson(Map<String, dynamic> json) =>
-    _$_UserInputQuestion(
+_$UserInputQuestionImpl _$$UserInputQuestionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UserInputQuestionImpl(
       title: json['title'] as String,
       text: json['text'] as String,
       correctAnswer: json['correctAnswer'] as String,
     );
 
-Map<String, dynamic> _$$_UserInputQuestionToJson(
-        _$_UserInputQuestion instance) =>
+Map<String, dynamic> _$$UserInputQuestionImplToJson(
+        _$UserInputQuestionImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'text': instance.text,
       'correctAnswer': instance.correctAnswer,
     };
 
-_$_MatchingQuestion _$$_MatchingQuestionFromJson(Map<String, dynamic> json) =>
-    _$_MatchingQuestion(
+_$MatchingQuestionImpl _$$MatchingQuestionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$MatchingQuestionImpl(
       text: json['text'] as String,
       questions: (json['questions'] as List<dynamic>)
           .map((e) => PossibleAnswer.fromJson(e as Map<String, dynamic>))
@@ -69,7 +74,8 @@ _$_MatchingQuestion _$$_MatchingQuestionFromJson(Map<String, dynamic> json) =>
       ),
     );
 
-Map<String, dynamic> _$$_MatchingQuestionToJson(_$_MatchingQuestion instance) =>
+Map<String, dynamic> _$$MatchingQuestionImplToJson(
+        _$MatchingQuestionImpl instance) =>
     <String, dynamic>{
       'text': instance.text,
       'questions': instance.questions,

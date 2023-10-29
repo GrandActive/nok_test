@@ -95,19 +95,20 @@ class _$TestEventCopyWithImpl<$Res, $Val extends TestEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TestMode mode});
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$TestEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$TestEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +116,7 @@ class __$$_StartedCopyWithImpl<$Res>
   $Res call({
     Object? mode = null,
   }) {
-    return _then(_$_Started(
+    return _then(_$StartedImpl(
       mode: null == mode
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
@@ -126,8 +127,8 @@ class __$$_StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started with DiagnosticableTreeMixin implements _Started {
-  const _$_Started({required this.mode});
+class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
+  const _$StartedImpl({required this.mode});
 
   @override
   final TestMode mode;
@@ -149,7 +150,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Started &&
+            other is _$StartedImpl &&
             (identical(other.mode, mode) || other.mode == mode));
   }
 
@@ -159,8 +160,8 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
-      __$$_StartedCopyWithImpl<_$_Started>(this, _$identity);
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -247,29 +248,29 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
 }
 
 abstract class _Started implements TestEvent {
-  const factory _Started({required final TestMode mode}) = _$_Started;
+  const factory _Started({required final TestMode mode}) = _$StartedImpl;
 
   TestMode get mode;
   @JsonKey(ignore: true)
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SelectedCopyWith<$Res> {
-  factory _$$_SelectedCopyWith(
-          _$_Selected value, $Res Function(_$_Selected) then) =
-      __$$_SelectedCopyWithImpl<$Res>;
+abstract class _$$SelectedImplCopyWith<$Res> {
+  factory _$$SelectedImplCopyWith(
+          _$SelectedImpl value, $Res Function(_$SelectedImpl) then) =
+      __$$SelectedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$_SelectedCopyWithImpl<$Res>
-    extends _$TestEventCopyWithImpl<$Res, _$_Selected>
-    implements _$$_SelectedCopyWith<$Res> {
-  __$$_SelectedCopyWithImpl(
-      _$_Selected _value, $Res Function(_$_Selected) _then)
+class __$$SelectedImplCopyWithImpl<$Res>
+    extends _$TestEventCopyWithImpl<$Res, _$SelectedImpl>
+    implements _$$SelectedImplCopyWith<$Res> {
+  __$$SelectedImplCopyWithImpl(
+      _$SelectedImpl _value, $Res Function(_$SelectedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -277,7 +278,7 @@ class __$$_SelectedCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$_Selected(
+    return _then(_$SelectedImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -288,8 +289,8 @@ class __$$_SelectedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Selected with DiagnosticableTreeMixin implements _Selected {
-  const _$_Selected({required this.index});
+class _$SelectedImpl with DiagnosticableTreeMixin implements _Selected {
+  const _$SelectedImpl({required this.index});
 
   @override
   final int index;
@@ -311,7 +312,7 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Selected &&
+            other is _$SelectedImpl &&
             (identical(other.index, index) || other.index == index));
   }
 
@@ -321,8 +322,8 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SelectedCopyWith<_$_Selected> get copyWith =>
-      __$$_SelectedCopyWithImpl<_$_Selected>(this, _$identity);
+  _$$SelectedImplCopyWith<_$SelectedImpl> get copyWith =>
+      __$$SelectedImplCopyWithImpl<_$SelectedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -409,36 +410,36 @@ class _$_Selected with DiagnosticableTreeMixin implements _Selected {
 }
 
 abstract class _Selected implements TestEvent {
-  const factory _Selected({required final int index}) = _$_Selected;
+  const factory _Selected({required final int index}) = _$SelectedImpl;
 
   int get index;
   @JsonKey(ignore: true)
-  _$$_SelectedCopyWith<_$_Selected> get copyWith =>
+  _$$SelectedImplCopyWith<_$SelectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SelectNextQuestionCopyWith<$Res> {
-  factory _$$_SelectNextQuestionCopyWith(_$_SelectNextQuestion value,
-          $Res Function(_$_SelectNextQuestion) then) =
-      __$$_SelectNextQuestionCopyWithImpl<$Res>;
+abstract class _$$SelectNextQuestionImplCopyWith<$Res> {
+  factory _$$SelectNextQuestionImplCopyWith(_$SelectNextQuestionImpl value,
+          $Res Function(_$SelectNextQuestionImpl) then) =
+      __$$SelectNextQuestionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SelectNextQuestionCopyWithImpl<$Res>
-    extends _$TestEventCopyWithImpl<$Res, _$_SelectNextQuestion>
-    implements _$$_SelectNextQuestionCopyWith<$Res> {
-  __$$_SelectNextQuestionCopyWithImpl(
-      _$_SelectNextQuestion _value, $Res Function(_$_SelectNextQuestion) _then)
+class __$$SelectNextQuestionImplCopyWithImpl<$Res>
+    extends _$TestEventCopyWithImpl<$Res, _$SelectNextQuestionImpl>
+    implements _$$SelectNextQuestionImplCopyWith<$Res> {
+  __$$SelectNextQuestionImplCopyWithImpl(_$SelectNextQuestionImpl _value,
+      $Res Function(_$SelectNextQuestionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SelectNextQuestion
+class _$SelectNextQuestionImpl
     with DiagnosticableTreeMixin
     implements _SelectNextQuestion {
-  const _$_SelectNextQuestion();
+  const _$SelectNextQuestionImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -454,7 +455,7 @@ class _$_SelectNextQuestion
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SelectNextQuestion);
+        (other.runtimeType == runtimeType && other is _$SelectNextQuestionImpl);
   }
 
   @override
@@ -545,26 +546,26 @@ class _$_SelectNextQuestion
 }
 
 abstract class _SelectNextQuestion implements TestEvent {
-  const factory _SelectNextQuestion() = _$_SelectNextQuestion;
+  const factory _SelectNextQuestion() = _$SelectNextQuestionImpl;
 }
 
 /// @nodoc
-abstract class _$$_GotFinishConfirmationAnswerCopyWith<$Res> {
-  factory _$$_GotFinishConfirmationAnswerCopyWith(
-          _$_GotFinishConfirmationAnswer value,
-          $Res Function(_$_GotFinishConfirmationAnswer) then) =
-      __$$_GotFinishConfirmationAnswerCopyWithImpl<$Res>;
+abstract class _$$GotFinishConfirmationAnswerImplCopyWith<$Res> {
+  factory _$$GotFinishConfirmationAnswerImplCopyWith(
+          _$GotFinishConfirmationAnswerImpl value,
+          $Res Function(_$GotFinishConfirmationAnswerImpl) then) =
+      __$$GotFinishConfirmationAnswerImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool confirm});
 }
 
 /// @nodoc
-class __$$_GotFinishConfirmationAnswerCopyWithImpl<$Res>
-    extends _$TestEventCopyWithImpl<$Res, _$_GotFinishConfirmationAnswer>
-    implements _$$_GotFinishConfirmationAnswerCopyWith<$Res> {
-  __$$_GotFinishConfirmationAnswerCopyWithImpl(
-      _$_GotFinishConfirmationAnswer _value,
-      $Res Function(_$_GotFinishConfirmationAnswer) _then)
+class __$$GotFinishConfirmationAnswerImplCopyWithImpl<$Res>
+    extends _$TestEventCopyWithImpl<$Res, _$GotFinishConfirmationAnswerImpl>
+    implements _$$GotFinishConfirmationAnswerImplCopyWith<$Res> {
+  __$$GotFinishConfirmationAnswerImplCopyWithImpl(
+      _$GotFinishConfirmationAnswerImpl _value,
+      $Res Function(_$GotFinishConfirmationAnswerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -572,7 +573,7 @@ class __$$_GotFinishConfirmationAnswerCopyWithImpl<$Res>
   $Res call({
     Object? confirm = null,
   }) {
-    return _then(_$_GotFinishConfirmationAnswer(
+    return _then(_$GotFinishConfirmationAnswerImpl(
       confirm: null == confirm
           ? _value.confirm
           : confirm // ignore: cast_nullable_to_non_nullable
@@ -583,10 +584,10 @@ class __$$_GotFinishConfirmationAnswerCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GotFinishConfirmationAnswer
+class _$GotFinishConfirmationAnswerImpl
     with DiagnosticableTreeMixin
     implements _GotFinishConfirmationAnswer {
-  const _$_GotFinishConfirmationAnswer({required this.confirm});
+  const _$GotFinishConfirmationAnswerImpl({required this.confirm});
 
   @override
   final bool confirm;
@@ -609,7 +610,7 @@ class _$_GotFinishConfirmationAnswer
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GotFinishConfirmationAnswer &&
+            other is _$GotFinishConfirmationAnswerImpl &&
             (identical(other.confirm, confirm) || other.confirm == confirm));
   }
 
@@ -619,9 +620,9 @@ class _$_GotFinishConfirmationAnswer
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GotFinishConfirmationAnswerCopyWith<_$_GotFinishConfirmationAnswer>
-      get copyWith => __$$_GotFinishConfirmationAnswerCopyWithImpl<
-          _$_GotFinishConfirmationAnswer>(this, _$identity);
+  _$$GotFinishConfirmationAnswerImplCopyWith<_$GotFinishConfirmationAnswerImpl>
+      get copyWith => __$$GotFinishConfirmationAnswerImplCopyWithImpl<
+          _$GotFinishConfirmationAnswerImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -709,36 +710,36 @@ class _$_GotFinishConfirmationAnswer
 
 abstract class _GotFinishConfirmationAnswer implements TestEvent {
   const factory _GotFinishConfirmationAnswer({required final bool confirm}) =
-      _$_GotFinishConfirmationAnswer;
+      _$GotFinishConfirmationAnswerImpl;
 
   bool get confirm;
   @JsonKey(ignore: true)
-  _$$_GotFinishConfirmationAnswerCopyWith<_$_GotFinishConfirmationAnswer>
+  _$$GotFinishConfirmationAnswerImplCopyWith<_$GotFinishConfirmationAnswerImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FinishRequestedCopyWith<$Res> {
-  factory _$$_FinishRequestedCopyWith(
-          _$_FinishRequested value, $Res Function(_$_FinishRequested) then) =
-      __$$_FinishRequestedCopyWithImpl<$Res>;
+abstract class _$$FinishRequestedImplCopyWith<$Res> {
+  factory _$$FinishRequestedImplCopyWith(_$FinishRequestedImpl value,
+          $Res Function(_$FinishRequestedImpl) then) =
+      __$$FinishRequestedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FinishRequestedCopyWithImpl<$Res>
-    extends _$TestEventCopyWithImpl<$Res, _$_FinishRequested>
-    implements _$$_FinishRequestedCopyWith<$Res> {
-  __$$_FinishRequestedCopyWithImpl(
-      _$_FinishRequested _value, $Res Function(_$_FinishRequested) _then)
+class __$$FinishRequestedImplCopyWithImpl<$Res>
+    extends _$TestEventCopyWithImpl<$Res, _$FinishRequestedImpl>
+    implements _$$FinishRequestedImplCopyWith<$Res> {
+  __$$FinishRequestedImplCopyWithImpl(
+      _$FinishRequestedImpl _value, $Res Function(_$FinishRequestedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FinishRequested
+class _$FinishRequestedImpl
     with DiagnosticableTreeMixin
     implements _FinishRequested {
-  const _$_FinishRequested();
+  const _$FinishRequestedImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -754,7 +755,7 @@ class _$_FinishRequested
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FinishRequested);
+        (other.runtimeType == runtimeType && other is _$FinishRequestedImpl);
   }
 
   @override
@@ -845,7 +846,7 @@ class _$_FinishRequested
 }
 
 abstract class _FinishRequested implements TestEvent {
-  const factory _FinishRequested() = _$_FinishRequested;
+  const factory _FinishRequested() = _$FinishRequestedImpl;
 }
 
 /// @nodoc
@@ -940,10 +941,11 @@ class _$TestStateCopyWithImpl<$Res, $Val extends TestState>
 }
 
 /// @nodoc
-abstract class _$$_TestStateCopyWith<$Res> implements $TestStateCopyWith<$Res> {
-  factory _$$_TestStateCopyWith(
-          _$_TestState value, $Res Function(_$_TestState) then) =
-      __$$_TestStateCopyWithImpl<$Res>;
+abstract class _$$TestStateImplCopyWith<$Res>
+    implements $TestStateCopyWith<$Res> {
+  factory _$$TestStateImplCopyWith(
+          _$TestStateImpl value, $Res Function(_$TestStateImpl) then) =
+      __$$TestStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -958,11 +960,11 @@ abstract class _$$_TestStateCopyWith<$Res> implements $TestStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TestStateCopyWithImpl<$Res>
-    extends _$TestStateCopyWithImpl<$Res, _$_TestState>
-    implements _$$_TestStateCopyWith<$Res> {
-  __$$_TestStateCopyWithImpl(
-      _$_TestState _value, $Res Function(_$_TestState) _then)
+class __$$TestStateImplCopyWithImpl<$Res>
+    extends _$TestStateCopyWithImpl<$Res, _$TestStateImpl>
+    implements _$$TestStateImplCopyWith<$Res> {
+  __$$TestStateImplCopyWithImpl(
+      _$TestStateImpl _value, $Res Function(_$TestStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -977,7 +979,7 @@ class __$$_TestStateCopyWithImpl<$Res>
     Object? needFinishConfirmation = null,
     Object? isUpdateNeeded = null,
   }) {
-    return _then(_$_TestState(
+    return _then(_$TestStateImpl(
       mode: null == mode
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
@@ -1016,8 +1018,8 @@ class __$$_TestStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TestState with DiagnosticableTreeMixin implements _TestState {
-  const _$_TestState(
+class _$TestStateImpl with DiagnosticableTreeMixin implements _TestState {
+  const _$TestStateImpl(
       {required this.mode,
       final List<TestQuestion> questions = const [],
       this.selectedIndex = null,
@@ -1083,7 +1085,7 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TestState &&
+            other is _$TestStateImpl &&
             (identical(other.mode, mode) || other.mode == mode) &&
             const DeepCollectionEquality()
                 .equals(other._questions, _questions) &&
@@ -1116,8 +1118,8 @@ class _$_TestState with DiagnosticableTreeMixin implements _TestState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TestStateCopyWith<_$_TestState> get copyWith =>
-      __$$_TestStateCopyWithImpl<_$_TestState>(this, _$identity);
+  _$$TestStateImplCopyWith<_$TestStateImpl> get copyWith =>
+      __$$TestStateImplCopyWithImpl<_$TestStateImpl>(this, _$identity);
 }
 
 abstract class _TestState implements TestState {
@@ -1129,7 +1131,7 @@ abstract class _TestState implements TestState {
       final bool isLoading,
       final String? errorMessage,
       final bool needFinishConfirmation,
-      final bool isUpdateNeeded}) = _$_TestState;
+      final bool isUpdateNeeded}) = _$TestStateImpl;
 
   @override
   TestMode get mode;
@@ -1149,6 +1151,6 @@ abstract class _TestState implements TestState {
   bool get isUpdateNeeded;
   @override
   @JsonKey(ignore: true)
-  _$$_TestStateCopyWith<_$_TestState> get copyWith =>
+  _$$TestStateImplCopyWith<_$TestStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

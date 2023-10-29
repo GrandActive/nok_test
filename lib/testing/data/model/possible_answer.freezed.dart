@@ -68,22 +68,22 @@ class _$PossibleAnswerCopyWithImpl<$Res, $Val extends PossibleAnswer>
 }
 
 /// @nodoc
-abstract class _$$_PossibleAnswerCopyWith<$Res>
+abstract class _$$PossibleAnswerImplCopyWith<$Res>
     implements $PossibleAnswerCopyWith<$Res> {
-  factory _$$_PossibleAnswerCopyWith(
-          _$_PossibleAnswer value, $Res Function(_$_PossibleAnswer) then) =
-      __$$_PossibleAnswerCopyWithImpl<$Res>;
+  factory _$$PossibleAnswerImplCopyWith(_$PossibleAnswerImpl value,
+          $Res Function(_$PossibleAnswerImpl) then) =
+      __$$PossibleAnswerImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int index, String text});
 }
 
 /// @nodoc
-class __$$_PossibleAnswerCopyWithImpl<$Res>
-    extends _$PossibleAnswerCopyWithImpl<$Res, _$_PossibleAnswer>
-    implements _$$_PossibleAnswerCopyWith<$Res> {
-  __$$_PossibleAnswerCopyWithImpl(
-      _$_PossibleAnswer _value, $Res Function(_$_PossibleAnswer) _then)
+class __$$PossibleAnswerImplCopyWithImpl<$Res>
+    extends _$PossibleAnswerCopyWithImpl<$Res, _$PossibleAnswerImpl>
+    implements _$$PossibleAnswerImplCopyWith<$Res> {
+  __$$PossibleAnswerImplCopyWithImpl(
+      _$PossibleAnswerImpl _value, $Res Function(_$PossibleAnswerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_PossibleAnswerCopyWithImpl<$Res>
     Object? index = null,
     Object? text = null,
   }) {
-    return _then(_$_PossibleAnswer(
+    return _then(_$PossibleAnswerImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_PossibleAnswerCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PossibleAnswer implements _PossibleAnswer {
-  const _$_PossibleAnswer({required this.index, required this.text});
+class _$PossibleAnswerImpl implements _PossibleAnswer {
+  const _$PossibleAnswerImpl({required this.index, required this.text});
 
-  factory _$_PossibleAnswer.fromJson(Map<String, dynamic> json) =>
-      _$$_PossibleAnswerFromJson(json);
+  factory _$PossibleAnswerImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PossibleAnswerImplFromJson(json);
 
   @override
   final int index;
@@ -127,7 +127,7 @@ class _$_PossibleAnswer implements _PossibleAnswer {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PossibleAnswer &&
+            other is _$PossibleAnswerImpl &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.text, text) || other.text == text));
   }
@@ -139,12 +139,13 @@ class _$_PossibleAnswer implements _PossibleAnswer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PossibleAnswerCopyWith<_$_PossibleAnswer> get copyWith =>
-      __$$_PossibleAnswerCopyWithImpl<_$_PossibleAnswer>(this, _$identity);
+  _$$PossibleAnswerImplCopyWith<_$PossibleAnswerImpl> get copyWith =>
+      __$$PossibleAnswerImplCopyWithImpl<_$PossibleAnswerImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PossibleAnswerToJson(
+    return _$$PossibleAnswerImplToJson(
       this,
     );
   }
@@ -153,10 +154,10 @@ class _$_PossibleAnswer implements _PossibleAnswer {
 abstract class _PossibleAnswer implements PossibleAnswer {
   const factory _PossibleAnswer(
       {required final int index,
-      required final String text}) = _$_PossibleAnswer;
+      required final String text}) = _$PossibleAnswerImpl;
 
   factory _PossibleAnswer.fromJson(Map<String, dynamic> json) =
-      _$_PossibleAnswer.fromJson;
+      _$PossibleAnswerImpl.fromJson;
 
   @override
   int get index;
@@ -164,6 +165,6 @@ abstract class _PossibleAnswer implements PossibleAnswer {
   String get text;
   @override
   @JsonKey(ignore: true)
-  _$$_PossibleAnswerCopyWith<_$_PossibleAnswer> get copyWith =>
+  _$$PossibleAnswerImplCopyWith<_$PossibleAnswerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

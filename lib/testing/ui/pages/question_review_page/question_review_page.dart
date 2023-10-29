@@ -1,7 +1,9 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
 import 'package:nok_test/testing/ui/pages/finished_question_page/finished_question_page.dart';
 
+@RoutePage()
 class QuestionReviewPage extends StatelessWidget {
   const QuestionReviewPage({
     super.key,
