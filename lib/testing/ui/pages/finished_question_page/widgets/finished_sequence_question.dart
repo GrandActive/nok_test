@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nok_test/styles/colors.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/testing/ui/pages/question_page/widgets/sequence_question/widgets/finished_sequence_answer_list.dart';
 
 class FinishedSequenceQuestion extends StatelessWidget {
   const FinishedSequenceQuestion({
@@ -22,41 +22,7 @@ class FinishedSequenceQuestion extends StatelessWidget {
               style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 24),
-            ListView(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              children: [
-                ...question.userAnswer!.indexed.map((a) {
-                  final answerOrder = a.$1;
-                  final answer = question.source.answers.firstWhere((e) => e.index == a.$2);
-
-                  Color borderColor;
-                  if (question.isAnsweredCorrectly == null) {
-                    borderColor = const Color(0xFFDBE9F9);
-                  } else if (question.source.correctOrder[answerOrder] == answer.index) {
-                    borderColor = correctAnswerColor;
-                  } else {
-                    borderColor = wrongAnswerColor;
-                  }
-
-                  return Material(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: ListTile(
-                        dense: true,
-                        title: Text(answer.text, style: const TextStyle(fontSize: 16)),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: const BorderRadius.all(Radius.circular(8)),
-                          side: BorderSide(
-                            color: borderColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                })
-              ],
-            )
+            FinishedSequenceAnswerList(question: question)
           ],
         ),
       ),

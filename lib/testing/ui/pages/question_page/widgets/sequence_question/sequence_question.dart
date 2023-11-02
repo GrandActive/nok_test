@@ -26,43 +26,42 @@ class SequenceQuestion extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<QuestionBloc, QuestionState>(
       builder: (context, state) {
-        return state.map(
-          initial: (_) => const SizedBox.shrink(),
-          inProgress: (state) {
-            final question = state.question as TestSequenceQuestion;
-            final selectedAnswers =
-                state.selectedAnswers as List<PossibleAnswer>? ?? question.source.answers;
+        if (state is Initial) return const SizedBox.shrink();
 
-            return SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
-                child: Column(
-                  children: [
-                    Text(
-                      question.source.title,
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    const SizedBox(height: 24),
-                    const Text(
-                      "Для перетаскивания зажмите вариант ответа",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    const SizedBox(height: 8),
-                    SequenceAnswerList(
-                      selectedAnswers: selectedAnswers,
-                      onReorder: (int oldIndex, int newIndex) =>
-                          _updateAnswer(context, selectedAnswers, oldIndex, newIndex),
-                    ),
-                    const SizedBox(height: 24),
-                    SubmitButton(isActive: true, isFinishing: state.isLast),
-                  ],
+        final question = state.question as TestSequenceQuestion;
+        final selectedAnswers =
+            state.selectedAnswers as List<PossibleAnswer>? ?? question.source.answers;
+
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
+            child: Column(
+              children: [
+                Text(
+                  question.source.title,
+                  style: const TextStyle(fontSize: 16),
                 ),
-              ),
-            );
-          }, answered: (state) {
-            // TODO
-            return Placeholder();
-        },
+                const SizedBox(height: 24),
+                if (state is! Answered) ...[
+                  const Text(
+                    "Для перетаскивания зажмите вариант ответа",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 8),
+                ],
+                if (state is Answered)
+                  FinishedSequenceAnswerList(question: question)
+                else
+                  SequenceAnswerList(
+                    selectedAnswers: selectedAnswers,
+                    onReorder: (int oldIndex, int newIndex) =>
+                        _updateAnswer(context, selectedAnswers, oldIndex, newIndex),
+                  ),
+                const SizedBox(height: 24),
+                SubmitButton(isActive: true, isFinishing: state.isLast),
+              ],
+            ),
+          ),
         );
       },
     );
