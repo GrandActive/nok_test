@@ -2,33 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/styles/colors.dart';
 import 'package:nok_test/testing/bloc/question_bloc/question_bloc.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/selected_state.dart';
 
 class SingleSelectAnswerItem extends StatelessWidget {
   const SingleSelectAnswerItem({
     super.key,
     required this.selectedIndex,
-    required this.isActive,
+    this.isDisabled = false,
     required this.index,
     required this.text,
-    required this.isSelectedAsCorrectAnswer,
+    required this.selectedState,
     required this.shouldShowCorrectness,
   });
 
   final int index;
   final int? selectedIndex;
-  final bool isActive;
+  final bool isDisabled;
   final String text;
-  final bool? isSelectedAsCorrectAnswer;
+  final SelectedState selectedState;
   final bool shouldShowCorrectness;
 
-  bool get isSelected => selectedIndex == index;
+  bool get isSelected => selectedState != SelectedState.notSelected;
+
+  bool get isSelectedAsCorrectAnswer => selectedState == SelectedState.selectedCorrectly;
 
   @override
   Widget build(BuildContext context) {
     final tileSide = BorderSide(
       color: isSelected
           ? shouldShowCorrectness
-              ? isSelectedAsCorrectAnswer!
+              ? isSelectedAsCorrectAnswer
                   ? correctAnswerColor
                   : wrongAnswerColor
               : const Color(0xff277ADB)
@@ -36,7 +39,7 @@ class SingleSelectAnswerItem extends StatelessWidget {
     );
 
     final radioColor = isSelected && shouldShowCorrectness
-        ? isSelectedAsCorrectAnswer!
+        ? isSelectedAsCorrectAnswer
             ? correctAnswerColor
             : wrongAnswerColor
         : const Color(0xff277ADB);
@@ -51,7 +54,7 @@ class SingleSelectAnswerItem extends StatelessWidget {
       child: RadioListTile(
         value: index,
         groupValue: selectedIndex,
-        onChanged: isActive ? setSelected : (_) {},
+        onChanged: !isDisabled ? setSelected : null,
         title: DefaultTextStyle(
           style: const TextStyle(
             fontWeight: FontWeight.w400,
@@ -60,7 +63,9 @@ class SingleSelectAnswerItem extends StatelessWidget {
           ),
           child: Text(text),
         ),
-        activeColor: radioColor,
+        fillColor: MaterialStateProperty.resolveWith(
+          (states) => states.contains(MaterialState.selected) ? radioColor : null,
+        ),
         toggleable: true,
         shape: RoundedRectangleBorder(
           borderRadius: const BorderRadius.all(Radius.circular(8)),

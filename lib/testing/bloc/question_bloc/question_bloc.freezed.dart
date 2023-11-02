@@ -18,20 +18,26 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$QuestionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TestQuestion question, bool isLast) started,
+    required TResult Function(TestMode mode, TestQuestion question, bool isLast)
+        started,
     required TResult Function(dynamic answer) answerSelected,
+    required TResult Function() answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TestQuestion question, bool isLast)? started,
+    TResult? Function(TestMode mode, TestQuestion question, bool isLast)?
+        started,
     TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function()? answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TestQuestion question, bool isLast)? started,
+    TResult Function(TestMode mode, TestQuestion question, bool isLast)?
+        started,
     TResult Function(dynamic answer)? answerSelected,
+    TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,21 @@ mixin _$QuestionEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,7 +89,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({TestQuestion question, bool isLast});
+  $Res call({TestMode mode, TestQuestion question, bool isLast});
 }
 
 /// @nodoc
@@ -94,10 +103,15 @@ class __$$StartedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? mode = null,
     Object? question = null,
     Object? isLast = null,
   }) {
     return _then(_$StartedImpl(
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as TestMode,
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
@@ -113,8 +127,11 @@ class __$$StartedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
-  const _$StartedImpl({required this.question, required this.isLast});
+  const _$StartedImpl(
+      {required this.mode, required this.question, required this.isLast});
 
+  @override
+  final TestMode mode;
   @override
   final TestQuestion question;
   @override
@@ -122,7 +139,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'QuestionEvent.started(question: $question, isLast: $isLast)';
+    return 'QuestionEvent.started(mode: $mode, question: $question, isLast: $isLast)';
   }
 
   @override
@@ -130,6 +147,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'QuestionEvent.started'))
+      ..add(DiagnosticsProperty('mode', mode))
       ..add(DiagnosticsProperty('question', question))
       ..add(DiagnosticsProperty('isLast', isLast));
   }
@@ -139,13 +157,14 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartedImpl &&
+            (identical(other.mode, mode) || other.mode == mode) &&
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.isLast, isLast) || other.isLast == isLast));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, question, isLast);
+  int get hashCode => Object.hash(runtimeType, mode, question, isLast);
 
   @JsonKey(ignore: true)
   @override
@@ -156,30 +175,36 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TestQuestion question, bool isLast) started,
+    required TResult Function(TestMode mode, TestQuestion question, bool isLast)
+        started,
     required TResult Function(dynamic answer) answerSelected,
+    required TResult Function() answerSubmitted,
   }) {
-    return started(question, isLast);
+    return started(mode, question, isLast);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TestQuestion question, bool isLast)? started,
+    TResult? Function(TestMode mode, TestQuestion question, bool isLast)?
+        started,
     TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function()? answerSubmitted,
   }) {
-    return started?.call(question, isLast);
+    return started?.call(mode, question, isLast);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TestQuestion question, bool isLast)? started,
+    TResult Function(TestMode mode, TestQuestion question, bool isLast)?
+        started,
     TResult Function(dynamic answer)? answerSelected,
+    TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(question, isLast);
+      return started(mode, question, isLast);
     }
     return orElse();
   }
@@ -189,6 +214,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return started(this);
   }
@@ -198,6 +224,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return started?.call(this);
   }
@@ -207,6 +234,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -218,9 +246,11 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
 
 abstract class _Started implements QuestionEvent {
   const factory _Started(
-      {required final TestQuestion question,
+      {required final TestMode mode,
+      required final TestQuestion question,
       required final bool isLast}) = _$StartedImpl;
 
+  TestMode get mode;
   TestQuestion get question;
   bool get isLast;
   @JsonKey(ignore: true)
@@ -304,8 +334,10 @@ class _$AnswerSelectedImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TestQuestion question, bool isLast) started,
+    required TResult Function(TestMode mode, TestQuestion question, bool isLast)
+        started,
     required TResult Function(dynamic answer) answerSelected,
+    required TResult Function() answerSubmitted,
   }) {
     return answerSelected(answer);
   }
@@ -313,8 +345,10 @@ class _$AnswerSelectedImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TestQuestion question, bool isLast)? started,
+    TResult? Function(TestMode mode, TestQuestion question, bool isLast)?
+        started,
     TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function()? answerSubmitted,
   }) {
     return answerSelected?.call(answer);
   }
@@ -322,8 +356,10 @@ class _$AnswerSelectedImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TestQuestion question, bool isLast)? started,
+    TResult Function(TestMode mode, TestQuestion question, bool isLast)?
+        started,
     TResult Function(dynamic answer)? answerSelected,
+    TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
     if (answerSelected != null) {
@@ -337,6 +373,7 @@ class _$AnswerSelectedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return answerSelected(this);
   }
@@ -346,6 +383,7 @@ class _$AnswerSelectedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return answerSelected?.call(this);
   }
@@ -355,6 +393,7 @@ class _$AnswerSelectedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {
     if (answerSelected != null) {
@@ -375,48 +414,180 @@ abstract class _AnswerSelected implements QuestionEvent {
 }
 
 /// @nodoc
+abstract class _$$AnswerSubmittedImplCopyWith<$Res> {
+  factory _$$AnswerSubmittedImplCopyWith(_$AnswerSubmittedImpl value,
+          $Res Function(_$AnswerSubmittedImpl) then) =
+      __$$AnswerSubmittedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AnswerSubmittedImplCopyWithImpl<$Res>
+    extends _$QuestionEventCopyWithImpl<$Res, _$AnswerSubmittedImpl>
+    implements _$$AnswerSubmittedImplCopyWith<$Res> {
+  __$$AnswerSubmittedImplCopyWithImpl(
+      _$AnswerSubmittedImpl _value, $Res Function(_$AnswerSubmittedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AnswerSubmittedImpl
+    with DiagnosticableTreeMixin
+    implements _AnswerSubmitted {
+  const _$AnswerSubmittedImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'QuestionEvent.answerSubmitted()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'QuestionEvent.answerSubmitted'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AnswerSubmittedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TestMode mode, TestQuestion question, bool isLast)
+        started,
+    required TResult Function(dynamic answer) answerSelected,
+    required TResult Function() answerSubmitted,
+  }) {
+    return answerSubmitted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TestMode mode, TestQuestion question, bool isLast)?
+        started,
+    TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function()? answerSubmitted,
+  }) {
+    return answerSubmitted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TestMode mode, TestQuestion question, bool isLast)?
+        started,
+    TResult Function(dynamic answer)? answerSelected,
+    TResult Function()? answerSubmitted,
+    required TResult orElse(),
+  }) {
+    if (answerSubmitted != null) {
+      return answerSubmitted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_AnswerSubmitted value) answerSubmitted,
+  }) {
+    return answerSubmitted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_AnswerSubmitted value)? answerSubmitted,
+  }) {
+    return answerSubmitted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_AnswerSubmitted value)? answerSubmitted,
+    required TResult orElse(),
+  }) {
+    if (answerSubmitted != null) {
+      return answerSubmitted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AnswerSubmitted implements QuestionEvent {
+  const factory _AnswerSubmitted() = _$AnswerSubmittedImpl;
+}
+
+/// @nodoc
 mixin _$QuestionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            TestQuestion question, bool isLast, dynamic selectedAnswers)
+    required TResult Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)
         inProgress,
+    required TResult Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)
+        answered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(
-            TestQuestion question, bool isLast, dynamic selectedAnswers)?
+    TResult? Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)?
         inProgress,
+    TResult? Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)?
+        answered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(
-            TestQuestion question, bool isLast, dynamic selectedAnswers)?
+    TResult Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)?
         inProgress,
+    TResult Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)?
+        answered,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(Initial value) initial,
+    required TResult Function(InProgress value) inProgress,
+    required TResult Function(Answered value) answered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_InProgress value)? inProgress,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(InProgress value)? inProgress,
+    TResult? Function(Answered value)? answered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_InProgress value)? inProgress,
+    TResult Function(Initial value)? initial,
+    TResult Function(InProgress value)? inProgress,
+    TResult Function(Answered value)? answered,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -458,7 +629,7 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl extends _Initial with DiagnosticableTreeMixin {
+class _$InitialImpl extends Initial with DiagnosticableTreeMixin {
   const _$InitialImpl() : super._();
 
   @override
@@ -485,9 +656,12 @@ class _$InitialImpl extends _Initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            TestQuestion question, bool isLast, dynamic selectedAnswers)
+    required TResult Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)
         inProgress,
+    required TResult Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)
+        answered,
   }) {
     return initial();
   }
@@ -496,9 +670,12 @@ class _$InitialImpl extends _Initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(
-            TestQuestion question, bool isLast, dynamic selectedAnswers)?
+    TResult? Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)?
         inProgress,
+    TResult? Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)?
+        answered,
   }) {
     return initial?.call();
   }
@@ -507,9 +684,12 @@ class _$InitialImpl extends _Initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(
-            TestQuestion question, bool isLast, dynamic selectedAnswers)?
+    TResult Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)?
         inProgress,
+    TResult Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)?
+        answered,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -521,8 +701,9 @@ class _$InitialImpl extends _Initial with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(Initial value) initial,
+    required TResult Function(InProgress value) inProgress,
+    required TResult Function(Answered value) answered,
   }) {
     return initial(this);
   }
@@ -530,8 +711,9 @@ class _$InitialImpl extends _Initial with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_InProgress value)? inProgress,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(InProgress value)? inProgress,
+    TResult? Function(Answered value)? answered,
   }) {
     return initial?.call(this);
   }
@@ -539,8 +721,9 @@ class _$InitialImpl extends _Initial with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_InProgress value)? inProgress,
+    TResult Function(Initial value)? initial,
+    TResult Function(InProgress value)? inProgress,
+    TResult Function(Answered value)? answered,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -550,9 +733,9 @@ class _$InitialImpl extends _Initial with DiagnosticableTreeMixin {
   }
 }
 
-abstract class _Initial extends QuestionState {
-  const factory _Initial() = _$InitialImpl;
-  const _Initial._() : super._();
+abstract class Initial extends QuestionState {
+  const factory Initial() = _$InitialImpl;
+  const Initial._() : super._();
 }
 
 /// @nodoc
@@ -561,7 +744,11 @@ abstract class _$$InProgressImplCopyWith<$Res> {
           _$InProgressImpl value, $Res Function(_$InProgressImpl) then) =
       __$$InProgressImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({TestQuestion question, bool isLast, dynamic selectedAnswers});
+  $Res call(
+      {TestMode mode,
+      TestQuestion question,
+      bool isLast,
+      dynamic selectedAnswers});
 }
 
 /// @nodoc
@@ -575,11 +762,16 @@ class __$$InProgressImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? mode = null,
     Object? question = null,
     Object? isLast = null,
     Object? selectedAnswers = freezed,
   }) {
     return _then(_$InProgressImpl(
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as TestMode,
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
@@ -598,11 +790,16 @@ class __$$InProgressImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
+class _$InProgressImpl extends InProgress with DiagnosticableTreeMixin {
   const _$InProgressImpl(
-      {required this.question, required this.isLast, this.selectedAnswers})
+      {required this.mode,
+      required this.question,
+      required this.isLast,
+      this.selectedAnswers})
       : super._();
 
+  @override
+  final TestMode mode;
   @override
   final TestQuestion question;
   @override
@@ -612,7 +809,7 @@ class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'QuestionState.inProgress(question: $question, isLast: $isLast, selectedAnswers: $selectedAnswers)';
+    return 'QuestionState.inProgress(mode: $mode, question: $question, isLast: $isLast, selectedAnswers: $selectedAnswers)';
   }
 
   @override
@@ -620,6 +817,7 @@ class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'QuestionState.inProgress'))
+      ..add(DiagnosticsProperty('mode', mode))
       ..add(DiagnosticsProperty('question', question))
       ..add(DiagnosticsProperty('isLast', isLast))
       ..add(DiagnosticsProperty('selectedAnswers', selectedAnswers));
@@ -630,6 +828,7 @@ class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InProgressImpl &&
+            (identical(other.mode, mode) || other.mode == mode) &&
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.isLast, isLast) || other.isLast == isLast) &&
@@ -638,7 +837,7 @@ class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, question, isLast,
+  int get hashCode => Object.hash(runtimeType, mode, question, isLast,
       const DeepCollectionEquality().hash(selectedAnswers));
 
   @JsonKey(ignore: true)
@@ -651,35 +850,44 @@ class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            TestQuestion question, bool isLast, dynamic selectedAnswers)
+    required TResult Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)
         inProgress,
+    required TResult Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)
+        answered,
   }) {
-    return inProgress(question, isLast, selectedAnswers);
+    return inProgress(mode, question, isLast, selectedAnswers);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(
-            TestQuestion question, bool isLast, dynamic selectedAnswers)?
+    TResult? Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)?
         inProgress,
+    TResult? Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)?
+        answered,
   }) {
-    return inProgress?.call(question, isLast, selectedAnswers);
+    return inProgress?.call(mode, question, isLast, selectedAnswers);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(
-            TestQuestion question, bool isLast, dynamic selectedAnswers)?
+    TResult Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)?
         inProgress,
+    TResult Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)?
+        answered,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
-      return inProgress(question, isLast, selectedAnswers);
+      return inProgress(mode, question, isLast, selectedAnswers);
     }
     return orElse();
   }
@@ -687,8 +895,9 @@ class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_InProgress value) inProgress,
+    required TResult Function(Initial value) initial,
+    required TResult Function(InProgress value) inProgress,
+    required TResult Function(Answered value) answered,
   }) {
     return inProgress(this);
   }
@@ -696,8 +905,9 @@ class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_InProgress value)? inProgress,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(InProgress value)? inProgress,
+    TResult? Function(Answered value)? answered,
   }) {
     return inProgress?.call(this);
   }
@@ -705,8 +915,9 @@ class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_InProgress value)? inProgress,
+    TResult Function(Initial value)? initial,
+    TResult Function(InProgress value)? inProgress,
+    TResult Function(Answered value)? answered,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -716,17 +927,230 @@ class _$InProgressImpl extends _InProgress with DiagnosticableTreeMixin {
   }
 }
 
-abstract class _InProgress extends QuestionState {
-  const factory _InProgress(
-      {required final TestQuestion question,
+abstract class InProgress extends QuestionState {
+  const factory InProgress(
+      {required final TestMode mode,
+      required final TestQuestion question,
       required final bool isLast,
       final dynamic selectedAnswers}) = _$InProgressImpl;
-  const _InProgress._() : super._();
+  const InProgress._() : super._();
 
+  TestMode get mode;
   TestQuestion get question;
   bool get isLast;
   dynamic get selectedAnswers;
   @JsonKey(ignore: true)
   _$$InProgressImplCopyWith<_$InProgressImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AnsweredImplCopyWith<$Res> {
+  factory _$$AnsweredImplCopyWith(
+          _$AnsweredImpl value, $Res Function(_$AnsweredImpl) then) =
+      __$$AnsweredImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {TestQuestion question,
+      bool isLast,
+      dynamic selectedAnswers,
+      dynamic correctAnswers});
+}
+
+/// @nodoc
+class __$$AnsweredImplCopyWithImpl<$Res>
+    extends _$QuestionStateCopyWithImpl<$Res, _$AnsweredImpl>
+    implements _$$AnsweredImplCopyWith<$Res> {
+  __$$AnsweredImplCopyWithImpl(
+      _$AnsweredImpl _value, $Res Function(_$AnsweredImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? question = null,
+    Object? isLast = null,
+    Object? selectedAnswers = freezed,
+    Object? correctAnswers = freezed,
+  }) {
+    return _then(_$AnsweredImpl(
+      question: null == question
+          ? _value.question
+          : question // ignore: cast_nullable_to_non_nullable
+              as TestQuestion,
+      isLast: null == isLast
+          ? _value.isLast
+          : isLast // ignore: cast_nullable_to_non_nullable
+              as bool,
+      selectedAnswers: freezed == selectedAnswers
+          ? _value.selectedAnswers
+          : selectedAnswers // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      correctAnswers: freezed == correctAnswers
+          ? _value.correctAnswers
+          : correctAnswers // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AnsweredImpl extends Answered with DiagnosticableTreeMixin {
+  const _$AnsweredImpl(
+      {required this.question,
+      required this.isLast,
+      this.selectedAnswers,
+      this.correctAnswers})
+      : super._();
+
+  @override
+  final TestQuestion question;
+  @override
+  final bool isLast;
+  @override
+  final dynamic selectedAnswers;
+  @override
+  final dynamic correctAnswers;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'QuestionState.answered(question: $question, isLast: $isLast, selectedAnswers: $selectedAnswers, correctAnswers: $correctAnswers)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'QuestionState.answered'))
+      ..add(DiagnosticsProperty('question', question))
+      ..add(DiagnosticsProperty('isLast', isLast))
+      ..add(DiagnosticsProperty('selectedAnswers', selectedAnswers))
+      ..add(DiagnosticsProperty('correctAnswers', correctAnswers));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AnsweredImpl &&
+            (identical(other.question, question) ||
+                other.question == question) &&
+            (identical(other.isLast, isLast) || other.isLast == isLast) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedAnswers, selectedAnswers) &&
+            const DeepCollectionEquality()
+                .equals(other.correctAnswers, correctAnswers));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      question,
+      isLast,
+      const DeepCollectionEquality().hash(selectedAnswers),
+      const DeepCollectionEquality().hash(correctAnswers));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AnsweredImplCopyWith<_$AnsweredImpl> get copyWith =>
+      __$$AnsweredImplCopyWithImpl<_$AnsweredImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)
+        inProgress,
+    required TResult Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)
+        answered,
+  }) {
+    return answered(question, isLast, selectedAnswers, correctAnswers);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)?
+        inProgress,
+    TResult? Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)?
+        answered,
+  }) {
+    return answered?.call(question, isLast, selectedAnswers, correctAnswers);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(TestMode mode, TestQuestion question, bool isLast,
+            dynamic selectedAnswers)?
+        inProgress,
+    TResult Function(TestQuestion question, bool isLast,
+            dynamic selectedAnswers, dynamic correctAnswers)?
+        answered,
+    required TResult orElse(),
+  }) {
+    if (answered != null) {
+      return answered(question, isLast, selectedAnswers, correctAnswers);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(InProgress value) inProgress,
+    required TResult Function(Answered value) answered,
+  }) {
+    return answered(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(InProgress value)? inProgress,
+    TResult? Function(Answered value)? answered,
+  }) {
+    return answered?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(InProgress value)? inProgress,
+    TResult Function(Answered value)? answered,
+    required TResult orElse(),
+  }) {
+    if (answered != null) {
+      return answered(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Answered extends QuestionState {
+  const factory Answered(
+      {required final TestQuestion question,
+      required final bool isLast,
+      final dynamic selectedAnswers,
+      final dynamic correctAnswers}) = _$AnsweredImpl;
+  const Answered._() : super._();
+
+  TestQuestion get question;
+  bool get isLast;
+  dynamic get selectedAnswers;
+  dynamic get correctAnswers;
+  @JsonKey(ignore: true)
+  _$$AnsweredImplCopyWith<_$AnsweredImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

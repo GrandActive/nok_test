@@ -3,25 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:nok_test/navigation.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 
-class StartTestButton extends StatelessWidget {
-  const StartTestButton({
-    super.key,
-  });
+class StartTrainingButton extends StatelessWidget {
+  const StartTrainingButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     return FilledButton(
       onPressed: () => context.router.push(
         TestWrapperRoute(
-          children: [
-            TestingRoute(mode: TestMode.exam),
-          ],
+          mode: TestMode.training,
+          children: const [TestingRoute()],
         ),
       ),
       style: const ButtonStyle(
         minimumSize: MaterialStatePropertyAll(Size(156, 41)),
       ),
-      child: const Text("Начать тест"),
+      child: const Text("Начать тренировку"),
     );
   }
 }

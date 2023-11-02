@@ -59,7 +59,10 @@ class SequenceQuestion extends StatelessWidget {
                 ),
               ),
             );
-          },
+          }, answered: (state) {
+            // TODO
+            return Placeholder();
+        },
         );
       },
     );

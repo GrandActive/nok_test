@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/testing/bloc/test_bloc/test_bloc.dart';
+import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/testing/ui/pages/test_page/widgets/question_map_item.dart';
 
 class QuestionMap extends StatelessWidget {
@@ -43,7 +44,7 @@ class QuestionMap extends StatelessWidget {
           itemCount: state.questions.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => QuestionMapItem(
-            showAnswerCorrectness: state.isFinished,
+            showAnswerCorrectness: state.isFinished || state.mode == TestMode.training,
             index: index,
             isSelected: state.selectedIndex == index,
             isAnsweredCorrectly: state.questions[index].isAnsweredCorrectly,

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/navigation.dart';
 import 'package:nok_test/testing/bloc/test_bloc/test_bloc.dart';
 import 'package:nok_test/testing/bloc/timer_bloc/timer_bloc.dart';
-import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/testing/ui/dialogs/abort_test_dialog.dart';
 import 'package:nok_test/testing/ui/dialogs/finish_test_dialog.dart';
 import 'package:nok_test/testing/ui/pages/test_page/widgets/widgets.dart';
@@ -12,12 +11,7 @@ import 'package:nok_test/testing/ui/pages/update_needed_page/update_needed_page.
 
 @RoutePage()
 class TestingPage extends StatelessWidget {
-  const TestingPage({
-    super.key,
-    required this.mode,
-  });
-
-  final TestMode mode;
+  const TestingPage({super.key});
 
   Future<bool?> showAbortTestDialog(BuildContext context) {
     return showDialog<bool>(

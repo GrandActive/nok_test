@@ -52,7 +52,10 @@ class UserInputQuestion extends StatelessWidget {
                 ),
               ),
             );
-          },
+          }, answered: (state) {
+            // TODO
+            return Placeholder();
+        },
         );
       },
     );

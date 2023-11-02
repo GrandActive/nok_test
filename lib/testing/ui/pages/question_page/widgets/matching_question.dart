@@ -47,7 +47,10 @@ class MatchingQuestion extends StatelessWidget {
                 ),
               ),
             );
-          },
+          }, answered: (state) {
+          // TODO
+            return Placeholder();
+        },
         );
       },
     );

@@ -28,6 +28,7 @@ class QuestionsPager extends StatelessWidget {
           controller: pageController,
           children: state.questions.indexed
               .map((question) => QuestionPage(
+                    mode: state.mode,
                     question: question.$2,
                     isLast: question.$1 == state.questions.length - 1,
                   ))

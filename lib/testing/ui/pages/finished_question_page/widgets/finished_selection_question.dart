@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
-import 'package:nok_test/testing/ui/pages/test_page/widgets/answer_list.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/multiple_answer_list.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/single_answer_list.dart';
 import 'package:nok_test/testing/ui/pages/test_page/widgets/question_text.dart';
 
 class FinishedSelectionQuestion extends StatelessWidget {
@@ -14,6 +15,7 @@ class FinishedSelectionQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final selectedAnswers = question.userAnswers ?? {};
+    final isMultipleAnswers = question.source.correctAnswerIds.length > 1;
 
     return SingleChildScrollView(
       child: Padding(
@@ -22,14 +24,21 @@ class FinishedSelectionQuestion extends StatelessWidget {
           children: [
             QuestionText(text: question.source.text),
             const SizedBox(height: 40),
-            AnswerList(
-              possibleAnswers: question.source.possibleAnswers,
-              selectedIndices: selectedAnswers,
-              isMultipleAnswers: question.source.correctAnswerIds.length > 1,
-              isActive: false,
-              isAnsweredCorrectly: question.isAnsweredCorrectly,
-              shouldShowCorrectness: true,
-            ),
+            isMultipleAnswers
+                ? MultipleAnswerList(
+                    possibleAnswers: question.source.possibleAnswers,
+                    selectedIndices: selectedAnswers,
+                    correctAnswers: question.source.correctAnswerIds,
+                    shouldShowCorrectness: true,
+                    isDisabled: true,
+                  )
+                : SingleAnswerList(
+                    possibleAnswers: question.source.possibleAnswers,
+                    selectedIndex: selectedAnswers.isEmpty ? null : selectedAnswers.first,
+                    correctAnswer: question.source.correctAnswerIds.first,
+                    shouldShowCorrectness: true,
+                    isDisabled: true,
+                  ),
           ],
         ),
       ),

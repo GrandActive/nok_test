@@ -10,7 +10,12 @@ import 'package:nok_test/testing/domain/ticker.dart';
 
 @RoutePage()
 class TestWrapperPage extends StatelessWidget implements AutoRouteWrapper {
-  const TestWrapperPage({super.key});
+  const TestWrapperPage({
+    super.key,
+    required this.mode,
+  });
+
+  final TestMode mode;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,7 @@ class TestWrapperPage extends StatelessWidget implements AutoRouteWrapper {
       providers: [
         BlocProvider<TestBloc>(
           create: (context) =>
-              getIt.get<TestBloc>()..add(const TestEvent.started(mode: TestMode.exam)),
+              getIt.get<TestBloc>()..add(TestEvent.started(mode: mode)),
         ),
         BlocProvider<TimerBloc>(
           create: (context) => TimerBloc(ticker: getIt.get<Ticker>()),

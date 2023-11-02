@@ -37,7 +37,7 @@ class RestartTestDialog extends StatelessWidget {
             FilledButton(
               onPressed: () {
                 context.read<TestBloc>().add(TestEvent.started(mode: mode));
-                context.router.replace(TestingRoute(mode: mode));
+                context.router.replace(const TestingRoute());
               },
               style: const ButtonStyle(
                 minimumSize: MaterialStatePropertyAll(Size(156, 41)),

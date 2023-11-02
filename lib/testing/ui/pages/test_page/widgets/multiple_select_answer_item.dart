@@ -1,46 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:nok_test/styles/colors.dart';
+import 'package:nok_test/testing/ui/pages/test_page/widgets/selected_state.dart';
 
 class MultipleSelectAnswerItem extends StatelessWidget {
   const MultipleSelectAnswerItem({
     super.key,
     required this.isActive,
     required this.text,
-    required this.isSelectedAsCorrectAnswer,
+    required this.selectedState,
     required this.shouldShowCorrectness,
-    required this.isSelected,
     required this.onChanged,
+    required this.isCorrectAnswer,
   });
 
   final bool isActive;
   final String text;
-  final bool? isSelectedAsCorrectAnswer;
+  final SelectedState selectedState;
   final bool shouldShowCorrectness;
   final void Function(bool? isSelected) onChanged;
-  final bool isSelected;
+  final bool isCorrectAnswer;
+
+  bool get isSelected => selectedState != SelectedState.notSelected;
+
+  bool get isSelectedAsCorrectAnswer => selectedState == SelectedState.selectedCorrectly;
+
+  Color get _tileSideColor {
+    if (isSelected) {
+      if (!shouldShowCorrectness) return const Color(0xff277ADB);
+      if (isCorrectAnswer) {
+        return correctAnswerColor;
+      } else {
+        return wrongAnswerColor;
+      }
+    } else {
+      if (!shouldShowCorrectness) return const Color(0xffDBE9F9);
+      if (isCorrectAnswer) {
+        return correctAnswerColor;
+      } else {
+        return const Color(0xffDBE9F9);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final tileSide = BorderSide(
-      color: isSelected
-          ? shouldShowCorrectness
-              ? isSelectedAsCorrectAnswer!
-                  ? correctAnswerColor
-                  : wrongAnswerColor
-              : const Color(0xff277ADB)
-          : const Color(0xffDBE9F9),
-    );
-
     final checkboxColor = isSelected && shouldShowCorrectness
-        ? isSelectedAsCorrectAnswer!
+        ? isCorrectAnswer
             ? correctAnswerColor
             : wrongAnswerColor
         : const Color(0xff277ADB);
 
+    final checkboxValue = isSelected
+        ? shouldShowCorrectness
+            ? isCorrectAnswer
+                ? true
+                : null
+            : true
+        : false;
+
     return Material(
       child: CheckboxListTile(
+        tristate: shouldShowCorrectness,
         controlAffinity: ListTileControlAffinity.leading,
-        value: isSelected,
+        value: checkboxValue,
         onChanged: isActive ? onChanged : null,
         title: DefaultTextStyle(
           style: const TextStyle(
@@ -52,7 +74,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
         ),
         shape: RoundedRectangleBorder(
           borderRadius: const BorderRadius.all(Radius.circular(8)),
-          side: tileSide,
+          side: BorderSide(color: _tileSideColor),
         ),
         activeColor: checkboxColor,
         fillColor: MaterialStateColor.resolveWith((states) {
@@ -61,8 +83,8 @@ class MultipleSelectAnswerItem extends StatelessWidget {
             return Colors.transparent;
           } else {
             if (states.contains(MaterialState.selected)) {
-              if (isSelectedAsCorrectAnswer == null) return Colors.transparent;
-              return isSelectedAsCorrectAnswer! ? correctAnswerColor : wrongAnswerColor;
+              if (selectedState == SelectedState.notSelected) return Colors.transparent;
+              return isSelectedAsCorrectAnswer ? correctAnswerColor : wrongAnswerColor;
             }
             return Colors.transparent;
           }
