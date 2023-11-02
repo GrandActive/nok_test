@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:nok_test/about_page.dart';
 import 'package:nok_test/main_page/main_page.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/main_page/test_intro_page.dart';
@@ -19,6 +20,7 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: MainRoute.page, initial: true),
+        AutoRoute(page: AboutRoute.page),
         AutoRoute(page: TestIntroRoute.page),
         AutoRoute(
           page: TestWrapperRoute.page,

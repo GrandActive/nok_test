@@ -12,7 +12,15 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Тренажер по тестам НОК")),
+      appBar: AppBar(
+        title: const Text("Тренажер по тестам НОК"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info_outlined),
+            onPressed: () => context.router.push(const AboutRoute()),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -47,7 +55,9 @@ class MainPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(const SnackBar(content: Text('Раздел находится в разработке'))),
                   child: const Text('Посмотреть все вопросы'),
                 ),
               ] else ...[
