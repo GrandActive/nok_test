@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nok_test/styles/colors.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/testing/ui/pages/question_page/widgets/user_input_question/widgets/finished_user_input.dart';
 
 class FinishedUserInputQuestion extends StatelessWidget {
   const FinishedUserInputQuestion({
@@ -12,15 +12,6 @@ class FinishedUserInputQuestion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color userAnswerBorderColor;
-    if (question.isAnsweredCorrectly == null) {
-      userAnswerBorderColor = const Color(0xFF7F7F7F);
-    } else if (question.isAnsweredCorrectly!) {
-      userAnswerBorderColor = correctAnswerColor;
-    } else {
-      userAnswerBorderColor = wrongAnswerColor;
-    }
-
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
@@ -36,17 +27,7 @@ class FinishedUserInputQuestion extends StatelessWidget {
               style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 40),
-            TextField(
-              controller: TextEditingController(text: question.userAnswer),
-              enabled: false,
-              style: const TextStyle(color: Color(0xFF464646)),
-              decoration: InputDecoration(
-                isDense: true,
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: userAnswerBorderColor),
-                ),
-              ),
-            ),
+            FinishedUserInput(question: question),
           ],
         ),
       ),
