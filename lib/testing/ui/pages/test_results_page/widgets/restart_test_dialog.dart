@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/navigation.dart';
 import 'package:nok_test/styles/colors.dart';
-import 'package:nok_test/testing/bloc/test_bloc/test_bloc.dart';
+import 'package:nok_test/testing/bloc/testing_bloc/testing_bloc.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 
 class RestartTestDialog extends StatelessWidget {
@@ -36,7 +36,7 @@ class RestartTestDialog extends StatelessWidget {
             const SizedBox(width: 16),
             FilledButton(
               onPressed: () {
-                context.read<TestBloc>().add(TestEvent.started(mode: mode));
+                context.read<TestingBloc>().add(TestingEvent.started(mode: mode));
                 context.router.replace(const TestingRoute());
               },
               style: const ButtonStyle(

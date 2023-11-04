@@ -5,10 +5,10 @@ import 'package:nok_test/main_page/main_page.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/main_page/test_intro_page.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
-import 'package:nok_test/testing/ui/pages/question_review_page/question_review_page.dart';
-import 'package:nok_test/testing/ui/pages/test_page/testing_page.dart';
+import 'package:nok_test/testing/ui/pages/question_review_page.dart';
 import 'package:nok_test/testing/ui/pages/test_results_page/test_results_page.dart';
 import 'package:nok_test/testing/ui/pages/test_wrapper_page.dart';
+import 'package:nok_test/testing/ui/pages/testing_page/testing_page.dart';
 
 part 'navigation.gr.dart';
 

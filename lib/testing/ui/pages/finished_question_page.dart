@@ -1,0 +1,29 @@
+import 'package:flutter/material.dart';
+import 'package:nok_test/matching_question/finished_matching_question.dart';
+import 'package:nok_test/selection_question/ui/finished_selection_question.dart';
+import 'package:nok_test/sequence_question/finished_sequence_question.dart';
+import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/user_input_question/finished_user_input_question.dart';
+
+class FinishedQuestionPage extends StatelessWidget {
+  const FinishedQuestionPage({
+    super.key,
+    required this.question,
+  });
+
+  final TestQuestion question;
+
+  @override
+  Widget build(BuildContext context) {
+    switch (question) {
+      case TestSelectionQuestion():
+        return FinishedSelectionQuestion(question: question as TestSelectionQuestion);
+      case TestUserInputQuestion():
+        return FinishedUserInputQuestion(question: question as TestUserInputQuestion);
+      case TestSequenceQuestion():
+        return FinishedSequenceQuestion(question: question as TestSequenceQuestion);
+      case TestMatchingQuestion():
+        return FinishedMatchingQuestion(question: question as TestMatchingQuestion);
+    }
+  }
+}

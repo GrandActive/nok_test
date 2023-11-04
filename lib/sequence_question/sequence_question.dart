@@ -1,0 +1,79 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nok_test/sequence_question/sequence_question_bloc/sequence_question_bloc.dart';
+import 'package:nok_test/testing/data/model/possible_answer.dart';
+import 'package:nok_test/testing/domain/model/test_mode.dart';
+import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/testing/ui/widgets/submit_button.dart';
+import 'package:nok_test/utils/list_move_extension.dart';
+
+import 'widgets/widgets.dart';
+
+class SequenceQuestion extends StatelessWidget {
+  const SequenceQuestion({super.key});
+
+  void _updateAnswer(
+    BuildContext context,
+    List<PossibleAnswer> currentAnswerOrder,
+    int oldIndex,
+    int newIndex,
+  ) {
+    final answerOrder = List<PossibleAnswer>.from(currentAnswerOrder, growable: false);
+    answerOrder.move(oldIndex, newIndex);
+    context
+        .read<SequenceQuestionBloc>()
+        .add(SequenceQuestionEvent.answerSelected(answer: answerOrder));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SequenceQuestionBloc, SequenceQuestionState>(
+      builder: (context, state) {
+        if (state is Initial) return const SizedBox.shrink();
+
+        final question = state.question as TestSequenceQuestion;
+        final selectedAnswers =
+            state.selectedAnswers as List<PossibleAnswer>? ?? question.source.answers;
+
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
+            child: Column(
+              children: [
+                Text(
+                  question.source.title,
+                  style: const TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 24),
+                if (state is! Answered) ...[
+                  const Text(
+                    "Для перетаскивания зажмите вариант ответа",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 8),
+                ],
+                if (state is Answered)
+                  FinishedSequenceAnswerList(question: question)
+                else
+                  SequenceAnswerList(
+                    selectedAnswers: selectedAnswers,
+                    onReorder: (int oldIndex, int newIndex) =>
+                        _updateAnswer(context, selectedAnswers, oldIndex, newIndex),
+                  ),
+                const SizedBox(height: 24),
+                SubmitButton(
+                  isActive: true,
+                  isFinishing: state.isLast,
+                  isSubmitting: state.mode == TestMode.training && state is! Answered,
+                  onSubmit: () => context
+                      .read<SequenceQuestionBloc>()
+                      .add(const SequenceQuestionEvent.answerSubmitted()),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
