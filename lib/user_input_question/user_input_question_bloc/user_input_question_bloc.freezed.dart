@@ -21,7 +21,8 @@ mixin _$UserInputQuestionEvent {
     required TResult Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)
         started,
-    required TResult Function(dynamic answer) answerSelected,
+    required TResult Function(String? answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +31,8 @@ mixin _$UserInputQuestionEvent {
     TResult? Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)?
         started,
-    TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function(String? answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +41,8 @@ mixin _$UserInputQuestionEvent {
     TResult Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)?
         started,
-    TResult Function(dynamic answer)? answerSelected,
+    TResult Function(String? answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) =>
@@ -48,6 +51,7 @@ mixin _$UserInputQuestionEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +59,7 @@ mixin _$UserInputQuestionEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +67,7 @@ mixin _$UserInputQuestionEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) =>
@@ -182,7 +188,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)
         started,
-    required TResult Function(dynamic answer) answerSelected,
+    required TResult Function(String? answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) {
     return started(mode, question, isLast);
@@ -194,7 +201,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)?
         started,
-    TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function(String? answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) {
     return started?.call(mode, question, isLast);
@@ -206,7 +214,8 @@ class _$StartedImpl implements _Started {
     TResult Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)?
         started,
-    TResult Function(dynamic answer)? answerSelected,
+    TResult Function(String? answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -221,6 +230,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return started(this);
@@ -231,6 +241,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return started?.call(this);
@@ -241,6 +252,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -271,7 +283,7 @@ abstract class _$$AnswerSelectedImplCopyWith<$Res> {
           $Res Function(_$AnswerSelectedImpl) then) =
       __$$AnswerSelectedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({dynamic answer});
+  $Res call({String? answer});
 }
 
 /// @nodoc
@@ -291,7 +303,7 @@ class __$$AnswerSelectedImplCopyWithImpl<$Res>
       answer: freezed == answer
           ? _value.answer
           : answer // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
     ));
   }
 }
@@ -302,7 +314,7 @@ class _$AnswerSelectedImpl implements _AnswerSelected {
   const _$AnswerSelectedImpl({required this.answer});
 
   @override
-  final dynamic answer;
+  final String? answer;
 
   @override
   String toString() {
@@ -314,12 +326,11 @@ class _$AnswerSelectedImpl implements _AnswerSelected {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AnswerSelectedImpl &&
-            const DeepCollectionEquality().equals(other.answer, answer));
+            (identical(other.answer, answer) || other.answer == answer));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(answer));
+  int get hashCode => Object.hash(runtimeType, answer);
 
   @JsonKey(ignore: true)
   @override
@@ -334,7 +345,8 @@ class _$AnswerSelectedImpl implements _AnswerSelected {
     required TResult Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)
         started,
-    required TResult Function(dynamic answer) answerSelected,
+    required TResult Function(String? answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) {
     return answerSelected(answer);
@@ -346,7 +358,8 @@ class _$AnswerSelectedImpl implements _AnswerSelected {
     TResult? Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)?
         started,
-    TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function(String? answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) {
     return answerSelected?.call(answer);
@@ -358,7 +371,8 @@ class _$AnswerSelectedImpl implements _AnswerSelected {
     TResult Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)?
         started,
-    TResult Function(dynamic answer)? answerSelected,
+    TResult Function(String? answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -373,6 +387,7 @@ class _$AnswerSelectedImpl implements _AnswerSelected {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return answerSelected(this);
@@ -383,6 +398,7 @@ class _$AnswerSelectedImpl implements _AnswerSelected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return answerSelected?.call(this);
@@ -393,6 +409,7 @@ class _$AnswerSelectedImpl implements _AnswerSelected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -404,13 +421,133 @@ class _$AnswerSelectedImpl implements _AnswerSelected {
 }
 
 abstract class _AnswerSelected implements UserInputQuestionEvent {
-  const factory _AnswerSelected({required final dynamic answer}) =
+  const factory _AnswerSelected({required final String? answer}) =
       _$AnswerSelectedImpl;
 
-  dynamic get answer;
+  String? get answer;
   @JsonKey(ignore: true)
   _$$AnswerSelectedImplCopyWith<_$AnswerSelectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PutOnHoldImplCopyWith<$Res> {
+  factory _$$PutOnHoldImplCopyWith(
+          _$PutOnHoldImpl value, $Res Function(_$PutOnHoldImpl) then) =
+      __$$PutOnHoldImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PutOnHoldImplCopyWithImpl<$Res>
+    extends _$UserInputQuestionEventCopyWithImpl<$Res, _$PutOnHoldImpl>
+    implements _$$PutOnHoldImplCopyWith<$Res> {
+  __$$PutOnHoldImplCopyWithImpl(
+      _$PutOnHoldImpl _value, $Res Function(_$PutOnHoldImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PutOnHoldImpl implements _PutOnHold {
+  const _$PutOnHoldImpl();
+
+  @override
+  String toString() {
+    return 'UserInputQuestionEvent.putOnHold()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PutOnHoldImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            TestMode mode, TestUserInputQuestion question, bool isLast)
+        started,
+    required TResult Function(String? answer) answerSelected,
+    required TResult Function() putOnHold,
+    required TResult Function() answerSubmitted,
+  }) {
+    return putOnHold();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            TestMode mode, TestUserInputQuestion question, bool isLast)?
+        started,
+    TResult? Function(String? answer)? answerSelected,
+    TResult? Function()? putOnHold,
+    TResult? Function()? answerSubmitted,
+  }) {
+    return putOnHold?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            TestMode mode, TestUserInputQuestion question, bool isLast)?
+        started,
+    TResult Function(String? answer)? answerSelected,
+    TResult Function()? putOnHold,
+    TResult Function()? answerSubmitted,
+    required TResult orElse(),
+  }) {
+    if (putOnHold != null) {
+      return putOnHold();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
+    required TResult Function(_AnswerSubmitted value) answerSubmitted,
+  }) {
+    return putOnHold(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
+    TResult? Function(_AnswerSubmitted value)? answerSubmitted,
+  }) {
+    return putOnHold?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
+    TResult Function(_AnswerSubmitted value)? answerSubmitted,
+    required TResult orElse(),
+  }) {
+    if (putOnHold != null) {
+      return putOnHold(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PutOnHold implements UserInputQuestionEvent {
+  const factory _PutOnHold() = _$PutOnHoldImpl;
 }
 
 /// @nodoc
@@ -454,7 +591,8 @@ class _$AnswerSubmittedImpl implements _AnswerSubmitted {
     required TResult Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)
         started,
-    required TResult Function(dynamic answer) answerSelected,
+    required TResult Function(String? answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) {
     return answerSubmitted();
@@ -466,7 +604,8 @@ class _$AnswerSubmittedImpl implements _AnswerSubmitted {
     TResult? Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)?
         started,
-    TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function(String? answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) {
     return answerSubmitted?.call();
@@ -478,7 +617,8 @@ class _$AnswerSubmittedImpl implements _AnswerSubmitted {
     TResult Function(
             TestMode mode, TestUserInputQuestion question, bool isLast)?
         started,
-    TResult Function(dynamic answer)? answerSelected,
+    TResult Function(String? answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -493,6 +633,7 @@ class _$AnswerSubmittedImpl implements _AnswerSubmitted {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return answerSubmitted(this);
@@ -503,6 +644,7 @@ class _$AnswerSubmittedImpl implements _AnswerSubmitted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return answerSubmitted?.call(this);
@@ -513,6 +655,7 @@ class _$AnswerSubmittedImpl implements _AnswerSubmitted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -533,10 +676,10 @@ mixin _$UserInputQuestionState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(TestMode mode, TestUserInputQuestion question,
-            bool isLast, dynamic selectedAnswers)
+            bool isLast, String? userInput)
         inProgress,
     required TResult Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)
+            String? userInput, String correctAnswer)
         answered,
   }) =>
       throw _privateConstructorUsedError;
@@ -544,10 +687,10 @@ mixin _$UserInputQuestionState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(TestMode mode, TestUserInputQuestion question,
-            bool isLast, dynamic selectedAnswers)?
+            bool isLast, String? userInput)?
         inProgress,
     TResult? Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            String? userInput, String correctAnswer)?
         answered,
   }) =>
       throw _privateConstructorUsedError;
@@ -555,10 +698,10 @@ mixin _$UserInputQuestionState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(TestMode mode, TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            String? userInput)?
         inProgress,
     TResult Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            String? userInput, String correctAnswer)?
         answered,
     required TResult orElse(),
   }) =>
@@ -646,10 +789,10 @@ class _$InitialImpl extends Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(TestMode mode, TestUserInputQuestion question,
-            bool isLast, dynamic selectedAnswers)
+            bool isLast, String? userInput)
         inProgress,
     required TResult Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)
+            String? userInput, String correctAnswer)
         answered,
   }) {
     return initial();
@@ -660,10 +803,10 @@ class _$InitialImpl extends Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(TestMode mode, TestUserInputQuestion question,
-            bool isLast, dynamic selectedAnswers)?
+            bool isLast, String? userInput)?
         inProgress,
     TResult? Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            String? userInput, String correctAnswer)?
         answered,
   }) {
     return initial?.call();
@@ -674,10 +817,10 @@ class _$InitialImpl extends Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(TestMode mode, TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            String? userInput)?
         inProgress,
     TResult Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            String? userInput, String correctAnswer)?
         answered,
     required TResult orElse(),
   }) {
@@ -737,7 +880,7 @@ abstract class _$$InProgressImplCopyWith<$Res> {
       {TestMode mode,
       TestUserInputQuestion question,
       bool isLast,
-      dynamic selectedAnswers});
+      String? userInput});
 
   $TestUserInputQuestionCopyWith<$Res> get question;
 }
@@ -756,7 +899,7 @@ class __$$InProgressImplCopyWithImpl<$Res>
     Object? mode = null,
     Object? question = null,
     Object? isLast = null,
-    Object? selectedAnswers = freezed,
+    Object? userInput = freezed,
   }) {
     return _then(_$InProgressImpl(
       mode: null == mode
@@ -771,10 +914,10 @@ class __$$InProgressImplCopyWithImpl<$Res>
           ? _value.isLast
           : isLast // ignore: cast_nullable_to_non_nullable
               as bool,
-      selectedAnswers: freezed == selectedAnswers
-          ? _value.selectedAnswers
-          : selectedAnswers // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      userInput: freezed == userInput
+          ? _value.userInput
+          : userInput // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -794,7 +937,7 @@ class _$InProgressImpl extends InProgress {
       {required this.mode,
       required this.question,
       required this.isLast,
-      this.selectedAnswers})
+      required this.userInput})
       : super._();
 
   @override
@@ -804,11 +947,11 @@ class _$InProgressImpl extends InProgress {
   @override
   final bool isLast;
   @override
-  final dynamic selectedAnswers;
+  final String? userInput;
 
   @override
   String toString() {
-    return 'UserInputQuestionState.inProgress(mode: $mode, question: $question, isLast: $isLast, selectedAnswers: $selectedAnswers)';
+    return 'UserInputQuestionState.inProgress(mode: $mode, question: $question, isLast: $isLast, userInput: $userInput)';
   }
 
   @override
@@ -820,13 +963,13 @@ class _$InProgressImpl extends InProgress {
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.isLast, isLast) || other.isLast == isLast) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedAnswers, selectedAnswers));
+            (identical(other.userInput, userInput) ||
+                other.userInput == userInput));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mode, question, isLast,
-      const DeepCollectionEquality().hash(selectedAnswers));
+  int get hashCode =>
+      Object.hash(runtimeType, mode, question, isLast, userInput);
 
   @JsonKey(ignore: true)
   @override
@@ -839,13 +982,13 @@ class _$InProgressImpl extends InProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(TestMode mode, TestUserInputQuestion question,
-            bool isLast, dynamic selectedAnswers)
+            bool isLast, String? userInput)
         inProgress,
     required TResult Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)
+            String? userInput, String correctAnswer)
         answered,
   }) {
-    return inProgress(mode, question, isLast, selectedAnswers);
+    return inProgress(mode, question, isLast, userInput);
   }
 
   @override
@@ -853,13 +996,13 @@ class _$InProgressImpl extends InProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(TestMode mode, TestUserInputQuestion question,
-            bool isLast, dynamic selectedAnswers)?
+            bool isLast, String? userInput)?
         inProgress,
     TResult? Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            String? userInput, String correctAnswer)?
         answered,
   }) {
-    return inProgress?.call(mode, question, isLast, selectedAnswers);
+    return inProgress?.call(mode, question, isLast, userInput);
   }
 
   @override
@@ -867,15 +1010,15 @@ class _$InProgressImpl extends InProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(TestMode mode, TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            String? userInput)?
         inProgress,
     TResult Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            String? userInput, String correctAnswer)?
         answered,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
-      return inProgress(mode, question, isLast, selectedAnswers);
+      return inProgress(mode, question, isLast, userInput);
     }
     return orElse();
   }
@@ -920,13 +1063,13 @@ abstract class InProgress extends UserInputQuestionState {
       {required final TestMode mode,
       required final TestUserInputQuestion question,
       required final bool isLast,
-      final dynamic selectedAnswers}) = _$InProgressImpl;
+      required final String? userInput}) = _$InProgressImpl;
   const InProgress._() : super._();
 
   TestMode get mode;
   TestUserInputQuestion get question;
   bool get isLast;
-  dynamic get selectedAnswers;
+  String? get userInput;
   @JsonKey(ignore: true)
   _$$InProgressImplCopyWith<_$InProgressImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -941,8 +1084,8 @@ abstract class _$$AnsweredImplCopyWith<$Res> {
   $Res call(
       {TestUserInputQuestion question,
       bool isLast,
-      dynamic selectedAnswers,
-      dynamic correctAnswers});
+      String? userInput,
+      String correctAnswer});
 
   $TestUserInputQuestionCopyWith<$Res> get question;
 }
@@ -960,8 +1103,8 @@ class __$$AnsweredImplCopyWithImpl<$Res>
   $Res call({
     Object? question = null,
     Object? isLast = null,
-    Object? selectedAnswers = freezed,
-    Object? correctAnswers = freezed,
+    Object? userInput = freezed,
+    Object? correctAnswer = null,
   }) {
     return _then(_$AnsweredImpl(
       question: null == question
@@ -972,14 +1115,14 @@ class __$$AnsweredImplCopyWithImpl<$Res>
           ? _value.isLast
           : isLast // ignore: cast_nullable_to_non_nullable
               as bool,
-      selectedAnswers: freezed == selectedAnswers
-          ? _value.selectedAnswers
-          : selectedAnswers // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      correctAnswers: freezed == correctAnswers
-          ? _value.correctAnswers
-          : correctAnswers // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      userInput: freezed == userInput
+          ? _value.userInput
+          : userInput // ignore: cast_nullable_to_non_nullable
+              as String?,
+      correctAnswer: null == correctAnswer
+          ? _value.correctAnswer
+          : correctAnswer // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -998,8 +1141,8 @@ class _$AnsweredImpl extends Answered {
   const _$AnsweredImpl(
       {required this.question,
       required this.isLast,
-      this.selectedAnswers,
-      this.correctAnswers})
+      required this.userInput,
+      required this.correctAnswer})
       : super._();
 
   @override
@@ -1007,13 +1150,13 @@ class _$AnsweredImpl extends Answered {
   @override
   final bool isLast;
   @override
-  final dynamic selectedAnswers;
+  final String? userInput;
   @override
-  final dynamic correctAnswers;
+  final String correctAnswer;
 
   @override
   String toString() {
-    return 'UserInputQuestionState.answered(question: $question, isLast: $isLast, selectedAnswers: $selectedAnswers, correctAnswers: $correctAnswers)';
+    return 'UserInputQuestionState.answered(question: $question, isLast: $isLast, userInput: $userInput, correctAnswer: $correctAnswer)';
   }
 
   @override
@@ -1024,19 +1167,15 @@ class _$AnsweredImpl extends Answered {
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.isLast, isLast) || other.isLast == isLast) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedAnswers, selectedAnswers) &&
-            const DeepCollectionEquality()
-                .equals(other.correctAnswers, correctAnswers));
+            (identical(other.userInput, userInput) ||
+                other.userInput == userInput) &&
+            (identical(other.correctAnswer, correctAnswer) ||
+                other.correctAnswer == correctAnswer));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      question,
-      isLast,
-      const DeepCollectionEquality().hash(selectedAnswers),
-      const DeepCollectionEquality().hash(correctAnswers));
+  int get hashCode =>
+      Object.hash(runtimeType, question, isLast, userInput, correctAnswer);
 
   @JsonKey(ignore: true)
   @override
@@ -1049,13 +1188,13 @@ class _$AnsweredImpl extends Answered {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(TestMode mode, TestUserInputQuestion question,
-            bool isLast, dynamic selectedAnswers)
+            bool isLast, String? userInput)
         inProgress,
     required TResult Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)
+            String? userInput, String correctAnswer)
         answered,
   }) {
-    return answered(question, isLast, selectedAnswers, correctAnswers);
+    return answered(question, isLast, userInput, correctAnswer);
   }
 
   @override
@@ -1063,13 +1202,13 @@ class _$AnsweredImpl extends Answered {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(TestMode mode, TestUserInputQuestion question,
-            bool isLast, dynamic selectedAnswers)?
+            bool isLast, String? userInput)?
         inProgress,
     TResult? Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            String? userInput, String correctAnswer)?
         answered,
   }) {
-    return answered?.call(question, isLast, selectedAnswers, correctAnswers);
+    return answered?.call(question, isLast, userInput, correctAnswer);
   }
 
   @override
@@ -1077,15 +1216,15 @@ class _$AnsweredImpl extends Answered {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(TestMode mode, TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            String? userInput)?
         inProgress,
     TResult Function(TestUserInputQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            String? userInput, String correctAnswer)?
         answered,
     required TResult orElse(),
   }) {
     if (answered != null) {
-      return answered(question, isLast, selectedAnswers, correctAnswers);
+      return answered(question, isLast, userInput, correctAnswer);
     }
     return orElse();
   }
@@ -1129,14 +1268,14 @@ abstract class Answered extends UserInputQuestionState {
   const factory Answered(
       {required final TestUserInputQuestion question,
       required final bool isLast,
-      final dynamic selectedAnswers,
-      final dynamic correctAnswers}) = _$AnsweredImpl;
+      required final String? userInput,
+      required final String correctAnswer}) = _$AnsweredImpl;
   const Answered._() : super._();
 
   TestUserInputQuestion get question;
   bool get isLast;
-  dynamic get selectedAnswers;
-  dynamic get correctAnswers;
+  String? get userInput;
+  String get correctAnswer;
   @JsonKey(ignore: true)
   _$$AnsweredImplCopyWith<_$AnsweredImpl> get copyWith =>
       throw _privateConstructorUsedError;

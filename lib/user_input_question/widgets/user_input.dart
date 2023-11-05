@@ -20,7 +20,7 @@ class UserInput extends StatelessWidget {
       textInputAction: TextInputAction.done,
       onChanged: (value) => context
           .read<UserInputQuestionBloc>()
-          .add(UserInputQuestionEvent.answerSelected(answer: value)),
+          .add(UserInputQuestionEvent.inputChanged(answer: value == '' ? null : value)),
     );
   }
 }

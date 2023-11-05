@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nok_test/matching_question/finished_matching_question.dart';
-import 'package:nok_test/selection_question/ui/finished_selection_question.dart';
+import 'package:nok_test/selection_question/finished_selection_question.dart';
 import 'package:nok_test/sequence_question/finished_sequence_question.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
 import 'package:nok_test/user_input_question/finished_user_input_question.dart';

@@ -6,22 +6,22 @@ import 'sequence_answer_list_item.dart';
 class SequenceAnswerList extends StatelessWidget {
   const SequenceAnswerList({
     super.key,
-    required this.selectedAnswers,
+    required this.answers,
     required this.onReorder,
   });
 
-  final List<PossibleAnswer> selectedAnswers;
+  final List<PossibleAnswer> answers;
   final void Function(int oldIndex, int newIndex) onReorder;
 
   @override
   Widget build(BuildContext context) {
-    final listItems = selectedAnswers
+    final listItems = answers
         .map((answer) => SequenceAnswerListItem(key: ValueKey(answer), answer: answer))
         .toList(growable: false);
 
     return ReorderableListView(
       proxyDecorator: (child, index, animation) {
-        final answer = selectedAnswers[index];
+        final answer = answers[index];
         return SequenceAnswerListItem(
           key: ValueKey(answer),
           answer: answer,

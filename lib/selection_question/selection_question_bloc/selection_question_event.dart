@@ -12,5 +12,7 @@ class SelectionQuestionEvent with _$SelectionQuestionEvent {
     required Set<int> answer,
   }) = _AnswerSelected;
 
+  const factory SelectionQuestionEvent.putOnHold() = _PutOnHold;
+
   const factory SelectionQuestionEvent.answerSubmitted() = _AnswerSubmitted;
 }

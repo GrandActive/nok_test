@@ -22,6 +22,7 @@ mixin _$MatchingQuestionEvent {
             TestMode mode, TestMatchingQuestion question, bool isLast)
         started,
     required TResult Function(Map<int, int?> answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,6 +32,7 @@ mixin _$MatchingQuestionEvent {
             TestMode mode, TestMatchingQuestion question, bool isLast)?
         started,
     TResult? Function(Map<int, int?> answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,6 +41,7 @@ mixin _$MatchingQuestionEvent {
     TResult Function(TestMode mode, TestMatchingQuestion question, bool isLast)?
         started,
     TResult Function(Map<int, int?> answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) =>
@@ -47,6 +50,7 @@ mixin _$MatchingQuestionEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,7 @@ mixin _$MatchingQuestionEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +66,7 @@ mixin _$MatchingQuestionEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) =>
@@ -192,6 +198,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
             TestMode mode, TestMatchingQuestion question, bool isLast)
         started,
     required TResult Function(Map<int, int?> answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) {
     return started(mode, question, isLast);
@@ -204,6 +211,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
             TestMode mode, TestMatchingQuestion question, bool isLast)?
         started,
     TResult? Function(Map<int, int?> answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) {
     return started?.call(mode, question, isLast);
@@ -215,6 +223,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult Function(TestMode mode, TestMatchingQuestion question, bool isLast)?
         started,
     TResult Function(Map<int, int?> answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -229,6 +238,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return started(this);
@@ -239,6 +249,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return started?.call(this);
@@ -249,6 +260,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -359,6 +371,7 @@ class _$AnswerSelectedImpl
             TestMode mode, TestMatchingQuestion question, bool isLast)
         started,
     required TResult Function(Map<int, int?> answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) {
     return answerSelected(answer);
@@ -371,6 +384,7 @@ class _$AnswerSelectedImpl
             TestMode mode, TestMatchingQuestion question, bool isLast)?
         started,
     TResult? Function(Map<int, int?> answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) {
     return answerSelected?.call(answer);
@@ -382,6 +396,7 @@ class _$AnswerSelectedImpl
     TResult Function(TestMode mode, TestMatchingQuestion question, bool isLast)?
         started,
     TResult Function(Map<int, int?> answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -396,6 +411,7 @@ class _$AnswerSelectedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return answerSelected(this);
@@ -406,6 +422,7 @@ class _$AnswerSelectedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return answerSelected?.call(this);
@@ -416,6 +433,7 @@ class _$AnswerSelectedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -434,6 +452,132 @@ abstract class _AnswerSelected implements MatchingQuestionEvent {
   @JsonKey(ignore: true)
   _$$AnswerSelectedImplCopyWith<_$AnswerSelectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PutOnHoldImplCopyWith<$Res> {
+  factory _$$PutOnHoldImplCopyWith(
+          _$PutOnHoldImpl value, $Res Function(_$PutOnHoldImpl) then) =
+      __$$PutOnHoldImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PutOnHoldImplCopyWithImpl<$Res>
+    extends _$MatchingQuestionEventCopyWithImpl<$Res, _$PutOnHoldImpl>
+    implements _$$PutOnHoldImplCopyWith<$Res> {
+  __$$PutOnHoldImplCopyWithImpl(
+      _$PutOnHoldImpl _value, $Res Function(_$PutOnHoldImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PutOnHoldImpl with DiagnosticableTreeMixin implements _PutOnHold {
+  const _$PutOnHoldImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MatchingQuestionEvent.putOnHold()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'MatchingQuestionEvent.putOnHold'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PutOnHoldImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            TestMode mode, TestMatchingQuestion question, bool isLast)
+        started,
+    required TResult Function(Map<int, int?> answer) answerSelected,
+    required TResult Function() putOnHold,
+    required TResult Function() answerSubmitted,
+  }) {
+    return putOnHold();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            TestMode mode, TestMatchingQuestion question, bool isLast)?
+        started,
+    TResult? Function(Map<int, int?> answer)? answerSelected,
+    TResult? Function()? putOnHold,
+    TResult? Function()? answerSubmitted,
+  }) {
+    return putOnHold?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TestMode mode, TestMatchingQuestion question, bool isLast)?
+        started,
+    TResult Function(Map<int, int?> answer)? answerSelected,
+    TResult Function()? putOnHold,
+    TResult Function()? answerSubmitted,
+    required TResult orElse(),
+  }) {
+    if (putOnHold != null) {
+      return putOnHold();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
+    required TResult Function(_AnswerSubmitted value) answerSubmitted,
+  }) {
+    return putOnHold(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
+    TResult? Function(_AnswerSubmitted value)? answerSubmitted,
+  }) {
+    return putOnHold?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
+    TResult Function(_AnswerSubmitted value)? answerSubmitted,
+    required TResult orElse(),
+  }) {
+    if (putOnHold != null) {
+      return putOnHold(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PutOnHold implements MatchingQuestionEvent {
+  const factory _PutOnHold() = _$PutOnHoldImpl;
 }
 
 /// @nodoc
@@ -487,6 +631,7 @@ class _$AnswerSubmittedImpl
             TestMode mode, TestMatchingQuestion question, bool isLast)
         started,
     required TResult Function(Map<int, int?> answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) {
     return answerSubmitted();
@@ -499,6 +644,7 @@ class _$AnswerSubmittedImpl
             TestMode mode, TestMatchingQuestion question, bool isLast)?
         started,
     TResult? Function(Map<int, int?> answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) {
     return answerSubmitted?.call();
@@ -510,6 +656,7 @@ class _$AnswerSubmittedImpl
     TResult Function(TestMode mode, TestMatchingQuestion question, bool isLast)?
         started,
     TResult Function(Map<int, int?> answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -524,6 +671,7 @@ class _$AnswerSubmittedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return answerSubmitted(this);
@@ -534,6 +682,7 @@ class _$AnswerSubmittedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return answerSubmitted?.call(this);
@@ -544,6 +693,7 @@ class _$AnswerSubmittedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {

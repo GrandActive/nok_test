@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/matching_question/matching_question.dart';
 import 'package:nok_test/matching_question/matching_question_bloc/matching_question_bloc.dart';
 import 'package:nok_test/selection_question/selection_question_bloc/selection_question_bloc.dart';
-import 'package:nok_test/selection_question/ui/selection_question.dart';
+import 'package:nok_test/selection_question/selection_question.dart';
 import 'package:nok_test/sequence_question/sequence_question.dart';
 import 'package:nok_test/sequence_question/sequence_question_bloc/sequence_question_bloc.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';

@@ -10,14 +10,14 @@ class UserInputQuestionState with _$UserInputQuestionState {
     required TestMode mode,
     required TestUserInputQuestion question,
     required bool isLast,
-    dynamic selectedAnswers,
+    required String? userInput,
   }) = InProgress;
 
   const factory UserInputQuestionState.answered({
     required TestUserInputQuestion question,
     required bool isLast,
-    dynamic selectedAnswers,
-    dynamic correctAnswers,
+    required String? userInput,
+    required String correctAnswer,
   }) = Answered;
 
   TestMode get mode {
@@ -43,10 +43,10 @@ class UserInputQuestionState with _$UserInputQuestionState {
     );
   }
 
-  dynamic get selectedAnswers {
+  String? get userInput {
     return mapOrNull(
-      inProgress: (value) => value.selectedAnswers,
-      answered: (value) => value.selectedAnswers,
+      inProgress: (value) => value.userInput,
+      answered: (value) => value.userInput,
     );
   }
 }

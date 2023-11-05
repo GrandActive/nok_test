@@ -25,9 +25,6 @@ class SelectionQuestionBloc extends Bloc<SelectionQuestionEvent, SelectionQuesti
         answerSelected: (answer) {
           final question = state.question;
           if (question == null) return;
-          question.userAnswers = answer;
-          question.isAnsweredCorrectly =
-              answer.isEmpty ? null : setEquals(answer, question.source.correctAnswerIds);
           emit(SelectionQuestionState.inProgress(
             mode: state.mode,
             question: question,
@@ -35,9 +32,19 @@ class SelectionQuestionBloc extends Bloc<SelectionQuestionEvent, SelectionQuesti
             selectedAnswers: answer,
           ));
         },
+        putOnHold: () {
+          if (state.mode == TestMode.exam) {
+            final question = state.question;
+            final selectedAnswers = state.selectedAnswers;
+            if (question == null || selectedAnswers == null) return;
+            _submitAnswer(question, selectedAnswers);
+          }
+        },
         answerSubmitted: () {
           final question = state.question;
-          if (question == null) return;
+          final selectedAnswers = state.selectedAnswers;
+          if (question == null || selectedAnswers == null) return;
+          _submitAnswer(question, selectedAnswers);
           emit(SelectionQuestionState.answered(
             question: question,
             isLast: state.isLast,
@@ -47,5 +54,12 @@ class SelectionQuestionBloc extends Bloc<SelectionQuestionEvent, SelectionQuesti
         },
       );
     });
+  }
+
+  _submitAnswer(TestSelectionQuestion question, Set<int> selectedAnswers) {
+    question.userAnswers = selectedAnswers;
+    question.isAnsweredCorrectly = selectedAnswers.isEmpty
+        ? null
+        : setEquals(selectedAnswers, question.source.correctAnswerIds);
   }
 }

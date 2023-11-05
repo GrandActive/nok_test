@@ -12,5 +12,7 @@ class MatchingQuestionEvent with _$MatchingQuestionEvent {
     required Map<int, int?> answer,
   }) = _AnswerSelected;
 
+  const factory MatchingQuestionEvent.putOnHold() = _PutOnHold;
+
   const factory MatchingQuestionEvent.answerSubmitted() = _AnswerSubmitted;
 }

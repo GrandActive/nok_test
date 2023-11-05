@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/selection_question/selection_question_bloc/selection_question_bloc.dart';
+import 'package:nok_test/selection_question/widgets/multiple_select_answer_item.dart';
 import 'package:nok_test/testing/data/model/possible_answer.dart';
-import 'package:nok_test/selection_question/ui/widgets/multiple_select_answer_item.dart';
 import 'package:nok_test/testing/ui/pages/testing_page/widgets/selected_state.dart';
 
 class MultipleAnswerList extends StatelessWidget {
@@ -46,14 +46,15 @@ class MultipleAnswerList extends StatelessWidget {
             text: answer.text,
             shouldShowCorrectness: shouldShowCorrectness,
             onChanged: (isSelected) {
+              Set<int> newAnswers;
               if (isSelected!) {
-                selectedIndices.add(answer.index);
+                newAnswers = Set.from(selectedIndices.toList() + [answer.index]);
               } else {
-                selectedIndices.remove(answer.index);
+                newAnswers = selectedIndices.where((index) => index != answer.index).toSet();
               }
               context
                   .read<SelectionQuestionBloc>()
-                  .add(SelectionQuestionEvent.answerSelected(answer: selectedIndices));
+                  .add(SelectionQuestionEvent.answerSelected(answer: newAnswers));
             },
             selectedState: selectedState,
             isCorrectAnswer: isCorrectAnswer,

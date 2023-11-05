@@ -10,14 +10,14 @@ class SequenceQuestionState with _$SequenceQuestionState {
     required TestMode mode,
     required TestSequenceQuestion question,
     required bool isLast,
-    dynamic selectedAnswers,
+    required List<PossibleAnswer> selectedAnswers,
   }) = InProgress;
 
   const factory SequenceQuestionState.answered({
     required TestSequenceQuestion question,
     required bool isLast,
-    dynamic selectedAnswers,
-    dynamic correctAnswers,
+    required List<PossibleAnswer> selectedAnswers,
+    required List<int> correctAnswers,
   }) = Answered;
 
   TestMode get mode {
@@ -43,7 +43,7 @@ class SequenceQuestionState with _$SequenceQuestionState {
     );
   }
 
-  dynamic get selectedAnswers {
+  List<PossibleAnswer>? get selectedAnswers {
     return mapOrNull(
       inProgress: (value) => value.selectedAnswers,
       answered: (value) => value.selectedAnswers,

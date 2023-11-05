@@ -21,7 +21,8 @@ mixin _$SequenceQuestionEvent {
     required TResult Function(
             TestMode mode, TestSequenceQuestion question, bool isLast)
         started,
-    required TResult Function(dynamic answer) answerSelected,
+    required TResult Function(List<PossibleAnswer> answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +31,8 @@ mixin _$SequenceQuestionEvent {
     TResult? Function(
             TestMode mode, TestSequenceQuestion question, bool isLast)?
         started,
-    TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function(List<PossibleAnswer> answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,7 +40,8 @@ mixin _$SequenceQuestionEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TestMode mode, TestSequenceQuestion question, bool isLast)?
         started,
-    TResult Function(dynamic answer)? answerSelected,
+    TResult Function(List<PossibleAnswer> answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) =>
@@ -47,6 +50,7 @@ mixin _$SequenceQuestionEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,7 @@ mixin _$SequenceQuestionEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +66,7 @@ mixin _$SequenceQuestionEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) =>
@@ -191,7 +197,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     required TResult Function(
             TestMode mode, TestSequenceQuestion question, bool isLast)
         started,
-    required TResult Function(dynamic answer) answerSelected,
+    required TResult Function(List<PossibleAnswer> answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) {
     return started(mode, question, isLast);
@@ -203,7 +210,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult? Function(
             TestMode mode, TestSequenceQuestion question, bool isLast)?
         started,
-    TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function(List<PossibleAnswer> answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) {
     return started?.call(mode, question, isLast);
@@ -214,7 +222,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TestMode mode, TestSequenceQuestion question, bool isLast)?
         started,
-    TResult Function(dynamic answer)? answerSelected,
+    TResult Function(List<PossibleAnswer> answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -229,6 +238,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return started(this);
@@ -239,6 +249,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return started?.call(this);
@@ -249,6 +260,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -279,7 +291,7 @@ abstract class _$$AnswerSelectedImplCopyWith<$Res> {
           $Res Function(_$AnswerSelectedImpl) then) =
       __$$AnswerSelectedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({dynamic answer});
+  $Res call({List<PossibleAnswer> answer});
 }
 
 /// @nodoc
@@ -293,13 +305,13 @@ class __$$AnswerSelectedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? answer = freezed,
+    Object? answer = null,
   }) {
     return _then(_$AnswerSelectedImpl(
-      answer: freezed == answer
-          ? _value.answer
+      answer: null == answer
+          ? _value._answer
           : answer // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as List<PossibleAnswer>,
     ));
   }
 }
@@ -309,10 +321,16 @@ class __$$AnswerSelectedImplCopyWithImpl<$Res>
 class _$AnswerSelectedImpl
     with DiagnosticableTreeMixin
     implements _AnswerSelected {
-  const _$AnswerSelectedImpl({required this.answer});
+  const _$AnswerSelectedImpl({required final List<PossibleAnswer> answer})
+      : _answer = answer;
 
+  final List<PossibleAnswer> _answer;
   @override
-  final dynamic answer;
+  List<PossibleAnswer> get answer {
+    if (_answer is EqualUnmodifiableListView) return _answer;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_answer);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -332,12 +350,12 @@ class _$AnswerSelectedImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AnswerSelectedImpl &&
-            const DeepCollectionEquality().equals(other.answer, answer));
+            const DeepCollectionEquality().equals(other._answer, _answer));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(answer));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_answer));
 
   @JsonKey(ignore: true)
   @override
@@ -352,7 +370,8 @@ class _$AnswerSelectedImpl
     required TResult Function(
             TestMode mode, TestSequenceQuestion question, bool isLast)
         started,
-    required TResult Function(dynamic answer) answerSelected,
+    required TResult Function(List<PossibleAnswer> answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) {
     return answerSelected(answer);
@@ -364,7 +383,8 @@ class _$AnswerSelectedImpl
     TResult? Function(
             TestMode mode, TestSequenceQuestion question, bool isLast)?
         started,
-    TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function(List<PossibleAnswer> answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) {
     return answerSelected?.call(answer);
@@ -375,7 +395,8 @@ class _$AnswerSelectedImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TestMode mode, TestSequenceQuestion question, bool isLast)?
         started,
-    TResult Function(dynamic answer)? answerSelected,
+    TResult Function(List<PossibleAnswer> answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -390,6 +411,7 @@ class _$AnswerSelectedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return answerSelected(this);
@@ -400,6 +422,7 @@ class _$AnswerSelectedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return answerSelected?.call(this);
@@ -410,6 +433,7 @@ class _$AnswerSelectedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -421,13 +445,139 @@ class _$AnswerSelectedImpl
 }
 
 abstract class _AnswerSelected implements SequenceQuestionEvent {
-  const factory _AnswerSelected({required final dynamic answer}) =
+  const factory _AnswerSelected({required final List<PossibleAnswer> answer}) =
       _$AnswerSelectedImpl;
 
-  dynamic get answer;
+  List<PossibleAnswer> get answer;
   @JsonKey(ignore: true)
   _$$AnswerSelectedImplCopyWith<_$AnswerSelectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PutOnHoldImplCopyWith<$Res> {
+  factory _$$PutOnHoldImplCopyWith(
+          _$PutOnHoldImpl value, $Res Function(_$PutOnHoldImpl) then) =
+      __$$PutOnHoldImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PutOnHoldImplCopyWithImpl<$Res>
+    extends _$SequenceQuestionEventCopyWithImpl<$Res, _$PutOnHoldImpl>
+    implements _$$PutOnHoldImplCopyWith<$Res> {
+  __$$PutOnHoldImplCopyWithImpl(
+      _$PutOnHoldImpl _value, $Res Function(_$PutOnHoldImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PutOnHoldImpl with DiagnosticableTreeMixin implements _PutOnHold {
+  const _$PutOnHoldImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SequenceQuestionEvent.putOnHold()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'SequenceQuestionEvent.putOnHold'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PutOnHoldImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            TestMode mode, TestSequenceQuestion question, bool isLast)
+        started,
+    required TResult Function(List<PossibleAnswer> answer) answerSelected,
+    required TResult Function() putOnHold,
+    required TResult Function() answerSubmitted,
+  }) {
+    return putOnHold();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            TestMode mode, TestSequenceQuestion question, bool isLast)?
+        started,
+    TResult? Function(List<PossibleAnswer> answer)? answerSelected,
+    TResult? Function()? putOnHold,
+    TResult? Function()? answerSubmitted,
+  }) {
+    return putOnHold?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TestMode mode, TestSequenceQuestion question, bool isLast)?
+        started,
+    TResult Function(List<PossibleAnswer> answer)? answerSelected,
+    TResult Function()? putOnHold,
+    TResult Function()? answerSubmitted,
+    required TResult orElse(),
+  }) {
+    if (putOnHold != null) {
+      return putOnHold();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
+    required TResult Function(_AnswerSubmitted value) answerSubmitted,
+  }) {
+    return putOnHold(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
+    TResult? Function(_AnswerSubmitted value)? answerSubmitted,
+  }) {
+    return putOnHold?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
+    TResult Function(_AnswerSubmitted value)? answerSubmitted,
+    required TResult orElse(),
+  }) {
+    if (putOnHold != null) {
+      return putOnHold(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PutOnHold implements SequenceQuestionEvent {
+  const factory _PutOnHold() = _$PutOnHoldImpl;
 }
 
 /// @nodoc
@@ -480,7 +630,8 @@ class _$AnswerSubmittedImpl
     required TResult Function(
             TestMode mode, TestSequenceQuestion question, bool isLast)
         started,
-    required TResult Function(dynamic answer) answerSelected,
+    required TResult Function(List<PossibleAnswer> answer) answerSelected,
+    required TResult Function() putOnHold,
     required TResult Function() answerSubmitted,
   }) {
     return answerSubmitted();
@@ -492,7 +643,8 @@ class _$AnswerSubmittedImpl
     TResult? Function(
             TestMode mode, TestSequenceQuestion question, bool isLast)?
         started,
-    TResult? Function(dynamic answer)? answerSelected,
+    TResult? Function(List<PossibleAnswer> answer)? answerSelected,
+    TResult? Function()? putOnHold,
     TResult? Function()? answerSubmitted,
   }) {
     return answerSubmitted?.call();
@@ -503,7 +655,8 @@ class _$AnswerSubmittedImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TestMode mode, TestSequenceQuestion question, bool isLast)?
         started,
-    TResult Function(dynamic answer)? answerSelected,
+    TResult Function(List<PossibleAnswer> answer)? answerSelected,
+    TResult Function()? putOnHold,
     TResult Function()? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -518,6 +671,7 @@ class _$AnswerSubmittedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_AnswerSelected value) answerSelected,
+    required TResult Function(_PutOnHold value) putOnHold,
     required TResult Function(_AnswerSubmitted value) answerSubmitted,
   }) {
     return answerSubmitted(this);
@@ -528,6 +682,7 @@ class _$AnswerSubmittedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_AnswerSelected value)? answerSelected,
+    TResult? Function(_PutOnHold value)? putOnHold,
     TResult? Function(_AnswerSubmitted value)? answerSubmitted,
   }) {
     return answerSubmitted?.call(this);
@@ -538,6 +693,7 @@ class _$AnswerSubmittedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_AnswerSelected value)? answerSelected,
+    TResult Function(_PutOnHold value)? putOnHold,
     TResult Function(_AnswerSubmitted value)? answerSubmitted,
     required TResult orElse(),
   }) {
@@ -558,10 +714,10 @@ mixin _$SequenceQuestionState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(TestMode mode, TestSequenceQuestion question,
-            bool isLast, dynamic selectedAnswers)
+            bool isLast, List<PossibleAnswer> selectedAnswers)
         inProgress,
     required TResult Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)
         answered,
   }) =>
       throw _privateConstructorUsedError;
@@ -569,10 +725,10 @@ mixin _$SequenceQuestionState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(TestMode mode, TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            List<PossibleAnswer> selectedAnswers)?
         inProgress,
     TResult? Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)?
         answered,
   }) =>
       throw _privateConstructorUsedError;
@@ -580,10 +736,10 @@ mixin _$SequenceQuestionState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(TestMode mode, TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            List<PossibleAnswer> selectedAnswers)?
         inProgress,
     TResult Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)?
         answered,
     required TResult orElse(),
   }) =>
@@ -678,10 +834,10 @@ class _$InitialImpl extends Initial with DiagnosticableTreeMixin {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(TestMode mode, TestSequenceQuestion question,
-            bool isLast, dynamic selectedAnswers)
+            bool isLast, List<PossibleAnswer> selectedAnswers)
         inProgress,
     required TResult Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)
         answered,
   }) {
     return initial();
@@ -692,10 +848,10 @@ class _$InitialImpl extends Initial with DiagnosticableTreeMixin {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(TestMode mode, TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            List<PossibleAnswer> selectedAnswers)?
         inProgress,
     TResult? Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)?
         answered,
   }) {
     return initial?.call();
@@ -706,10 +862,10 @@ class _$InitialImpl extends Initial with DiagnosticableTreeMixin {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(TestMode mode, TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            List<PossibleAnswer> selectedAnswers)?
         inProgress,
     TResult Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)?
         answered,
     required TResult orElse(),
   }) {
@@ -769,7 +925,7 @@ abstract class _$$InProgressImplCopyWith<$Res> {
       {TestMode mode,
       TestSequenceQuestion question,
       bool isLast,
-      dynamic selectedAnswers});
+      List<PossibleAnswer> selectedAnswers});
 
   $TestSequenceQuestionCopyWith<$Res> get question;
 }
@@ -788,7 +944,7 @@ class __$$InProgressImplCopyWithImpl<$Res>
     Object? mode = null,
     Object? question = null,
     Object? isLast = null,
-    Object? selectedAnswers = freezed,
+    Object? selectedAnswers = null,
   }) {
     return _then(_$InProgressImpl(
       mode: null == mode
@@ -803,10 +959,10 @@ class __$$InProgressImplCopyWithImpl<$Res>
           ? _value.isLast
           : isLast // ignore: cast_nullable_to_non_nullable
               as bool,
-      selectedAnswers: freezed == selectedAnswers
-          ? _value.selectedAnswers
+      selectedAnswers: null == selectedAnswers
+          ? _value._selectedAnswers
           : selectedAnswers // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as List<PossibleAnswer>,
     ));
   }
 
@@ -826,8 +982,9 @@ class _$InProgressImpl extends InProgress with DiagnosticableTreeMixin {
       {required this.mode,
       required this.question,
       required this.isLast,
-      this.selectedAnswers})
-      : super._();
+      required final List<PossibleAnswer> selectedAnswers})
+      : _selectedAnswers = selectedAnswers,
+        super._();
 
   @override
   final TestMode mode;
@@ -835,8 +992,13 @@ class _$InProgressImpl extends InProgress with DiagnosticableTreeMixin {
   final TestSequenceQuestion question;
   @override
   final bool isLast;
+  final List<PossibleAnswer> _selectedAnswers;
   @override
-  final dynamic selectedAnswers;
+  List<PossibleAnswer> get selectedAnswers {
+    if (_selectedAnswers is EqualUnmodifiableListView) return _selectedAnswers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedAnswers);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -864,12 +1026,12 @@ class _$InProgressImpl extends InProgress with DiagnosticableTreeMixin {
                 other.question == question) &&
             (identical(other.isLast, isLast) || other.isLast == isLast) &&
             const DeepCollectionEquality()
-                .equals(other.selectedAnswers, selectedAnswers));
+                .equals(other._selectedAnswers, _selectedAnswers));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, mode, question, isLast,
-      const DeepCollectionEquality().hash(selectedAnswers));
+      const DeepCollectionEquality().hash(_selectedAnswers));
 
   @JsonKey(ignore: true)
   @override
@@ -882,10 +1044,10 @@ class _$InProgressImpl extends InProgress with DiagnosticableTreeMixin {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(TestMode mode, TestSequenceQuestion question,
-            bool isLast, dynamic selectedAnswers)
+            bool isLast, List<PossibleAnswer> selectedAnswers)
         inProgress,
     required TResult Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)
         answered,
   }) {
     return inProgress(mode, question, isLast, selectedAnswers);
@@ -896,10 +1058,10 @@ class _$InProgressImpl extends InProgress with DiagnosticableTreeMixin {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(TestMode mode, TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            List<PossibleAnswer> selectedAnswers)?
         inProgress,
     TResult? Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)?
         answered,
   }) {
     return inProgress?.call(mode, question, isLast, selectedAnswers);
@@ -910,10 +1072,10 @@ class _$InProgressImpl extends InProgress with DiagnosticableTreeMixin {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(TestMode mode, TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            List<PossibleAnswer> selectedAnswers)?
         inProgress,
     TResult Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)?
         answered,
     required TResult orElse(),
   }) {
@@ -963,13 +1125,13 @@ abstract class InProgress extends SequenceQuestionState {
       {required final TestMode mode,
       required final TestSequenceQuestion question,
       required final bool isLast,
-      final dynamic selectedAnswers}) = _$InProgressImpl;
+      required final List<PossibleAnswer> selectedAnswers}) = _$InProgressImpl;
   const InProgress._() : super._();
 
   TestMode get mode;
   TestSequenceQuestion get question;
   bool get isLast;
-  dynamic get selectedAnswers;
+  List<PossibleAnswer> get selectedAnswers;
   @JsonKey(ignore: true)
   _$$InProgressImplCopyWith<_$InProgressImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -984,8 +1146,8 @@ abstract class _$$AnsweredImplCopyWith<$Res> {
   $Res call(
       {TestSequenceQuestion question,
       bool isLast,
-      dynamic selectedAnswers,
-      dynamic correctAnswers});
+      List<PossibleAnswer> selectedAnswers,
+      List<int> correctAnswers});
 
   $TestSequenceQuestionCopyWith<$Res> get question;
 }
@@ -1003,8 +1165,8 @@ class __$$AnsweredImplCopyWithImpl<$Res>
   $Res call({
     Object? question = null,
     Object? isLast = null,
-    Object? selectedAnswers = freezed,
-    Object? correctAnswers = freezed,
+    Object? selectedAnswers = null,
+    Object? correctAnswers = null,
   }) {
     return _then(_$AnsweredImpl(
       question: null == question
@@ -1015,14 +1177,14 @@ class __$$AnsweredImplCopyWithImpl<$Res>
           ? _value.isLast
           : isLast // ignore: cast_nullable_to_non_nullable
               as bool,
-      selectedAnswers: freezed == selectedAnswers
-          ? _value.selectedAnswers
+      selectedAnswers: null == selectedAnswers
+          ? _value._selectedAnswers
           : selectedAnswers // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      correctAnswers: freezed == correctAnswers
-          ? _value.correctAnswers
+              as List<PossibleAnswer>,
+      correctAnswers: null == correctAnswers
+          ? _value._correctAnswers
           : correctAnswers // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as List<int>,
     ));
   }
 
@@ -1041,18 +1203,31 @@ class _$AnsweredImpl extends Answered with DiagnosticableTreeMixin {
   const _$AnsweredImpl(
       {required this.question,
       required this.isLast,
-      this.selectedAnswers,
-      this.correctAnswers})
-      : super._();
+      required final List<PossibleAnswer> selectedAnswers,
+      required final List<int> correctAnswers})
+      : _selectedAnswers = selectedAnswers,
+        _correctAnswers = correctAnswers,
+        super._();
 
   @override
   final TestSequenceQuestion question;
   @override
   final bool isLast;
+  final List<PossibleAnswer> _selectedAnswers;
   @override
-  final dynamic selectedAnswers;
+  List<PossibleAnswer> get selectedAnswers {
+    if (_selectedAnswers is EqualUnmodifiableListView) return _selectedAnswers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedAnswers);
+  }
+
+  final List<int> _correctAnswers;
   @override
-  final dynamic correctAnswers;
+  List<int> get correctAnswers {
+    if (_correctAnswers is EqualUnmodifiableListView) return _correctAnswers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_correctAnswers);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -1079,9 +1254,9 @@ class _$AnsweredImpl extends Answered with DiagnosticableTreeMixin {
                 other.question == question) &&
             (identical(other.isLast, isLast) || other.isLast == isLast) &&
             const DeepCollectionEquality()
-                .equals(other.selectedAnswers, selectedAnswers) &&
+                .equals(other._selectedAnswers, _selectedAnswers) &&
             const DeepCollectionEquality()
-                .equals(other.correctAnswers, correctAnswers));
+                .equals(other._correctAnswers, _correctAnswers));
   }
 
   @override
@@ -1089,8 +1264,8 @@ class _$AnsweredImpl extends Answered with DiagnosticableTreeMixin {
       runtimeType,
       question,
       isLast,
-      const DeepCollectionEquality().hash(selectedAnswers),
-      const DeepCollectionEquality().hash(correctAnswers));
+      const DeepCollectionEquality().hash(_selectedAnswers),
+      const DeepCollectionEquality().hash(_correctAnswers));
 
   @JsonKey(ignore: true)
   @override
@@ -1103,10 +1278,10 @@ class _$AnsweredImpl extends Answered with DiagnosticableTreeMixin {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(TestMode mode, TestSequenceQuestion question,
-            bool isLast, dynamic selectedAnswers)
+            bool isLast, List<PossibleAnswer> selectedAnswers)
         inProgress,
     required TResult Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)
         answered,
   }) {
     return answered(question, isLast, selectedAnswers, correctAnswers);
@@ -1117,10 +1292,10 @@ class _$AnsweredImpl extends Answered with DiagnosticableTreeMixin {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(TestMode mode, TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            List<PossibleAnswer> selectedAnswers)?
         inProgress,
     TResult? Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)?
         answered,
   }) {
     return answered?.call(question, isLast, selectedAnswers, correctAnswers);
@@ -1131,10 +1306,10 @@ class _$AnsweredImpl extends Answered with DiagnosticableTreeMixin {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(TestMode mode, TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers)?
+            List<PossibleAnswer> selectedAnswers)?
         inProgress,
     TResult Function(TestSequenceQuestion question, bool isLast,
-            dynamic selectedAnswers, dynamic correctAnswers)?
+            List<PossibleAnswer> selectedAnswers, List<int> correctAnswers)?
         answered,
     required TResult orElse(),
   }) {
@@ -1183,14 +1358,14 @@ abstract class Answered extends SequenceQuestionState {
   const factory Answered(
       {required final TestSequenceQuestion question,
       required final bool isLast,
-      final dynamic selectedAnswers,
-      final dynamic correctAnswers}) = _$AnsweredImpl;
+      required final List<PossibleAnswer> selectedAnswers,
+      required final List<int> correctAnswers}) = _$AnsweredImpl;
   const Answered._() : super._();
 
   TestSequenceQuestion get question;
   bool get isLast;
-  dynamic get selectedAnswers;
-  dynamic get correctAnswers;
+  List<PossibleAnswer> get selectedAnswers;
+  List<int> get correctAnswers;
   @JsonKey(ignore: true)
   _$$AnsweredImplCopyWith<_$AnsweredImpl> get copyWith =>
       throw _privateConstructorUsedError;

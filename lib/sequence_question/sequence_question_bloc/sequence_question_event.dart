@@ -9,8 +9,10 @@ class SequenceQuestionEvent with _$SequenceQuestionEvent {
   }) = _Started;
 
   const factory SequenceQuestionEvent.answerSelected({
-    required dynamic answer,
+    required List<PossibleAnswer> answer,
   }) = _AnswerSelected;
+
+  const factory SequenceQuestionEvent.putOnHold() = _PutOnHold;
 
   const factory SequenceQuestionEvent.answerSubmitted() = _AnswerSubmitted;
 }

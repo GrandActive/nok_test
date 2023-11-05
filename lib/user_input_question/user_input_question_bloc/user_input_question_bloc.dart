@@ -18,33 +18,46 @@ class UserInputQuestionBloc extends Bloc<UserInputQuestionEvent, UserInputQuesti
             mode: mode,
             question: question,
             isLast: isLast,
+            userInput: null,
           ));
         },
-        answerSelected: (answer) {
+        inputChanged: (userInput) {
           final question = state.question;
           if (question == null) return;
-          final userAnswer = answer == null || answer == "" ? null : answer;
-          question.userAnswer = userAnswer;
-          question.isAnsweredCorrectly =
-              userAnswer == null ? null : userAnswer == question.source.correctAnswer;
           emit(UserInputQuestionState.inProgress(
             mode: state.mode,
             question: question,
             isLast: state.isLast,
-            selectedAnswers: userAnswer,
+            userInput: userInput,
           ));
+        },
+        putOnHold: () {
+          if (state.mode == TestMode.exam) {
+            final question = state.question;
+            final userInput = state.userInput;
+            if (question == null || userInput == null) return;
+            _submitAnswer(question, userInput);
+          }
         },
         answerSubmitted: () {
           final question = state.question;
-          if (question == null) return;
+          final userInput = state.userInput;
+          if (question == null || userInput == null) return;
+          _submitAnswer(question, userInput);
           emit(UserInputQuestionState.answered(
             question: question,
             isLast: state.isLast,
-            correctAnswers: question.source.correctAnswer,
-            selectedAnswers: state.selectedAnswers,
+            correctAnswer: question.source.correctAnswer,
+            userInput: state.userInput,
           ));
         },
       );
     });
+  }
+
+  _submitAnswer(TestUserInputQuestion question, String? userInput) {
+    question.userAnswer = userInput;
+    question.isAnsweredCorrectly =
+        userInput == null ? null : userInput == question.source.correctAnswer;
   }
 }

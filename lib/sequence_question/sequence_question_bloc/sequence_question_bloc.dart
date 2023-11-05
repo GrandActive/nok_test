@@ -16,17 +16,19 @@ class SequenceQuestionBloc extends Bloc<SequenceQuestionEvent, SequenceQuestionS
     on<SequenceQuestionEvent>((event, emit) async {
       event.when(
         started: (mode, question, isLast) {
-          emit(SequenceQuestionState.inProgress(mode: mode, question: question, isLast: isLast));
-          add(SequenceQuestionEvent.answerSelected(answer: question.source.answers));
+          emit(SequenceQuestionState.inProgress(
+            mode: mode,
+            question: question,
+            isLast: isLast,
+            selectedAnswers: question.source.answers,
+          ));
+          add(SequenceQuestionEvent.answerSelected(
+            answer: question.source.answers,
+          ));
         },
         answerSelected: (answer) {
           final question = state.question;
           if (question == null) return;
-          final userAnswer = (answer as List<PossibleAnswer>)
-              .map((answer) => answer.index)
-              .toList(growable: false);
-          question.isAnsweredCorrectly = listEquals(userAnswer, question.source.correctOrder);
-          question.userAnswer = userAnswer;
           emit(SequenceQuestionState.inProgress(
             mode: state.mode,
             question: question,
@@ -34,17 +36,33 @@ class SequenceQuestionBloc extends Bloc<SequenceQuestionEvent, SequenceQuestionS
             selectedAnswers: answer,
           ));
         },
+        putOnHold: () {
+          if (state.mode == TestMode.exam) {
+            final question = state.question;
+            final selectedAnswers = state.selectedAnswers;
+            if (question == null || selectedAnswers == null) return;
+            _submitAnswer(question, selectedAnswers);
+          }
+        },
         answerSubmitted: () {
           final question = state.question;
-          if (question == null) return;
+          final selectedAnswers = state.selectedAnswers;
+          if (question == null || selectedAnswers == null) return;
+          _submitAnswer(question, selectedAnswers);
           emit(SequenceQuestionState.answered(
             question: question,
             isLast: state.isLast,
             correctAnswers: question.source.correctOrder,
-            selectedAnswers: state.selectedAnswers,
+            selectedAnswers: selectedAnswers,
           ));
         },
       );
     });
+  }
+
+  _submitAnswer(TestSequenceQuestion question, List<PossibleAnswer> selectedAnswers) {
+    final userAnswer = selectedAnswers.map((answer) => answer.index).toList(growable: false);
+    question.userAnswer = userAnswer;
+    question.isAnsweredCorrectly = listEquals(userAnswer, question.source.correctOrder);
   }
 }

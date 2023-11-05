@@ -8,9 +8,11 @@ class UserInputQuestionEvent with _$UserInputQuestionEvent {
     required bool isLast,
   }) = _Started;
 
-  const factory UserInputQuestionEvent.answerSelected({
-    required dynamic answer,
+  const factory UserInputQuestionEvent.inputChanged({
+    required String? answer,
   }) = _AnswerSelected;
+
+  const factory UserInputQuestionEvent.putOnHold() = _PutOnHold;
 
   const factory UserInputQuestionEvent.answerSubmitted() = _AnswerSubmitted;
 }

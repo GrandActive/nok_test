@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nok_test/selection_question/widgets/single_select_answer_item.dart';
 import 'package:nok_test/testing/data/model/possible_answer.dart';
-import 'package:nok_test/selection_question/ui/widgets/single_select_answer_item.dart';
 import 'package:nok_test/testing/ui/pages/testing_page/widgets/selected_state.dart';
 
 class SingleAnswerList extends StatelessWidget {

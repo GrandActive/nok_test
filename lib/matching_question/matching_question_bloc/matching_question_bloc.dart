@@ -28,29 +28,41 @@ class MatchingQuestionBloc extends Bloc<MatchingQuestionEvent, MatchingQuestionS
         answerSelected: (answer) {
           final question = state.question;
           if (question == null) return;
-          final newAnswer = answer;
-          question.isAnsweredCorrectly = newAnswer.values.any((element) => element != null)
-              ? mapEquals(newAnswer, question.source.correctMatch)
-              : null;
-          question.userAnswer = newAnswer;
           emit(MatchingQuestionState.inProgress(
             mode: state.mode,
             question: question,
             isLast: state.isLast,
-            selectedAnswers: newAnswer,
+            selectedAnswers: answer,
           ));
+        },
+        putOnHold: () {
+          if (state.mode == TestMode.exam) {
+            final question = state.question;
+            final selectedAnswers = state.selectedAnswers;
+            if (question == null || selectedAnswers == null) return;
+            _submitAnswer(question, selectedAnswers);
+          }
         },
         answerSubmitted: () {
           final question = state.question;
-          if (question == null) return;
+          final selectedAnswers = state.selectedAnswers;
+          if (question == null || selectedAnswers == null) return;
+          _submitAnswer(question, selectedAnswers);
           emit(MatchingQuestionState.answered(
             question: question,
             isLast: state.isLast,
             correctAnswers: question.source.correctMatch,
-            selectedAnswers: state.selectedAnswers!,
+            selectedAnswers: selectedAnswers,
           ));
         },
       );
     });
+  }
+
+  _submitAnswer(TestMatchingQuestion question, Map<int, int?> selectedAnswers) {
+    question.userAnswer = selectedAnswers;
+    question.isAnsweredCorrectly = selectedAnswers.values.any((element) => element != null)
+        ? mapEquals(selectedAnswers, question.source.correctMatch)
+        : null;
   }
 }
