@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/injection.dart';
 import 'package:nok_test/navigation.dart';
-import 'package:nok_test/testing/bloc/test_bloc/test_bloc.dart';
+import 'package:nok_test/testing/bloc/testing_bloc/testing_bloc.dart';
 import 'package:nok_test/testing/bloc/timer_bloc/timer_bloc.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/testing/domain/ticker.dart';
 
 @RoutePage()
 class TestWrapperPage extends StatelessWidget implements AutoRouteWrapper {
-  const TestWrapperPage({super.key});
+  const TestWrapperPage({
+    super.key,
+    required this.mode,
+  });
+
+  final TestMode mode;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +26,9 @@ class TestWrapperPage extends StatelessWidget implements AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<TestBloc>(
+        BlocProvider<TestingBloc>(
           create: (context) =>
-              getIt.get<TestBloc>()..add(const TestEvent.started(mode: TestMode.exam)),
+              getIt.get<TestingBloc>()..add(TestingEvent.started(mode: mode)),
         ),
         BlocProvider<TimerBloc>(
           create: (context) => TimerBloc(ticker: getIt.get<Ticker>()),
@@ -31,7 +36,7 @@ class TestWrapperPage extends StatelessWidget implements AutoRouteWrapper {
       ],
       child: MultiBlocListener(
         listeners: [
-          BlocListener<TestBloc, TestState>(
+          BlocListener<TestingBloc, TestingState>(
             listenWhen: (previous, current) =>
                 previous.questions != current.questions || current.isFinished,
             listener: (context, state) {
@@ -43,7 +48,7 @@ class TestWrapperPage extends StatelessWidget implements AutoRouteWrapper {
               }
             },
           ),
-          BlocListener<TestBloc, TestState>(
+          BlocListener<TestingBloc, TestingState>(
             listenWhen: (previous, current) => previous.isFinished != current.isFinished,
             listener: (context, state) {
               if (state.isFinished) {
@@ -55,7 +60,7 @@ class TestWrapperPage extends StatelessWidget implements AutoRouteWrapper {
             listener: (context, state) {
               state.maybeWhen(
                 finished: () {
-                  context.read<TestBloc>().add(const TestEvent.finishRequested());
+                  context.read<TestingBloc>().add(const TestingEvent.finishRequested());
                 },
                 orElse: () {},
               );

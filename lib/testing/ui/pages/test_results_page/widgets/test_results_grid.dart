@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/navigation.dart';
-import 'package:nok_test/testing/bloc/test_bloc/test_bloc.dart';
-import 'package:nok_test/testing/ui/pages/test_page/widgets/question_map_item.dart';
+import 'package:nok_test/testing/bloc/testing_bloc/testing_bloc.dart';
+import 'package:nok_test/testing/ui/pages/testing_page/widgets/question_map_item.dart';
 
 class TestResultsGrid extends StatelessWidget {
   const TestResultsGrid({
@@ -12,7 +12,7 @@ class TestResultsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TestBloc, TestState>(
+    return BlocBuilder<TestingBloc, TestingState>(
       builder: (context, state) {
         return ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 232),
