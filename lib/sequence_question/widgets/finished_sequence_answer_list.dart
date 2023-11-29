@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nok_test/styles/colors.dart';
+import 'package:nok_test/common/widgets/answer_result.dart';
+import 'package:nok_test/sequence_question/widgets/widgets.dart';
+import 'package:nok_test/testing/data/model/possible_answer.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
 
 class FinishedSequenceAnswerList extends StatelessWidget {
@@ -10,41 +12,40 @@ class FinishedSequenceAnswerList extends StatelessWidget {
 
   final TestSequenceQuestion question;
 
+  PossibleAnswer _getAnswer(int index) {
+    return question.source.answers.firstWhere((e) => e.index == index);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
+    final items = question.userAnswer ?? question.source.answers.map((e) => e.index);
+    final shouldShowCorrectness = question.userAnswer != null;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ...question.userAnswer!.indexed.map((a) {
-          final answerOrder = a.$1;
-          final answer = question.source.answers.firstWhere((e) => e.index == a.$2);
-
-          Color borderColor;
-          if (question.isAnsweredCorrectly == null) {
-            borderColor = const Color(0xFFDBE9F9);
-          } else if (question.source.correctOrder[answerOrder] == answer.index) {
-            borderColor = correctAnswerColor;
-          } else {
-            borderColor = wrongAnswerColor;
-          }
-
-          return Material(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: ListTile(
-                dense: true,
-                title: Text(answer.text, style: const TextStyle(fontSize: 16)),
-                shape: RoundedRectangleBorder(
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  side: BorderSide(
-                    color: borderColor,
-                  ),
-                ),
-              ),
+        if (shouldShowCorrectness) ...[
+          AnswerResult(isAnsweredCorrectly: question.isAnsweredCorrectly ?? false),
+          const SizedBox(height: 24),
+        ],
+        ListView(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          children: [
+            ...items.indexed.map(
+              (a) {
+                final index = a.$1;
+                final answerIndex = a.$2;
+                final correctAnswerIndex = question.source.correctOrder[index];
+                return FinishedSequenceAnswerListItem(
+                  answer: _getAnswer(answerIndex),
+                  correctAnswer: _getAnswer(correctAnswerIndex),
+                  shouldShowCorrectness: shouldShowCorrectness,
+                );
+              },
             ),
-          );
-        })
+          ],
+        ),
       ],
     );
   }

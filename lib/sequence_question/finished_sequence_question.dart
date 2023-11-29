@@ -12,20 +12,16 @@ class FinishedSequenceQuestion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
-        child: Column(
-          children: [
-            Text(
-              question.source.title,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 24),
-            FinishedSequenceAnswerList(question: question)
-          ],
+    return ListView(
+      padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
+      children: [
+        Text(
+          question.source.title,
+          style: const TextStyle(fontSize: 16),
         ),
-      ),
+        const SizedBox(height: 24),
+        FinishedSequenceAnswerList(question: question),
+      ],
     );
   }
 }

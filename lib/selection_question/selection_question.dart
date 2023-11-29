@@ -34,28 +34,24 @@ class SelectionQuestion extends StatelessWidget {
           }
 
           final isMultipleAnswers = question.source.correctAnswerIds.length > 1;
-          final shouldShowCorrectness = state is Answered;
-          final isDisabled = state is Answered;
 
           return ListView(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 24, bottom: 36),
             children: [
               QuestionText(text: question.source.text),
-              const SizedBox(height: 40),
+              const SizedBox(height: 24),
               isMultipleAnswers
                   ? MultipleAnswerList(
                       possibleAnswers: question.source.possibleAnswers,
                       selectedIndices: answersToSelect,
-                      shouldShowCorrectness: shouldShowCorrectness,
                       correctAnswers: question.source.correctAnswerIds,
-                      isDisabled: isDisabled,
+                      isFinished: state is Answered,
                     )
                   : SingleAnswerList(
                       possibleAnswers: question.source.possibleAnswers,
                       selectedIndex: answersToSelect.isEmpty ? null : answersToSelect.first,
                       correctAnswer: question.source.correctAnswerIds.first,
-                      shouldShowCorrectness: shouldShowCorrectness,
-                      isDisabled: isDisabled,
+                      isFinished: state is Answered,
                     ),
               const SizedBox(height: 40),
               Row(

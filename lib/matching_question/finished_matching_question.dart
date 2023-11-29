@@ -23,7 +23,7 @@ class FinishedMatchingQuestion extends StatelessWidget {
               question.source.text,
               style: const TextStyle(fontSize: 16),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 24),
             FinishedMatchingAnswerList(question: question, answer: answer),
           ],
         ),

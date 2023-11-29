@@ -1,6 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:nok_test/styles/colors.dart';
+import 'package:nok_test/common/widgets/answer_result.dart';
+import 'package:nok_test/matching_question/widgets/finished_question_answer_pair.dart';
+import 'package:nok_test/testing/data/model/possible_answer.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/utils/first_where_or_null.dart';
 
 class FinishedMatchingAnswerList extends StatelessWidget {
   const FinishedMatchingAnswerList({
@@ -12,53 +16,41 @@ class FinishedMatchingAnswerList extends StatelessWidget {
   final TestMatchingQuestion question;
   final Map<int, int?> answer;
 
+  bool get shouldShowCorrectness => answer.values.isNotEmpty;
+
+  PossibleAnswer? _getAnswer(int? index) {
+    return question.source.answers.firstWhereOrNull((a) => a.index == index);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        final q = question.source.questions[index];
-        final answerIndex = answer[q.index];
-        final answerText = answerIndex == null
-            ? "Ответ не выбран"
-            : question.source.answers.firstWhere((a) => a.index == answerIndex).text;
+    final isAnsweredCorrectly = mapEquals(answer, question.source.correctMatch);
 
-        final Color borderColor;
-        final answerIsCorrect = question.source.correctMatch[q.index] == answer[q.index];
-        if (question.isAnsweredCorrectly == null) {
-          borderColor = const Color(0xFF7F7F7F);
-        } else if (answerIsCorrect) {
-          borderColor = correctAnswerColor;
-        } else {
-          borderColor = wrongAnswerColor;
-        }
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              q.text,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 8),
-            DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(4)),
-                border: Border.all(color: borderColor, width: 1),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Text(
-                  answerText,
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ),
-            )
-          ],
-        );
-      },
-      separatorBuilder: (_, __) => const SizedBox(height: 16),
-      itemCount: question.source.questions.length,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (shouldShowCorrectness) ...[
+          AnswerResult(isAnsweredCorrectly: isAnsweredCorrectly),
+          const SizedBox(height: 24),
+        ],
+        ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            final q = question.source.questions[index];
+            final answerIndex = answer[q.index];
+            final correctAnswerIndex = question.source.correctMatch[q.index];
+            return FinishedQuestionAnswerPair(
+              question: q,
+              answer: _getAnswer(answerIndex),
+              correctAnswer: _getAnswer(correctAnswerIndex),
+              shouldShowCorrectness: shouldShowCorrectness,
+            );
+          },
+          separatorBuilder: (_, __) => const SizedBox(height: 16),
+          itemCount: question.source.questions.length,
+        ),
+      ],
     );
   }
 }

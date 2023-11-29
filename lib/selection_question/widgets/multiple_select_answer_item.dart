@@ -42,14 +42,25 @@ class MultipleSelectAnswerItem extends StatelessWidget {
     }
   }
 
+  Color _resolveCheckboxColor(
+    Set<MaterialState> states, {
+    Color disabledColor = Colors.transparent,
+    Color defaultColor = Colors.transparent,
+  }) {
+    if (states.contains(MaterialState.selected) && states.contains(MaterialState.disabled)) {
+      return isSelectedAsCorrectAnswer ? correctAnswerColor : wrongAnswerColor;
+    }
+    if (states.contains(MaterialState.disabled)) {
+      return disabledColor;
+    }
+    if (states.contains(MaterialState.selected)) {
+      return const Color(0xff277ADB);
+    }
+    return defaultColor;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final checkboxColor = isSelected && shouldShowCorrectness
-        ? isCorrectAnswer
-            ? correctAnswerColor
-            : wrongAnswerColor
-        : const Color(0xff277ADB);
-
     final checkboxValue = isSelected
         ? shouldShowCorrectness
             ? isCorrectAnswer
@@ -64,35 +75,32 @@ class MultipleSelectAnswerItem extends StatelessWidget {
         controlAffinity: ListTileControlAffinity.leading,
         value: checkboxValue,
         onChanged: isActive ? onChanged : null,
-        title: DefaultTextStyle(
+        title: Text(
+          text,
           style: const TextStyle(
             fontWeight: FontWeight.w400,
             fontSize: 16,
             color: Color(0xff464646),
           ),
-          child: Text(text),
         ),
         shape: RoundedRectangleBorder(
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           side: BorderSide(color: _tileSideColor),
         ),
-        activeColor: checkboxColor,
-        fillColor: MaterialStateColor.resolveWith((states) {
-          if (isActive) {
-            if (states.contains(MaterialState.selected)) return const Color(0xff277ADB);
-            return Colors.transparent;
-          } else {
-            if (states.contains(MaterialState.selected)) {
-              if (selectedState == SelectedState.notSelected) return Colors.transparent;
-              return isSelectedAsCorrectAnswer ? correctAnswerColor : wrongAnswerColor;
-            }
-            return Colors.transparent;
-          }
-        }),
+        fillColor: MaterialStateColor.resolveWith(_resolveCheckboxColor),
         checkboxShape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(2)),
         ),
-        side: BorderSide(width: 1, color: checkboxColor),
+        side: MaterialStateBorderSide.resolveWith(
+          (states) => BorderSide(
+            width: 1,
+            color: _resolveCheckboxColor(
+              states,
+              disabledColor: const Color(0xFFD9D9D9),
+              defaultColor: const Color(0xff277ADB),
+            ),
+          ),
+        ),
         contentPadding: EdgeInsets.zero,
       ),
     );

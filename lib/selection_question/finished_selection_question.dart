@@ -23,21 +23,19 @@ class FinishedSelectionQuestion extends StatelessWidget {
         child: Column(
           children: [
             QuestionText(text: question.source.text),
-            const SizedBox(height: 40),
+            const SizedBox(height: 24),
             isMultipleAnswers
                 ? MultipleAnswerList(
                     possibleAnswers: question.source.possibleAnswers,
                     selectedIndices: selectedAnswers,
                     correctAnswers: question.source.correctAnswerIds,
-                    shouldShowCorrectness: true,
-                    isDisabled: true,
+                    isFinished: true,
                   )
                 : SingleAnswerList(
                     possibleAnswers: question.source.possibleAnswers,
                     selectedIndex: selectedAnswers.isEmpty ? null : selectedAnswers.first,
                     correctAnswer: question.source.correctAnswerIds.first,
-                    shouldShowCorrectness: true,
-                    isDisabled: true,
+                    isFinished: true,
                   ),
           ],
         ),

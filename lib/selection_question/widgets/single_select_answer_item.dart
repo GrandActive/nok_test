@@ -28,7 +28,7 @@ class SingleSelectAnswerItem extends StatelessWidget {
 
   bool get isSelectedAsCorrectAnswer => selectedState == SelectedState.selectedCorrectly;
 
-  Color get _tileSideColor {
+  Color get tileSideColor {
     if (isSelected) {
       if (!shouldShowCorrectness) return const Color(0xff277ADB);
       if (isCorrectAnswer) {
@@ -46,14 +46,16 @@ class SingleSelectAnswerItem extends StatelessWidget {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final radioColor = isSelected && shouldShowCorrectness
+  Color get selectedRadioColor {
+    return shouldShowCorrectness
         ? isSelectedAsCorrectAnswer
             ? correctAnswerColor
             : wrongAnswerColor
         : const Color(0xff277ADB);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     void setSelected(int? index) {
       context
           .read<SelectionQuestionBloc>()
@@ -65,21 +67,25 @@ class SingleSelectAnswerItem extends StatelessWidget {
         value: index,
         groupValue: selectedIndex,
         onChanged: !isDisabled ? setSelected : null,
-        title: DefaultTextStyle(
+        title: Text(
+          text,
           style: const TextStyle(
             fontWeight: FontWeight.w400,
             fontSize: 16,
             color: Color(0xff464646),
           ),
-          child: Text(text),
         ),
         fillColor: MaterialStateProperty.resolveWith(
-          (states) => states.contains(MaterialState.selected) ? radioColor : null,
+          (states) {
+            if (states.contains(MaterialState.selected)) return selectedRadioColor;
+            if (states.contains(MaterialState.disabled)) return const Color(0xFFD9D9D9);
+            return const Color(0xff277ADB);
+          },
         ),
         toggleable: true,
         shape: RoundedRectangleBorder(
           borderRadius: const BorderRadius.all(Radius.circular(8)),
-          side: BorderSide(color: _tileSideColor),
+          side: BorderSide(color: tileSideColor),
         ),
         visualDensity: VisualDensity.compact,
         contentPadding: EdgeInsets.zero,
