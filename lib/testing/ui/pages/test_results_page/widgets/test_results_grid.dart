@@ -29,7 +29,11 @@ class TestResultsGrid extends StatelessWidget {
                 isSelected: state.selectedIndex == index && !state.isFinished,
                 isAnsweredCorrectly: state.questions[index].isAnsweredCorrectly,
                 onPressed: () {
-                  context.router.push(QuestionReviewRoute(question: state.questions[index], index: index));
+                  context.router.push(QuestionReviewRoute(
+                    question: state.questions[index],
+                    index: index,
+                    mode: state.mode,
+                  ));
                 },
               ),
             ),

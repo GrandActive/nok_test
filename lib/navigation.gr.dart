@@ -35,6 +35,7 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           question: args.question,
           index: args.index,
+          mode: args.mode,
         ),
       );
     },
@@ -109,6 +110,7 @@ class QuestionReviewRoute extends PageRouteInfo<QuestionReviewRouteArgs> {
     Key? key,
     required TestQuestion question,
     required int index,
+    required TestMode mode,
     List<PageRouteInfo>? children,
   }) : super(
           QuestionReviewRoute.name,
@@ -116,6 +118,7 @@ class QuestionReviewRoute extends PageRouteInfo<QuestionReviewRouteArgs> {
             key: key,
             question: question,
             index: index,
+            mode: mode,
           ),
           initialChildren: children,
         );
@@ -131,6 +134,7 @@ class QuestionReviewRouteArgs {
     this.key,
     required this.question,
     required this.index,
+    required this.mode,
   });
 
   final Key? key;
@@ -139,9 +143,11 @@ class QuestionReviewRouteArgs {
 
   final int index;
 
+  final TestMode mode;
+
   @override
   String toString() {
-    return 'QuestionReviewRouteArgs{key: $key, question: $question, index: $index}';
+    return 'QuestionReviewRouteArgs{key: $key, question: $question, index: $index, mode: $mode}';
   }
 }
 

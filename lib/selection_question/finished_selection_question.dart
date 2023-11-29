@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
 import 'package:nok_test/testing/ui/pages/testing_page/widgets/question_text.dart';
 
@@ -8,9 +9,11 @@ class FinishedSelectionQuestion extends StatelessWidget {
   const FinishedSelectionQuestion({
     super.key,
     required this.question,
+    required this.mode,
   });
 
   final TestSelectionQuestion question;
+  final TestMode mode;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +32,17 @@ class FinishedSelectionQuestion extends StatelessWidget {
                     possibleAnswers: question.source.possibleAnswers,
                     selectedIndices: selectedAnswers,
                     correctAnswers: question.source.correctAnswerIds,
-                    isFinished: true,
+                    showCorrectness: mode == TestMode.training && selectedAnswers.isNotEmpty,
+                    showResult: true,
+                    disabled: true,
                   )
                 : SingleAnswerList(
                     possibleAnswers: question.source.possibleAnswers,
                     selectedIndex: selectedAnswers.isEmpty ? null : selectedAnswers.first,
                     correctAnswer: question.source.correctAnswerIds.first,
-                    isFinished: true,
+                    showCorrectness: mode == TestMode.training && selectedAnswers.isNotEmpty,
+                    showResult: true,
+                    disabled: true,
                   ),
           ],
         ),

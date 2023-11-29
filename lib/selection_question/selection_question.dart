@@ -45,13 +45,17 @@ class SelectionQuestion extends StatelessWidget {
                       possibleAnswers: question.source.possibleAnswers,
                       selectedIndices: answersToSelect,
                       correctAnswers: question.source.correctAnswerIds,
-                      isFinished: state is Answered,
+                      showCorrectness: state is Answered,
+                      showResult: state is Answered,
+                      disabled: state is Answered,
                     )
                   : SingleAnswerList(
                       possibleAnswers: question.source.possibleAnswers,
                       selectedIndex: answersToSelect.isEmpty ? null : answersToSelect.first,
                       correctAnswer: question.source.correctAnswerIds.first,
-                      isFinished: state is Answered,
+                      showCorrectness: state is Answered,
+                      showResult: state is Answered,
+                      disabled: state is Answered,
                     ),
               const SizedBox(height: 40),
               Row(

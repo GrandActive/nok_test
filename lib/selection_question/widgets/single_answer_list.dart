@@ -10,15 +10,17 @@ class SingleAnswerList extends StatelessWidget {
     required this.possibleAnswers,
     required this.selectedIndex,
     required this.correctAnswer,
-    required this.isFinished,
+    required this.showCorrectness,
+    required this.showResult,
+    required this.disabled,
   });
 
   final List<PossibleAnswer> possibleAnswers;
   final int? selectedIndex;
   final int correctAnswer;
-  final bool isFinished;
-
-  bool get shouldShowCorrectness => isFinished && selectedIndex != null;
+  final bool showCorrectness;
+  final bool showResult;
+  final bool disabled;
 
   bool get isAnsweredCorrectly => selectedIndex == correctAnswer;
 
@@ -26,7 +28,7 @@ class SingleAnswerList extends StatelessWidget {
   Widget build(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (shouldShowCorrectness) ...[
+          if (showResult) ...[
             AnswerResult(isAnsweredCorrectly: isAnsweredCorrectly),
             const SizedBox(height: 24),
           ],
@@ -46,11 +48,11 @@ class SingleAnswerList extends StatelessWidget {
 
               return SingleSelectAnswerItem(
                 selectedIndex: selectedIndex,
-                isDisabled: isFinished,
+                isDisabled: disabled,
                 index: answer.index,
                 text: answer.text,
                 selectedState: selectedState,
-                shouldShowCorrectness: shouldShowCorrectness,
+                shouldShowCorrectness: showCorrectness,
                 isCorrectAnswer: isCorrect,
               );
             },

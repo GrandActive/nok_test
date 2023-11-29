@@ -48,7 +48,11 @@ class MultipleSelectAnswerItem extends StatelessWidget {
     Color defaultColor = Colors.transparent,
   }) {
     if (states.contains(MaterialState.selected) && states.contains(MaterialState.disabled)) {
-      return isSelectedAsCorrectAnswer ? correctAnswerColor : wrongAnswerColor;
+      if (shouldShowCorrectness) {
+        return isSelectedAsCorrectAnswer ? correctAnswerColor : wrongAnswerColor;
+      } else {
+        return const Color(0xff277ADB);
+      }
     }
     if (states.contains(MaterialState.disabled)) {
       return disabledColor;
