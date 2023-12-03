@@ -33,7 +33,7 @@ class FinishedSelectionQuestion extends StatelessWidget {
                     selectedIndices: selectedAnswers,
                     correctAnswers: question.source.correctAnswerIds,
                     showCorrectness: mode == TestMode.training && selectedAnswers.isNotEmpty,
-                    showResult: true,
+                    showResult: selectedAnswers.isNotEmpty,
                     disabled: true,
                   )
                 : SingleAnswerList(
@@ -41,7 +41,7 @@ class FinishedSelectionQuestion extends StatelessWidget {
                     selectedIndex: selectedAnswers.isEmpty ? null : selectedAnswers.first,
                     correctAnswer: question.source.correctAnswerIds.first,
                     showCorrectness: mode == TestMode.training && selectedAnswers.isNotEmpty,
-                    showResult: true,
+                    showResult: selectedAnswers.isNotEmpty,
                     disabled: true,
                   ),
           ],
