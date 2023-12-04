@@ -34,7 +34,12 @@ class MatchingQuestion extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   if (state is Answered)
-                    FinishedMatchingAnswerList(question: question, answer: selectedAnswers)
+                    FinishedMatchingAnswerList(
+                      question: question,
+                      answer: selectedAnswers,
+                      showCorrectness: true,
+                      showResult: true,
+                    )
                   else
                     MatchingAnswerList(question: question, selectedAnswers: selectedAnswers),
                   const SizedBox(height: 40),

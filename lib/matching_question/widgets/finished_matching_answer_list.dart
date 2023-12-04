@@ -11,12 +11,14 @@ class FinishedMatchingAnswerList extends StatelessWidget {
     super.key,
     required this.question,
     required this.answer,
+    required this.showCorrectness,
+    required this.showResult,
   });
 
   final TestMatchingQuestion question;
   final Map<int, int?> answer;
-
-  bool get shouldShowCorrectness => answer.values.isNotEmpty;
+  final bool showCorrectness;
+  final bool showResult;
 
   PossibleAnswer? _getAnswer(int? index) {
     return question.source.answers.firstWhereOrNull((a) => a.index == index);
@@ -29,7 +31,7 @@ class FinishedMatchingAnswerList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (shouldShowCorrectness) ...[
+        if (showResult) ...[
           AnswerResult(isAnsweredCorrectly: isAnsweredCorrectly),
           const SizedBox(height: 24),
         ],
@@ -44,7 +46,7 @@ class FinishedMatchingAnswerList extends StatelessWidget {
               question: q,
               answer: _getAnswer(answerIndex),
               correctAnswer: _getAnswer(correctAnswerIndex),
-              shouldShowCorrectness: shouldShowCorrectness,
+              shouldShowCorrectness: showCorrectness,
             );
           },
           separatorBuilder: (_, __) => const SizedBox(height: 16),
