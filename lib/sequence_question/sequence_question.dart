@@ -57,7 +57,11 @@ class SequenceQuestion extends StatelessWidget {
                     const SizedBox(height: 8),
                   ],
                   if (state is Answered)
-                    FinishedSequenceAnswerList(question: question)
+                    FinishedSequenceAnswerList(
+                      question: question,
+                      showCorrectness: true,
+                      showResult: true,
+                    )
                   else
                     SequenceAnswerList(
                       answers: answers,

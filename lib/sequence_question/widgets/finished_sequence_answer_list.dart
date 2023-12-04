@@ -8,9 +8,13 @@ class FinishedSequenceAnswerList extends StatelessWidget {
   const FinishedSequenceAnswerList({
     super.key,
     required this.question,
+    required this.showCorrectness,
+    required this.showResult,
   });
 
   final TestSequenceQuestion question;
+  final bool showCorrectness;
+  final bool showResult;
 
   PossibleAnswer _getAnswer(int index) {
     return question.source.answers.firstWhere((e) => e.index == index);
@@ -19,18 +23,15 @@ class FinishedSequenceAnswerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = question.userAnswer ?? question.source.answers.map((e) => e.index);
-    final shouldShowCorrectness = question.userAnswer != null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (shouldShowCorrectness) ...[
+        if (showResult) ...[
           AnswerResult(isAnsweredCorrectly: question.isAnsweredCorrectly ?? false),
           const SizedBox(height: 24),
         ],
-        ListView(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
+        Column(
           children: [
             ...items.indexed.map(
               (a) {
@@ -40,7 +41,7 @@ class FinishedSequenceAnswerList extends StatelessWidget {
                 return FinishedSequenceAnswerListItem(
                   answer: _getAnswer(answerIndex),
                   correctAnswer: _getAnswer(correctAnswerIndex),
-                  shouldShowCorrectness: shouldShowCorrectness,
+                  shouldShowCorrectness: showCorrectness,
                 );
               },
             ),
