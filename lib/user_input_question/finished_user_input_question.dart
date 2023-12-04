@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
 import 'package:nok_test/user_input_question/widgets/widgets.dart';
 
@@ -6,9 +7,11 @@ class FinishedUserInputQuestion extends StatelessWidget {
   const FinishedUserInputQuestion({
     super.key,
     required this.question,
+    required this.mode,
   });
 
   final TestUserInputQuestion question;
+  final TestMode mode;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,11 @@ class FinishedUserInputQuestion extends StatelessWidget {
               style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 40),
-            FinishedUserInput(question: question),
+            FinishedUserInput(
+              question: question,
+              showCorrectness: mode == TestMode.training,
+              showResult: question.userAnswer != null,
+            ),
           ],
         ),
       ),

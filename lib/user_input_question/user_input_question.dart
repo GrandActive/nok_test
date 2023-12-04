@@ -38,7 +38,11 @@ class UserInputQuestion extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   if (state is Answered)
-                    FinishedUserInput(question: question)
+                    FinishedUserInput(
+                      question: question,
+                      showCorrectness: true,
+                      showResult: true,
+                    )
                   else
                     const UserInput(),
                   const SizedBox(height: 40),

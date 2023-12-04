@@ -7,12 +7,16 @@ class FinishedUserInput extends StatelessWidget {
   const FinishedUserInput({
     super.key,
     required this.question,
+    required this.showCorrectness,
+    required this.showResult,
   });
 
   final TestUserInputQuestion question;
+  final bool showCorrectness;
+  final bool showResult;
 
   Color get _borderColor {
-    if (question.isAnsweredCorrectly == null) {
+    if (question.isAnsweredCorrectly == null || !showCorrectness) {
       return const Color(0xFF7F7F7F);
     } else if (question.isAnsweredCorrectly!) {
       return correctAnswerColor;
@@ -21,12 +25,19 @@ class FinishedUserInput extends StatelessWidget {
     }
   }
 
+  String? get _helperText {
+    if (showCorrectness && question.isAnsweredCorrectly == false) {
+      return 'Правильный ответ: ${question.source.correctAnswer}';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (question.userAnswer != null)...[
+        if (showResult) ...[
           AnswerResult(isAnsweredCorrectly: question.isAnsweredCorrectly!),
           const SizedBox(height: 24),
         ],
@@ -39,9 +50,7 @@ class FinishedUserInput extends StatelessWidget {
             disabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: _borderColor),
             ),
-            helperText: question.isAnsweredCorrectly ?? true
-                ? null
-                : 'Правильный ответ: ${question.source.correctAnswer}',
+            helperText: _helperText,
             helperMaxLines: 3,
             helperStyle: const TextStyle(color: Color(0xFF464646), fontSize: 14),
           ),

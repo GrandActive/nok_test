@@ -29,9 +29,9 @@ class QuestionReviewPage extends StatelessWidget {
       ),
       body: switch (q) {
         TestSelectionQuestion() => FinishedSelectionQuestion(question: q, mode: mode),
-        TestUserInputQuestion() => FinishedUserInputQuestion(question: q),
-        TestSequenceQuestion() => FinishedSequenceQuestion(question: q),
-        TestMatchingQuestion() => FinishedMatchingQuestion(question: q)
+        TestUserInputQuestion() => FinishedUserInputQuestion(question: q, mode: mode),
+        TestSequenceQuestion() => FinishedSequenceQuestion(question: q, mode: mode),
+        TestMatchingQuestion() => FinishedMatchingQuestion(question: q, mode: mode)
       },
     );
   }
