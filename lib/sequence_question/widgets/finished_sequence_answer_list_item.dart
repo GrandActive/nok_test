@@ -7,18 +7,20 @@ class FinishedSequenceAnswerListItem extends StatelessWidget {
     super.key,
     required this.answer,
     required this.correctAnswer,
-    required this.shouldShowCorrectness,
+    required this.showCorrectness,
+    required this.showCorrectAnswer,
   });
 
   final PossibleAnswer answer;
   final PossibleAnswer correctAnswer;
-  final bool shouldShowCorrectness;
+  final bool showCorrectness;
+  final bool showCorrectAnswer;
 
   bool get isAnswerCorrect => answer == correctAnswer;
 
   @override
   Widget build(BuildContext context) {
-    Color borderColor = shouldShowCorrectness
+    Color borderColor = showCorrectness
         ? isAnswerCorrect
             ? correctAnswerColor
             : wrongAnswerColor
@@ -39,7 +41,7 @@ class FinishedSequenceAnswerListItem extends StatelessWidget {
               ),
             ),
           ),
-          if (shouldShowCorrectness && !isAnswerCorrect) ...[
+          if (showCorrectAnswer && !isAnswerCorrect) ...[
             const SizedBox(height: 4),
             Text('Правильный ответ: ${correctAnswer.text}'),
           ]

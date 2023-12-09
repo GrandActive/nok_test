@@ -25,8 +25,9 @@ class FinishedSequenceQuestion extends StatelessWidget {
         const SizedBox(height: 24),
         FinishedSequenceAnswerList(
           question: question,
-          showCorrectness: mode == TestMode.training && question.userAnswer != null,
+          showCorrectness: question.userAnswer != null,
           showResult: question.userAnswer != null,
+          showCorrectAnswer: mode == TestMode.training && question.userAnswer != null,
         ),
       ],
     );

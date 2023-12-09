@@ -9,11 +9,13 @@ class FinishedSequenceAnswerList extends StatelessWidget {
     super.key,
     required this.question,
     required this.showCorrectness,
+    required this.showCorrectAnswer,
     required this.showResult,
   });
 
   final TestSequenceQuestion question;
   final bool showCorrectness;
+  final bool showCorrectAnswer;
   final bool showResult;
 
   PossibleAnswer _getAnswer(int index) {
@@ -41,7 +43,8 @@ class FinishedSequenceAnswerList extends StatelessWidget {
                 return FinishedSequenceAnswerListItem(
                   answer: _getAnswer(answerIndex),
                   correctAnswer: _getAnswer(correctAnswerIndex),
-                  shouldShowCorrectness: showCorrectness,
+                  showCorrectness: showCorrectness,
+                  showCorrectAnswer: showCorrectAnswer,
                 );
               },
             ),

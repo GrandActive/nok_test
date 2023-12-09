@@ -60,6 +60,7 @@ class SequenceQuestion extends StatelessWidget {
                     FinishedSequenceAnswerList(
                       question: question,
                       showCorrectness: true,
+                      showCorrectAnswer: true,
                       showResult: true,
                     )
                   else
