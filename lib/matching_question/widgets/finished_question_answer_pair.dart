@@ -8,17 +8,19 @@ class FinishedQuestionAnswerPair extends StatelessWidget {
     required this.question,
     required this.answer,
     required this.correctAnswer,
-    required this.shouldShowCorrectness,
+    required this.showCorrectness,
+    required this.showCorrectAnswer,
   });
 
   final PossibleAnswer question;
   final PossibleAnswer? answer;
   final PossibleAnswer? correctAnswer;
-  final bool shouldShowCorrectness;
+  final bool showCorrectness;
+  final bool showCorrectAnswer;
 
   bool get isAnsweredCorrectly => answer == correctAnswer;
 
-  Color get borderColor => shouldShowCorrectness
+  Color get borderColor => showCorrectness
       ? isAnsweredCorrectly
           ? correctAnswerColor
           : wrongAnswerColor
@@ -47,7 +49,7 @@ class FinishedQuestionAnswerPair extends StatelessWidget {
             style: const TextStyle(fontSize: 16),
           ),
         ),
-        if (shouldShowCorrectness && !isAnsweredCorrectly) ...[
+        if (showCorrectAnswer && !isAnsweredCorrectly) ...[
           const SizedBox(height: 4),
           Text('Правильный ответ: ${correctAnswer?.text ?? emptyAnswerText}'),
         ]

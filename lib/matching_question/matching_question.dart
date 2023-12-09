@@ -38,6 +38,7 @@ class MatchingQuestion extends StatelessWidget {
                       question: question,
                       answer: selectedAnswers,
                       showCorrectness: true,
+                      showCorrectAnswer: true,
                       showResult: true,
                     )
                   else

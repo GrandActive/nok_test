@@ -12,12 +12,14 @@ class FinishedMatchingAnswerList extends StatelessWidget {
     required this.question,
     required this.answer,
     required this.showCorrectness,
+    required this.showCorrectAnswer,
     required this.showResult,
   });
 
   final TestMatchingQuestion question;
   final Map<int, int?> answer;
   final bool showCorrectness;
+  final bool showCorrectAnswer;
   final bool showResult;
 
   PossibleAnswer? _getAnswer(int? index) {
@@ -46,7 +48,8 @@ class FinishedMatchingAnswerList extends StatelessWidget {
               question: q,
               answer: _getAnswer(answerIndex),
               correctAnswer: _getAnswer(correctAnswerIndex),
-              shouldShowCorrectness: showCorrectness,
+              showCorrectness: showCorrectness,
+              showCorrectAnswer: showCorrectAnswer,
             );
           },
           separatorBuilder: (_, __) => const SizedBox(height: 16),

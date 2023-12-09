@@ -32,7 +32,8 @@ class FinishedMatchingQuestion extends StatelessWidget {
             FinishedMatchingAnswerList(
               question: question,
               answer: answer,
-              showCorrectness: mode == TestMode.training && answerIsNotEmpty,
+              showCorrectness: answerIsNotEmpty,
+              showCorrectAnswer: mode == TestMode.training,
               showResult: answerIsNotEmpty,
             ),
           ],
