@@ -12,7 +12,7 @@ class SingleSelectAnswerItem extends StatelessWidget {
     required this.index,
     required this.text,
     required this.selectedState,
-    required this.shouldShowCorrectness,
+    required this.showCorrectness,
     required this.isCorrectAnswer,
   });
 
@@ -21,7 +21,7 @@ class SingleSelectAnswerItem extends StatelessWidget {
   final bool isDisabled;
   final String text;
   final SelectedState selectedState;
-  final bool shouldShowCorrectness;
+  final bool showCorrectness;
   final bool isCorrectAnswer;
 
   bool get isSelected => selectedState != SelectedState.notSelected;
@@ -30,14 +30,14 @@ class SingleSelectAnswerItem extends StatelessWidget {
 
   Color get tileSideColor {
     if (isSelected) {
-      if (!shouldShowCorrectness) return const Color(0xff277ADB);
+      if (!showCorrectness) return const Color(0xff277ADB);
       if (isCorrectAnswer) {
         return correctAnswerColor;
       } else {
         return wrongAnswerColor;
       }
     } else {
-      if (!shouldShowCorrectness) return const Color(0xffDBE9F9);
+      if (!showCorrectness) return const Color(0xffDBE9F9);
       if (isCorrectAnswer) {
         return correctAnswerColor;
       } else {
@@ -47,7 +47,7 @@ class SingleSelectAnswerItem extends StatelessWidget {
   }
 
   Color get selectedRadioColor {
-    return shouldShowCorrectness
+    return showCorrectness
         ? isSelectedAsCorrectAnswer
             ? correctAnswerColor
             : wrongAnswerColor

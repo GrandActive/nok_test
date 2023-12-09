@@ -10,7 +10,8 @@ class SingleAnswerList extends StatelessWidget {
     required this.possibleAnswers,
     required this.selectedIndex,
     required this.correctAnswer,
-    required this.showCorrectness,
+    required this.showCorrectnessOfSelected,
+    required this.showCorrectAnswer,
     required this.showResult,
     required this.disabled,
   });
@@ -18,7 +19,8 @@ class SingleAnswerList extends StatelessWidget {
   final List<PossibleAnswer> possibleAnswers;
   final int? selectedIndex;
   final int correctAnswer;
-  final bool showCorrectness;
+  final bool showCorrectnessOfSelected;
+  final bool showCorrectAnswer;
   final bool showResult;
   final bool disabled;
 
@@ -45,6 +47,9 @@ class SingleAnswerList extends StatelessWidget {
                       : SelectedState.selectedIncorrectly;
 
               final isCorrect = correctAnswer == answer.index;
+              final isSelected = selectedState != SelectedState.notSelected;
+
+              final showCorrectness = isSelected ? showCorrectnessOfSelected : showCorrectAnswer;
 
               return SingleSelectAnswerItem(
                 selectedIndex: selectedIndex,
@@ -52,7 +57,7 @@ class SingleAnswerList extends StatelessWidget {
                 index: answer.index,
                 text: answer.text,
                 selectedState: selectedState,
-                shouldShowCorrectness: showCorrectness,
+                showCorrectness: showCorrectness,
                 isCorrectAnswer: isCorrect,
               );
             },
