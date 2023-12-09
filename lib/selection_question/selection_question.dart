@@ -45,7 +45,8 @@ class SelectionQuestion extends StatelessWidget {
                       possibleAnswers: question.source.possibleAnswers,
                       selectedIndices: answersToSelect,
                       correctAnswers: question.source.correctAnswerIds,
-                      showCorrectness: state is Answered,
+                      showCorrectnessOfSelected: state is Answered,
+                      showCorrectAnswer: state is Answered,
                       showResult: state is Answered,
                       disabled: state is Answered,
                     )

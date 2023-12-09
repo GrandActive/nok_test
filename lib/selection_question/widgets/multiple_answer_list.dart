@@ -13,7 +13,8 @@ class MultipleAnswerList extends StatelessWidget {
     required this.possibleAnswers,
     required this.selectedIndices,
     required this.correctAnswers,
-    required this.showCorrectness,
+    required this.showCorrectnessOfSelected,
+    required this.showCorrectAnswer,
     required this.showResult,
     required this.disabled,
   });
@@ -21,7 +22,8 @@ class MultipleAnswerList extends StatelessWidget {
   final List<PossibleAnswer> possibleAnswers;
   final Set<int> selectedIndices;
   final Set<int> correctAnswers;
-  final bool showCorrectness;
+  final bool showCorrectnessOfSelected;
+  final bool showCorrectAnswer;
   final bool showResult;
   final bool disabled;
 
@@ -64,10 +66,12 @@ class MultipleAnswerList extends StatelessWidget {
                     ? SelectedState.selectedCorrectly
                     : SelectedState.selectedIncorrectly;
 
+            final showCorrectness = isSelected ? showCorrectnessOfSelected : showCorrectAnswer;
+
             return MultipleSelectAnswerItem(
               isActive: !disabled,
               text: answer.text,
-              shouldShowCorrectness: showCorrectness,
+              showCorrectness: showCorrectness,
               onChanged: (isSelected) => _setSelected(index, isSelected!, context),
               selectedState: selectedState,
               isCorrectAnswer: isCorrectAnswer,

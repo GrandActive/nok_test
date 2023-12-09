@@ -32,7 +32,8 @@ class FinishedSelectionQuestion extends StatelessWidget {
                     possibleAnswers: question.source.possibleAnswers,
                     selectedIndices: selectedAnswers,
                     correctAnswers: question.source.correctAnswerIds,
-                    showCorrectness: mode == TestMode.training && selectedAnswers.isNotEmpty,
+                    showCorrectnessOfSelected: selectedAnswers.isNotEmpty,
+                    showCorrectAnswer: mode == TestMode.training && selectedAnswers.isNotEmpty,
                     showResult: selectedAnswers.isNotEmpty,
                     disabled: true,
                   )

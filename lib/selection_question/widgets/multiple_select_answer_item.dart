@@ -8,7 +8,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
     required this.isActive,
     required this.text,
     required this.selectedState,
-    required this.shouldShowCorrectness,
+    required this.showCorrectness,
     required this.onChanged,
     required this.isCorrectAnswer,
   });
@@ -16,7 +16,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
   final bool isActive;
   final String text;
   final SelectedState selectedState;
-  final bool shouldShowCorrectness;
+  final bool showCorrectness;
   final void Function(bool? isSelected) onChanged;
   final bool isCorrectAnswer;
 
@@ -26,14 +26,14 @@ class MultipleSelectAnswerItem extends StatelessWidget {
 
   Color get _tileSideColor {
     if (isSelected) {
-      if (!shouldShowCorrectness) return const Color(0xff277ADB);
+      if (!showCorrectness) return const Color(0xff277ADB);
       if (isCorrectAnswer) {
         return correctAnswerColor;
       } else {
         return wrongAnswerColor;
       }
     } else {
-      if (!shouldShowCorrectness) return const Color(0xffDBE9F9);
+      if (!showCorrectness) return const Color(0xffDBE9F9);
       if (isCorrectAnswer) {
         return correctAnswerColor;
       } else {
@@ -48,7 +48,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
     Color defaultColor = Colors.transparent,
   }) {
     if (states.contains(MaterialState.selected) && states.contains(MaterialState.disabled)) {
-      if (shouldShowCorrectness) {
+      if (showCorrectness) {
         return isSelectedAsCorrectAnswer ? correctAnswerColor : wrongAnswerColor;
       } else {
         return const Color(0xff277ADB);
@@ -66,7 +66,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final checkboxValue = isSelected
-        ? shouldShowCorrectness
+        ? showCorrectness
             ? isCorrectAnswer
                 ? true
                 : null
@@ -75,7 +75,7 @@ class MultipleSelectAnswerItem extends StatelessWidget {
 
     return Material(
       child: CheckboxListTile(
-        tristate: shouldShowCorrectness,
+        tristate: showCorrectness,
         controlAffinity: ListTileControlAffinity.leading,
         value: checkboxValue,
         onChanged: isActive ? onChanged : null,
