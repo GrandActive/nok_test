@@ -41,6 +41,7 @@ class UserInputQuestion extends StatelessWidget {
                     FinishedUserInput(
                       question: question,
                       showCorrectness: true,
+                      showCorrectAnswer: true,
                       showResult: true,
                     )
                   else

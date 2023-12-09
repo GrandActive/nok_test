@@ -32,8 +32,9 @@ class FinishedUserInputQuestion extends StatelessWidget {
             const SizedBox(height: 40),
             FinishedUserInput(
               question: question,
-              showCorrectness: mode == TestMode.training,
+              showCorrectness: question.userAnswer != null,
               showResult: question.userAnswer != null,
+              showCorrectAnswer: mode == TestMode.training,
             ),
           ],
         ),

@@ -8,11 +8,13 @@ class FinishedUserInput extends StatelessWidget {
     super.key,
     required this.question,
     required this.showCorrectness,
+    required this.showCorrectAnswer,
     required this.showResult,
   });
 
   final TestUserInputQuestion question;
   final bool showCorrectness;
+  final bool showCorrectAnswer;
   final bool showResult;
 
   Color get _borderColor {
@@ -26,7 +28,7 @@ class FinishedUserInput extends StatelessWidget {
   }
 
   String? get _helperText {
-    if (showCorrectness && question.isAnsweredCorrectly == false) {
+    if (showCorrectAnswer && question.isAnsweredCorrectly == false) {
       return 'Правильный ответ: ${question.source.correctAnswer}';
     }
     return null;
