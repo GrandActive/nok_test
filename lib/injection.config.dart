@@ -4,14 +4,13 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: type=lint
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:nok_test/testing/bloc/test_bloc/test_bloc.dart' as _i7;
+import 'package:nok_test/testing/bloc/testing_bloc/testing_bloc.dart' as _i7;
 import 'package:nok_test/testing/data/firebase_data_source.dart' as _i3;
 import 'package:nok_test/testing/data/questions_repository.dart' as _i4;
 import 'package:nok_test/testing/domain/get_random_questions_for_test.dart'
@@ -19,7 +18,7 @@ import 'package:nok_test/testing/domain/get_random_questions_for_test.dart'
 import 'package:nok_test/testing/domain/ticker.dart' as _i5;
 
 extension GetItInjectableX on _i1.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   _i1.GetIt init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
@@ -32,12 +31,12 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i3.FirebaseDataSource>(() => _i3.FirebaseDataSource());
     gh.factory<_i4.QuestionsRepository>(
         () => _i4.QuestionsRepository(gh<_i3.FirebaseDataSource>()));
-    gh.factory<_i5.Ticker>(() => _i5.Ticker());
+    gh.factory<_i5.Ticker>(() => const _i5.Ticker());
     gh.factory<_i6.GetRandomQuestionsForTest>(() =>
         _i6.GetRandomQuestionsForTest(
             repository: gh<_i4.QuestionsRepository>()));
-    gh.factory<_i7.TestBloc>(
-        () => _i7.TestBloc(gh<_i6.GetRandomQuestionsForTest>()));
+    gh.factory<_i7.TestingBloc>(
+        () => _i7.TestingBloc(gh<_i6.GetRandomQuestionsForTest>()));
     return this;
   }
 }

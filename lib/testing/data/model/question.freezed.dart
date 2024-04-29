@@ -79,11 +79,11 @@ class _$SelectionQuestionCopyWithImpl<$Res, $Val extends SelectionQuestion>
 }
 
 /// @nodoc
-abstract class _$$_QuestionCopyWith<$Res>
+abstract class _$$QuestionImplCopyWith<$Res>
     implements $SelectionQuestionCopyWith<$Res> {
-  factory _$$_QuestionCopyWith(
-          _$_Question value, $Res Function(_$_Question) then) =
-      __$$_QuestionCopyWithImpl<$Res>;
+  factory _$$QuestionImplCopyWith(
+          _$QuestionImpl value, $Res Function(_$QuestionImpl) then) =
+      __$$QuestionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,11 +93,11 @@ abstract class _$$_QuestionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_QuestionCopyWithImpl<$Res>
-    extends _$SelectionQuestionCopyWithImpl<$Res, _$_Question>
-    implements _$$_QuestionCopyWith<$Res> {
-  __$$_QuestionCopyWithImpl(
-      _$_Question _value, $Res Function(_$_Question) _then)
+class __$$QuestionImplCopyWithImpl<$Res>
+    extends _$SelectionQuestionCopyWithImpl<$Res, _$QuestionImpl>
+    implements _$$QuestionImplCopyWith<$Res> {
+  __$$QuestionImplCopyWithImpl(
+      _$QuestionImpl _value, $Res Function(_$QuestionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +107,7 @@ class __$$_QuestionCopyWithImpl<$Res>
     Object? possibleAnswers = null,
     Object? correctAnswerIds = null,
   }) {
-    return _then(_$_Question(
+    return _then(_$QuestionImpl(
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -126,17 +126,17 @@ class __$$_QuestionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Question implements _Question {
-  const _$_Question(
+class _$QuestionImpl implements _Question {
+  const _$QuestionImpl(
       {required this.text,
       required final List<PossibleAnswer> possibleAnswers,
       @JsonKey(name: "correctAnswers")
-          required final Set<int> correctAnswerIds})
+      required final Set<int> correctAnswerIds})
       : _possibleAnswers = possibleAnswers,
         _correctAnswerIds = correctAnswerIds;
 
-  factory _$_Question.fromJson(Map<String, dynamic> json) =>
-      _$$_QuestionFromJson(json);
+  factory _$QuestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QuestionImplFromJson(json);
 
   @override
   final String text;
@@ -166,7 +166,7 @@ class _$_Question implements _Question {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Question &&
+            other is _$QuestionImpl &&
             (identical(other.text, text) || other.text == text) &&
             const DeepCollectionEquality()
                 .equals(other._possibleAnswers, _possibleAnswers) &&
@@ -185,12 +185,12 @@ class _$_Question implements _Question {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_QuestionCopyWith<_$_Question> get copyWith =>
-      __$$_QuestionCopyWithImpl<_$_Question>(this, _$identity);
+  _$$QuestionImplCopyWith<_$QuestionImpl> get copyWith =>
+      __$$QuestionImplCopyWithImpl<_$QuestionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_QuestionToJson(
+    return _$$QuestionImplToJson(
       this,
     );
   }
@@ -201,9 +201,10 @@ abstract class _Question implements SelectionQuestion {
       {required final String text,
       required final List<PossibleAnswer> possibleAnswers,
       @JsonKey(name: "correctAnswers")
-          required final Set<int> correctAnswerIds}) = _$_Question;
+      required final Set<int> correctAnswerIds}) = _$QuestionImpl;
 
-  factory _Question.fromJson(Map<String, dynamic> json) = _$_Question.fromJson;
+  factory _Question.fromJson(Map<String, dynamic> json) =
+      _$QuestionImpl.fromJson;
 
   @override
   String get text;
@@ -214,7 +215,7 @@ abstract class _Question implements SelectionQuestion {
   Set<int> get correctAnswerIds;
   @override
   @JsonKey(ignore: true)
-  _$$_QuestionCopyWith<_$_Question> get copyWith =>
+  _$$QuestionImplCopyWith<_$QuestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -279,11 +280,11 @@ class _$SequenceQuestionCopyWithImpl<$Res, $Val extends SequenceQuestion>
 }
 
 /// @nodoc
-abstract class _$$_SequenceQuestionCopyWith<$Res>
+abstract class _$$SequenceQuestionImplCopyWith<$Res>
     implements $SequenceQuestionCopyWith<$Res> {
-  factory _$$_SequenceQuestionCopyWith(
-          _$_SequenceQuestion value, $Res Function(_$_SequenceQuestion) then) =
-      __$$_SequenceQuestionCopyWithImpl<$Res>;
+  factory _$$SequenceQuestionImplCopyWith(_$SequenceQuestionImpl value,
+          $Res Function(_$SequenceQuestionImpl) then) =
+      __$$SequenceQuestionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -291,11 +292,11 @@ abstract class _$$_SequenceQuestionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SequenceQuestionCopyWithImpl<$Res>
-    extends _$SequenceQuestionCopyWithImpl<$Res, _$_SequenceQuestion>
-    implements _$$_SequenceQuestionCopyWith<$Res> {
-  __$$_SequenceQuestionCopyWithImpl(
-      _$_SequenceQuestion _value, $Res Function(_$_SequenceQuestion) _then)
+class __$$SequenceQuestionImplCopyWithImpl<$Res>
+    extends _$SequenceQuestionCopyWithImpl<$Res, _$SequenceQuestionImpl>
+    implements _$$SequenceQuestionImplCopyWith<$Res> {
+  __$$SequenceQuestionImplCopyWithImpl(_$SequenceQuestionImpl _value,
+      $Res Function(_$SequenceQuestionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -305,7 +306,7 @@ class __$$_SequenceQuestionCopyWithImpl<$Res>
     Object? answers = null,
     Object? correctOrder = null,
   }) {
-    return _then(_$_SequenceQuestion(
+    return _then(_$SequenceQuestionImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -324,16 +325,16 @@ class __$$_SequenceQuestionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SequenceQuestion implements _SequenceQuestion {
-  const _$_SequenceQuestion(
+class _$SequenceQuestionImpl implements _SequenceQuestion {
+  const _$SequenceQuestionImpl(
       {required this.title,
       required final List<PossibleAnswer> answers,
       required final List<int> correctOrder})
       : _answers = answers,
         _correctOrder = correctOrder;
 
-  factory _$_SequenceQuestion.fromJson(Map<String, dynamic> json) =>
-      _$$_SequenceQuestionFromJson(json);
+  factory _$SequenceQuestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SequenceQuestionImplFromJson(json);
 
   @override
   final String title;
@@ -362,7 +363,7 @@ class _$_SequenceQuestion implements _SequenceQuestion {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SequenceQuestion &&
+            other is _$SequenceQuestionImpl &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality().equals(other._answers, _answers) &&
             const DeepCollectionEquality()
@@ -380,12 +381,13 @@ class _$_SequenceQuestion implements _SequenceQuestion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SequenceQuestionCopyWith<_$_SequenceQuestion> get copyWith =>
-      __$$_SequenceQuestionCopyWithImpl<_$_SequenceQuestion>(this, _$identity);
+  _$$SequenceQuestionImplCopyWith<_$SequenceQuestionImpl> get copyWith =>
+      __$$SequenceQuestionImplCopyWithImpl<_$SequenceQuestionImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SequenceQuestionToJson(
+    return _$$SequenceQuestionImplToJson(
       this,
     );
   }
@@ -395,10 +397,10 @@ abstract class _SequenceQuestion implements SequenceQuestion {
   const factory _SequenceQuestion(
       {required final String title,
       required final List<PossibleAnswer> answers,
-      required final List<int> correctOrder}) = _$_SequenceQuestion;
+      required final List<int> correctOrder}) = _$SequenceQuestionImpl;
 
   factory _SequenceQuestion.fromJson(Map<String, dynamic> json) =
-      _$_SequenceQuestion.fromJson;
+      _$SequenceQuestionImpl.fromJson;
 
   @override
   String get title;
@@ -408,7 +410,7 @@ abstract class _SequenceQuestion implements SequenceQuestion {
   List<int> get correctOrder;
   @override
   @JsonKey(ignore: true)
-  _$$_SequenceQuestionCopyWith<_$_SequenceQuestion> get copyWith =>
+  _$$SequenceQuestionImplCopyWith<_$SequenceQuestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -472,22 +474,22 @@ class _$UserInputQuestionCopyWithImpl<$Res, $Val extends UserInputQuestion>
 }
 
 /// @nodoc
-abstract class _$$_UserInputQuestionCopyWith<$Res>
+abstract class _$$UserInputQuestionImplCopyWith<$Res>
     implements $UserInputQuestionCopyWith<$Res> {
-  factory _$$_UserInputQuestionCopyWith(_$_UserInputQuestion value,
-          $Res Function(_$_UserInputQuestion) then) =
-      __$$_UserInputQuestionCopyWithImpl<$Res>;
+  factory _$$UserInputQuestionImplCopyWith(_$UserInputQuestionImpl value,
+          $Res Function(_$UserInputQuestionImpl) then) =
+      __$$UserInputQuestionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String title, String text, String correctAnswer});
 }
 
 /// @nodoc
-class __$$_UserInputQuestionCopyWithImpl<$Res>
-    extends _$UserInputQuestionCopyWithImpl<$Res, _$_UserInputQuestion>
-    implements _$$_UserInputQuestionCopyWith<$Res> {
-  __$$_UserInputQuestionCopyWithImpl(
-      _$_UserInputQuestion _value, $Res Function(_$_UserInputQuestion) _then)
+class __$$UserInputQuestionImplCopyWithImpl<$Res>
+    extends _$UserInputQuestionCopyWithImpl<$Res, _$UserInputQuestionImpl>
+    implements _$$UserInputQuestionImplCopyWith<$Res> {
+  __$$UserInputQuestionImplCopyWithImpl(_$UserInputQuestionImpl _value,
+      $Res Function(_$UserInputQuestionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -497,7 +499,7 @@ class __$$_UserInputQuestionCopyWithImpl<$Res>
     Object? text = null,
     Object? correctAnswer = null,
   }) {
-    return _then(_$_UserInputQuestion(
+    return _then(_$UserInputQuestionImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -516,12 +518,12 @@ class __$$_UserInputQuestionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserInputQuestion implements _UserInputQuestion {
-  const _$_UserInputQuestion(
+class _$UserInputQuestionImpl implements _UserInputQuestion {
+  const _$UserInputQuestionImpl(
       {required this.title, required this.text, required this.correctAnswer});
 
-  factory _$_UserInputQuestion.fromJson(Map<String, dynamic> json) =>
-      _$$_UserInputQuestionFromJson(json);
+  factory _$UserInputQuestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserInputQuestionImplFromJson(json);
 
   @override
   final String title;
@@ -539,7 +541,7 @@ class _$_UserInputQuestion implements _UserInputQuestion {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserInputQuestion &&
+            other is _$UserInputQuestionImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.correctAnswer, correctAnswer) ||
@@ -553,13 +555,13 @@ class _$_UserInputQuestion implements _UserInputQuestion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserInputQuestionCopyWith<_$_UserInputQuestion> get copyWith =>
-      __$$_UserInputQuestionCopyWithImpl<_$_UserInputQuestion>(
+  _$$UserInputQuestionImplCopyWith<_$UserInputQuestionImpl> get copyWith =>
+      __$$UserInputQuestionImplCopyWithImpl<_$UserInputQuestionImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserInputQuestionToJson(
+    return _$$UserInputQuestionImplToJson(
       this,
     );
   }
@@ -569,10 +571,10 @@ abstract class _UserInputQuestion implements UserInputQuestion {
   const factory _UserInputQuestion(
       {required final String title,
       required final String text,
-      required final String correctAnswer}) = _$_UserInputQuestion;
+      required final String correctAnswer}) = _$UserInputQuestionImpl;
 
   factory _UserInputQuestion.fromJson(Map<String, dynamic> json) =
-      _$_UserInputQuestion.fromJson;
+      _$UserInputQuestionImpl.fromJson;
 
   @override
   String get title;
@@ -582,7 +584,7 @@ abstract class _UserInputQuestion implements UserInputQuestion {
   String get correctAnswer;
   @override
   @JsonKey(ignore: true)
-  _$$_UserInputQuestionCopyWith<_$_UserInputQuestion> get copyWith =>
+  _$$UserInputQuestionImplCopyWith<_$UserInputQuestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -656,11 +658,11 @@ class _$MatchingQuestionCopyWithImpl<$Res, $Val extends MatchingQuestion>
 }
 
 /// @nodoc
-abstract class _$$_MatchingQuestionCopyWith<$Res>
+abstract class _$$MatchingQuestionImplCopyWith<$Res>
     implements $MatchingQuestionCopyWith<$Res> {
-  factory _$$_MatchingQuestionCopyWith(
-          _$_MatchingQuestion value, $Res Function(_$_MatchingQuestion) then) =
-      __$$_MatchingQuestionCopyWithImpl<$Res>;
+  factory _$$MatchingQuestionImplCopyWith(_$MatchingQuestionImpl value,
+          $Res Function(_$MatchingQuestionImpl) then) =
+      __$$MatchingQuestionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -671,11 +673,11 @@ abstract class _$$_MatchingQuestionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MatchingQuestionCopyWithImpl<$Res>
-    extends _$MatchingQuestionCopyWithImpl<$Res, _$_MatchingQuestion>
-    implements _$$_MatchingQuestionCopyWith<$Res> {
-  __$$_MatchingQuestionCopyWithImpl(
-      _$_MatchingQuestion _value, $Res Function(_$_MatchingQuestion) _then)
+class __$$MatchingQuestionImplCopyWithImpl<$Res>
+    extends _$MatchingQuestionCopyWithImpl<$Res, _$MatchingQuestionImpl>
+    implements _$$MatchingQuestionImplCopyWith<$Res> {
+  __$$MatchingQuestionImplCopyWithImpl(_$MatchingQuestionImpl _value,
+      $Res Function(_$MatchingQuestionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -686,7 +688,7 @@ class __$$_MatchingQuestionCopyWithImpl<$Res>
     Object? answers = null,
     Object? correctMatch = null,
   }) {
-    return _then(_$_MatchingQuestion(
+    return _then(_$MatchingQuestionImpl(
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -709,8 +711,8 @@ class __$$_MatchingQuestionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MatchingQuestion implements _MatchingQuestion {
-  const _$_MatchingQuestion(
+class _$MatchingQuestionImpl implements _MatchingQuestion {
+  const _$MatchingQuestionImpl(
       {required this.text,
       required final List<PossibleAnswer> questions,
       required final List<PossibleAnswer> answers,
@@ -719,8 +721,8 @@ class _$_MatchingQuestion implements _MatchingQuestion {
         _answers = answers,
         _correctMatch = correctMatch;
 
-  factory _$_MatchingQuestion.fromJson(Map<String, dynamic> json) =>
-      _$$_MatchingQuestionFromJson(json);
+  factory _$MatchingQuestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MatchingQuestionImplFromJson(json);
 
   @override
   final String text;
@@ -757,7 +759,7 @@ class _$_MatchingQuestion implements _MatchingQuestion {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MatchingQuestion &&
+            other is _$MatchingQuestionImpl &&
             (identical(other.text, text) || other.text == text) &&
             const DeepCollectionEquality()
                 .equals(other._questions, _questions) &&
@@ -778,12 +780,13 @@ class _$_MatchingQuestion implements _MatchingQuestion {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MatchingQuestionCopyWith<_$_MatchingQuestion> get copyWith =>
-      __$$_MatchingQuestionCopyWithImpl<_$_MatchingQuestion>(this, _$identity);
+  _$$MatchingQuestionImplCopyWith<_$MatchingQuestionImpl> get copyWith =>
+      __$$MatchingQuestionImplCopyWithImpl<_$MatchingQuestionImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MatchingQuestionToJson(
+    return _$$MatchingQuestionImplToJson(
       this,
     );
   }
@@ -794,10 +797,10 @@ abstract class _MatchingQuestion implements MatchingQuestion {
       {required final String text,
       required final List<PossibleAnswer> questions,
       required final List<PossibleAnswer> answers,
-      required final Map<int, int?> correctMatch}) = _$_MatchingQuestion;
+      required final Map<int, int?> correctMatch}) = _$MatchingQuestionImpl;
 
   factory _MatchingQuestion.fromJson(Map<String, dynamic> json) =
-      _$_MatchingQuestion.fromJson;
+      _$MatchingQuestionImpl.fromJson;
 
   @override
   String get text;
@@ -809,6 +812,6 @@ abstract class _MatchingQuestion implements MatchingQuestion {
   Map<int, int?> get correctMatch;
   @override
   @JsonKey(ignore: true)
-  _$$_MatchingQuestionCopyWith<_$_MatchingQuestion> get copyWith =>
+  _$$MatchingQuestionImplCopyWith<_$MatchingQuestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

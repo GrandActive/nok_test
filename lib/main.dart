@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nok_test/firebase_options.dart';
 import 'package:nok_test/injection.dart';
-import 'package:nok_test/navigation.gr.dart';
+import 'package:nok_test/navigation.dart';
 import 'package:nok_test/styles/button_color.dart';
 
 void main() async {

@@ -1,193 +1,132 @@
-// **************************************************************************
-// AutoRouteGenerator
-// **************************************************************************
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// AutoRouteGenerator
+// AutoRouterGenerator
 // **************************************************************************
-//
+
 // ignore_for_file: type=lint
+// coverage:ignore-file
 
-// ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i6;
-import 'package:flutter/material.dart' as _i7;
+part of 'navigation.dart';
 
-import 'main_page/main_page.dart' as _i1;
-import 'testing/domain/model/test_mode.dart' as _i8;
-import 'testing/domain/model/test_question.dart' as _i9;
-import 'testing/ui/pages/question_review_page/question_review_page.dart' as _i5;
-import 'testing/ui/pages/test_page/test_page.dart' as _i3;
-import 'testing/ui/pages/test_results_page/test_results_page.dart' as _i4;
-import 'testing/ui/pages/test_wrapper_page.dart' as _i2;
-
-class AppRouter extends _i6.RootStackRouter {
-  AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
-      : super(navigatorKey);
+abstract class _$AppRouter extends RootStackRouter {
+  // ignore: unused_element
+  _$AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i6.PageFactory> pagesMap = {
+  final Map<String, PageFactory> pagesMap = {
+    AboutRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AboutPage(),
+      );
+    },
     MainRoute.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.MainPage(),
+        child: const MainPage(),
       );
     },
-    TestWrapperRoute.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
+    QuestionReviewRoute.name: (routeData) {
+      final args = routeData.argsAs<QuestionReviewRouteArgs>();
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.TestWrapperPage(),
+        child: QuestionReviewPage(
+          key: args.key,
+          question: args.question,
+          index: args.index,
+          mode: args.mode,
+        ),
       );
     },
-    TestRoute.name: (routeData) {
-      final args = routeData.argsAs<TestRouteArgs>();
-      return _i6.MaterialPageX<dynamic>(
+    TestIntroRoute.name: (routeData) {
+      final args = routeData.argsAs<TestIntroRouteArgs>();
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.TestPage(
+        child: TestIntroPage(
           key: args.key,
           mode: args.mode,
         ),
       );
     },
     TestResultsRoute.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.TestResultsPage(),
+        child: const TestResultsPage(),
       );
     },
-    QuestionReviewRoute.name: (routeData) {
-      final args = routeData.argsAs<QuestionReviewRouteArgs>();
-      return _i6.MaterialPageX<dynamic>(
+    TestWrapperRoute.name: (routeData) {
+      final args = routeData.argsAs<TestWrapperRouteArgs>();
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.QuestionReviewPage(
+        child: WrappedRoute(
+            child: TestWrapperPage(
           key: args.key,
-          question: args.question,
-          index: args.index,
-        ),
+          mode: args.mode,
+        )),
+      );
+    },
+    TestingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TestingPage(),
       );
     },
   };
-
-  @override
-  List<_i6.RouteConfig> get routes => [
-        _i6.RouteConfig(
-          MainRoute.name,
-          path: '/',
-        ),
-        _i6.RouteConfig(
-          TestWrapperRoute.name,
-          path: '/test-wrapper-page',
-          children: [
-            _i6.RouteConfig(
-              TestRoute.name,
-              path: 'test-page',
-              parent: TestWrapperRoute.name,
-            ),
-            _i6.RouteConfig(
-              TestResultsRoute.name,
-              path: 'test-results-page',
-              parent: TestWrapperRoute.name,
-            ),
-            _i6.RouteConfig(
-              QuestionReviewRoute.name,
-              path: 'question-review-page',
-              parent: TestWrapperRoute.name,
-            ),
-          ],
-        ),
-      ];
 }
 
 /// generated route for
-/// [_i1.MainPage]
-class MainRoute extends _i6.PageRouteInfo<void> {
-  const MainRoute()
+/// [AboutPage]
+class AboutRoute extends PageRouteInfo<void> {
+  const AboutRoute({List<PageRouteInfo>? children})
       : super(
-          MainRoute.name,
-          path: '/',
-        );
-
-  static const String name = 'MainRoute';
-}
-
-/// generated route for
-/// [_i2.TestWrapperPage]
-class TestWrapperRoute extends _i6.PageRouteInfo<void> {
-  const TestWrapperRoute({List<_i6.PageRouteInfo>? children})
-      : super(
-          TestWrapperRoute.name,
-          path: '/test-wrapper-page',
+          AboutRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'TestWrapperRoute';
+  static const String name = 'AboutRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i3.TestPage]
-class TestRoute extends _i6.PageRouteInfo<TestRouteArgs> {
-  TestRoute({
-    _i7.Key? key,
-    required _i8.TestMode mode,
-  }) : super(
-          TestRoute.name,
-          path: 'test-page',
-          args: TestRouteArgs(
-            key: key,
-            mode: mode,
-          ),
-        );
-
-  static const String name = 'TestRoute';
-}
-
-class TestRouteArgs {
-  const TestRouteArgs({
-    this.key,
-    required this.mode,
-  });
-
-  final _i7.Key? key;
-
-  final _i8.TestMode mode;
-
-  @override
-  String toString() {
-    return 'TestRouteArgs{key: $key, mode: $mode}';
-  }
-}
-
-/// generated route for
-/// [_i4.TestResultsPage]
-class TestResultsRoute extends _i6.PageRouteInfo<void> {
-  const TestResultsRoute()
+/// [MainPage]
+class MainRoute extends PageRouteInfo<void> {
+  const MainRoute({List<PageRouteInfo>? children})
       : super(
-          TestResultsRoute.name,
-          path: 'test-results-page',
+          MainRoute.name,
+          initialChildren: children,
         );
 
-  static const String name = 'TestResultsRoute';
+  static const String name = 'MainRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i5.QuestionReviewPage]
-class QuestionReviewRoute extends _i6.PageRouteInfo<QuestionReviewRouteArgs> {
+/// [QuestionReviewPage]
+class QuestionReviewRoute extends PageRouteInfo<QuestionReviewRouteArgs> {
   QuestionReviewRoute({
-    _i7.Key? key,
-    required _i9.TestQuestion question,
+    Key? key,
+    required TestQuestion question,
     required int index,
+    required TestMode mode,
+    List<PageRouteInfo>? children,
   }) : super(
           QuestionReviewRoute.name,
-          path: 'question-review-page',
           args: QuestionReviewRouteArgs(
             key: key,
             question: question,
             index: index,
+            mode: mode,
           ),
+          initialChildren: children,
         );
 
   static const String name = 'QuestionReviewRoute';
+
+  static const PageInfo<QuestionReviewRouteArgs> page =
+      PageInfo<QuestionReviewRouteArgs>(name);
 }
 
 class QuestionReviewRouteArgs {
@@ -195,16 +134,123 @@ class QuestionReviewRouteArgs {
     this.key,
     required this.question,
     required this.index,
+    required this.mode,
   });
 
-  final _i7.Key? key;
+  final Key? key;
 
-  final _i9.TestQuestion question;
+  final TestQuestion question;
 
   final int index;
 
+  final TestMode mode;
+
   @override
   String toString() {
-    return 'QuestionReviewRouteArgs{key: $key, question: $question, index: $index}';
+    return 'QuestionReviewRouteArgs{key: $key, question: $question, index: $index, mode: $mode}';
   }
+}
+
+/// generated route for
+/// [TestIntroPage]
+class TestIntroRoute extends PageRouteInfo<TestIntroRouteArgs> {
+  TestIntroRoute({
+    Key? key,
+    required TestMode mode,
+    List<PageRouteInfo>? children,
+  }) : super(
+          TestIntroRoute.name,
+          args: TestIntroRouteArgs(
+            key: key,
+            mode: mode,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'TestIntroRoute';
+
+  static const PageInfo<TestIntroRouteArgs> page =
+      PageInfo<TestIntroRouteArgs>(name);
+}
+
+class TestIntroRouteArgs {
+  const TestIntroRouteArgs({
+    this.key,
+    required this.mode,
+  });
+
+  final Key? key;
+
+  final TestMode mode;
+
+  @override
+  String toString() {
+    return 'TestIntroRouteArgs{key: $key, mode: $mode}';
+  }
+}
+
+/// generated route for
+/// [TestResultsPage]
+class TestResultsRoute extends PageRouteInfo<void> {
+  const TestResultsRoute({List<PageRouteInfo>? children})
+      : super(
+          TestResultsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TestResultsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TestWrapperPage]
+class TestWrapperRoute extends PageRouteInfo<TestWrapperRouteArgs> {
+  TestWrapperRoute({
+    Key? key,
+    required TestMode mode,
+    List<PageRouteInfo>? children,
+  }) : super(
+          TestWrapperRoute.name,
+          args: TestWrapperRouteArgs(
+            key: key,
+            mode: mode,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'TestWrapperRoute';
+
+  static const PageInfo<TestWrapperRouteArgs> page =
+      PageInfo<TestWrapperRouteArgs>(name);
+}
+
+class TestWrapperRouteArgs {
+  const TestWrapperRouteArgs({
+    this.key,
+    required this.mode,
+  });
+
+  final Key? key;
+
+  final TestMode mode;
+
+  @override
+  String toString() {
+    return 'TestWrapperRouteArgs{key: $key, mode: $mode}';
+  }
+}
+
+/// generated route for
+/// [TestingPage]
+class TestingRoute extends PageRouteInfo<void> {
+  const TestingRoute({List<PageRouteInfo>? children})
+      : super(
+          TestingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TestingRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
