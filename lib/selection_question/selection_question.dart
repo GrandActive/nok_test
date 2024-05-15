@@ -33,32 +33,20 @@ class SelectionQuestion extends StatelessWidget {
             answersToSelect = Set.from(selectedAnswers);
           }
 
-          final isMultipleAnswers = question.source.correctAnswerIds.length > 1;
-
           return ListView(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 24, bottom: 36),
             children: [
               QuestionText(text: question.source.text),
               const SizedBox(height: 24),
-              isMultipleAnswers
-                  ? MultipleAnswerList(
-                      possibleAnswers: question.source.possibleAnswers,
-                      selectedIndices: answersToSelect,
-                      correctAnswers: question.source.correctAnswerIds,
-                      showCorrectnessOfSelected: state is Answered,
-                      showCorrectAnswer: state is Answered,
-                      showResult: state is Answered,
-                      disabled: state is Answered,
-                    )
-                  : SingleAnswerList(
-                      possibleAnswers: question.source.possibleAnswers,
-                      selectedIndex: answersToSelect.isEmpty ? null : answersToSelect.first,
-                      correctAnswer: question.source.correctAnswerIds.first,
-                      showCorrectnessOfSelected: state is Answered,
-                      showCorrectAnswer: state is Answered,
-                      showResult: state is Answered,
-                      disabled: state is Answered,
-                    ),
+              SelectionAnswerList(
+                possibleAnswers: question.source.possibleAnswers,
+                selectedIndices: answersToSelect,
+                correctAnswers: question.source.correctAnswerIds,
+                showCorrectnessOfSelected: state is Answered,
+                showCorrectAnswer: state is Answered,
+                showResult: state is Answered,
+                disabled: state is Answered,
+              ),
               const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

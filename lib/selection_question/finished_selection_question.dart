@@ -18,7 +18,6 @@ class FinishedSelectionQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final selectedAnswers = question.userAnswers ?? {};
-    final isMultipleAnswers = question.source.correctAnswerIds.length > 1;
 
     return SingleChildScrollView(
       child: Padding(
@@ -27,25 +26,15 @@ class FinishedSelectionQuestion extends StatelessWidget {
           children: [
             QuestionText(text: question.source.text),
             const SizedBox(height: 24),
-            isMultipleAnswers
-                ? MultipleAnswerList(
-                    possibleAnswers: question.source.possibleAnswers,
-                    selectedIndices: selectedAnswers,
-                    correctAnswers: question.source.correctAnswerIds,
-                    showCorrectnessOfSelected: selectedAnswers.isNotEmpty,
-                    showCorrectAnswer: mode == TestMode.training && selectedAnswers.isNotEmpty,
-                    showResult: selectedAnswers.isNotEmpty,
-                    disabled: true,
-                  )
-                : SingleAnswerList(
-                    possibleAnswers: question.source.possibleAnswers,
-                    selectedIndex: selectedAnswers.isEmpty ? null : selectedAnswers.first,
-                    correctAnswer: question.source.correctAnswerIds.first,
-                    showCorrectnessOfSelected: selectedAnswers.isNotEmpty,
-                    showCorrectAnswer: mode == TestMode.training && selectedAnswers.isNotEmpty,
-                    showResult: selectedAnswers.isNotEmpty,
-                    disabled: true,
-                  ),
+            SelectionAnswerList(
+              possibleAnswers: question.source.possibleAnswers,
+              selectedIndices: selectedAnswers,
+              correctAnswers: question.source.correctAnswerIds,
+              showCorrectnessOfSelected: selectedAnswers.isNotEmpty,
+              showCorrectAnswer: mode == TestMode.training && selectedAnswers.isNotEmpty,
+              showResult: selectedAnswers.isNotEmpty,
+              disabled: true,
+            ),
           ],
         ),
       ),
