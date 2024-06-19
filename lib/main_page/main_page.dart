@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:nok_test/common/widgets/app_filled_button.dart';
+import 'package:nok_test/common/widgets/app_outlined_button.dart';
 import 'package:nok_test/main_page/widgets/widgets.dart';
 import 'package:nok_test/navigation.dart';
 import 'package:nok_test/paid_status.dart';
-import 'package:nok_test/styles/colors.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 
 @RoutePage()
@@ -40,20 +41,13 @@ class MainPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    OutlinedButton(
+                    AppOutlinedButton(
                       onPressed: () => context.router.push(TestIntroRoute(mode: TestMode.training)),
-                      style: const ButtonStyle(
-                        side: MaterialStatePropertyAll(BorderSide(color: primaryColor)),
-                        minimumSize: MaterialStatePropertyAll(Size(156, 41)),
-                      ),
                       child: const Text('Тренировка'),
                     ),
                     const SizedBox(width: 16),
-                    FilledButton(
+                    AppFilledButton(
                       onPressed: () => context.router.push(TestIntroRoute(mode: TestMode.exam)),
-                      style: const ButtonStyle(
-                        minimumSize: MaterialStatePropertyAll(Size(156, 41)),
-                      ),
                       child: const Text("Экзамен"),
                     ),
                   ],
