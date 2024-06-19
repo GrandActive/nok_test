@@ -1,6 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:nok_test/about_page.dart';
+import 'package:nok_test/auth/ui/auth_page.dart';
+import 'package:nok_test/auth/ui/login_page/login_page.dart';
+import 'package:nok_test/auth/ui/password_restoration_page/password_restoration_input_page.dart';
+import 'package:nok_test/auth/ui/password_restoration_page/password_restoration_page.dart';
+import 'package:nok_test/auth/ui/password_restoration_page/password_restoration_result_page.dart';
+import 'package:nok_test/auth/ui/registration_page/registration_page.dart';
 import 'package:nok_test/main_page/main_page.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/main_page/test_intro_page.dart';
@@ -28,6 +34,20 @@ class AppRouter extends _$AppRouter {
             AutoRoute(page: TestingRoute.page),
             AutoRoute(page: TestResultsRoute.page),
             AutoRoute(page: QuestionReviewRoute.page),
+          ],
+        ),
+        AutoRoute(
+          page: AuthRoute.page,
+          children: [
+            AutoRoute(page: LoginRoute.page, initial: true),
+            AutoRoute(page: RegistrationRoute.page),
+            AutoRoute(
+              page: PasswordRestorationRoute.page,
+              children: [
+                AutoRoute(page: PasswordRestorationInputRoute.page, initial: true),
+                AutoRoute(page: PasswordRestorationResultRoute.page),
+              ],
+            ),
           ],
         ),
       ];

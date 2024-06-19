@@ -21,10 +21,50 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AboutPage(),
       );
     },
+    AuthRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const AuthPage()),
+      );
+    },
+    LoginRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const LoginPage()),
+      );
+    },
     MainRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const MainPage(),
+      );
+    },
+    PasswordRestorationInputRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PasswordRestorationInputPage(),
+      );
+    },
+    PasswordRestorationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const PasswordRestorationPage()),
+      );
+    },
+    PasswordRestorationResultRoute.name: (routeData) {
+      final args = routeData.argsAs<PasswordRestorationResultRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: PasswordRestorationResultPage(
+          key: args.key,
+          email: args.email,
+        ),
+      );
+    },
+    PremiumRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const PremiumPage()),
       );
     },
     QuestionReviewRoute.name: (routeData) {
@@ -37,6 +77,12 @@ abstract class _$AppRouter extends RootStackRouter {
           index: args.index,
           mode: args.mode,
         ),
+      );
+    },
+    RegistrationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const RegistrationPage()),
       );
     },
     TestIntroRoute.name: (routeData) {
@@ -90,6 +136,34 @@ class AboutRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [AuthPage]
+class AuthRoute extends PageRouteInfo<void> {
+  const AuthRoute({List<PageRouteInfo>? children})
+      : super(
+          AuthRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [LoginPage]
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute({List<PageRouteInfo>? children})
+      : super(
+          LoginRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [MainPage]
 class MainRoute extends PageRouteInfo<void> {
   const MainRoute({List<PageRouteInfo>? children})
@@ -99,6 +173,87 @@ class MainRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MainRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PasswordRestorationInputPage]
+class PasswordRestorationInputRoute extends PageRouteInfo<void> {
+  const PasswordRestorationInputRoute({List<PageRouteInfo>? children})
+      : super(
+          PasswordRestorationInputRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PasswordRestorationInputRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PasswordRestorationPage]
+class PasswordRestorationRoute extends PageRouteInfo<void> {
+  const PasswordRestorationRoute({List<PageRouteInfo>? children})
+      : super(
+          PasswordRestorationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PasswordRestorationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PasswordRestorationResultPage]
+class PasswordRestorationResultRoute
+    extends PageRouteInfo<PasswordRestorationResultRouteArgs> {
+  PasswordRestorationResultRoute({
+    Key? key,
+    required String email,
+    List<PageRouteInfo>? children,
+  }) : super(
+          PasswordRestorationResultRoute.name,
+          args: PasswordRestorationResultRouteArgs(
+            key: key,
+            email: email,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'PasswordRestorationResultRoute';
+
+  static const PageInfo<PasswordRestorationResultRouteArgs> page =
+      PageInfo<PasswordRestorationResultRouteArgs>(name);
+}
+
+class PasswordRestorationResultRouteArgs {
+  const PasswordRestorationResultRouteArgs({
+    this.key,
+    required this.email,
+  });
+
+  final Key? key;
+
+  final String email;
+
+  @override
+  String toString() {
+    return 'PasswordRestorationResultRouteArgs{key: $key, email: $email}';
+  }
+}
+
+/// generated route for
+/// [PremiumPage]
+class PremiumRoute extends PageRouteInfo<void> {
+  const PremiumRoute({List<PageRouteInfo>? children})
+      : super(
+          PremiumRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PremiumRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -149,6 +304,20 @@ class QuestionReviewRouteArgs {
   String toString() {
     return 'QuestionReviewRouteArgs{key: $key, question: $question, index: $index, mode: $mode}';
   }
+}
+
+/// generated route for
+/// [RegistrationPage]
+class RegistrationRoute extends PageRouteInfo<void> {
+  const RegistrationRoute({List<PageRouteInfo>? children})
+      : super(
+          RegistrationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RegistrationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
