@@ -13,7 +13,7 @@ _$QuestionImpl _$$QuestionImplFromJson(Map<String, dynamic> json) =>
           .map((e) => PossibleAnswer.fromJson(e as Map<String, dynamic>))
           .toList(),
       correctAnswerIds: (json['correctAnswers'] as List<dynamic>)
-          .map((e) => e as int)
+          .map((e) => (e as num).toInt())
           .toSet(),
     );
 
@@ -31,8 +31,9 @@ _$SequenceQuestionImpl _$$SequenceQuestionImplFromJson(
       answers: (json['answers'] as List<dynamic>)
           .map((e) => PossibleAnswer.fromJson(e as Map<String, dynamic>))
           .toList(),
-      correctOrder:
-          (json['correctOrder'] as List<dynamic>).map((e) => e as int).toList(),
+      correctOrder: (json['correctOrder'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
     );
 
 Map<String, dynamic> _$$SequenceQuestionImplToJson(
@@ -70,7 +71,7 @@ _$MatchingQuestionImpl _$$MatchingQuestionImplFromJson(
           .map((e) => PossibleAnswer.fromJson(e as Map<String, dynamic>))
           .toList(),
       correctMatch: (json['correctMatch'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(int.parse(k), e as int?),
+        (k, e) => MapEntry(int.parse(k), (e as num?)?.toInt()),
       ),
     );
 

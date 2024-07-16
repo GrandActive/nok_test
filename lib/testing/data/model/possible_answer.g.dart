@@ -8,7 +8,7 @@ part of 'possible_answer.dart';
 
 _$PossibleAnswerImpl _$$PossibleAnswerImplFromJson(Map<String, dynamic> json) =>
     _$PossibleAnswerImpl(
-      index: json['index'] as int,
+      index: (json['index'] as num).toInt(),
       text: json['text'] as String,
     );
 

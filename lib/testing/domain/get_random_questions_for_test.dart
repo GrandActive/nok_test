@@ -1,13 +1,13 @@
 import 'dart:math';
 
-import 'package:nok_test/testing/data/model/question.dart';
-import 'package:nok_test/testing/domain/model/test_question.dart';
-import 'package:nok_test/testing/data/questions_repository.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nok_test/testing/data/model/question.dart';
+import 'package:nok_test/testing/data/questions_repository.dart';
+import 'package:nok_test/testing/domain/model/test_question.dart';
 
 @injectable
 class GetRandomQuestionsForTest {
-  GetRandomQuestionsForTest({required this.repository});
+  const GetRandomQuestionsForTest({required this.repository});
 
   final QuestionsRepository repository;
 
@@ -22,16 +22,21 @@ class GetRandomQuestionsForTest {
               MatchingQuestion() => TestMatchingQuestion(source: question),
             })
         .toList(growable: false);
+    final randomSelection = _generateRandomSelection(questions, count);
+    return randomSelection;
+  }
+
+  List<TestQuestion> _generateRandomSelection(List<TestQuestion> source, int count) {
     final random = Random();
     final result = <TestQuestion>[];
     final selected = <int>[];
     for (var i = 0; i < count; i++) {
       int nextIndex;
       do {
-        nextIndex = random.nextInt(questions.length);
+        nextIndex = random.nextInt(source.length);
       } while (selected.contains(nextIndex));
       selected.add(nextIndex);
-      result.add(questions[nextIndex]);
+      result.add(source[nextIndex]);
     }
     return result;
   }

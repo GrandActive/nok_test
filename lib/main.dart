@@ -1,9 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nok_test/auth/bloc/auth_bloc/auth_bloc.dart';
 import 'package:nok_test/firebase_options.dart';
 import 'package:nok_test/injection.dart';
 import 'package:nok_test/navigation.dart';
-import 'package:nok_test/styles/button_color.dart';
+import 'package:nok_test/premium/bloc/premium_bloc.dart';
+import 'package:nok_test/styles/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,38 +24,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: true,
-        filledButtonTheme: FilledButtonThemeData(
-          style: ButtonStyle(
-            backgroundColor: ButtonColor(),
-            textStyle: const MaterialStatePropertyAll(
-              TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-            ),
-          ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) => getIt()..add(const AuthEvent.started()),
         ),
-        outlinedButtonTheme: const OutlinedButtonThemeData(
-          style: ButtonStyle(
-            textStyle: MaterialStatePropertyAll(
-              TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-            ),
-          ),
+        BlocProvider<PremiumBloc>(
+          create: (context) => getIt(),
         ),
-        textButtonTheme: const TextButtonThemeData(
-          style: ButtonStyle(
-            textStyle: MaterialStatePropertyAll(
-              TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-            ),
-          ),
+      ],
+      child: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          final premiumBloc = context.read<PremiumBloc>();
+          state.whenOrNull(
+            authenticated: (user) {
+              premiumBloc.add(const PremiumEvent.statusRequested());
+            },
+            notAuthenticated: () {
+              premiumBloc.add(const PremiumEvent.reset());
+            },
+          );
+        },
+        child: MaterialApp.router(
+          routerConfig: _appRouter.config(),
+          title: 'Тест НОК',
+          theme: appTheme,
         ),
-        radioTheme: const RadioThemeData(fillColor: MaterialStatePropertyAll(Color(0xff277ADB))),
-        checkboxTheme: const CheckboxThemeData(fillColor: MaterialStatePropertyAll(Color(0xff277ADB))),
-        appBarTheme: const AppBarTheme(color: Color(0xff277ADB), foregroundColor: Colors.white),
-        colorSchemeSeed: const Color(0x00277adb),
       ),
     );
   }

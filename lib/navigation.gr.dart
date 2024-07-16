@@ -61,6 +61,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    PaymentResultRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const PaymentResultPage()),
+      );
+    },
     PremiumRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -242,6 +248,20 @@ class PasswordRestorationResultRouteArgs {
   String toString() {
     return 'PasswordRestorationResultRouteArgs{key: $key, email: $email}';
   }
+}
+
+/// generated route for
+/// [PaymentResultPage]
+class PaymentResultRoute extends PageRouteInfo<void> {
+  const PaymentResultRoute({List<PageRouteInfo>? children})
+      : super(
+          PaymentResultRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PaymentResultRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

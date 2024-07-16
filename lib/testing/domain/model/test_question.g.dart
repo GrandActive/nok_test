@@ -10,8 +10,9 @@ _$TestQuestionImpl _$$TestQuestionImplFromJson(Map<String, dynamic> json) =>
     _$TestQuestionImpl(
       source:
           SelectionQuestion.fromJson(json['source'] as Map<String, dynamic>),
-      userAnswers:
-          (json['userAnswers'] as List<dynamic>?)?.map((e) => e as int).toSet(),
+      userAnswers: (json['userAnswers'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toSet(),
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );
 
@@ -43,8 +44,9 @@ _$TestSequenceQuestionImpl _$$TestSequenceQuestionImplFromJson(
         Map<String, dynamic> json) =>
     _$TestSequenceQuestionImpl(
       source: SequenceQuestion.fromJson(json['source'] as Map<String, dynamic>),
-      userAnswer:
-          (json['userAnswer'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      userAnswer: (json['userAnswer'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );
 
@@ -61,7 +63,7 @@ _$TestMatchingQuestionImpl _$$TestMatchingQuestionImplFromJson(
     _$TestMatchingQuestionImpl(
       source: MatchingQuestion.fromJson(json['source'] as Map<String, dynamic>),
       userAnswer: (json['userAnswer'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(int.parse(k), e as int?),
+        (k, e) => MapEntry(int.parse(k), (e as num?)?.toInt()),
       ),
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );
