@@ -18,7 +18,7 @@ class PaymentDataBloc extends Bloc<PaymentDataEvent, PaymentDataState> {
           try {
             final data = await _repository.getPaymentData();
             if (data.alreadyPaid) {
-              emit(PaymentDataState.alreadyPaid());
+              emit(const PaymentDataState.alreadyPaid());
             } else {
               emit(PaymentDataState.success(data: data));
             }

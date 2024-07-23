@@ -50,7 +50,6 @@ class PremiumPage extends StatelessWidget implements AutoRouteWrapper {
               const Text(
                 'Для оплаты необходимо авторизоваться.\n\nЕсли вы уже покупали платную версию, то войдите в аккаунт, чтобы её активировать.',
                 style: AppTextStyles.body1,
-                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
               AppFilledButton(

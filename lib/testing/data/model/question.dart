@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nok_test/testing/data/model/possible_answer.dart';
 
 part 'question.freezed.dart';
-
 part 'question.g.dart';
 
 sealed class Question {}

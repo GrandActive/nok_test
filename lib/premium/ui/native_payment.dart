@@ -17,7 +17,6 @@ class NativePayment {
     if (resultCode == null) return const PaymentResult.cancelled();
 
     final paymentResult = PaymentDialogResult.values.byName(resultCode);
-    print('payment dialog result: $resultMap');
     return switch (paymentResult) {
       PaymentDialogResult.REDIRECTED_TO_BANK => const PaymentResult.redirectedToBank(),
       PaymentDialogResult.REDIRECTED_TO_DOWNLOAD_BANK => const PaymentResult.redirectedToBank(),

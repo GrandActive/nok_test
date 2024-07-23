@@ -45,7 +45,7 @@ _$TestSequenceQuestionImpl _$$TestSequenceQuestionImplFromJson(
     _$TestSequenceQuestionImpl(
       source: SequenceQuestion.fromJson(json['source'] as Map<String, dynamic>),
       userAnswer: (json['userAnswer'] as List<dynamic>?)
-          ?.map((e) => (e as num).toInt())
+          ?.map((e) => PossibleAnswer.fromJson(e as Map<String, dynamic>))
           .toList(),
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );

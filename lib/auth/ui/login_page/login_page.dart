@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
         setState(() => _emailError = 'Некорректный адрес');
         break;
       case WrongPasswordException():
-        setState(() => _passwordError = 'Неверный пароль');
+        setState(() => _passwordError = 'Неверный логин или пароль');
         break;
       case TooManyRequestsException():
         ScaffoldMessenger.of(context)

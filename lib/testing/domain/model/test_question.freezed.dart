@@ -395,8 +395,9 @@ TestSequenceQuestion _$TestSequenceQuestionFromJson(Map<String, dynamic> json) {
 mixin _$TestSequenceQuestion {
   SequenceQuestion get source => throw _privateConstructorUsedError;
   set source(SequenceQuestion value) => throw _privateConstructorUsedError;
-  List<int>? get userAnswer => throw _privateConstructorUsedError;
-  set userAnswer(List<int>? value) => throw _privateConstructorUsedError;
+  List<PossibleAnswer>? get userAnswer => throw _privateConstructorUsedError;
+  set userAnswer(List<PossibleAnswer>? value) =>
+      throw _privateConstructorUsedError;
   bool? get isAnsweredCorrectly => throw _privateConstructorUsedError;
   set isAnsweredCorrectly(bool? value) => throw _privateConstructorUsedError;
 
@@ -414,7 +415,7 @@ abstract class $TestSequenceQuestionCopyWith<$Res> {
   @useResult
   $Res call(
       {SequenceQuestion source,
-      List<int>? userAnswer,
+      List<PossibleAnswer>? userAnswer,
       bool? isAnsweredCorrectly});
 
   $SequenceQuestionCopyWith<$Res> get source;
@@ -446,7 +447,7 @@ class _$TestSequenceQuestionCopyWithImpl<$Res,
       userAnswer: freezed == userAnswer
           ? _value.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+              as List<PossibleAnswer>?,
       isAnsweredCorrectly: freezed == isAnsweredCorrectly
           ? _value.isAnsweredCorrectly
           : isAnsweredCorrectly // ignore: cast_nullable_to_non_nullable
@@ -473,7 +474,7 @@ abstract class _$$TestSequenceQuestionImplCopyWith<$Res>
   @useResult
   $Res call(
       {SequenceQuestion source,
-      List<int>? userAnswer,
+      List<PossibleAnswer>? userAnswer,
       bool? isAnsweredCorrectly});
 
   @override
@@ -503,7 +504,7 @@ class __$$TestSequenceQuestionImplCopyWithImpl<$Res>
       userAnswer: freezed == userAnswer
           ? _value.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+              as List<PossibleAnswer>?,
       isAnsweredCorrectly: freezed == isAnsweredCorrectly
           ? _value.isAnsweredCorrectly
           : isAnsweredCorrectly // ignore: cast_nullable_to_non_nullable
@@ -524,7 +525,7 @@ class _$TestSequenceQuestionImpl implements _TestSequenceQuestion {
   @override
   SequenceQuestion source;
   @override
-  List<int>? userAnswer;
+  List<PossibleAnswer>? userAnswer;
   @override
   bool? isAnsweredCorrectly;
 
@@ -552,7 +553,7 @@ class _$TestSequenceQuestionImpl implements _TestSequenceQuestion {
 abstract class _TestSequenceQuestion implements TestSequenceQuestion {
   factory _TestSequenceQuestion(
       {required SequenceQuestion source,
-      List<int>? userAnswer,
+      List<PossibleAnswer>? userAnswer,
       bool? isAnsweredCorrectly}) = _$TestSequenceQuestionImpl;
 
   factory _TestSequenceQuestion.fromJson(Map<String, dynamic> json) =
@@ -562,8 +563,8 @@ abstract class _TestSequenceQuestion implements TestSequenceQuestion {
   SequenceQuestion get source;
   set source(SequenceQuestion value);
   @override
-  List<int>? get userAnswer;
-  set userAnswer(List<int>? value);
+  List<PossibleAnswer>? get userAnswer;
+  set userAnswer(List<PossibleAnswer>? value);
   @override
   bool? get isAnsweredCorrectly;
   set isAnsweredCorrectly(bool? value);

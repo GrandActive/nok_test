@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:firebase_database/firebase_database.dart';
-import 'package:nok_test/testing/data/model/question.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nok_test/testing/data/model/question.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 @injectable
@@ -60,7 +60,9 @@ class FirebaseDataSource {
     final dbMajorVersion = dbVersionParts[0];
     final dbMinorVersion = dbVersionParts[1];
 
-    if (dbMajorVersion != appMajorVersion || dbMinorVersion != appMinorVersion) throw WrongDbVersionException();
+    if (dbMajorVersion != appMajorVersion || dbMinorVersion != appMinorVersion) {
+      throw WrongDbVersionException();
+    }
   }
 }
 

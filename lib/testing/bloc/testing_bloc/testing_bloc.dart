@@ -4,15 +4,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nok_test/testing/data/firebase_data_source.dart';
 import 'package:nok_test/testing/domain/get_random_questions_for_test.dart';
+import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
 
-import 'package:nok_test/testing/domain/model/test_mode.dart';
-
-part 'testing_event.dart';
-
-part 'testing_state.dart';
-
 part 'testing_bloc.freezed.dart';
+part 'testing_event.dart';
+part 'testing_state.dart';
 
 @injectable
 class TestingBloc extends Bloc<TestingEvent, TestingState> {

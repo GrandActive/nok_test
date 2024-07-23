@@ -15,7 +15,7 @@ class PaymentButton extends StatelessWidget {
   void _startPayment(PaymentData data) {
     launchUrl(Uri(
       scheme: 'https',
-      host: 'pay-test.raif.ru',
+      host: 'pay.raif.ru',
       path: 'pay',
       queryParameters: {
         'publicId': data.publicId,

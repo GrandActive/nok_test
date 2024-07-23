@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nok_test/testing/data/model/possible_answer.dart';
 import 'package:nok_test/testing/data/model/question.dart';
 
 part 'test_question.freezed.dart';
-
 part 'test_question.g.dart';
 
 sealed class TestQuestion {
@@ -10,7 +10,7 @@ sealed class TestQuestion {
 }
 
 @unfreezed
-class TestSelectionQuestion extends TestQuestion with _$TestSelectionQuestion  {
+class TestSelectionQuestion extends TestQuestion with _$TestSelectionQuestion {
   factory TestSelectionQuestion({
     required SelectionQuestion source,
     Set<int>? userAnswers,
@@ -22,7 +22,7 @@ class TestSelectionQuestion extends TestQuestion with _$TestSelectionQuestion  {
 }
 
 @unfreezed
-class TestUserInputQuestion with _$TestUserInputQuestion implements TestQuestion {
+class TestUserInputQuestion extends TestQuestion with _$TestUserInputQuestion {
   factory TestUserInputQuestion({
     required UserInputQuestion source,
     String? userAnswer,
@@ -34,10 +34,10 @@ class TestUserInputQuestion with _$TestUserInputQuestion implements TestQuestion
 }
 
 @unfreezed
-class TestSequenceQuestion with _$TestSequenceQuestion implements TestQuestion {
+class TestSequenceQuestion extends TestQuestion with _$TestSequenceQuestion {
   factory TestSequenceQuestion({
     required SequenceQuestion source,
-    List<int>? userAnswer,
+    List<PossibleAnswer>? userAnswer,
     bool? isAnsweredCorrectly,
   }) = _TestSequenceQuestion;
 
@@ -46,7 +46,7 @@ class TestSequenceQuestion with _$TestSequenceQuestion implements TestQuestion {
 }
 
 @unfreezed
-class TestMatchingQuestion with _$TestMatchingQuestion implements TestQuestion {
+class TestMatchingQuestion extends TestQuestion with _$TestMatchingQuestion {
   factory TestMatchingQuestion({
     required MatchingQuestion source,
     Map<int, int?>? userAnswer,

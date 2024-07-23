@@ -13,7 +13,7 @@ class AuthPage extends StatelessWidget implements AutoRouteWrapper {
       listener: (context, state) {
         state.whenOrNull(
           authenticated: (user) {
-            context.router.pop(true);
+            context.router.maybePop(true);
           },
         );
       },

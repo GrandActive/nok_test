@@ -32,7 +32,7 @@ class PasswordRestorationResultPage extends StatelessWidget {
               onPressed: () {
                 context.router.navigate(const LoginRoute());
               },
-              child: const Text('Вернуться на главную'),
+              child: const Text('Войти ещё раз'),
             )
           ],
         ),

@@ -121,7 +121,7 @@ abstract class _$AppRouter extends RootStackRouter {
     TestingRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const TestingPage(),
+        child: WrappedRoute(child: const TestingPage()),
       );
     },
   };

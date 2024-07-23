@@ -14,11 +14,11 @@ class FinishTestDialog extends StatelessWidget {
           style: TextStyle(color: Color(0xff464646), fontSize: 16)),
       actions: [
         TextButton(
-          onPressed: () => context.popRoute(false),
+          onPressed: () => context.maybePop(false),
           child: const Text("Отмена"),
         ),
         TextButton(
-          onPressed: () => context.popRoute(true),
+          onPressed: () => context.maybePop(true),
           style: const ButtonStyle(
             foregroundColor: MaterialStatePropertyAll(Colors.red),
           ),

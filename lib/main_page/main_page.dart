@@ -59,13 +59,6 @@ class MainPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 40),
-                TextButton(
-                  onPressed: () => ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(const SnackBar(content: Text('Раздел находится в разработке'))),
-                  child: const Text('Посмотреть все вопросы'),
-                ),
               ] else ...[
                 const TestInfo(),
                 const SizedBox(height: 40),
