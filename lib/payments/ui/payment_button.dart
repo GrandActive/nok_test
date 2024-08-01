@@ -13,10 +13,7 @@ class PaymentButton extends StatelessWidget {
   });
 
   void _startPayment(PaymentData data) {
-    launchUrl(Uri(
-      scheme: 'https',
-      host: 'pay.raif.ru',
-      path: 'pay',
+    final formUrl = Uri.parse(data.formUrl).replace(
       queryParameters: {
         'publicId': data.publicId,
         'amount': data.amount.toString(),
@@ -24,7 +21,9 @@ class PaymentButton extends StatelessWidget {
         'successUrl': 'app://nok.test/payment/result',
         'successSbpUrl': 'app://nok.test/payment/result',
       },
-    ));
+    );
+
+    launchUrl(formUrl);
   }
 
   @override

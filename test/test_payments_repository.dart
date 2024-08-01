@@ -23,6 +23,7 @@ class TestPaymentsRepository implements IPaymentsRepository {
       publicId: 'publicId',
       amount: 199,
       orderId: 'orderId',
+      formUrl: 'formUrl',
     );
   }
 }

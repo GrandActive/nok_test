@@ -12,6 +12,7 @@ _$PaymentDataImpl _$$PaymentDataImplFromJson(Map<String, dynamic> json) =>
       publicId: json['publicId'] as String,
       amount: (json['amount'] as num).toDouble(),
       orderId: json['orderId'] as String,
+      formUrl: json['formUrl'] as String,
     );
 
 Map<String, dynamic> _$$PaymentDataImplToJson(_$PaymentDataImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$PaymentDataImplToJson(_$PaymentDataImpl instance) =>
       'publicId': instance.publicId,
       'amount': instance.amount,
       'orderId': instance.orderId,
+      'formUrl': instance.formUrl,
     };

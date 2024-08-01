@@ -10,6 +10,7 @@ class PaymentData with _$PaymentData {
     required String publicId,
     required double amount,
     required String orderId,
+    required String formUrl,
   }) = _PaymentData;
 
   factory PaymentData.fromJson(Map<String, dynamic> json) => _$PaymentDataFromJson(json);

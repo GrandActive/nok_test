@@ -24,6 +24,7 @@ mixin _$PaymentData {
   String get publicId => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
   String get orderId => throw _privateConstructorUsedError;
+  String get formUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,12 @@ abstract class $PaymentDataCopyWith<$Res> {
           PaymentData value, $Res Function(PaymentData) then) =
       _$PaymentDataCopyWithImpl<$Res, PaymentData>;
   @useResult
-  $Res call({bool alreadyPaid, String publicId, double amount, String orderId});
+  $Res call(
+      {bool alreadyPaid,
+      String publicId,
+      double amount,
+      String orderId,
+      String formUrl});
 }
 
 /// @nodoc
@@ -57,6 +63,7 @@ class _$PaymentDataCopyWithImpl<$Res, $Val extends PaymentData>
     Object? publicId = null,
     Object? amount = null,
     Object? orderId = null,
+    Object? formUrl = null,
   }) {
     return _then(_value.copyWith(
       alreadyPaid: null == alreadyPaid
@@ -75,6 +82,10 @@ class _$PaymentDataCopyWithImpl<$Res, $Val extends PaymentData>
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
               as String,
+      formUrl: null == formUrl
+          ? _value.formUrl
+          : formUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -87,7 +98,12 @@ abstract class _$$PaymentDataImplCopyWith<$Res>
       __$$PaymentDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool alreadyPaid, String publicId, double amount, String orderId});
+  $Res call(
+      {bool alreadyPaid,
+      String publicId,
+      double amount,
+      String orderId,
+      String formUrl});
 }
 
 /// @nodoc
@@ -105,6 +121,7 @@ class __$$PaymentDataImplCopyWithImpl<$Res>
     Object? publicId = null,
     Object? amount = null,
     Object? orderId = null,
+    Object? formUrl = null,
   }) {
     return _then(_$PaymentDataImpl(
       alreadyPaid: null == alreadyPaid
@@ -123,6 +140,10 @@ class __$$PaymentDataImplCopyWithImpl<$Res>
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
               as String,
+      formUrl: null == formUrl
+          ? _value.formUrl
+          : formUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -134,7 +155,8 @@ class _$PaymentDataImpl implements _PaymentData {
       {required this.alreadyPaid,
       required this.publicId,
       required this.amount,
-      required this.orderId});
+      required this.orderId,
+      required this.formUrl});
 
   factory _$PaymentDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentDataImplFromJson(json);
@@ -147,10 +169,12 @@ class _$PaymentDataImpl implements _PaymentData {
   final double amount;
   @override
   final String orderId;
+  @override
+  final String formUrl;
 
   @override
   String toString() {
-    return 'PaymentData(alreadyPaid: $alreadyPaid, publicId: $publicId, amount: $amount, orderId: $orderId)';
+    return 'PaymentData(alreadyPaid: $alreadyPaid, publicId: $publicId, amount: $amount, orderId: $orderId, formUrl: $formUrl)';
   }
 
   @override
@@ -163,13 +187,14 @@ class _$PaymentDataImpl implements _PaymentData {
             (identical(other.publicId, publicId) ||
                 other.publicId == publicId) &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId));
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.formUrl, formUrl) || other.formUrl == formUrl));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, alreadyPaid, publicId, amount, orderId);
+      Object.hash(runtimeType, alreadyPaid, publicId, amount, orderId, formUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -190,7 +215,8 @@ abstract class _PaymentData implements PaymentData {
       {required final bool alreadyPaid,
       required final String publicId,
       required final double amount,
-      required final String orderId}) = _$PaymentDataImpl;
+      required final String orderId,
+      required final String formUrl}) = _$PaymentDataImpl;
 
   factory _PaymentData.fromJson(Map<String, dynamic> json) =
       _$PaymentDataImpl.fromJson;
@@ -203,6 +229,8 @@ abstract class _PaymentData implements PaymentData {
   double get amount;
   @override
   String get orderId;
+  @override
+  String get formUrl;
   @override
   @JsonKey(ignore: true)
   _$$PaymentDataImplCopyWith<_$PaymentDataImpl> get copyWith =>
