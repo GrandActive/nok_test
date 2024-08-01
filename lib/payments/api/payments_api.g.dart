@@ -13,7 +13,7 @@ class _PaymentsApi implements PaymentsApi {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://10.0.2.2:3000/api/payment/';
+    baseUrl ??= 'http://nok-trainer.ru/api/payment/';
   }
 
   final Dio _dio;

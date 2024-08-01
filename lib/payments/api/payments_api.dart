@@ -5,7 +5,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'payments_api.g.dart';
 
-@RestApi(baseUrl: 'http://10.0.2.2:3000/api/payment/')
+@RestApi(baseUrl: 'http://nok-trainer.ru/api/payment/')
 abstract class PaymentsApi {
   factory PaymentsApi(Dio dio, {String baseUrl}) = _PaymentsApi;
 
