@@ -52,11 +52,12 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB3JOswwplkKJVkjPDuJQn_iPiRXk2FO_w',
-    appId: '1:828965662871:android:189163ac7e5a5d4f1af9d2',
-    messagingSenderId: '828965662871',
-    projectId: 'nok-test-dev',
-    databaseURL: 'https://nok-test-dev-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'nok-test-dev.appspot.com',
+    apiKey: 'AIzaSyCqZHOOY15wV8v6n7vtrHcbH01fg5tsUvI',
+    appId: '1:989887299127:android:be39ea71b9b3a6ba0589b2',
+    messagingSenderId: '989887299127',
+    projectId: 'test-gip',
+    databaseURL: 'https://test-gip-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'test-gip.appspot.com',
   );
+
 }
