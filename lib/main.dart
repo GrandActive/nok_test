@@ -1,8 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/auth/bloc/auth_bloc/auth_bloc.dart';
-import 'package:nok_test/firebase_options.dart';
+import 'package:nok_test/init_firebase.dart';
 import 'package:nok_test/injection.dart';
 import 'package:nok_test/navigation.dart';
 import 'package:nok_test/premium/bloc/premium_bloc.dart';
@@ -10,9 +9,7 @@ import 'package:nok_test/styles/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await initFirebase();
   configureDependencies();
   runApp(MyApp());
 }
