@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/questions/base/question_bloc/question_bloc.dart';
 import 'package:nok_test/questions/user_input_question/user_input_question_bloc/user_input_question_bloc.dart';
+import 'package:nok_test/styles/colors.dart';
 
 class UserInput extends StatelessWidget {
   const UserInput({
@@ -13,6 +14,9 @@ class UserInput extends StatelessWidget {
     return TextField(
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: primaryColor),
+        ),
         hintText: "Введите ответ",
         hintStyle: TextStyle(color: Color(0xFF9D9D9D), fontWeight: FontWeight.w400),
         isDense: true,
