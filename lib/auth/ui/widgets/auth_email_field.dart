@@ -6,10 +6,14 @@ class AuthEmailField extends StatefulWidget {
     super.key,
     required this.onChanged,
     this.errorText,
+    this.textInputAction = TextInputAction.next,
+    this.onSubmitted,
   });
 
   final ValueChanged<String> onChanged;
   final String? errorText;
+  final TextInputAction textInputAction;
+  final ValueChanged<String>? onSubmitted;
 
   @override
   State<AuthEmailField> createState() => _AuthEmailFieldState();
@@ -54,12 +58,15 @@ class _AuthEmailFieldState extends State<AuthEmailField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: true,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: _controller,
       decoration: InputDecoration(
         border: const UnderlineInputBorder(),
         filled: true,
-        suffixIcon: _showClearIcon ? ClearIconButton(onPressed: _clearText) : null,
+        suffixIcon: _showClearIcon
+            ? ExcludeFocusTraversal(child: ClearIconButton(onPressed: _clearText))
+            : null,
         suffixIconColor: const Color(0xFF464646),
         fillColor: const Color(0xFFF5F5F5),
         label: const Text('Почта'),
@@ -67,6 +74,8 @@ class _AuthEmailFieldState extends State<AuthEmailField> {
       ),
       onChanged: widget.onChanged,
       validator: _validate,
+      textInputAction: widget.textInputAction,
+      onFieldSubmitted: widget.onSubmitted,
     );
   }
 }

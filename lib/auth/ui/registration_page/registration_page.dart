@@ -107,6 +107,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     _passwordError = null;
                   }),
                   errorText: _passwordError,
+                  onSubmitted: (_) => _submit(),
                 ),
                 const SizedBox(height: 24),
                 AppFilledButton(

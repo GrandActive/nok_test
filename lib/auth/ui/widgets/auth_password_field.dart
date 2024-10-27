@@ -6,11 +6,14 @@ class AuthPasswordField extends StatefulWidget {
     super.key,
     required this.onChanged,
     this.errorText,
+    this.textInputAction = TextInputAction.done,
+    this.onSubmitted,
   });
 
   final ValueChanged<String> onChanged;
-
   final String? errorText;
+  final TextInputAction textInputAction;
+  final ValueChanged<String>? onSubmitted;
 
   @override
   State<AuthPasswordField> createState() => _AuthPasswordFieldState();
@@ -39,9 +42,11 @@ class _AuthPasswordFieldState extends State<AuthPasswordField> {
         filled: true,
         fillColor: const Color(0xFFF5F5F5),
         label: const Text('Пароль'),
-        suffixIcon: VisibilityIconButton(
-          visible: !_obscureText,
-          onPressed: _toggleVisibility,
+        suffixIcon: ExcludeFocusTraversal(
+          child: VisibilityIconButton(
+            visible: !_obscureText,
+            onPressed: _toggleVisibility,
+          ),
         ),
         suffixIconColor: const Color(0xFF464646),
         errorText: widget.errorText,
@@ -50,6 +55,8 @@ class _AuthPasswordFieldState extends State<AuthPasswordField> {
       obscureText: _obscureText,
       onChanged: widget.onChanged,
       validator: _validate,
+      textInputAction: widget.textInputAction,
+      onFieldSubmitted: widget.onSubmitted,
     );
   }
 }

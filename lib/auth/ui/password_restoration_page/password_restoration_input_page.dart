@@ -71,6 +71,8 @@ class _PasswordRestorationInputPageState extends State<PasswordRestorationInputP
                       _error = null;
                     }),
                     errorText: _error,
+                    textInputAction: TextInputAction.done,
+                    onSubmitted: (_) => _submit(),
                   ),
                   const SizedBox(height: 32),
                   AppFilledButton(

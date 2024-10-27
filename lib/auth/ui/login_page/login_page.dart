@@ -119,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                             _passwordError = null;
                           }),
                           errorText: _passwordError,
+                          onSubmitted: (_) => _submit(),
                         ),
                         const SizedBox(height: 24),
                         AppFilledButton(
