@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/questions/base/question_bloc/question_bloc.dart';
 import 'package:nok_test/questions/matching_question/matching_question_bloc/matching_question_bloc.dart';
+import 'package:nok_test/questions/matching_question/widgets/matching_question_answers_dialog.dart';
 import 'package:nok_test/testing/data/model/possible_answer.dart';
 import 'package:nok_test/utils/first_where_or_null.dart';
 
@@ -31,13 +32,12 @@ class QuestionAnswerPair extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final answersWithSeparators = List<PossibleAnswer?>.from(answers);
-    for (var i = 1; i < answersWithSeparators.length; i += 2) {
-      answersWithSeparators.insert(i, null);
-    }
+    final selectedAnswer =
+        answers.firstWhereOrNull((a) => a.index == selectedAnswers[question.index]);
 
-    final value =
-        answers.firstWhereOrNull((answer) => answer.index == selectedAnswers[question.index]);
+    final answerText = selectedAnswer == null
+        ? const Text('Выберите ответ', style: TextStyle(color: Color(0xFF9D9D9D)))
+        : Text(selectedAnswer.text);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,53 +52,24 @@ class QuestionAnswerPair extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(4)),
             border: Border.all(color: const Color(0xFF7F7F7F), width: 1),
           ),
-          child: ButtonTheme(
-            alignedDropdown: true,
-            child: DropdownButton(
-              icon: value == null
-                  ? const Padding(
-                      padding: EdgeInsets.all(12),
-                      child: Icon(Icons.arrow_drop_down),
-                    )
-                  : IconButton(
-                      onPressed: () => _setValue(context, null),
-                      icon: const Icon(Icons.close),
-                    ),
-              isExpanded: true,
-              itemHeight: null,
-              borderRadius: const BorderRadius.all(Radius.circular(4)),
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              underline: const SizedBox.shrink(),
-              hint: const Text(
-                "Выберите ответ",
-                style: TextStyle(color: Color(0xFF9D9D9D), fontWeight: FontWeight.w400),
+          child: InkWell(
+            onTap: () async {
+              final selectedAnswer = await showMatchingQuestionAnswersDialog(context, answers);
+              if (context.mounted && selectedAnswer != null) {
+                _setValue(context, selectedAnswer);
+              }
+            },
+            child: Container(
+              constraints: const BoxConstraints(minHeight: 56),
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(child: answerText),
+                  const SizedBox(width: 16),
+                  const Icon(Icons.arrow_drop_down)
+                ],
               ),
-              value: value,
-              selectedItemBuilder: (context) => answersWithSeparators
-                  .map((answer) => Align(
-                        alignment: Alignment.centerLeft,
-                        child: answer == null
-                            ? const SizedBox.shrink()
-                            : Text(
-                                "${answer.index}. ${answer.text}",
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: const TextStyle(fontWeight: FontWeight.w400),
-                              ),
-                      ))
-                  .toList(),
-              items: answersWithSeparators
-                  .map((answer) => DropdownMenuItem(
-                      enabled: answer != null,
-                      value: answer,
-                      child: answer == null
-                          ? const Divider(height: 1)
-                          : Text(
-                              "${answer.index}. ${answer.text}",
-                              style: const TextStyle(fontWeight: FontWeight.w400),
-                            )))
-                  .toList(),
-              onChanged: (value) => _setValue(context, value),
             ),
           ),
         ),

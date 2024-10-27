@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/utils/list_separated_extension.dart';
 
 import 'question_answer_pair.dart';
 
@@ -15,16 +16,15 @@ class MatchingAnswerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) => QuestionAnswerPair(
-        question: question.source.questions[index],
-        answers: question.source.answers,
-        selectedAnswers: selectedAnswers,
-      ),
-      separatorBuilder: (context, index) => const SizedBox(height: 16),
-      itemCount: question.source.questions.length,
+    return Column(
+      children: question.source.questions
+          .map<Widget>((q) => QuestionAnswerPair(
+                question: q,
+                answers: question.source.answers,
+                selectedAnswers: selectedAnswers,
+              ))
+          .toList()
+          .separatedBy(const SizedBox(height: 16)),
     );
   }
 }
