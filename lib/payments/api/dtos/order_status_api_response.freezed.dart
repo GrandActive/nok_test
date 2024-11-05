@@ -23,8 +23,12 @@ OrderStatusApiResponse _$OrderStatusApiResponseFromJson(
 mixin _$OrderStatusApiResponse {
   OrderStatus get status => throw _privateConstructorUsedError;
 
+  /// Serializes this OrderStatusApiResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrderStatusApiResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderStatusApiResponseCopyWith<OrderStatusApiResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$OrderStatusApiResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrderStatusApiResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$OrderStatusApiResponseImplCopyWithImpl<$Res>
       $Res Function(_$OrderStatusApiResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrderStatusApiResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,11 +131,13 @@ class _$OrderStatusApiResponseImpl implements _OrderStatusApiResponse {
             (identical(other.status, status) || other.status == status));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrderStatusApiResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderStatusApiResponseImplCopyWith<_$OrderStatusApiResponseImpl>
@@ -151,8 +161,11 @@ abstract class _OrderStatusApiResponse implements OrderStatusApiResponse {
 
   @override
   OrderStatus get status;
+
+  /// Create a copy of OrderStatusApiResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderStatusApiResponseImplCopyWith<_$OrderStatusApiResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -78,6 +78,9 @@ class _$TimerEventCopyWithImpl<$Res, $Val extends TimerEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -97,6 +100,8 @@ class __$$StartedImplCopyWithImpl<$Res>
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,7 +141,9 @@ class _$StartedImpl implements _Started {
   @override
   int get hashCode => Object.hash(runtimeType, duration);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
@@ -215,7 +222,10 @@ abstract class _Started implements TimerEvent {
   const factory _Started({required final Duration duration}) = _$StartedImpl;
 
   Duration get duration;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -234,6 +244,9 @@ class __$$StoppedEventImplCopyWithImpl<$Res>
   __$$StoppedEventImplCopyWithImpl(
       _$StoppedEventImpl _value, $Res Function(_$StoppedEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -345,6 +358,8 @@ class __$$TickedImplCopyWithImpl<$Res>
       _$TickedImpl _value, $Res Function(_$TickedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -384,7 +399,9 @@ class _$TickedImpl implements _Ticked {
   @override
   int get hashCode => Object.hash(runtimeType, secondsLeft);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TickedImplCopyWith<_$TickedImpl> get copyWith =>
@@ -463,7 +480,10 @@ abstract class _Ticked implements TimerEvent {
   const factory _Ticked({required final int secondsLeft}) = _$TickedImpl;
 
   int get secondsLeft;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TickedImplCopyWith<_$TickedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -538,6 +558,9 @@ class _$TimerStateCopyWithImpl<$Res, $Val extends TimerState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -554,6 +577,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -671,6 +697,8 @@ class __$$RunningImplCopyWithImpl<$Res>
       _$RunningImpl _value, $Res Function(_$RunningImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -710,7 +738,9 @@ class _$RunningImpl implements Running {
   @override
   int get hashCode => Object.hash(runtimeType, timeLeft);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RunningImplCopyWith<_$RunningImpl> get copyWith =>
@@ -795,7 +825,10 @@ abstract class Running implements TimerState {
   const factory Running({required final Duration timeLeft}) = _$RunningImpl;
 
   Duration get timeLeft;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RunningImplCopyWith<_$RunningImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -817,6 +850,8 @@ class __$$StoppedImplCopyWithImpl<$Res>
       _$StoppedImpl _value, $Res Function(_$StoppedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -856,7 +891,9 @@ class _$StoppedImpl implements _Stopped {
   @override
   int get hashCode => Object.hash(runtimeType, timeLeft);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoppedImplCopyWith<_$StoppedImpl> get copyWith =>
@@ -941,7 +978,10 @@ abstract class _Stopped implements TimerState {
   const factory _Stopped({required final Duration timeLeft}) = _$StoppedImpl;
 
   Duration get timeLeft;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoppedImplCopyWith<_$StoppedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -960,6 +1000,9 @@ class __$$FinishedImplCopyWithImpl<$Res>
   __$$FinishedImplCopyWithImpl(
       _$FinishedImpl _value, $Res Function(_$FinishedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

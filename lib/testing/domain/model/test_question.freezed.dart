@@ -28,8 +28,12 @@ mixin _$TestSelectionQuestion {
   bool? get isAnsweredCorrectly => throw _privateConstructorUsedError;
   set isAnsweredCorrectly(bool? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this TestSelectionQuestion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TestSelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TestSelectionQuestionCopyWith<TestSelectionQuestion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$TestSelectionQuestionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TestSelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -82,6 +88,8 @@ class _$TestSelectionQuestionCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of TestSelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SelectionQuestionCopyWith<$Res> get source {
@@ -116,6 +124,8 @@ class __$$TestQuestionImplCopyWithImpl<$Res>
       _$TestQuestionImpl _value, $Res Function(_$TestQuestionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TestSelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,7 +171,9 @@ class _$TestQuestionImpl implements _TestQuestion {
     return 'TestSelectionQuestion(source: $source, userAnswers: $userAnswers, isAnsweredCorrectly: $isAnsweredCorrectly)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TestSelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TestQuestionImplCopyWith<_$TestQuestionImpl> get copyWith =>
@@ -193,8 +205,11 @@ abstract class _TestQuestion implements TestSelectionQuestion {
   @override
   bool? get isAnsweredCorrectly;
   set isAnsweredCorrectly(bool? value);
+
+  /// Create a copy of TestSelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TestQuestionImplCopyWith<_$TestQuestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -213,8 +228,12 @@ mixin _$TestUserInputQuestion {
   bool? get isAnsweredCorrectly => throw _privateConstructorUsedError;
   set isAnsweredCorrectly(bool? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this TestUserInputQuestion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TestUserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TestUserInputQuestionCopyWith<TestUserInputQuestion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -244,6 +263,8 @@ class _$TestUserInputQuestionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TestUserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -267,6 +288,8 @@ class _$TestUserInputQuestionCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of TestUserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserInputQuestionCopyWith<$Res> get source {
@@ -303,6 +326,8 @@ class __$$TestUserInputQuestionImplCopyWithImpl<$Res>
       $Res Function(_$TestUserInputQuestionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TestUserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -348,7 +373,9 @@ class _$TestUserInputQuestionImpl implements _TestUserInputQuestion {
     return 'TestUserInputQuestion(source: $source, userAnswer: $userAnswer, isAnsweredCorrectly: $isAnsweredCorrectly)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TestUserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TestUserInputQuestionImplCopyWith<_$TestUserInputQuestionImpl>
@@ -381,8 +408,11 @@ abstract class _TestUserInputQuestion implements TestUserInputQuestion {
   @override
   bool? get isAnsweredCorrectly;
   set isAnsweredCorrectly(bool? value);
+
+  /// Create a copy of TestUserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TestUserInputQuestionImplCopyWith<_$TestUserInputQuestionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -401,8 +431,12 @@ mixin _$TestSequenceQuestion {
   bool? get isAnsweredCorrectly => throw _privateConstructorUsedError;
   set isAnsweredCorrectly(bool? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this TestSequenceQuestion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TestSequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TestSequenceQuestionCopyWith<TestSequenceQuestion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -432,6 +466,8 @@ class _$TestSequenceQuestionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TestSequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -455,6 +491,8 @@ class _$TestSequenceQuestionCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of TestSequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SequenceQuestionCopyWith<$Res> get source {
@@ -489,6 +527,8 @@ class __$$TestSequenceQuestionImplCopyWithImpl<$Res>
       $Res Function(_$TestSequenceQuestionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TestSequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -534,7 +574,9 @@ class _$TestSequenceQuestionImpl implements _TestSequenceQuestion {
     return 'TestSequenceQuestion(source: $source, userAnswer: $userAnswer, isAnsweredCorrectly: $isAnsweredCorrectly)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TestSequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TestSequenceQuestionImplCopyWith<_$TestSequenceQuestionImpl>
@@ -568,8 +610,11 @@ abstract class _TestSequenceQuestion implements TestSequenceQuestion {
   @override
   bool? get isAnsweredCorrectly;
   set isAnsweredCorrectly(bool? value);
+
+  /// Create a copy of TestSequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TestSequenceQuestionImplCopyWith<_$TestSequenceQuestionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -587,8 +632,12 @@ mixin _$TestMatchingQuestion {
   bool? get isAnsweredCorrectly => throw _privateConstructorUsedError;
   set isAnsweredCorrectly(bool? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this TestMatchingQuestion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TestMatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TestMatchingQuestionCopyWith<TestMatchingQuestion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -618,6 +667,8 @@ class _$TestMatchingQuestionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TestMatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -641,6 +692,8 @@ class _$TestMatchingQuestionCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of TestMatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MatchingQuestionCopyWith<$Res> get source {
@@ -675,6 +728,8 @@ class __$$TestMatchingQuestionImplCopyWithImpl<$Res>
       $Res Function(_$TestMatchingQuestionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TestMatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -720,7 +775,9 @@ class _$TestMatchingQuestionImpl implements _TestMatchingQuestion {
     return 'TestMatchingQuestion(source: $source, userAnswer: $userAnswer, isAnsweredCorrectly: $isAnsweredCorrectly)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TestMatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TestMatchingQuestionImplCopyWith<_$TestMatchingQuestionImpl>
@@ -754,8 +811,11 @@ abstract class _TestMatchingQuestion implements TestMatchingQuestion {
   @override
   bool? get isAnsweredCorrectly;
   set isAnsweredCorrectly(bool? value);
+
+  /// Create a copy of TestMatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TestMatchingQuestionImplCopyWith<_$TestMatchingQuestionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

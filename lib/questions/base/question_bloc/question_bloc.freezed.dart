@@ -84,6 +84,9 @@ class _$QuestionEventCopyWithImpl<Q, A, $Res, $Val extends QuestionEvent<Q, A>>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of QuestionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -103,6 +106,8 @@ class __$$StartedImplCopyWithImpl<Q, A, $Res>
       _$StartedImpl<Q, A> _value, $Res Function(_$StartedImpl<Q, A>) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuestionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +164,9 @@ class _$StartedImpl<Q, A> implements _Started<Q, A> {
   int get hashCode => Object.hash(
       runtimeType, mode, const DeepCollectionEquality().hash(question), isLast);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuestionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StartedImplCopyWith<Q, A, _$StartedImpl<Q, A>> get copyWith =>
@@ -249,7 +256,10 @@ abstract class _Started<Q, A> implements QuestionEvent<Q, A> {
   TestMode get mode;
   Q get question;
   bool get isLast;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuestionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StartedImplCopyWith<Q, A, _$StartedImpl<Q, A>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -271,6 +281,8 @@ class __$$AnswerSelectedImplCopyWithImpl<Q, A, $Res>
       $Res Function(_$AnswerSelectedImpl<Q, A>) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuestionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -310,7 +322,9 @@ class _$AnswerSelectedImpl<Q, A> implements _AnswerSelected<Q, A> {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(answer));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuestionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AnswerSelectedImplCopyWith<Q, A, _$AnswerSelectedImpl<Q, A>>
@@ -398,7 +412,10 @@ abstract class _AnswerSelected<Q, A> implements QuestionEvent<Q, A> {
       _$AnswerSelectedImpl<Q, A>;
 
   A get answer;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuestionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AnswerSelectedImplCopyWith<Q, A, _$AnswerSelectedImpl<Q, A>>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -417,6 +434,9 @@ class __$$PutOnHoldImplCopyWithImpl<Q, A, $Res>
   __$$PutOnHoldImplCopyWithImpl(
       _$PutOnHoldImpl<Q, A> _value, $Res Function(_$PutOnHoldImpl<Q, A>) _then)
       : super(_value, _then);
+
+  /// Create a copy of QuestionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -531,6 +551,9 @@ class __$$AnswerSubmittedImplCopyWithImpl<Q, A, $Res>
   __$$AnswerSubmittedImplCopyWithImpl(_$AnswerSubmittedImpl<Q, A> _value,
       $Res Function(_$AnswerSubmittedImpl<Q, A>) _then)
       : super(_value, _then);
+
+  /// Create a copy of QuestionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -707,6 +730,9 @@ class _$QuestionStateCopyWithImpl<Q, A, $Res, $Val extends QuestionState<Q, A>>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of QuestionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -723,6 +749,9 @@ class __$$InitialImplCopyWithImpl<Q, A, $Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl<Q, A> _value, $Res Function(_$InitialImpl<Q, A>) _then)
       : super(_value, _then);
+
+  /// Create a copy of QuestionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -846,6 +875,8 @@ class __$$InProgressImplCopyWithImpl<Q, A, $Res>
       $Res Function(_$InProgressImpl<Q, A>) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuestionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -919,7 +950,9 @@ class _$InProgressImpl<Q, A> extends InProgress<Q, A> {
       isLast,
       const DeepCollectionEquality().hash(selectedAnswers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuestionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InProgressImplCopyWith<Q, A, _$InProgressImpl<Q, A>> get copyWith =>
@@ -1018,7 +1051,10 @@ abstract class InProgress<Q, A> extends QuestionState<Q, A> {
   Q get question;
   bool get isLast;
   A get selectedAnswers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuestionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InProgressImplCopyWith<Q, A, _$InProgressImpl<Q, A>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1040,6 +1076,8 @@ class __$$AnsweredImplCopyWithImpl<Q, A, $Res>
       _$AnsweredImpl<Q, A> _value, $Res Function(_$AnsweredImpl<Q, A>) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuestionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1114,7 +1152,9 @@ class _$AnsweredImpl<Q, A> extends Answered<Q, A> {
       const DeepCollectionEquality().hash(selectedAnswers),
       const DeepCollectionEquality().hash(correctAnswers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuestionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AnsweredImplCopyWith<Q, A, _$AnsweredImpl<Q, A>> get copyWith =>
@@ -1213,7 +1253,10 @@ abstract class Answered<Q, A> extends QuestionState<Q, A> {
   bool get isLast;
   A get selectedAnswers;
   A get correctAnswers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuestionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AnsweredImplCopyWith<Q, A, _$AnsweredImpl<Q, A>> get copyWith =>
       throw _privateConstructorUsedError;
 }

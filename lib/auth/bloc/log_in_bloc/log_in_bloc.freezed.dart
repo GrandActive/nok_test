@@ -51,7 +51,9 @@ mixin _$LogInEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LogInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LogInEventCopyWith<LogInEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +77,8 @@ class _$LogInEventCopyWithImpl<$Res, $Val extends LogInEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LogInEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,6 +116,8 @@ class __$$LogInImplCopyWithImpl<$Res>
       _$LogInImpl _value, $Res Function(_$LogInImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LogInEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +165,9 @@ class _$LogInImpl implements _LogIn {
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LogInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LogInImplCopyWith<_$LogInImpl> get copyWith =>
@@ -231,8 +239,11 @@ abstract class _LogIn implements LogInEvent {
   String get email;
   @override
   String get password;
+
+  /// Create a copy of LogInEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LogInImplCopyWith<_$LogInImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -307,6 +318,9 @@ class _$LogInStateCopyWithImpl<$Res, $Val extends LogInState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LogInState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -323,6 +337,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LogInState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -437,6 +454,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LogInState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -551,6 +571,9 @@ class __$$SuccessImplCopyWithImpl<$Res>
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LogInState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -668,6 +691,8 @@ class __$$FailureImplCopyWithImpl<$Res>
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LogInState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -707,7 +732,9 @@ class _$FailureImpl implements _Failure {
   @override
   int get hashCode => Object.hash(runtimeType, exception);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LogInState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
@@ -793,7 +820,10 @@ abstract class _Failure implements LogInState {
       _$FailureImpl;
 
   LogInException get exception;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LogInState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

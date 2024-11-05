@@ -93,6 +93,9 @@ class _$TestingEventCopyWithImpl<$Res, $Val extends TestingEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -112,6 +115,8 @@ class __$$StartedImplCopyWithImpl<$Res>
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,7 +163,9 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @override
   int get hashCode => Object.hash(runtimeType, mode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
@@ -252,7 +259,10 @@ abstract class _Started implements TestingEvent {
   const factory _Started({required final TestMode mode}) = _$StartedImpl;
 
   TestMode get mode;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -274,6 +284,8 @@ class __$$SelectedImplCopyWithImpl<$Res>
       _$SelectedImpl _value, $Res Function(_$SelectedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -320,7 +332,9 @@ class _$SelectedImpl with DiagnosticableTreeMixin implements _Selected {
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectedImplCopyWith<_$SelectedImpl> get copyWith =>
@@ -414,7 +428,10 @@ abstract class _Selected implements TestingEvent {
   const factory _Selected({required final int index}) = _$SelectedImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectedImplCopyWith<_$SelectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -433,6 +450,9 @@ class __$$SelectNextQuestionImplCopyWithImpl<$Res>
   __$$SelectNextQuestionImplCopyWithImpl(_$SelectNextQuestionImpl _value,
       $Res Function(_$SelectNextQuestionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -570,6 +590,8 @@ class __$$GotFinishConfirmationAnswerImplCopyWithImpl<$Res>
       $Res Function(_$GotFinishConfirmationAnswerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -619,7 +641,9 @@ class _$GotFinishConfirmationAnswerImpl
   @override
   int get hashCode => Object.hash(runtimeType, confirm);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GotFinishConfirmationAnswerImplCopyWith<_$GotFinishConfirmationAnswerImpl>
@@ -715,7 +739,10 @@ abstract class _GotFinishConfirmationAnswer implements TestingEvent {
       _$GotFinishConfirmationAnswerImpl;
 
   bool get confirm;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GotFinishConfirmationAnswerImplCopyWith<_$GotFinishConfirmationAnswerImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -734,6 +761,9 @@ class __$$FinishRequestedImplCopyWithImpl<$Res>
   __$$FinishRequestedImplCopyWithImpl(
       _$FinishRequestedImpl _value, $Res Function(_$FinishRequestedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -862,7 +892,9 @@ mixin _$TestingState {
   bool get needFinishConfirmation => throw _privateConstructorUsedError;
   bool get isUpdateNeeded => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TestingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TestingStateCopyWith<TestingState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -894,6 +926,8 @@ class _$TestingStateCopyWithImpl<$Res, $Val extends TestingState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TestingState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -970,6 +1004,8 @@ class __$$TestStateImplCopyWithImpl<$Res>
       _$TestStateImpl _value, $Res Function(_$TestStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TestingState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1118,7 +1154,9 @@ class _$TestStateImpl with DiagnosticableTreeMixin implements _TestState {
       needFinishConfirmation,
       isUpdateNeeded);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TestingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TestStateImplCopyWith<_$TestStateImpl> get copyWith =>
@@ -1152,8 +1190,11 @@ abstract class _TestState implements TestingState {
   bool get needFinishConfirmation;
   @override
   bool get isUpdateNeeded;
+
+  /// Create a copy of TestingState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TestStateImplCopyWith<_$TestStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

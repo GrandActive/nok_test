@@ -23,8 +23,12 @@ mixin _$PossibleAnswer {
   int get index => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
 
+  /// Serializes this PossibleAnswer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PossibleAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PossibleAnswerCopyWith<PossibleAnswer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$PossibleAnswerCopyWithImpl<$Res, $Val extends PossibleAnswer>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PossibleAnswer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$PossibleAnswerImplCopyWithImpl<$Res>
       _$PossibleAnswerImpl _value, $Res Function(_$PossibleAnswerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PossibleAnswer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,11 +140,13 @@ class _$PossibleAnswerImpl implements _PossibleAnswer {
             (identical(other.text, text) || other.text == text));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, index, text);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PossibleAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PossibleAnswerImplCopyWith<_$PossibleAnswerImpl> get copyWith =>
@@ -163,8 +173,11 @@ abstract class _PossibleAnswer implements PossibleAnswer {
   int get index;
   @override
   String get text;
+
+  /// Create a copy of PossibleAnswer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PossibleAnswerImplCopyWith<_$PossibleAnswerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -72,6 +72,9 @@ class _$PremiumEventCopyWithImpl<$Res, $Val extends PremiumEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PremiumEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -88,6 +91,9 @@ class __$$StatusRequestedImplCopyWithImpl<$Res>
   __$$StatusRequestedImplCopyWithImpl(
       _$StatusRequestedImpl _value, $Res Function(_$StatusRequestedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PremiumEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -190,6 +196,9 @@ class __$$ResetImplCopyWithImpl<$Res>
   __$$ResetImplCopyWithImpl(
       _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PremiumEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -342,6 +351,9 @@ class _$PremiumStateCopyWithImpl<$Res, $Val extends PremiumState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PremiumState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -358,6 +370,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PremiumState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -466,6 +481,9 @@ class __$$EnabledImplCopyWithImpl<$Res>
   __$$EnabledImplCopyWithImpl(
       _$EnabledImpl _value, $Res Function(_$EnabledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PremiumState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -574,6 +592,9 @@ class __$$DisabledImplCopyWithImpl<$Res>
   __$$DisabledImplCopyWithImpl(
       _$DisabledImpl _value, $Res Function(_$DisabledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PremiumState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

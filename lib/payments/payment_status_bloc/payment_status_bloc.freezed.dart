@@ -66,6 +66,9 @@ class _$PaymentStatusEventCopyWithImpl<$Res, $Val extends PaymentStatusEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PaymentStatusEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -82,6 +85,9 @@ class __$$RequestedImplCopyWithImpl<$Res>
   __$$RequestedImplCopyWithImpl(
       _$RequestedImpl _value, $Res Function(_$RequestedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PaymentStatusEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -240,6 +246,9 @@ class _$PaymentStatusStateCopyWithImpl<$Res, $Val extends PaymentStatusState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PaymentStatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -259,6 +268,8 @@ class __$$WaitingImplCopyWithImpl<$Res>
       _$WaitingImpl _value, $Res Function(_$WaitingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentStatusState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -297,7 +308,9 @@ class _$WaitingImpl implements _Waiting {
   @override
   int get hashCode => Object.hash(runtimeType, time);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentStatusState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WaitingImplCopyWith<_$WaitingImpl> get copyWith =>
@@ -388,7 +401,10 @@ abstract class _Waiting implements PaymentStatusState {
   const factory _Waiting({required final Duration time}) = _$WaitingImpl;
 
   Duration get time;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentStatusState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WaitingImplCopyWith<_$WaitingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -406,6 +422,9 @@ class __$$PaidImplCopyWithImpl<$Res>
     implements _$$PaidImplCopyWith<$Res> {
   __$$PaidImplCopyWithImpl(_$PaidImpl _value, $Res Function(_$PaidImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PaymentStatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -526,6 +545,9 @@ class __$$CancelledImplCopyWithImpl<$Res>
   __$$CancelledImplCopyWithImpl(
       _$CancelledImpl _value, $Res Function(_$CancelledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PaymentStatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -646,6 +668,9 @@ class __$$NoCurrentPaymentImplCopyWithImpl<$Res>
   __$$NoCurrentPaymentImplCopyWithImpl(_$NoCurrentPaymentImpl _value,
       $Res Function(_$NoCurrentPaymentImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PaymentStatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -766,6 +791,9 @@ class __$$TimeOutImplCopyWithImpl<$Res>
   __$$TimeOutImplCopyWithImpl(
       _$TimeOutImpl _value, $Res Function(_$TimeOutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PaymentStatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -21,7 +21,7 @@ import 'package:nok_test/testing/ui/pages/testing_page/testing_page.dart';
 part 'navigation.gr.dart';
 
 @AutoRouterConfig()
-class AppRouter extends _$AppRouter {
+class AppRouter extends RootStackRouter {
   @override
   RouteType get defaultRouteType => const RouteType.material();
 

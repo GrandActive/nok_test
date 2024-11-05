@@ -72,6 +72,9 @@ class _$RegistrationEventCopyWithImpl<$Res, $Val extends RegistrationEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RegistrationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -88,6 +91,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RegistrationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -193,6 +199,8 @@ class __$$CredentialsSentImplCopyWithImpl<$Res>
       _$CredentialsSentImpl _value, $Res Function(_$CredentialsSentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RegistrationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -240,7 +248,9 @@ class _$CredentialsSentImpl implements _CredentialsSent {
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RegistrationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CredentialsSentImplCopyWith<_$CredentialsSentImpl> get copyWith =>
@@ -317,7 +327,10 @@ abstract class _CredentialsSent implements RegistrationEvent {
 
   String get email;
   String get password;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RegistrationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CredentialsSentImplCopyWith<_$CredentialsSentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -392,6 +405,9 @@ class _$RegistrationStateCopyWithImpl<$Res, $Val extends RegistrationState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RegistrationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -408,6 +424,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RegistrationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -522,6 +541,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RegistrationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -636,6 +658,9 @@ class __$$SuccessImplCopyWithImpl<$Res>
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RegistrationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -753,6 +778,8 @@ class __$$FailureImplCopyWithImpl<$Res>
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RegistrationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -792,7 +819,9 @@ class _$FailureImpl implements _Failure {
   @override
   int get hashCode => Object.hash(runtimeType, exception);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RegistrationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
@@ -878,7 +907,10 @@ abstract class _Failure implements RegistrationState {
       _$FailureImpl;
 
   RegistrationException get exception;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RegistrationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

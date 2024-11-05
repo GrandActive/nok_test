@@ -25,9 +25,13 @@ mixin _$ApiResponse<T> {
   int get statusCode => throw _privateConstructorUsedError;
   T get bankResponse => throw _privateConstructorUsedError;
 
+  /// Serializes this ApiResponse to a JSON map.
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApiResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApiResponseCopyWith<T, ApiResponse<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$ApiResponseCopyWithImpl<T, $Res, $Val extends ApiResponse<T>>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApiResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +100,8 @@ class __$$ApiResponseImplCopyWithImpl<T, $Res>
       _$ApiResponseImpl<T> _value, $Res Function(_$ApiResponseImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,12 +162,14 @@ class _$ApiResponseImpl<T> implements _ApiResponse<T> {
                 .equals(other.bankResponse, bankResponse));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, status, statusCode,
       const DeepCollectionEquality().hash(bankResponse));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiResponseImplCopyWith<T, _$ApiResponseImpl<T>> get copyWith =>
@@ -188,8 +198,11 @@ abstract class _ApiResponse<T> implements ApiResponse<T> {
   int get statusCode;
   @override
   T get bankResponse;
+
+  /// Create a copy of ApiResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApiResponseImplCopyWith<T, _$ApiResponseImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

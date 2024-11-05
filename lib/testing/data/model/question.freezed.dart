@@ -26,8 +26,12 @@ mixin _$SelectionQuestion {
   @JsonKey(name: "correctAnswers")
   Set<int> get correctAnswerIds => throw _privateConstructorUsedError;
 
+  /// Serializes this SelectionQuestion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SelectionQuestionCopyWith<SelectionQuestion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$SelectionQuestionCopyWithImpl<$Res, $Val extends SelectionQuestion>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +106,8 @@ class __$$QuestionImplCopyWithImpl<$Res>
       _$QuestionImpl _value, $Res Function(_$QuestionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -174,7 +182,7 @@ class _$QuestionImpl implements _Question {
                 .equals(other._correctAnswerIds, _correctAnswerIds));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -182,7 +190,9 @@ class _$QuestionImpl implements _Question {
       const DeepCollectionEquality().hash(_possibleAnswers),
       const DeepCollectionEquality().hash(_correctAnswerIds));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuestionImplCopyWith<_$QuestionImpl> get copyWith =>
@@ -213,8 +223,11 @@ abstract class _Question implements SelectionQuestion {
   @override
   @JsonKey(name: "correctAnswers")
   Set<int> get correctAnswerIds;
+
+  /// Create a copy of SelectionQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuestionImplCopyWith<_$QuestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -229,8 +242,12 @@ mixin _$SequenceQuestion {
   List<PossibleAnswer> get answers => throw _privateConstructorUsedError;
   List<int> get correctOrder => throw _privateConstructorUsedError;
 
+  /// Serializes this SequenceQuestion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SequenceQuestionCopyWith<SequenceQuestion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -255,6 +272,8 @@ class _$SequenceQuestionCopyWithImpl<$Res, $Val extends SequenceQuestion>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -299,6 +318,8 @@ class __$$SequenceQuestionImplCopyWithImpl<$Res>
       $Res Function(_$SequenceQuestionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -370,7 +391,7 @@ class _$SequenceQuestionImpl implements _SequenceQuestion {
                 .equals(other._correctOrder, _correctOrder));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -378,7 +399,9 @@ class _$SequenceQuestionImpl implements _SequenceQuestion {
       const DeepCollectionEquality().hash(_answers),
       const DeepCollectionEquality().hash(_correctOrder));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SequenceQuestionImplCopyWith<_$SequenceQuestionImpl> get copyWith =>
@@ -408,8 +431,11 @@ abstract class _SequenceQuestion implements SequenceQuestion {
   List<PossibleAnswer> get answers;
   @override
   List<int> get correctOrder;
+
+  /// Create a copy of SequenceQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SequenceQuestionImplCopyWith<_$SequenceQuestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -424,8 +450,12 @@ mixin _$UserInputQuestion {
   String get text => throw _privateConstructorUsedError;
   String get correctAnswer => throw _privateConstructorUsedError;
 
+  /// Serializes this UserInputQuestion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserInputQuestionCopyWith<UserInputQuestion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -449,6 +479,8 @@ class _$UserInputQuestionCopyWithImpl<$Res, $Val extends UserInputQuestion>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -492,6 +524,8 @@ class __$$UserInputQuestionImplCopyWithImpl<$Res>
       $Res Function(_$UserInputQuestionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -548,11 +582,13 @@ class _$UserInputQuestionImpl implements _UserInputQuestion {
                 other.correctAnswer == correctAnswer));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, text, correctAnswer);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserInputQuestionImplCopyWith<_$UserInputQuestionImpl> get copyWith =>
@@ -582,8 +618,11 @@ abstract class _UserInputQuestion implements UserInputQuestion {
   String get text;
   @override
   String get correctAnswer;
+
+  /// Create a copy of UserInputQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserInputQuestionImplCopyWith<_$UserInputQuestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -599,8 +638,12 @@ mixin _$MatchingQuestion {
   List<PossibleAnswer> get answers => throw _privateConstructorUsedError;
   Map<int, int?> get correctMatch => throw _privateConstructorUsedError;
 
+  /// Serializes this MatchingQuestion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MatchingQuestionCopyWith<MatchingQuestion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -628,6 +671,8 @@ class _$MatchingQuestionCopyWithImpl<$Res, $Val extends MatchingQuestion>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -680,6 +725,8 @@ class __$$MatchingQuestionImplCopyWithImpl<$Res>
       $Res Function(_$MatchingQuestionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -768,7 +815,7 @@ class _$MatchingQuestionImpl implements _MatchingQuestion {
                 .equals(other._correctMatch, _correctMatch));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -777,7 +824,9 @@ class _$MatchingQuestionImpl implements _MatchingQuestion {
       const DeepCollectionEquality().hash(_answers),
       const DeepCollectionEquality().hash(_correctMatch));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MatchingQuestionImplCopyWith<_$MatchingQuestionImpl> get copyWith =>
@@ -810,8 +859,11 @@ abstract class _MatchingQuestion implements MatchingQuestion {
   List<PossibleAnswer> get answers;
   @override
   Map<int, int?> get correctMatch;
+
+  /// Create a copy of MatchingQuestion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MatchingQuestionImplCopyWith<_$MatchingQuestionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -9,124 +9,6 @@
 
 part of 'navigation.dart';
 
-abstract class _$AppRouter extends RootStackRouter {
-  // ignore: unused_element
-  _$AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, PageFactory> pagesMap = {
-    AboutRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AboutPage(),
-      );
-    },
-    AuthRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: WrappedRoute(child: const AuthPage()),
-      );
-    },
-    LoginRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: WrappedRoute(child: const LoginPage()),
-      );
-    },
-    MainRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const MainPage(),
-      );
-    },
-    PasswordRestorationInputRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const PasswordRestorationInputPage(),
-      );
-    },
-    PasswordRestorationRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: WrappedRoute(child: const PasswordRestorationPage()),
-      );
-    },
-    PasswordRestorationResultRoute.name: (routeData) {
-      final args = routeData.argsAs<PasswordRestorationResultRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: PasswordRestorationResultPage(
-          key: args.key,
-          email: args.email,
-        ),
-      );
-    },
-    PaymentResultRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: WrappedRoute(child: const PaymentResultPage()),
-      );
-    },
-    PremiumRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: WrappedRoute(child: const PremiumPage()),
-      );
-    },
-    QuestionReviewRoute.name: (routeData) {
-      final args = routeData.argsAs<QuestionReviewRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: QuestionReviewPage(
-          key: args.key,
-          question: args.question,
-          index: args.index,
-          mode: args.mode,
-        ),
-      );
-    },
-    RegistrationRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: WrappedRoute(child: const RegistrationPage()),
-      );
-    },
-    TestIntroRoute.name: (routeData) {
-      final args = routeData.argsAs<TestIntroRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: TestIntroPage(
-          key: args.key,
-          mode: args.mode,
-        ),
-      );
-    },
-    TestResultsRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const TestResultsPage(),
-      );
-    },
-    TestWrapperRoute.name: (routeData) {
-      final args = routeData.argsAs<TestWrapperRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: WrappedRoute(
-            child: TestWrapperPage(
-          key: args.key,
-          mode: args.mode,
-        )),
-      );
-    },
-    TestingRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: WrappedRoute(child: const TestingPage()),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [AboutPage]
 class AboutRoute extends PageRouteInfo<void> {
@@ -138,7 +20,12 @@ class AboutRoute extends PageRouteInfo<void> {
 
   static const String name = 'AboutRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AboutPage();
+    },
+  );
 }
 
 /// generated route for
@@ -152,7 +39,12 @@ class AuthRoute extends PageRouteInfo<void> {
 
   static const String name = 'AuthRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const AuthPage());
+    },
+  );
 }
 
 /// generated route for
@@ -166,7 +58,12 @@ class LoginRoute extends PageRouteInfo<void> {
 
   static const String name = 'LoginRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const LoginPage());
+    },
+  );
 }
 
 /// generated route for
@@ -180,7 +77,12 @@ class MainRoute extends PageRouteInfo<void> {
 
   static const String name = 'MainRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MainPage();
+    },
+  );
 }
 
 /// generated route for
@@ -194,7 +96,12 @@ class PasswordRestorationInputRoute extends PageRouteInfo<void> {
 
   static const String name = 'PasswordRestorationInputRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const PasswordRestorationInputPage();
+    },
+  );
 }
 
 /// generated route for
@@ -208,7 +115,12 @@ class PasswordRestorationRoute extends PageRouteInfo<void> {
 
   static const String name = 'PasswordRestorationRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const PasswordRestorationPage());
+    },
+  );
 }
 
 /// generated route for
@@ -230,8 +142,16 @@ class PasswordRestorationResultRoute
 
   static const String name = 'PasswordRestorationResultRoute';
 
-  static const PageInfo<PasswordRestorationResultRouteArgs> page =
-      PageInfo<PasswordRestorationResultRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PasswordRestorationResultRouteArgs>();
+      return PasswordRestorationResultPage(
+        key: args.key,
+        email: args.email,
+      );
+    },
+  );
 }
 
 class PasswordRestorationResultRouteArgs {
@@ -261,7 +181,12 @@ class PaymentResultRoute extends PageRouteInfo<void> {
 
   static const String name = 'PaymentResultRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const PaymentResultPage());
+    },
+  );
 }
 
 /// generated route for
@@ -275,7 +200,12 @@ class PremiumRoute extends PageRouteInfo<void> {
 
   static const String name = 'PremiumRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const PremiumPage());
+    },
+  );
 }
 
 /// generated route for
@@ -300,8 +230,18 @@ class QuestionReviewRoute extends PageRouteInfo<QuestionReviewRouteArgs> {
 
   static const String name = 'QuestionReviewRoute';
 
-  static const PageInfo<QuestionReviewRouteArgs> page =
-      PageInfo<QuestionReviewRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<QuestionReviewRouteArgs>();
+      return QuestionReviewPage(
+        key: args.key,
+        question: args.question,
+        index: args.index,
+        mode: args.mode,
+      );
+    },
+  );
 }
 
 class QuestionReviewRouteArgs {
@@ -337,7 +277,12 @@ class RegistrationRoute extends PageRouteInfo<void> {
 
   static const String name = 'RegistrationRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const RegistrationPage());
+    },
+  );
 }
 
 /// generated route for
@@ -358,8 +303,16 @@ class TestIntroRoute extends PageRouteInfo<TestIntroRouteArgs> {
 
   static const String name = 'TestIntroRoute';
 
-  static const PageInfo<TestIntroRouteArgs> page =
-      PageInfo<TestIntroRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<TestIntroRouteArgs>();
+      return TestIntroPage(
+        key: args.key,
+        mode: args.mode,
+      );
+    },
+  );
 }
 
 class TestIntroRouteArgs {
@@ -389,7 +342,12 @@ class TestResultsRoute extends PageRouteInfo<void> {
 
   static const String name = 'TestResultsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TestResultsPage();
+    },
+  );
 }
 
 /// generated route for
@@ -410,8 +368,17 @@ class TestWrapperRoute extends PageRouteInfo<TestWrapperRouteArgs> {
 
   static const String name = 'TestWrapperRoute';
 
-  static const PageInfo<TestWrapperRouteArgs> page =
-      PageInfo<TestWrapperRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<TestWrapperRouteArgs>();
+      return WrappedRoute(
+          child: TestWrapperPage(
+        key: args.key,
+        mode: args.mode,
+      ));
+    },
+  );
 }
 
 class TestWrapperRouteArgs {
@@ -441,5 +408,10 @@ class TestingRoute extends PageRouteInfo<void> {
 
   static const String name = 'TestingRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const TestingPage());
+    },
+  );
 }
