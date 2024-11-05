@@ -50,7 +50,18 @@ class _LoginPageState extends State<LoginPage> {
         setState(() => _emailError = 'Некорректный адрес');
         break;
       case WrongPasswordException():
-        setState(() => _passwordError = 'Неверный логин или пароль');
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(const SnackBar(
+            duration: Duration(seconds: 5),
+            content: Text(
+              'Неверный логин или пароль',
+              style: TextStyle(color: Color(0xFFA72A2A)),
+            ),
+            backgroundColor: Color(0xFFE8E8E8),
+            showCloseIcon: true,
+            closeIconColor: Color(0xFFA72A2A),
+          ));
         break;
       case TooManyRequestsException():
         ScaffoldMessenger.of(context)

@@ -72,7 +72,7 @@ class _AuthEmailFieldState extends State<AuthEmailField> {
         label: const Text('Почта'),
         errorText: widget.errorText,
       ),
-      onChanged: widget.onChanged,
+      onChanged: (value) => widget.onChanged(value.trim()),
       validator: _validate,
       textInputAction: widget.textInputAction,
       onFieldSubmitted: widget.onSubmitted,
