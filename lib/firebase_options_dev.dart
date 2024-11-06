@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options_dev.dart';
+/// import 'firebase_options.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
@@ -58,6 +58,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '828965662871',
     projectId: 'nok-test-dev',
     databaseURL: 'https://nok-test-dev-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'nok-test-dev.appspot.com',
+    storageBucket: 'nok-test-dev.firebasestorage.app',
   );
+
 }
