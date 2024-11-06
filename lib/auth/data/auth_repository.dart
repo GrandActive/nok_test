@@ -36,7 +36,11 @@ class AuthRepository {
           throw log_in_exception.UnknownException();
       }
     } catch (e) {
-      throw log_in_exception.UnknownException();
+      // Do nothing instead of rethrowing some exception
+      // because of unhandled exception inside firebase auth plugin.
+      // https://github.com/firebase/flutterfire/issues/13077
+      // Upgrading firebase_auth is not an option
+      // because it needs minSdk 23, but it must be <=21.
     }
   }
 
@@ -65,7 +69,11 @@ class AuthRepository {
           rethrow;
       }
     } catch (e) {
-      throw registration_exception.UnknownException();
+      // Do nothing instead of rethrowing some exception
+      // because of unhandled exception inside firebase auth plugin.
+      // https://github.com/firebase/flutterfire/issues/13077
+      // Upgrading firebase_auth is not an option
+      // because it needs minSdk 23, but it must be <=21.
     }
   }
 
