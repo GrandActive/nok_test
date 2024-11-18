@@ -13,8 +13,7 @@ class SequenceQuestionBloc extends QuestionBloc<TestSequenceQuestion, List<Possi
 
   @override
   submitAnswer(TestSequenceQuestion question, List<PossibleAnswer> selectedAnswers) {
-    final selectedOrder = selectedAnswers.map((answer) => answer.index).toList(growable: false);
     question.userAnswer = selectedAnswers;
-    question.isAnsweredCorrectly = listEquals(selectedOrder, question.source.correctOrder);
+    question.isAnsweredCorrectly = listEquals(selectedAnswers, question.source.correctAnswers);
   }
 }

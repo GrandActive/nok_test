@@ -20,6 +20,8 @@ class SelectionQuestion with _$SelectionQuestion implements Question {
 
 @freezed
 class SequenceQuestion with _$SequenceQuestion implements Question {
+  const SequenceQuestion._();
+
   const factory SequenceQuestion({
     required String title,
     required List<PossibleAnswer> answers,
@@ -27,6 +29,9 @@ class SequenceQuestion with _$SequenceQuestion implements Question {
   }) = _SequenceQuestion;
 
   factory SequenceQuestion.fromJson(Map<String, Object?> json) => _$SequenceQuestionFromJson(json);
+
+  List<PossibleAnswer> get correctAnswers =>
+      correctOrder.map((i) => answers.firstWhere((a) => a.index == i)).toList();
 }
 
 @freezed

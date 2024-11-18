@@ -346,13 +346,14 @@ class __$$SequenceQuestionImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SequenceQuestionImpl implements _SequenceQuestion {
+class _$SequenceQuestionImpl extends _SequenceQuestion {
   const _$SequenceQuestionImpl(
       {required this.title,
       required final List<PossibleAnswer> answers,
       required final List<int> correctOrder})
       : _answers = answers,
-        _correctOrder = correctOrder;
+        _correctOrder = correctOrder,
+        super._();
 
   factory _$SequenceQuestionImpl.fromJson(Map<String, dynamic> json) =>
       _$$SequenceQuestionImplFromJson(json);
@@ -416,11 +417,12 @@ class _$SequenceQuestionImpl implements _SequenceQuestion {
   }
 }
 
-abstract class _SequenceQuestion implements SequenceQuestion {
+abstract class _SequenceQuestion extends SequenceQuestion {
   const factory _SequenceQuestion(
       {required final String title,
       required final List<PossibleAnswer> answers,
       required final List<int> correctOrder}) = _$SequenceQuestionImpl;
+  const _SequenceQuestion._() : super._();
 
   factory _SequenceQuestion.fromJson(Map<String, dynamic> json) =
       _$SequenceQuestionImpl.fromJson;
