@@ -39,7 +39,7 @@ class UserInputQuestion extends StatelessWidget {
         listener: (context, state) {
           context.read<UserInputQuestionBloc>().add(const QuestionEvent.putOnHold());
         },
-        child: BlocConsumer<UserInputQuestionBloc, QuestionState>(
+        child: BlocConsumer<UserInputQuestionBloc, QuestionState<TestUserInputQuestion, String?>>(
           listener: (context, state) {
             state.mapOrNull(
               answered: (_) => onAnswered(),
@@ -66,10 +66,12 @@ class UserInputQuestion extends StatelessWidget {
                   const SizedBox(height: 24),
                   if (state is Answered)
                     FinishedUserInput(
-                      question: question,
+                      question: question.source,
                       showCorrectness: true,
                       showCorrectAnswer: true,
                       showResult: true,
+                      isAnsweredCorrectly: question.isAnsweredCorrectly,
+                      selectedAnswer: question.userAnswer,
                     )
                   else
                     const UserInput(),

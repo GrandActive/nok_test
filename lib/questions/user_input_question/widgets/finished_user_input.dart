@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nok_test/common/widgets/answer_result.dart';
 import 'package:nok_test/styles/colors.dart';
-import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/testing/data/model/question.dart';
 
 class FinishedUserInput extends StatelessWidget {
   const FinishedUserInput({
@@ -10,17 +10,21 @@ class FinishedUserInput extends StatelessWidget {
     required this.showCorrectness,
     required this.showCorrectAnswer,
     required this.showResult,
+    required this.isAnsweredCorrectly,
+    required this.selectedAnswer,
   });
 
-  final TestUserInputQuestion question;
+  final UserInputQuestion question;
   final bool showCorrectness;
   final bool showCorrectAnswer;
   final bool showResult;
+  final bool? isAnsweredCorrectly;
+  final String? selectedAnswer;
 
   Color get _borderColor {
-    if (question.isAnsweredCorrectly == null || !showCorrectness) {
+    if (isAnsweredCorrectly == null || !showCorrectness) {
       return const Color(0xFF7F7F7F);
-    } else if (question.isAnsweredCorrectly!) {
+    } else if (isAnsweredCorrectly!) {
       return correctAnswerColor;
     } else {
       return wrongAnswerColor;
@@ -28,8 +32,8 @@ class FinishedUserInput extends StatelessWidget {
   }
 
   String? get _helperText {
-    if (showCorrectAnswer && question.isAnsweredCorrectly == false) {
-      return 'Правильный ответ: ${question.source.correctAnswer}';
+    if (showCorrectAnswer && isAnsweredCorrectly == false) {
+      return 'Правильный ответ: ${question.correctAnswer}';
     }
     return null;
   }
@@ -40,11 +44,11 @@ class FinishedUserInput extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (showResult) ...[
-          AnswerResult(isAnsweredCorrectly: question.isAnsweredCorrectly!),
+          AnswerResult(isAnsweredCorrectly: isAnsweredCorrectly ?? false),
           const SizedBox(height: 24),
         ],
         TextField(
-          controller: TextEditingController(text: question.userAnswer ?? "Нет ответа"),
+          controller: TextEditingController(text: selectedAnswer ?? "Нет ответа"),
           enabled: false,
           style: const TextStyle(color: Color(0xFF464646)),
           decoration: InputDecoration(

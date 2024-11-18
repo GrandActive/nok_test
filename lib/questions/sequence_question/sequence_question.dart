@@ -41,15 +41,9 @@ class SequenceQuestion extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        final correctAnswer = question.source.correctOrder[0]
-            .toString()
-            .characters
-            .map((index) => question.source.answers.firstWhere((a) => a.index == int.parse(index)))
-            .toList();
-
         return getIt<SequenceQuestionBloc>(
           param1: question.source.answers,
-          param2: correctAnswer,
+          param2: question.source.correctAnswers,
         )..add(QuestionEvent.started(
             mode: mode,
             question: question,
@@ -61,7 +55,8 @@ class SequenceQuestion extends StatelessWidget {
         listener: (context, state) {
           context.read<SequenceQuestionBloc>().add(const QuestionEvent.putOnHold());
         },
-        child: BlocConsumer<SequenceQuestionBloc, QuestionState>(
+        child: BlocConsumer<SequenceQuestionBloc,
+            QuestionState<TestSequenceQuestion, List<PossibleAnswer>>>(
           listener: (context, state) {
             state.mapOrNull(
               answered: (_) => onAnswered(),
@@ -91,10 +86,12 @@ class SequenceQuestion extends StatelessWidget {
                   ],
                   if (state is Answered)
                     FinishedSequenceAnswerList(
-                      question: question,
+                      question: question.source,
                       showCorrectness: true,
                       showCorrectAnswer: true,
                       showResult: true,
+                      selectedAnswers: question.userAnswer,
+                      isAnsweredCorrectly: question.isAnsweredCorrectly,
                     )
                   else
                     SequenceAnswerList(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nok_test/common/widgets/answer_result.dart';
 import 'package:nok_test/testing/data/model/possible_answer.dart';
-import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/testing/data/model/question.dart';
 
 import 'finished_sequence_answer_list_item.dart';
 
@@ -12,26 +12,26 @@ class FinishedSequenceAnswerList extends StatelessWidget {
     required this.showCorrectness,
     required this.showCorrectAnswer,
     required this.showResult,
+    required this.selectedAnswers,
+    required this.isAnsweredCorrectly,
   });
 
-  final TestSequenceQuestion question;
+  final SequenceQuestion question;
   final bool showCorrectness;
   final bool showCorrectAnswer;
   final bool showResult;
-
-  PossibleAnswer _getAnswer(int index) {
-    return question.source.answers.firstWhere((e) => e.index == index);
-  }
+  final List<PossibleAnswer>? selectedAnswers;
+  final bool? isAnsweredCorrectly;
 
   @override
   Widget build(BuildContext context) {
-    final items = question.userAnswer ?? question.source.answers;
+    final items = selectedAnswers ?? question.answers;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (showResult) ...[
-          AnswerResult(isAnsweredCorrectly: question.isAnsweredCorrectly ?? false),
+          AnswerResult(isAnsweredCorrectly: isAnsweredCorrectly ?? false),
           const SizedBox(height: 24),
         ],
         Column(
@@ -39,11 +39,9 @@ class FinishedSequenceAnswerList extends StatelessWidget {
             ...items.indexed.map(
               (a) {
                 final (index, answer) = a;
-                final correctAnswerIndex = int.parse(
-                    question.source.correctOrder[0].toString().characters.toList()[index]);
                 return FinishedSequenceAnswerListItem(
                   answer: answer,
-                  correctAnswer: _getAnswer(correctAnswerIndex),
+                  correctAnswer: question.correctAnswers[index],
                   showCorrectness: showCorrectness,
                   showCorrectAnswer: showCorrectAnswer,
                 );

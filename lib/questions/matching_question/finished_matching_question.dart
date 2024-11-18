@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nok_test/testing/domain/model/test_mode.dart';
-import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/testing/data/model/question.dart';
 
 import 'widgets/widgets.dart';
 
@@ -8,17 +7,21 @@ class FinishedMatchingQuestion extends StatelessWidget {
   const FinishedMatchingQuestion({
     super.key,
     required this.question,
-    required this.mode,
+    required this.selectedAnswer,
+    this.showResult,
+    this.showCorrectAnswer = true,
   });
 
-  final TestMatchingQuestion question;
-  final TestMode mode;
+  final MatchingQuestion question;
+  final bool showCorrectAnswer;
+  final Map<int, int?>? selectedAnswer;
+  final bool? showResult;
 
   @override
   Widget build(BuildContext context) {
-    final answer = question.userAnswer ?? {};
+    final answer = selectedAnswer ?? {};
 
-    final answerIsNotEmpty = question.userAnswer?.values.any((e) => e != null) ?? false;
+    final answerIsNotEmpty = selectedAnswer?.values.any((e) => e != null) ?? false;
 
     return SingleChildScrollView(
       child: Padding(
@@ -26,7 +29,7 @@ class FinishedMatchingQuestion extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              question.source.text,
+              question.text,
               style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 24),
@@ -34,8 +37,8 @@ class FinishedMatchingQuestion extends StatelessWidget {
               question: question,
               answer: answer,
               showCorrectness: answerIsNotEmpty,
-              showCorrectAnswer: mode == TestMode.training,
-              showResult: answerIsNotEmpty,
+              showCorrectAnswer: showCorrectAnswer,
+              showResult: showResult ?? answerIsNotEmpty,
             ),
           ],
         ),

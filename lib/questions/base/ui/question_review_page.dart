@@ -28,10 +28,31 @@ class QuestionReviewPage extends StatelessWidget {
         title: Text("Вопрос ${index + 1}"),
       ),
       body: switch (q) {
-        TestSelectionQuestion() => FinishedSelectionQuestion(question: q, mode: mode),
-        TestUserInputQuestion() => FinishedUserInputQuestion(question: q, mode: mode),
-        TestSequenceQuestion() => FinishedSequenceQuestion(question: q, mode: mode),
-        TestMatchingQuestion() => FinishedMatchingQuestion(question: q, mode: mode)
+        TestSelectionQuestion() => FinishedSelectionQuestion(
+            question: q.source,
+            selectedAnswers: q.userAnswers,
+            showCorrectAnswer: mode == TestMode.training && (q.userAnswers ?? {}).isNotEmpty,
+            showResult: (q.userAnswers ?? {}).isNotEmpty,
+          ),
+        TestUserInputQuestion() => FinishedUserInputQuestion(
+            question: q.source,
+            showCorrectAnswer: mode == TestMode.training,
+            selectedAnswer: q.userAnswer,
+            isAnsweredCorrectly: q.isAnsweredCorrectly,
+            showResult: q.userAnswer != null,
+          ),
+        TestSequenceQuestion() => FinishedSequenceQuestion(
+            question: q.source,
+            selectedAnswers: q.userAnswer,
+            showCorrectAnswer: mode == TestMode.training && q.userAnswer != null,
+            isAnsweredCorrectly: q.isAnsweredCorrectly,
+            showResult: q.userAnswer != null,
+          ),
+        TestMatchingQuestion() => FinishedMatchingQuestion(
+            question: q.source,
+            showCorrectAnswer: mode == TestMode.training,
+            selectedAnswer: q.userAnswer,
+          )
       },
     );
   }

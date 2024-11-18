@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nok_test/testing/domain/model/test_mode.dart';
-import 'package:nok_test/testing/domain/model/test_question.dart';
+import 'package:nok_test/testing/data/model/question.dart';
 import 'package:nok_test/testing/ui/pages/testing_page/widgets/question_text.dart';
 
 import 'widgets/widgets.dart';
@@ -9,30 +8,34 @@ class FinishedSelectionQuestion extends StatelessWidget {
   const FinishedSelectionQuestion({
     super.key,
     required this.question,
-    required this.mode,
+    required this.showResult,
+    required this.selectedAnswers,
+    this.showCorrectAnswer = true,
   });
 
-  final TestSelectionQuestion question;
-  final TestMode mode;
+  final SelectionQuestion question;
+  final Set<int>? selectedAnswers;
+  final bool showResult;
+  final bool showCorrectAnswer;
 
   @override
   Widget build(BuildContext context) {
-    final selectedAnswers = question.userAnswers ?? {};
+    final answers = selectedAnswers ?? {};
 
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
         child: Column(
           children: [
-            QuestionText(text: question.source.text),
+            QuestionText(text: question.text),
             const SizedBox(height: 24),
             SelectionAnswerList(
-              possibleAnswers: question.source.possibleAnswers,
-              selectedIndices: selectedAnswers,
-              correctAnswers: question.source.correctAnswerIds,
-              showCorrectnessOfSelected: selectedAnswers.isNotEmpty,
-              showCorrectAnswer: mode == TestMode.training && selectedAnswers.isNotEmpty,
-              showResult: selectedAnswers.isNotEmpty,
+              possibleAnswers: question.possibleAnswers,
+              selectedIndices: answers,
+              correctAnswers: question.correctAnswerIds,
+              showCorrectnessOfSelected: answers.isNotEmpty,
+              showCorrectAnswer: showCorrectAnswer,
+              showResult: showResult,
               disabled: true,
             ),
           ],
