@@ -10,8 +10,10 @@ class UserInputQuestionBloc extends QuestionBloc<TestUserInputQuestion, String?>
 
   @override
   submitAnswer(TestUserInputQuestion question, String? selectedAnswers) {
-    question.userAnswer = selectedAnswers;
-    question.isAnsweredCorrectly =
-        selectedAnswers == null ? null : selectedAnswers == question.source.correctAnswer;
+    final filteredAnswer = selectedAnswers?.trim().toLowerCase();
+    question.userAnswer = filteredAnswer;
+    question.isAnsweredCorrectly = filteredAnswer == null
+        ? null
+        : filteredAnswer == question.source.correctAnswer.toLowerCase();
   }
 }
