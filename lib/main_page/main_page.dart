@@ -59,6 +59,13 @@ class MainPage extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 8),
+                TextButton(
+                  onPressed: () {
+                    context.router.push(QuestionListRoute());
+                  },
+                  child: const Text('Список всех вопросов'),
+                ),
               ] else ...[
                 const TestInfo(),
                 const SizedBox(height: 40),

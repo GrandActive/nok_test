@@ -30,6 +30,8 @@ import 'package:nok_test/premium/bloc/premium_bloc.dart' as _i280;
 import 'package:nok_test/premium/data/premium_firebase_data_source.dart'
     as _i533;
 import 'package:nok_test/premium/data/premium_repository.dart' as _i604;
+import 'package:nok_test/question_list/bloc/question_list_bloc/question_list_bloc.dart'
+    as _i875;
 import 'package:nok_test/questions/matching_question/matching_question_bloc/matching_question_bloc.dart'
     as _i265;
 import 'package:nok_test/questions/selection_question/selection_question_bloc/selection_question_bloc.dart'
@@ -38,7 +40,6 @@ import 'package:nok_test/questions/sequence_question/sequence_question_bloc/sequ
     as _i876;
 import 'package:nok_test/questions/user_input_question/user_input_question_bloc/user_input_question_bloc.dart'
     as _i802;
-import 'package:nok_test/questions_list/bloc/questions_list_bloc.dart' as _i884;
 import 'package:nok_test/testing/bloc/testing_bloc/testing_bloc.dart' as _i921;
 import 'package:nok_test/testing/data/firebase_data_source.dart' as _i490;
 import 'package:nok_test/testing/data/model/possible_answer.dart' as _i676;
@@ -115,8 +116,8 @@ extension GetItInjectableX on _i174.GetIt {
             repository: gh<_i773.QuestionsRepository>()));
     gh.factory<_i921.TestingBloc>(
         () => _i921.TestingBloc(gh<_i424.GetRandomQuestionsForTest>()));
-    gh.factory<_i884.QuestionsListBloc>(
-        () => _i884.QuestionsListBloc(gh<_i773.QuestionsRepository>()));
+    gh.factory<_i875.QuestionListBloc>(
+        () => _i875.QuestionListBloc(gh<_i773.QuestionsRepository>()));
     gh.factory<_i757.PaymentDataBloc>(
         () => _i757.PaymentDataBloc(gh<_i737.IPaymentsRepository>()));
     gh.factory<_i797.PaymentStatusBloc>(

@@ -209,6 +209,44 @@ class PremiumRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [QuestionListPage]
+class QuestionListRoute extends PageRouteInfo<void> {
+  const QuestionListRoute({List<PageRouteInfo>? children})
+      : super(
+          QuestionListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QuestionListRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const QuestionListPage();
+    },
+  );
+}
+
+/// generated route for
+/// [QuestionListWrapperPage]
+class QuestionListWrapperRoute extends PageRouteInfo<void> {
+  const QuestionListWrapperRoute({List<PageRouteInfo>? children})
+      : super(
+          QuestionListWrapperRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QuestionListWrapperRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const QuestionListWrapperPage());
+    },
+  );
+}
+
+/// generated route for
 /// [QuestionReviewPage]
 class QuestionReviewRoute extends PageRouteInfo<QuestionReviewRouteArgs> {
   QuestionReviewRoute({
@@ -264,6 +302,25 @@ class QuestionReviewRouteArgs {
   String toString() {
     return 'QuestionReviewRouteArgs{key: $key, question: $question, index: $index, mode: $mode}';
   }
+}
+
+/// generated route for
+/// [QuestionViewerPage]
+class QuestionViewerRoute extends PageRouteInfo<void> {
+  const QuestionViewerRoute({List<PageRouteInfo>? children})
+      : super(
+          QuestionViewerRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QuestionViewerRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const QuestionViewerPage();
+    },
+  );
 }
 
 /// generated route for
