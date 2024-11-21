@@ -39,7 +39,8 @@ class MatchingQuestion extends StatelessWidget {
         listener: (context, state) {
           context.read<MatchingQuestionBloc>().add(const QuestionEvent.putOnHold());
         },
-        child: BlocConsumer<MatchingQuestionBloc, QuestionState>(
+        child: BlocConsumer<MatchingQuestionBloc,
+            QuestionState<TestMatchingQuestion, Map<int, int?>?>>(
           listener: (context, state) {
             state.mapOrNull(
               answered: (_) => onAnswered(),
@@ -62,7 +63,7 @@ class MatchingQuestion extends StatelessWidget {
                   const SizedBox(height: 24),
                   if (state is Answered)
                     FinishedMatchingAnswerList(
-                      question: question,
+                      question: question.source,
                       answer: selectedAnswers,
                       showCorrectness: true,
                       showCorrectAnswer: true,
