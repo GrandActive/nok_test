@@ -27,8 +27,7 @@ class FirebaseDataSource {
         case "userInput":
           return UserInputQuestion.fromJson(question);
         case "sequence":
-          final preparedQuestion = _prepareSequenceQuestion(question);
-          return SequenceQuestion.fromJson(preparedQuestion);
+          return SequenceQuestion.fromJson(question);
         case "matching":
           final preparedQuestion = _prepareMatchingQuestion(question);
           return MatchingQuestion.fromJson(preparedQuestion);
@@ -36,16 +35,6 @@ class FirebaseDataSource {
           throw Exception("Unknown question type in database: ${question["type"]}");
       }
     }).toList();
-  }
-
-  dynamic _prepareSequenceQuestion(dynamic question) {
-    question["correctOrder"] = question["correctOrder"][0]
-        .toString()
-        .split('')
-        .map((e) => int.parse(e, radix: 10))
-        .toList();
-
-    return question;
   }
 
   dynamic _prepareMatchingQuestion(dynamic question) {
