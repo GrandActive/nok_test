@@ -44,7 +44,10 @@ class QuestionListItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Вопрос $questionNumber'),
+              Text(
+                'Вопрос $questionNumber',
+                style: TextStyle(fontSize: 16),
+              ),
               SizedBox(height: 8),
               Text(_getQuestionText(question)),
             ],
