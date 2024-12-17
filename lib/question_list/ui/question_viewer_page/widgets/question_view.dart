@@ -30,6 +30,7 @@ class QuestionView extends StatelessWidget {
       UserInputQuestion() => FinishedUserInputQuestion(
           question: q,
           selectedAnswer: q.correctAnswer,
+          isAnsweredCorrectly: true,
           showResult: false,
         ),
       MatchingQuestion() => FinishedMatchingQuestion(
