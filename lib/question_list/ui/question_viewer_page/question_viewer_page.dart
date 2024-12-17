@@ -34,21 +34,19 @@ class QuestionViewerPage extends StatelessWidget {
                 leading: AutoLeadingButton(),
                 title: Text('Вопрос $questionNumber'),
               ),
-              body: Stack(
+              body: Column(
                 children: [
-                  SingleChildScrollView(
-                    padding: EdgeInsets.only(top: 48),
-                    child: QuestionView(question: question),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    child: QuestionNavButtons(
+                      questionNumber: questionNumber,
+                      showPrevButton: showPrevButton,
+                      showNextButton: showNextButton,
+                    ),
                   ),
-                  Material(
-                    elevation: 0,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                      child: QuestionNavButtons(
-                        questionNumber: questionNumber,
-                        showPrevButton: showPrevButton,
-                        showNextButton: showNextButton,
-                      ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: QuestionView(question: question),
                     ),
                   ),
                 ],
