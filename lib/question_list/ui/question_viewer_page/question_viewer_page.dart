@@ -46,7 +46,13 @@ class QuestionViewerPage extends StatelessWidget {
                   ),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: QuestionView(question: question),
+                      child: QuestionView(
+                        // Quick and dirty solution to prevent Flutter from reusing QuestionViews.
+                        // Reusing caused unwanted animations in selection elements
+                        // when switching between questions of the same type
+                        key: Key(DateTime.now().toString()),
+                        question: question,
+                      ),
                     ),
                   ),
                 ],
