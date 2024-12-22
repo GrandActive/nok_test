@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:nok_test/testing/data/model/possible_answer.dart';
 import 'package:nok_test/utils/list_separated_extension.dart';
 
-Future<PossibleAnswer?> showMatchingQuestionAnswersDialog(
+Future<PossibleAnswer?> showMatchingQuestionSingleAnswerDialog(
   BuildContext context,
   List<PossibleAnswer> answers,
 ) {
   return showDialog<PossibleAnswer>(
     context: context,
     builder: (context) {
-      return _MatchingQuestionAnswersDialog(answers: answers);
+      return _MatchingQuestionSingleAnswerDialog(answers: answers);
     },
   );
 }
 
-class _MatchingQuestionAnswersDialog extends StatelessWidget {
-  const _MatchingQuestionAnswersDialog({
+class _MatchingQuestionSingleAnswerDialog extends StatelessWidget {
+  const _MatchingQuestionSingleAnswerDialog({
     required this.answers,
   });
 

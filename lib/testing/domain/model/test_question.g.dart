@@ -63,7 +63,8 @@ _$TestMatchingQuestionImpl _$$TestMatchingQuestionImplFromJson(
     _$TestMatchingQuestionImpl(
       source: MatchingQuestion.fromJson(json['source'] as Map<String, dynamic>),
       userAnswer: (json['userAnswer'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(int.parse(k), (e as num?)?.toInt()),
+        (k, e) => MapEntry(int.parse(k),
+            (e as List<dynamic>?)?.map((e) => (e as num).toInt()).toList()),
       ),
       isAnsweredCorrectly: json['isAnsweredCorrectly'] as bool?,
     );

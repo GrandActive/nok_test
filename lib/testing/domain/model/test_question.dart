@@ -49,7 +49,7 @@ class TestSequenceQuestion extends TestQuestion with _$TestSequenceQuestion {
 class TestMatchingQuestion extends TestQuestion with _$TestMatchingQuestion {
   factory TestMatchingQuestion({
     required MatchingQuestion source,
-    Map<int, int?>? userAnswer,
+    Map<int, List<int>?>? userAnswer,
     bool? isAnsweredCorrectly,
   }) = _TestMatchingQuestion;
 

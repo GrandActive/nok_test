@@ -40,7 +40,7 @@ class MatchingQuestion extends StatelessWidget {
           context.read<MatchingQuestionBloc>().add(const QuestionEvent.putOnHold());
         },
         child: BlocConsumer<MatchingQuestionBloc,
-            QuestionState<TestMatchingQuestion, Map<int, int?>?>>(
+            QuestionState<TestMatchingQuestion, Map<int, List<int>?>?>>(
           listener: (context, state) {
             state.mapOrNull(
               answered: (_) => onAnswered(),

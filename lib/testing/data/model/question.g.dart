@@ -71,7 +71,8 @@ _$MatchingQuestionImpl _$$MatchingQuestionImplFromJson(
           .map((e) => PossibleAnswer.fromJson(e as Map<String, dynamic>))
           .toList(),
       correctMatch: (json['correctMatch'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(int.parse(k), (e as num?)?.toInt()),
+        (k, e) => MapEntry(int.parse(k),
+            (e as List<dynamic>?)?.map((e) => (e as num).toInt()).toList()),
       ),
     );
 

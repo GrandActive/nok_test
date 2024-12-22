@@ -627,8 +627,9 @@ TestMatchingQuestion _$TestMatchingQuestionFromJson(Map<String, dynamic> json) {
 mixin _$TestMatchingQuestion {
   MatchingQuestion get source => throw _privateConstructorUsedError;
   set source(MatchingQuestion value) => throw _privateConstructorUsedError;
-  Map<int, int?>? get userAnswer => throw _privateConstructorUsedError;
-  set userAnswer(Map<int, int?>? value) => throw _privateConstructorUsedError;
+  Map<int, List<int>?>? get userAnswer => throw _privateConstructorUsedError;
+  set userAnswer(Map<int, List<int>?>? value) =>
+      throw _privateConstructorUsedError;
   bool? get isAnsweredCorrectly => throw _privateConstructorUsedError;
   set isAnsweredCorrectly(bool? value) => throw _privateConstructorUsedError;
 
@@ -650,7 +651,7 @@ abstract class $TestMatchingQuestionCopyWith<$Res> {
   @useResult
   $Res call(
       {MatchingQuestion source,
-      Map<int, int?>? userAnswer,
+      Map<int, List<int>?>? userAnswer,
       bool? isAnsweredCorrectly});
 
   $MatchingQuestionCopyWith<$Res> get source;
@@ -684,7 +685,7 @@ class _$TestMatchingQuestionCopyWithImpl<$Res,
       userAnswer: freezed == userAnswer
           ? _value.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
-              as Map<int, int?>?,
+              as Map<int, List<int>?>?,
       isAnsweredCorrectly: freezed == isAnsweredCorrectly
           ? _value.isAnsweredCorrectly
           : isAnsweredCorrectly // ignore: cast_nullable_to_non_nullable
@@ -713,7 +714,7 @@ abstract class _$$TestMatchingQuestionImplCopyWith<$Res>
   @useResult
   $Res call(
       {MatchingQuestion source,
-      Map<int, int?>? userAnswer,
+      Map<int, List<int>?>? userAnswer,
       bool? isAnsweredCorrectly});
 
   @override
@@ -745,7 +746,7 @@ class __$$TestMatchingQuestionImplCopyWithImpl<$Res>
       userAnswer: freezed == userAnswer
           ? _value.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
-              as Map<int, int?>?,
+              as Map<int, List<int>?>?,
       isAnsweredCorrectly: freezed == isAnsweredCorrectly
           ? _value.isAnsweredCorrectly
           : isAnsweredCorrectly // ignore: cast_nullable_to_non_nullable
@@ -766,7 +767,7 @@ class _$TestMatchingQuestionImpl implements _TestMatchingQuestion {
   @override
   MatchingQuestion source;
   @override
-  Map<int, int?>? userAnswer;
+  Map<int, List<int>?>? userAnswer;
   @override
   bool? isAnsweredCorrectly;
 
@@ -796,7 +797,7 @@ class _$TestMatchingQuestionImpl implements _TestMatchingQuestion {
 abstract class _TestMatchingQuestion implements TestMatchingQuestion {
   factory _TestMatchingQuestion(
       {required MatchingQuestion source,
-      Map<int, int?>? userAnswer,
+      Map<int, List<int>?>? userAnswer,
       bool? isAnsweredCorrectly}) = _$TestMatchingQuestionImpl;
 
   factory _TestMatchingQuestion.fromJson(Map<String, dynamic> json) =
@@ -806,8 +807,8 @@ abstract class _TestMatchingQuestion implements TestMatchingQuestion {
   MatchingQuestion get source;
   set source(MatchingQuestion value);
   @override
-  Map<int, int?>? get userAnswer;
-  set userAnswer(Map<int, int?>? value);
+  Map<int, List<int>?>? get userAnswer;
+  set userAnswer(Map<int, List<int>?>? value);
   @override
   bool? get isAnsweredCorrectly;
   set isAnsweredCorrectly(bool? value);

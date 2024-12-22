@@ -48,12 +48,16 @@ class UserInputQuestion with _$UserInputQuestion implements Question {
 
 @freezed
 class MatchingQuestion with _$MatchingQuestion implements Question {
+  const MatchingQuestion._();
+
   const factory MatchingQuestion({
     required String text,
     required List<PossibleAnswer> questions,
     required List<PossibleAnswer> answers,
-    required Map<int, int?> correctMatch,
+    required Map<int, List<int>?> correctMatch,
   }) = _MatchingQuestion;
 
   factory MatchingQuestion.fromJson(Map<String, dynamic> json) => _$MatchingQuestionFromJson(json);
+
+  bool get isSingleAnswer => !correctMatch.values.any((answers) => (answers?.length ?? 0) > 1);
 }

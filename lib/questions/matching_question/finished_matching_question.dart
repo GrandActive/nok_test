@@ -14,7 +14,7 @@ class FinishedMatchingQuestion extends StatelessWidget {
 
   final MatchingQuestion question;
   final bool showCorrectAnswer;
-  final Map<int, int?>? selectedAnswer;
+  final Map<int, List<int>?>? selectedAnswer;
   final bool? showResult;
 
   @override

@@ -638,7 +638,7 @@ mixin _$MatchingQuestion {
   String get text => throw _privateConstructorUsedError;
   List<PossibleAnswer> get questions => throw _privateConstructorUsedError;
   List<PossibleAnswer> get answers => throw _privateConstructorUsedError;
-  Map<int, int?> get correctMatch => throw _privateConstructorUsedError;
+  Map<int, List<int>?> get correctMatch => throw _privateConstructorUsedError;
 
   /// Serializes this MatchingQuestion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -660,7 +660,7 @@ abstract class $MatchingQuestionCopyWith<$Res> {
       {String text,
       List<PossibleAnswer> questions,
       List<PossibleAnswer> answers,
-      Map<int, int?> correctMatch});
+      Map<int, List<int>?> correctMatch});
 }
 
 /// @nodoc
@@ -699,7 +699,7 @@ class _$MatchingQuestionCopyWithImpl<$Res, $Val extends MatchingQuestion>
       correctMatch: null == correctMatch
           ? _value.correctMatch
           : correctMatch // ignore: cast_nullable_to_non_nullable
-              as Map<int, int?>,
+              as Map<int, List<int>?>,
     ) as $Val);
   }
 }
@@ -716,7 +716,7 @@ abstract class _$$MatchingQuestionImplCopyWith<$Res>
       {String text,
       List<PossibleAnswer> questions,
       List<PossibleAnswer> answers,
-      Map<int, int?> correctMatch});
+      Map<int, List<int>?> correctMatch});
 }
 
 /// @nodoc
@@ -753,22 +753,23 @@ class __$$MatchingQuestionImplCopyWithImpl<$Res>
       correctMatch: null == correctMatch
           ? _value._correctMatch
           : correctMatch // ignore: cast_nullable_to_non_nullable
-              as Map<int, int?>,
+              as Map<int, List<int>?>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$MatchingQuestionImpl implements _MatchingQuestion {
+class _$MatchingQuestionImpl extends _MatchingQuestion {
   const _$MatchingQuestionImpl(
       {required this.text,
       required final List<PossibleAnswer> questions,
       required final List<PossibleAnswer> answers,
-      required final Map<int, int?> correctMatch})
+      required final Map<int, List<int>?> correctMatch})
       : _questions = questions,
         _answers = answers,
-        _correctMatch = correctMatch;
+        _correctMatch = correctMatch,
+        super._();
 
   factory _$MatchingQuestionImpl.fromJson(Map<String, dynamic> json) =>
       _$$MatchingQuestionImplFromJson(json);
@@ -791,9 +792,9 @@ class _$MatchingQuestionImpl implements _MatchingQuestion {
     return EqualUnmodifiableListView(_answers);
   }
 
-  final Map<int, int?> _correctMatch;
+  final Map<int, List<int>?> _correctMatch;
   @override
-  Map<int, int?> get correctMatch {
+  Map<int, List<int>?> get correctMatch {
     if (_correctMatch is EqualUnmodifiableMapView) return _correctMatch;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_correctMatch);
@@ -843,12 +844,14 @@ class _$MatchingQuestionImpl implements _MatchingQuestion {
   }
 }
 
-abstract class _MatchingQuestion implements MatchingQuestion {
+abstract class _MatchingQuestion extends MatchingQuestion {
   const factory _MatchingQuestion(
-      {required final String text,
-      required final List<PossibleAnswer> questions,
-      required final List<PossibleAnswer> answers,
-      required final Map<int, int?> correctMatch}) = _$MatchingQuestionImpl;
+          {required final String text,
+          required final List<PossibleAnswer> questions,
+          required final List<PossibleAnswer> answers,
+          required final Map<int, List<int>?> correctMatch}) =
+      _$MatchingQuestionImpl;
+  const _MatchingQuestion._() : super._();
 
   factory _MatchingQuestion.fromJson(Map<String, dynamic> json) =
       _$MatchingQuestionImpl.fromJson;
@@ -860,7 +863,7 @@ abstract class _MatchingQuestion implements MatchingQuestion {
   @override
   List<PossibleAnswer> get answers;
   @override
-  Map<int, int?> get correctMatch;
+  Map<int, List<int>?> get correctMatch;
 
   /// Create a copy of MatchingQuestion
   /// with the given fields replaced by the non-null parameter values.

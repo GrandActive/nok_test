@@ -80,6 +80,11 @@ extension GetItInjectableX on _i174.GetIt {
       _,
     ) =>
         _i816.SelectionQuestionBloc(correctAnswer: correctAnswer));
+    gh.factoryParam<_i265.MatchingQuestionBloc, Map<int, List<int>?>, dynamic>((
+      correctAnswer,
+      _,
+    ) =>
+        _i265.MatchingQuestionBloc(correctAnswer: correctAnswer));
     gh.factory<_i604.PremiumRepository>(() => _i604.PremiumRepository(
           gh<_i760.AuthRepository>(),
           gh<_i533.PremiumFirebaseDataSource>(),
@@ -93,11 +98,6 @@ extension GetItInjectableX on _i174.GetIt {
           defaultAnswer: defaultAnswer,
           correctAnswer: correctAnswer,
         ));
-    gh.factoryParam<_i265.MatchingQuestionBloc, Map<int, int?>, dynamic>((
-      correctAnswer,
-      _,
-    ) =>
-        _i265.MatchingQuestionBloc(correctAnswer: correctAnswer));
     gh.factory<_i280.PremiumBloc>(
         () => _i280.PremiumBloc(gh<_i604.PremiumRepository>()));
     gh.factory<_i773.QuestionsRepository>(
