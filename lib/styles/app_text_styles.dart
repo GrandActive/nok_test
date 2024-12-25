@@ -28,4 +28,11 @@ class AppTextStyles {
     fontSize: 16,
     fontWeight: FontWeight.w400,
   );
+
+  static const body2 = TextStyle(
+    fontFamily: 'Roboto',
+    color: Color(0xFF464646),
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  );
 }

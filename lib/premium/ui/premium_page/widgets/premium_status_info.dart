@@ -20,9 +20,12 @@ class PremiumStatusInfo extends StatelessWidget {
           ),
           enabled: () => const Column(
             children: [
-              Text(
-                'У вас установлена платная версия',
-                style: AppTextStyles.body1,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'У вас установлена платная версия',
+                  style: AppTextStyles.body1,
+                ),
               ),
               SizedBox(height: 16),
               PremiumBanner(

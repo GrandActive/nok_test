@@ -17,7 +17,6 @@ class AppVersion extends StatelessWidget {
           return Text(
             'Версия приложения: ${info.version}',
             style: AppTextStyles.body1,
-            textAlign: TextAlign.center,
           );
         });
   }

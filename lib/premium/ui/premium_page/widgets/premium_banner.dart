@@ -48,6 +48,11 @@ class PremiumBanner extends StatelessWidget {
                 text: 'тренировочный режим тестирования, '
                     'в котором результат ответа будет отображен сразу после ввода ответа.',
               ),
+              const SizedBox(height: 8),
+              const PremiumDescriptionListItem(
+                text: 'доступ к списку всех вопросов, '
+                    'вы сможете просмотреть все вопросы по порядку с правильными ответами',
+              ),
             ],
             if (!paid) ...[
               if (withDescription) const SizedBox(height: 24),
@@ -58,7 +63,16 @@ class PremiumBanner extends StatelessWidget {
                   if (withDescription)
                     const Text('Цена', style: AppTextStyles.body1)
                   else
-                    const Text('Платная версия', style: AppTextStyles.body1),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text('Платная версия', style: AppTextStyles.body1),
+                          const Text('Теперь доступен список всех\u{00A0}вопросов!',
+                              style: AppTextStyles.body2),
+                        ],
+                      ),
+                    ),
                   const SizedBox(width: 16),
                   Container(
                     decoration: const BoxDecoration(
