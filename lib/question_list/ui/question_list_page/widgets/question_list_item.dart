@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/navigation.dart';
 import 'package:nok_test/question_list/bloc/question_list_bloc/question_list_bloc.dart';
+import 'package:nok_test/styles/app_text_styles.dart';
 import 'package:nok_test/testing/data/model/question.dart';
 
 class QuestionListItem extends StatelessWidget {
@@ -21,6 +22,17 @@ class QuestionListItem extends StatelessWidget {
       SequenceQuestion() => question.title,
       UserInputQuestion() => question.text,
       MatchingQuestion() => question.text,
+    };
+  }
+
+  IconData _getQuestionTypeIcon(Question question) {
+    return switch (question) {
+      SelectionQuestion() => question.correctAnswerIds.length > 1
+          ? Icons.check_box_outlined
+          : Icons.radio_button_checked_outlined,
+      SequenceQuestion() => Icons.low_priority_outlined,
+      UserInputQuestion() => Icons.mode_edit_outline_outlined,
+      MatchingQuestion() => Icons.format_list_bulleted_outlined,
     };
   }
 
@@ -44,9 +56,12 @@ class QuestionListItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Вопрос $questionNumber',
-                style: TextStyle(fontSize: 16),
+              Row(
+                children: [
+                  Icon(_getQuestionTypeIcon(question), color: const Color(0xFF464646)),
+                  SizedBox(width: 8),
+                  Text('Вопрос $questionNumber', style: AppTextStyles.body1),
+                ],
               ),
               SizedBox(height: 8),
               Text(_getQuestionText(question)),
