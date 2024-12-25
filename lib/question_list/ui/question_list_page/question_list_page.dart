@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nok_test/common/widgets/no_connection_banner.dart';
 import 'package:nok_test/question_list/bloc/question_list_bloc/question_list_bloc.dart';
 import 'package:nok_test/question_list/ui/question_list_page/widgets/question_list_item.dart';
 import 'package:nok_test/question_list/ui/question_list_page/widgets/question_list_scrollbar.dart';
@@ -23,7 +24,11 @@ class QuestionListPage extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
             failure: (message) => Center(
-              child: Text(message),
+              child: NoConnectionBanner(
+                onRetry: () {
+                  context.read<QuestionListBloc>().add(QuestionListEvent.started());
+                },
+              ),
             ),
             success: (questions, _, __, ___) => QuestionListScrollbar(
               child: ListView.separated(

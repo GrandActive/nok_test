@@ -30,6 +30,7 @@ dependencies:
   dio: ^5.4.2+1
   bloc_concurrency: ^0.2.5
   url_launcher: ^6.3.0
+  flutter_svg: ^2.0.16
 
 dev_dependencies:
   flutter_test:
