@@ -34,8 +34,8 @@ class AboutPage extends StatelessWidget {
           ],
           ...[
             const AuthSection(),
-            const PrivacyPolicyButton(),
             const SupportButton(),
+            const PrivacyPolicyButton(),
           ].separatedBy(const Divider(
             height: 0,
             indent: 16,

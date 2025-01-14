@@ -41,12 +41,12 @@ class PremiumBanner extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               const PremiumDescriptionListItem(
-                text: 'просмотр правильных ответов по завершению экзаменационного теста;',
+                text: 'просмотр правильных ответов по завершению экзаменационного теста',
               ),
               const SizedBox(height: 8),
               const PremiumDescriptionListItem(
                 text: 'тренировочный режим тестирования, '
-                    'в котором результат ответа будет отображен сразу после ввода ответа.',
+                    'в котором результат ответа будет отображен сразу после ввода ответа',
               ),
               const SizedBox(height: 8),
               const PremiumDescriptionListItem(
