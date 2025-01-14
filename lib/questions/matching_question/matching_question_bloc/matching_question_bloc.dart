@@ -15,6 +15,10 @@ class MatchingQuestionBloc extends QuestionBloc<TestMatchingQuestion, Map<int, L
   submitAnswer(TestMatchingQuestion question, Map<int, List<int>?> selectedAnswers) {
     question.userAnswer = selectedAnswers;
 
+    for (final key in question.source.correctMatch.keys) {
+      selectedAnswers.putIfAbsent(key, () => null);
+    }
+
     final isAnyAnswerSelected = selectedAnswers.values.any((element) => element != null);
 
     question.isAnsweredCorrectly = isAnyAnswerSelected
