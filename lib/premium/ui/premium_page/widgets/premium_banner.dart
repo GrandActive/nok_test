@@ -81,7 +81,7 @@ class PremiumBanner extends StatelessWidget {
                     ),
                     padding: const EdgeInsets.all(8),
                     child: Text(
-                      '199 руб.',
+                      '299 руб.',
                       style: AppTextStyles.body1.copyWith(color: Colors.white),
                     ),
                   )
