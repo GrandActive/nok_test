@@ -1,28 +1,25 @@
-import 'dart:async';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:nok_test/testing/data/model/possible_answer.dart';
 import 'package:nok_test/utils/list_separated_extension.dart';
 
-Future<PossibleAnswer?> showMatchingQuestionSingleAnswerDialog(
+Future<int?> showSingleSelectDialog(
   BuildContext context,
-  List<PossibleAnswer> answers,
+  List<String> options,
 ) {
-  return showDialog<PossibleAnswer>(
+  return showDialog<int>(
     context: context,
     builder: (context) {
-      return _MatchingQuestionSingleAnswerDialog(answers: answers);
+      return _SingleSelectDialog(options: options);
     },
   );
 }
 
-class _MatchingQuestionSingleAnswerDialog extends StatelessWidget {
-  const _MatchingQuestionSingleAnswerDialog({
-    required this.answers,
+class _SingleSelectDialog extends StatelessWidget {
+  const _SingleSelectDialog({
+    required this.options,
   });
 
-  final List<PossibleAnswer> answers;
+  final List<String> options;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +31,15 @@ class _MatchingQuestionSingleAnswerDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
         side: const BorderSide(color: Color(0xFF7F7F7F), width: 1),
       ),
-      children: answers
-          .map<Widget>((a) => SimpleDialogOption(
-                padding: const EdgeInsets.all(16),
-                onPressed: () {
-                  context.router.maybePop(a);
-                },
-                child: Text(a.text),
-              ))
+      children: options.indexed
+          .map<Widget>((o) {
+            final (index, option) = o;
+            return SimpleDialogOption(
+              padding: const EdgeInsets.all(16),
+              onPressed: () => context.router.maybePop(index),
+              child: Text(option),
+            );
+          })
           .toList()
           .separatedBy(const Divider(
             color: Color(0xFFD0D0D0),
