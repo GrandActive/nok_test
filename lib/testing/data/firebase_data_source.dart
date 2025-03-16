@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nok_test/specializations/models/qualification.dart';
+import 'package:nok_test/specializations/models/specialization.dart';
 import 'package:nok_test/testing/data/model/question.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -45,6 +47,31 @@ class FirebaseDataSource {
     }
     question["correctMatch"] = correctMatchMap;
     return question;
+  }
+
+  Future<List<Specialization>> getAllSpecializations() async {
+    await _checkVersion();
+
+    final dataEvent = await _database.ref().once();
+    final Map data = jsonDecode(jsonEncode(dataEvent.snapshot.value));
+
+    final Map specializations = data["specializations"];
+    final Map qualifications = data["topics"];
+
+    final deserializedSpecializations = specializations.entries
+        .map(
+          (s) => Specialization(
+              id: s.key,
+              name: s.value['name'],
+              qualifications: (s.value['qualifications'] as Map).entries.map((q) {
+                final id = q.key;
+                final qualification = qualifications[id];
+                return Qualification(id: id, name: qualification['name']);
+              }).toList()),
+        )
+        .toList();
+
+    return deserializedSpecializations;
   }
 
   Future<void> _checkVersion() async {
