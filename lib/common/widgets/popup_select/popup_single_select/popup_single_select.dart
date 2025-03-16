@@ -9,21 +9,33 @@ class PopupSingleSelect extends StatelessWidget {
     required this.onSelect,
     required this.selectedIndex,
     this.placeholder = "",
+    this.enabled = true,
   });
 
   final List<String> options;
   final ValueSetter<int> onSelect;
   final int? selectedIndex;
   final String placeholder;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     return PopupSelectButton(
-      onTap: () async {
-        final result = await showSingleSelectDialog(context, options);
-        if (result != null) onSelect(result);
-      },
-      child: Text(selectedIndex == null ? placeholder : options[selectedIndex!]),
+      onTap: enabled
+          ? () async {
+              final result = await showSingleSelectDialog(context, options);
+              if (result != null) onSelect(result);
+            }
+          : null,
+      child: selectedIndex == null
+          ? Text(
+              placeholder,
+              style: TextStyle(fontSize: 16, color: Colors.grey),
+            )
+          : Text(
+              options[selectedIndex!],
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            ),
     );
   }
 }

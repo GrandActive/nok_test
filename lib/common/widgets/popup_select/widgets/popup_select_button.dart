@@ -7,15 +7,20 @@ class PopupSelectButton extends StatelessWidget {
     required this.child,
   });
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
+    final enabled = onTap != null;
+
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(4)),
-        border: Border.all(color: const Color(0xFF7F7F7F), width: 1),
+        border: Border.all(
+          color: enabled ? const Color(0xFF7F7F7F) : Colors.grey,
+          width: 1,
+        ),
       ),
       child: InkWell(
         onTap: onTap,
@@ -27,7 +32,10 @@ class PopupSelectButton extends StatelessWidget {
             children: [
               Expanded(child: child),
               const SizedBox(width: 16),
-              const Icon(Icons.arrow_drop_down)
+              Icon(
+                Icons.arrow_drop_down,
+                color: enabled ? null : Colors.grey,
+              )
             ],
           ),
         ),
