@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/common/widgets/popup_select/popup_single_select/popup_single_select.dart';
 import 'package:nok_test/specializations/bloc/specialization_select_bloc/specialization_select_bloc.dart';
+import 'package:nok_test/specializations/bloc/specializations_bloc/specializations_bloc.dart';
 import 'package:nok_test/specializations/models/specialization.dart';
 
 class SpecializationSelect extends StatelessWidget {
@@ -11,6 +12,11 @@ class SpecializationSelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loading = context.watch<SpecializationsBloc>().state.maybeWhen(
+          loading: () => true,
+          orElse: () => false,
+        );
+
     final (specializations, selectedIndex) =
         context.watch<SpecializationSelectBloc>().state.maybeWhen(
               active: (allSpecializations, selectedIndex) => (allSpecializations, selectedIndex),
@@ -32,6 +38,7 @@ class SpecializationSelect extends StatelessWidget {
               .add(SpecializationSelectEvent.selected(index: index)),
           selectedIndex: selectedIndex,
           placeholder: 'Выбрать',
+          loading: loading,
         ),
       ],
     );

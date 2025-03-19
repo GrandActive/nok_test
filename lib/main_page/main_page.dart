@@ -79,63 +79,64 @@ class _MainPageState extends State<MainPage> {
             ],
           ),
           body: BlocBuilder<SpecializationsBloc, SpecializationsState>(
-            builder: (context, state) => state.when(
-              loading: () => Center(child: CircularProgressIndicator()),
-              failure: (message) => Center(
-                child: NoConnectionBanner(
-                  onRetry: () =>
-                      context.read<SpecializationsBloc>().add(SpecializationsEvent.started()),
-                ),
-              ),
-              success: (specializations) => SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-                  child: Column(
-                    children: [
-                      const PremiumStatus(),
-                      const SpecializationSelect(),
-                      const SizedBox(height: 24),
-                      const QualificationSelect(),
-                      const SizedBox(height: 32),
-                      if (isPaid) ...[
-                        const Text(
-                          'Выберите режим прохождения теста',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-                        ),
-                        const SizedBox(height: 24),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AppOutlinedButton(
-                              onPressed: () =>
-                                  context.router.push(TestIntroRoute(mode: TestMode.training)),
-                              child: const Text('Тренировка'),
-                            ),
-                            const SizedBox(width: 16),
-                            AppFilledButton(
-                              onPressed: () =>
-                                  context.router.push(TestIntroRoute(mode: TestMode.exam)),
-                              child: const Text("Экзамен"),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
-                        TextButton(
-                          onPressed: () {
-                            context.router.push(QuestionListRoute());
-                          },
-                          child: const Text('Список всех вопросов'),
-                        ),
-                      ] else ...[
-                        const TestInfo(),
-                        const SizedBox(height: 40),
-                        const StartExamButton(),
-                      ],
-                    ],
+            builder: (context, state) {
+              return state.maybeWhen(
+                failure: (message) => Center(
+                  child: NoConnectionBanner(
+                    onRetry: () =>
+                        context.read<SpecializationsBloc>().add(SpecializationsEvent.started()),
                   ),
                 ),
-              ),
-            ),
+                orElse: () => SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                    child: Column(
+                      children: [
+                        const PremiumStatus(),
+                        const SpecializationSelect(),
+                        const SizedBox(height: 24),
+                        const QualificationSelect(),
+                        const SizedBox(height: 32),
+                        if (isPaid) ...[
+                          const Text(
+                            'Выберите режим прохождения теста',
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                          ),
+                          const SizedBox(height: 24),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              AppOutlinedButton(
+                                onPressed: () =>
+                                    context.router.push(TestIntroRoute(mode: TestMode.training)),
+                                child: const Text('Тренировка'),
+                              ),
+                              const SizedBox(width: 16),
+                              AppFilledButton(
+                                onPressed: () =>
+                                    context.router.push(TestIntroRoute(mode: TestMode.exam)),
+                                child: const Text("Экзамен"),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                          TextButton(
+                            onPressed: () {
+                              context.router.push(QuestionListRoute());
+                            },
+                            child: const Text('Список всех вопросов'),
+                          ),
+                        ] else ...[
+                          const TestInfo(),
+                          const SizedBox(height: 40),
+                          const StartExamButton(),
+                        ],
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ),
