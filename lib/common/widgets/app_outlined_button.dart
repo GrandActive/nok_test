@@ -15,8 +15,16 @@ class AppOutlinedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
-      style: const ButtonStyle(
-        side: MaterialStatePropertyAll(BorderSide(color: primaryColor)),
+      style: ButtonStyle(
+        side: WidgetStateBorderSide.resolveWith(
+          (states) {
+            if (states.contains(WidgetState.disabled)) {
+              return null;
+            } else {
+              return BorderSide(color: primaryColor);
+            }
+          },
+        ),
         minimumSize: MaterialStatePropertyAll(Size(156, 41)),
       ),
       child: child,

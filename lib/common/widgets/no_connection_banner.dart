@@ -14,6 +14,7 @@ class NoConnectionBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text('Проверьте подключение к сети', style: AppTextStyles.title3),
         SizedBox(height: 24),

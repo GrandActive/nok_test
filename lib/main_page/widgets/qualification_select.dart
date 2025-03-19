@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/common/widgets/popup_select/popup_single_select/popup_single_select.dart';
 import 'package:nok_test/specializations/bloc/qualification_select_bloc/qualification_select_bloc.dart';
 import 'package:nok_test/specializations/models/qualification.dart';
+import 'package:nok_test/styles/app_text_styles.dart';
 
 class QualificationSelect extends StatelessWidget {
   const QualificationSelect({
@@ -22,10 +23,7 @@ class QualificationSelect extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Квалификация:",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-        ),
+        Text("Квалификация:", style: AppTextStyles.title2),
         SizedBox(height: 8),
         PopupSingleSelect(
           options: qualifications.map((s) => s.name).toList(),

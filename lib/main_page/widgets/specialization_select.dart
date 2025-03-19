@@ -4,6 +4,7 @@ import 'package:nok_test/common/widgets/popup_select/popup_single_select/popup_s
 import 'package:nok_test/specializations/bloc/specialization_select_bloc/specialization_select_bloc.dart';
 import 'package:nok_test/specializations/bloc/specializations_bloc/specializations_bloc.dart';
 import 'package:nok_test/specializations/models/specialization.dart';
+import 'package:nok_test/styles/app_text_styles.dart';
 
 class SpecializationSelect extends StatelessWidget {
   const SpecializationSelect({
@@ -26,10 +27,7 @@ class SpecializationSelect extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Профессиональный стандарт:",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-        ),
+        Text("Профессиональный стандарт:", style: AppTextStyles.title2),
         const SizedBox(height: 8),
         PopupSingleSelect(
           options: specializations.map((s) => s.name).toList(),

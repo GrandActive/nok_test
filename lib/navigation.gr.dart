@@ -343,6 +343,25 @@ class RegistrationRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SpecializationWrapperPage]
+class SpecializationWrapperRoute extends PageRouteInfo<void> {
+  const SpecializationWrapperRoute({List<PageRouteInfo>? children})
+      : super(
+          SpecializationWrapperRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SpecializationWrapperRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const SpecializationWrapperPage());
+    },
+  );
+}
+
+/// generated route for
 /// [TestIntroPage]
 class TestIntroRoute extends PageRouteInfo<TestIntroRouteArgs> {
   TestIntroRoute({

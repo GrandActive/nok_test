@@ -14,7 +14,7 @@ class PremiumStatus extends StatelessWidget {
           disabled: () => const Column(
             children: [
               PremiumBanner(),
-              SizedBox(height: 24),
+              SizedBox(height: 40),
             ],
           ),
           orElse: () => const SizedBox.shrink(),

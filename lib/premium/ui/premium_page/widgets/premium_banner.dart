@@ -68,8 +68,6 @@ class PremiumBanner extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text('Платная версия', style: AppTextStyles.body1),
-                          const Text('Теперь доступен список всех\u{00A0}вопросов!',
-                              style: AppTextStyles.body2),
                         ],
                       ),
                     ),
