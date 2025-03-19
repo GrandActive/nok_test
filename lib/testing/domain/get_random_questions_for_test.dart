@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:injectable/injectable.dart';
+import 'package:nok_test/specializations/models/qualification.dart';
 import 'package:nok_test/testing/data/model/question.dart';
 import 'package:nok_test/testing/data/questions_repository.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
@@ -11,8 +12,11 @@ class GetRandomQuestionsForTest {
 
   final QuestionsRepository repository;
 
-  Future<List<TestQuestion>> call({int count = 50}) async {
-    final repoQuestions = await repository.getAllQuestions(topic: "gip");
+  Future<List<TestQuestion>> call({
+    required Qualification qualification,
+    int count = 50,
+  }) async {
+    final repoQuestions = await repository.getQuestions(qualification);
     if (repoQuestions == null) throw Exception("Received no questions");
     final questions = repoQuestions
         .map((question) => switch (question) {

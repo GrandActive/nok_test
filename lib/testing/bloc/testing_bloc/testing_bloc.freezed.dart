@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TestingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TestMode mode) started,
+    required TResult Function(TestMode mode, Qualification qualification)
+        started,
     required TResult Function(int index) selected,
     required TResult Function() selectNextQuestion,
     required TResult Function(bool confirm) gotFinishConfirmationAnswer,
@@ -27,7 +28,7 @@ mixin _$TestingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TestMode mode)? started,
+    TResult? Function(TestMode mode, Qualification qualification)? started,
     TResult? Function(int index)? selected,
     TResult? Function()? selectNextQuestion,
     TResult? Function(bool confirm)? gotFinishConfirmationAnswer,
@@ -36,7 +37,7 @@ mixin _$TestingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TestMode mode)? started,
+    TResult Function(TestMode mode, Qualification qualification)? started,
     TResult Function(int index)? selected,
     TResult Function()? selectNextQuestion,
     TResult Function(bool confirm)? gotFinishConfirmationAnswer,
@@ -104,7 +105,9 @@ abstract class _$$StartedImplCopyWith<$Res> {
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({TestMode mode});
+  $Res call({TestMode mode, Qualification qualification});
+
+  $QualificationCopyWith<$Res> get qualification;
 }
 
 /// @nodoc
@@ -121,27 +124,44 @@ class __$$StartedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? mode = null,
+    Object? qualification = null,
   }) {
     return _then(_$StartedImpl(
       mode: null == mode
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
               as TestMode,
+      qualification: null == qualification
+          ? _value.qualification
+          : qualification // ignore: cast_nullable_to_non_nullable
+              as Qualification,
     ));
+  }
+
+  /// Create a copy of TestingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $QualificationCopyWith<$Res> get qualification {
+    return $QualificationCopyWith<$Res>(_value.qualification, (value) {
+      return _then(_value.copyWith(qualification: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
-  const _$StartedImpl({required this.mode});
+  const _$StartedImpl({required this.mode, required this.qualification});
 
   @override
   final TestMode mode;
+  @override
+  final Qualification qualification;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TestingEvent.started(mode: $mode)';
+    return 'TestingEvent.started(mode: $mode, qualification: $qualification)';
   }
 
   @override
@@ -149,7 +169,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'TestingEvent.started'))
-      ..add(DiagnosticsProperty('mode', mode));
+      ..add(DiagnosticsProperty('mode', mode))
+      ..add(DiagnosticsProperty('qualification', qualification));
   }
 
   @override
@@ -157,11 +178,13 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartedImpl &&
-            (identical(other.mode, mode) || other.mode == mode));
+            (identical(other.mode, mode) || other.mode == mode) &&
+            (identical(other.qualification, qualification) ||
+                other.qualification == qualification));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mode);
+  int get hashCode => Object.hash(runtimeType, mode, qualification);
 
   /// Create a copy of TestingEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -174,31 +197,32 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TestMode mode) started,
+    required TResult Function(TestMode mode, Qualification qualification)
+        started,
     required TResult Function(int index) selected,
     required TResult Function() selectNextQuestion,
     required TResult Function(bool confirm) gotFinishConfirmationAnswer,
     required TResult Function() finishRequested,
   }) {
-    return started(mode);
+    return started(mode, qualification);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TestMode mode)? started,
+    TResult? Function(TestMode mode, Qualification qualification)? started,
     TResult? Function(int index)? selected,
     TResult? Function()? selectNextQuestion,
     TResult? Function(bool confirm)? gotFinishConfirmationAnswer,
     TResult? Function()? finishRequested,
   }) {
-    return started?.call(mode);
+    return started?.call(mode, qualification);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TestMode mode)? started,
+    TResult Function(TestMode mode, Qualification qualification)? started,
     TResult Function(int index)? selected,
     TResult Function()? selectNextQuestion,
     TResult Function(bool confirm)? gotFinishConfirmationAnswer,
@@ -206,7 +230,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(mode);
+      return started(mode, qualification);
     }
     return orElse();
   }
@@ -256,9 +280,12 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
 }
 
 abstract class _Started implements TestingEvent {
-  const factory _Started({required final TestMode mode}) = _$StartedImpl;
+  const factory _Started(
+      {required final TestMode mode,
+      required final Qualification qualification}) = _$StartedImpl;
 
   TestMode get mode;
+  Qualification get qualification;
 
   /// Create a copy of TestingEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -343,7 +370,8 @@ class _$SelectedImpl with DiagnosticableTreeMixin implements _Selected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TestMode mode) started,
+    required TResult Function(TestMode mode, Qualification qualification)
+        started,
     required TResult Function(int index) selected,
     required TResult Function() selectNextQuestion,
     required TResult Function(bool confirm) gotFinishConfirmationAnswer,
@@ -355,7 +383,7 @@ class _$SelectedImpl with DiagnosticableTreeMixin implements _Selected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TestMode mode)? started,
+    TResult? Function(TestMode mode, Qualification qualification)? started,
     TResult? Function(int index)? selected,
     TResult? Function()? selectNextQuestion,
     TResult? Function(bool confirm)? gotFinishConfirmationAnswer,
@@ -367,7 +395,7 @@ class _$SelectedImpl with DiagnosticableTreeMixin implements _Selected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TestMode mode)? started,
+    TResult Function(TestMode mode, Qualification qualification)? started,
     TResult Function(int index)? selected,
     TResult Function()? selectNextQuestion,
     TResult Function(bool confirm)? gotFinishConfirmationAnswer,
@@ -486,7 +514,8 @@ class _$SelectNextQuestionImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TestMode mode) started,
+    required TResult Function(TestMode mode, Qualification qualification)
+        started,
     required TResult Function(int index) selected,
     required TResult Function() selectNextQuestion,
     required TResult Function(bool confirm) gotFinishConfirmationAnswer,
@@ -498,7 +527,7 @@ class _$SelectNextQuestionImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TestMode mode)? started,
+    TResult? Function(TestMode mode, Qualification qualification)? started,
     TResult? Function(int index)? selected,
     TResult? Function()? selectNextQuestion,
     TResult? Function(bool confirm)? gotFinishConfirmationAnswer,
@@ -510,7 +539,7 @@ class _$SelectNextQuestionImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TestMode mode)? started,
+    TResult Function(TestMode mode, Qualification qualification)? started,
     TResult Function(int index)? selected,
     TResult Function()? selectNextQuestion,
     TResult Function(bool confirm)? gotFinishConfirmationAnswer,
@@ -653,7 +682,8 @@ class _$GotFinishConfirmationAnswerImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TestMode mode) started,
+    required TResult Function(TestMode mode, Qualification qualification)
+        started,
     required TResult Function(int index) selected,
     required TResult Function() selectNextQuestion,
     required TResult Function(bool confirm) gotFinishConfirmationAnswer,
@@ -665,7 +695,7 @@ class _$GotFinishConfirmationAnswerImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TestMode mode)? started,
+    TResult? Function(TestMode mode, Qualification qualification)? started,
     TResult? Function(int index)? selected,
     TResult? Function()? selectNextQuestion,
     TResult? Function(bool confirm)? gotFinishConfirmationAnswer,
@@ -677,7 +707,7 @@ class _$GotFinishConfirmationAnswerImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TestMode mode)? started,
+    TResult Function(TestMode mode, Qualification qualification)? started,
     TResult Function(int index)? selected,
     TResult Function()? selectNextQuestion,
     TResult Function(bool confirm)? gotFinishConfirmationAnswer,
@@ -796,7 +826,8 @@ class _$FinishRequestedImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TestMode mode) started,
+    required TResult Function(TestMode mode, Qualification qualification)
+        started,
     required TResult Function(int index) selected,
     required TResult Function() selectNextQuestion,
     required TResult Function(bool confirm) gotFinishConfirmationAnswer,
@@ -808,7 +839,7 @@ class _$FinishRequestedImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TestMode mode)? started,
+    TResult? Function(TestMode mode, Qualification qualification)? started,
     TResult? Function(int index)? selected,
     TResult? Function()? selectNextQuestion,
     TResult? Function(bool confirm)? gotFinishConfirmationAnswer,
@@ -820,7 +851,7 @@ class _$FinishRequestedImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TestMode mode)? started,
+    TResult Function(TestMode mode, Qualification qualification)? started,
     TResult Function(int index)? selected,
     TResult Function()? selectNextQuestion,
     TResult Function(bool confirm)? gotFinishConfirmationAnswer,

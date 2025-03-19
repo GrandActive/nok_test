@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nok_test/specializations/models/qualification.dart';
 import 'package:nok_test/testing/data/firebase_data_source.dart';
 import 'package:nok_test/testing/domain/get_random_questions_for_test.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
@@ -16,10 +17,10 @@ class TestingBloc extends Bloc<TestingEvent, TestingState> {
   TestingBloc(this.getQuestions) : super(const TestingState(mode: TestMode.exam)) {
     on<TestingEvent>((event, emit) async {
       await event.when(
-        started: (mode) async {
+        started: (mode, qualification) async {
           emit(TestingState(mode: mode));
           try {
-            final questions = await getQuestions(count: 50);
+            final questions = await getQuestions(count: 50, qualification: qualification);
             emit(state.copyWith(questions: questions, isLoading: false, selectedIndex: 0));
           } on WrongDbVersionException {
             emit(state.copyWith(isUpdateNeeded: true, isLoading: false));

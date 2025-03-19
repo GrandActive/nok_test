@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/injection.dart';
 import 'package:nok_test/navigation.dart';
+import 'package:nok_test/specializations/bloc/qualification_select_bloc/qualification_select_bloc.dart';
 import 'package:nok_test/testing/bloc/testing_bloc/testing_bloc.dart';
 import 'package:nok_test/testing/bloc/timer_bloc/timer_bloc.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
@@ -24,11 +25,16 @@ class TestWrapperPage extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
+    final qualification = context.watch<QualificationSelectBloc>().state.selectedQualification!;
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<TestingBloc>(
-          create: (context) =>
-              getIt.get<TestingBloc>()..add(TestingEvent.started(mode: mode)),
+          create: (context) => getIt.get<TestingBloc>()
+            ..add(TestingEvent.started(
+              mode: mode,
+              qualification: qualification,
+            )),
         ),
         BlocProvider<TimerBloc>(
           create: (context) => TimerBloc(ticker: getIt.get<Ticker>()),

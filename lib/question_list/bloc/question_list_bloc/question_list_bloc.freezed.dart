@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$QuestionListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(Qualification qualification) started,
     required TResult Function(int index) questionSelected,
     required TResult Function() nextQuestionRequested,
     required TResult Function() prevQuestionRequested,
@@ -26,7 +26,7 @@ mixin _$QuestionListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(Qualification qualification)? started,
     TResult? Function(int index)? questionSelected,
     TResult? Function()? nextQuestionRequested,
     TResult? Function()? prevQuestionRequested,
@@ -34,7 +34,7 @@ mixin _$QuestionListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(Qualification qualification)? started,
     TResult Function(int index)? questionSelected,
     TResult Function()? nextQuestionRequested,
     TResult Function()? prevQuestionRequested,
@@ -96,6 +96,10 @@ abstract class _$$StartedImplCopyWith<$Res> {
   factory _$$StartedImplCopyWith(
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Qualification qualification});
+
+  $QualificationCopyWith<$Res> get qualification;
 }
 
 /// @nodoc
@@ -108,60 +112,96 @@ class __$$StartedImplCopyWithImpl<$Res>
 
   /// Create a copy of QuestionListEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? qualification = null,
+  }) {
+    return _then(_$StartedImpl(
+      qualification: null == qualification
+          ? _value.qualification
+          : qualification // ignore: cast_nullable_to_non_nullable
+              as Qualification,
+    ));
+  }
+
+  /// Create a copy of QuestionListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $QualificationCopyWith<$Res> get qualification {
+    return $QualificationCopyWith<$Res>(_value.qualification, (value) {
+      return _then(_value.copyWith(qualification: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+  const _$StartedImpl({required this.qualification});
+
+  @override
+  final Qualification qualification;
 
   @override
   String toString() {
-    return 'QuestionListEvent.started()';
+    return 'QuestionListEvent.started(qualification: $qualification)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$StartedImpl &&
+            (identical(other.qualification, qualification) ||
+                other.qualification == qualification));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, qualification);
+
+  /// Create a copy of QuestionListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(Qualification qualification) started,
     required TResult Function(int index) questionSelected,
     required TResult Function() nextQuestionRequested,
     required TResult Function() prevQuestionRequested,
   }) {
-    return started();
+    return started(qualification);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(Qualification qualification)? started,
     TResult? Function(int index)? questionSelected,
     TResult? Function()? nextQuestionRequested,
     TResult? Function()? prevQuestionRequested,
   }) {
-    return started?.call();
+    return started?.call(qualification);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(Qualification qualification)? started,
     TResult Function(int index)? questionSelected,
     TResult Function()? nextQuestionRequested,
     TResult Function()? prevQuestionRequested,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started();
+      return started(qualification);
     }
     return orElse();
   }
@@ -207,7 +247,16 @@ class _$StartedImpl implements _Started {
 }
 
 abstract class _Started implements QuestionListEvent {
-  const factory _Started() = _$StartedImpl;
+  const factory _Started({required final Qualification qualification}) =
+      _$StartedImpl;
+
+  Qualification get qualification;
+
+  /// Create a copy of QuestionListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -279,7 +328,7 @@ class _$QuestionSelectedImpl implements _QuestionSelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(Qualification qualification) started,
     required TResult Function(int index) questionSelected,
     required TResult Function() nextQuestionRequested,
     required TResult Function() prevQuestionRequested,
@@ -290,7 +339,7 @@ class _$QuestionSelectedImpl implements _QuestionSelected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(Qualification qualification)? started,
     TResult? Function(int index)? questionSelected,
     TResult? Function()? nextQuestionRequested,
     TResult? Function()? prevQuestionRequested,
@@ -301,7 +350,7 @@ class _$QuestionSelectedImpl implements _QuestionSelected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(Qualification qualification)? started,
     TResult Function(int index)? questionSelected,
     TResult Function()? nextQuestionRequested,
     TResult Function()? prevQuestionRequested,
@@ -409,7 +458,7 @@ class _$NextQuestionRequestedImpl implements _NextQuestionRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(Qualification qualification) started,
     required TResult Function(int index) questionSelected,
     required TResult Function() nextQuestionRequested,
     required TResult Function() prevQuestionRequested,
@@ -420,7 +469,7 @@ class _$NextQuestionRequestedImpl implements _NextQuestionRequested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(Qualification qualification)? started,
     TResult? Function(int index)? questionSelected,
     TResult? Function()? nextQuestionRequested,
     TResult? Function()? prevQuestionRequested,
@@ -431,7 +480,7 @@ class _$NextQuestionRequestedImpl implements _NextQuestionRequested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(Qualification qualification)? started,
     TResult Function(int index)? questionSelected,
     TResult Function()? nextQuestionRequested,
     TResult Function()? prevQuestionRequested,
@@ -530,7 +579,7 @@ class _$PrevQuestionRequestedImpl implements _PrevQuestionRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(Qualification qualification) started,
     required TResult Function(int index) questionSelected,
     required TResult Function() nextQuestionRequested,
     required TResult Function() prevQuestionRequested,
@@ -541,7 +590,7 @@ class _$PrevQuestionRequestedImpl implements _PrevQuestionRequested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(Qualification qualification)? started,
     TResult? Function(int index)? questionSelected,
     TResult? Function()? nextQuestionRequested,
     TResult? Function()? prevQuestionRequested,
@@ -552,7 +601,7 @@ class _$PrevQuestionRequestedImpl implements _PrevQuestionRequested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(Qualification qualification)? started,
     TResult Function(int index)? questionSelected,
     TResult Function()? nextQuestionRequested,
     TResult Function()? prevQuestionRequested,

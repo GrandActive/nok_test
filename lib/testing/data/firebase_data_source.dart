@@ -11,7 +11,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 class FirebaseDataSource {
   FirebaseDatabase get _database => FirebaseDatabase.instance;
 
-  Future<List<Question>?> getAllQuestions(String topic) async {
+  Future<List<Question>?> getQuestions(String topic) async {
     await _checkVersion();
 
     final dataEvent = await _database.ref().once();

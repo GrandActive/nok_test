@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/injection.dart';
 import 'package:nok_test/question_list/bloc/question_list_bloc/question_list_bloc.dart';
+import 'package:nok_test/specializations/bloc/qualification_select_bloc/qualification_select_bloc.dart';
 
 @RoutePage()
 class QuestionListWrapperPage extends StatelessWidget implements AutoRouteWrapper {
@@ -15,8 +16,11 @@ class QuestionListWrapperPage extends StatelessWidget implements AutoRouteWrappe
 
   @override
   Widget wrappedRoute(BuildContext context) {
+    final qualification = context.watch<QualificationSelectBloc>().state.selectedQualification!;
+
     return BlocProvider<QuestionListBloc>(
-      create: (context) => getIt<QuestionListBloc>()..add(QuestionListEvent.started()),
+      create: (context) =>
+          getIt<QuestionListBloc>()..add(QuestionListEvent.started(qualification: qualification)),
       child: this,
     );
   }

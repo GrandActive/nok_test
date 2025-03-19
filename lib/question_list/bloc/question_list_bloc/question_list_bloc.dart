@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nok_test/specializations/models/qualification.dart';
 import 'package:nok_test/testing/data/model/question.dart';
 import 'package:nok_test/testing/data/questions_repository.dart';
 
@@ -13,10 +14,10 @@ class QuestionListBloc extends Bloc<QuestionListEvent, QuestionListState> {
   QuestionListBloc(this._repository) : super(const QuestionListState.loading()) {
     on<QuestionListEvent>((event, emit) async {
       await event.when(
-        started: () async {
+        started: (qualification) async {
           emit(const QuestionListState.loading());
           try {
-            final questions = await _repository.getAllQuestions(topic: 'gip');
+            final questions = await _repository.getQuestions(qualification);
             if (questions == null) throw Exception("Received no questions");
             emit(QuestionListState.success(questions: questions));
           } catch (e) {

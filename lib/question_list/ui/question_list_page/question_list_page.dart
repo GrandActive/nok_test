@@ -5,6 +5,7 @@ import 'package:nok_test/common/widgets/no_connection_banner.dart';
 import 'package:nok_test/question_list/bloc/question_list_bloc/question_list_bloc.dart';
 import 'package:nok_test/question_list/ui/question_list_page/widgets/question_list_item.dart';
 import 'package:nok_test/question_list/ui/question_list_page/widgets/question_list_scrollbar.dart';
+import 'package:nok_test/specializations/bloc/qualification_select_bloc/qualification_select_bloc.dart';
 
 @RoutePage()
 class QuestionListPage extends StatelessWidget {
@@ -12,6 +13,8 @@ class QuestionListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final qualification = context.watch<QualificationSelectBloc>().state.selectedQualification!;
+
     return Scaffold(
       appBar: AppBar(
         leading: const AutoLeadingButton(),
@@ -26,7 +29,9 @@ class QuestionListPage extends StatelessWidget {
             failure: (message) => Center(
               child: NoConnectionBanner(
                 onRetry: () {
-                  context.read<QuestionListBloc>().add(QuestionListEvent.started());
+                  context
+                      .read<QuestionListBloc>()
+                      .add(QuestionListEvent.started(qualification: qualification));
                 },
               ),
             ),

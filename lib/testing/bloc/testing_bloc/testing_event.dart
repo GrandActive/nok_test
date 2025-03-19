@@ -2,7 +2,10 @@ part of 'testing_bloc.dart';
 
 @freezed
 class TestingEvent with _$TestingEvent {
-  const factory TestingEvent.started({required TestMode mode}) = _Started;
+  const factory TestingEvent.started({
+    required TestMode mode,
+    required Qualification qualification,
+  }) = _Started;
 
   const factory TestingEvent.selected({required int index}) = _Selected;
 
