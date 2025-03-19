@@ -10,6 +10,7 @@ class PopupSingleSelect extends StatelessWidget {
     required this.selectedIndex,
     this.placeholder = "",
     this.enabled = true,
+    this.loading = false,
   });
 
   final List<String> options;
@@ -17,6 +18,7 @@ class PopupSingleSelect extends StatelessWidget {
   final int? selectedIndex;
   final String placeholder;
   final bool enabled;
+  final bool loading;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class PopupSingleSelect extends StatelessWidget {
               if (result != null) onSelect(result);
             }
           : null,
+      loading: loading,
       child: selectedIndex == null
           ? Text(
               placeholder,

@@ -5,14 +5,16 @@ class PopupSelectButton extends StatelessWidget {
     super.key,
     required this.onTap,
     required this.child,
+    this.loading = false,
   });
 
   final VoidCallback? onTap;
   final Widget child;
+  final bool loading;
 
   @override
   Widget build(BuildContext context) {
-    final enabled = onTap != null;
+    final enabled = !loading && onTap != null;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -23,7 +25,7 @@ class PopupSelectButton extends StatelessWidget {
         ),
       ),
       child: InkWell(
-        onTap: onTap,
+        onTap: loading ? null : onTap,
         child: Container(
           constraints: const BoxConstraints(minHeight: 56),
           padding: const EdgeInsets.all(16),
@@ -32,10 +34,15 @@ class PopupSelectButton extends StatelessWidget {
             children: [
               Expanded(child: child),
               const SizedBox(width: 16),
-              Icon(
-                Icons.arrow_drop_down,
-                color: enabled ? null : Colors.grey,
-              )
+              loading
+                  ? CircularProgressIndicator(
+                      constraints: BoxConstraints.tight(Size.square(24)),
+                      strokeWidth: 2,
+                    )
+                  : Icon(
+                      Icons.arrow_drop_down,
+                      color: enabled ? null : Colors.grey,
+                    )
             ],
           ),
         ),
