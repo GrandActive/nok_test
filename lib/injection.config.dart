@@ -40,6 +40,14 @@ import 'package:nok_test/questions/sequence_question/sequence_question_bloc/sequ
     as _i876;
 import 'package:nok_test/questions/user_input_question/user_input_question_bloc/user_input_question_bloc.dart'
     as _i802;
+import 'package:nok_test/specializations/bloc/qualification_select_bloc/qualification_select_bloc.dart'
+    as _i926;
+import 'package:nok_test/specializations/bloc/specialization_select_bloc/specialization_select_bloc.dart'
+    as _i462;
+import 'package:nok_test/specializations/bloc/specializations_bloc/specializations_bloc.dart'
+    as _i399;
+import 'package:nok_test/specializations/specializations_repository.dart'
+    as _i985;
 import 'package:nok_test/testing/bloc/testing_bloc/testing_bloc.dart' as _i921;
 import 'package:nok_test/testing/data/firebase_data_source.dart' as _i490;
 import 'package:nok_test/testing/data/model/possible_answer.dart' as _i676;
@@ -67,6 +75,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i533.PremiumFirebaseDataSource());
     gh.factory<_i490.FirebaseDataSource>(() => _i490.FirebaseDataSource());
     gh.factory<_i580.Ticker>(() => const _i580.Ticker());
+    gh.factory<_i926.QualificationSelectBloc>(
+        () => _i926.QualificationSelectBloc());
+    gh.factory<_i462.SpecializationSelectBloc>(
+        () => _i462.SpecializationSelectBloc());
     gh.factory<_i627.AuthBloc>(
         () => _i627.AuthBloc(gh<_i760.AuthRepository>()));
     gh.factory<_i65.LogInBloc>(
@@ -80,6 +92,8 @@ extension GetItInjectableX on _i174.GetIt {
       _,
     ) =>
         _i816.SelectionQuestionBloc(correctAnswer: correctAnswer));
+    gh.factory<_i985.SpecializationsRepository>(
+        () => _i985.SpecializationsRepository(gh<_i490.FirebaseDataSource>()));
     gh.factoryParam<_i265.MatchingQuestionBloc, Map<int, List<int>?>, dynamic>((
       correctAnswer,
       _,
@@ -114,6 +128,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i424.GetRandomQuestionsForTest>(() =>
         _i424.GetRandomQuestionsForTest(
             repository: gh<_i773.QuestionsRepository>()));
+    gh.factory<_i399.SpecializationsBloc>(
+        () => _i399.SpecializationsBloc(gh<_i985.SpecializationsRepository>()));
     gh.factory<_i921.TestingBloc>(
         () => _i921.TestingBloc(gh<_i424.GetRandomQuestionsForTest>()));
     gh.factory<_i875.QuestionListBloc>(
