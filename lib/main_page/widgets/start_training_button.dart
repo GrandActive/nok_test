@@ -12,7 +12,6 @@ class StartTrainingButton extends StatelessWidget {
       onPressed: () => context.router.push(
         TestWrapperRoute(
           mode: TestMode.training,
-          children: const [TestingRoute()],
         ),
       ),
       style: const ButtonStyle(

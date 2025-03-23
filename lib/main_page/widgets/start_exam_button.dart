@@ -20,7 +20,6 @@ class StartExamButton extends StatelessWidget {
           ? () => context.router.push(
                 TestWrapperRoute(
                   mode: TestMode.exam,
-                  children: const [TestingRoute()],
                 ),
               )
           : null,

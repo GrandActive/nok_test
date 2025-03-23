@@ -38,7 +38,7 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               page: TestWrapperRoute.page,
               children: [
-                AutoRoute(page: TestingRoute.page),
+                AutoRoute(page: TestingRoute.page, initial: true),
                 AutoRoute(page: TestResultsRoute.page),
                 AutoRoute(page: QuestionReviewRoute.page),
               ],
