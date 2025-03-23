@@ -30,14 +30,14 @@ class MainActionButtons extends StatelessWidget {
             children: [
               AppOutlinedButton(
                 onPressed: buttonsEnabled
-                    ? () => context.router.push(TestIntroRoute(mode: TestMode.training))
+                    ? () => context.router.push(TestWrapperRoute(mode: TestMode.training))
                     : null,
                 child: const Text('Тренировка'),
               ),
               const SizedBox(width: 16),
               AppFilledButton(
                 onPressed: buttonsEnabled
-                    ? () => context.router.push(TestIntroRoute(mode: TestMode.exam))
+                    ? () => context.router.push(TestWrapperRoute(mode: TestMode.exam))
                     : null,
                 child: const Text("Экзамен"),
               ),

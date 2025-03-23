@@ -8,7 +8,6 @@ import 'package:nok_test/auth/ui/password_restoration_page/password_restoration_
 import 'package:nok_test/auth/ui/password_restoration_page/password_restoration_result_page.dart';
 import 'package:nok_test/auth/ui/registration_page/registration_page.dart';
 import 'package:nok_test/main_page/main_page.dart';
-import 'package:nok_test/main_page/test_intro_page.dart';
 import 'package:nok_test/payments/ui/payment_result_page.dart';
 import 'package:nok_test/premium/ui/premium_page/premium_page.dart';
 import 'package:nok_test/question_list/ui/question_list_page/question_list_page.dart';
@@ -36,7 +35,6 @@ class AppRouter extends RootStackRouter {
           initial: true,
           children: [
             AutoRoute(page: MainRoute.page, initial: true),
-            AutoRoute(page: TestIntroRoute.page),
             AutoRoute(
               page: TestWrapperRoute.page,
               children: [

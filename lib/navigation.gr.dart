@@ -362,52 +362,6 @@ class SpecializationWrapperRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [TestIntroPage]
-class TestIntroRoute extends PageRouteInfo<TestIntroRouteArgs> {
-  TestIntroRoute({
-    Key? key,
-    required TestMode mode,
-    List<PageRouteInfo>? children,
-  }) : super(
-          TestIntroRoute.name,
-          args: TestIntroRouteArgs(
-            key: key,
-            mode: mode,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'TestIntroRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      final args = data.argsAs<TestIntroRouteArgs>();
-      return TestIntroPage(
-        key: args.key,
-        mode: args.mode,
-      );
-    },
-  );
-}
-
-class TestIntroRouteArgs {
-  const TestIntroRouteArgs({
-    this.key,
-    required this.mode,
-  });
-
-  final Key? key;
-
-  final TestMode mode;
-
-  @override
-  String toString() {
-    return 'TestIntroRouteArgs{key: $key, mode: $mode}';
-  }
-}
-
-/// generated route for
 /// [TestResultsPage]
 class TestResultsRoute extends PageRouteInfo<void> {
   const TestResultsRoute({List<PageRouteInfo>? children})
