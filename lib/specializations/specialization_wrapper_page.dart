@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/injection.dart';
+import 'package:nok_test/specializations/bloc/qualification_premium_status_bloc/qualification_premium_status_bloc.dart';
 import 'package:nok_test/specializations/bloc/qualification_select_bloc/qualification_select_bloc.dart';
 import 'package:nok_test/specializations/bloc/specialization_select_bloc/specialization_select_bloc.dart';
 import 'package:nok_test/specializations/bloc/specializations_bloc/specializations_bloc.dart';
@@ -28,6 +29,9 @@ class SpecializationWrapperPage extends StatelessWidget implements AutoRouteWrap
         BlocProvider(
           create: (context) => getIt<QualificationSelectBloc>(),
         ),
+        BlocProvider(
+          create: (context) => getIt<QualificationPremiumStatusBloc>(),
+        )
       ],
       child: MultiBlocListener(
         listeners: [
@@ -53,6 +57,15 @@ class SpecializationWrapperPage extends StatelessWidget implements AutoRouteWrap
                       ));
                 },
               );
+            },
+          ),
+          BlocListener<QualificationSelectBloc, QualificationSelectState>(
+            listener: (context, state) {
+              final qualification = state.selectedQualification;
+              if (qualification == null) return;
+              context
+                  .read<QualificationPremiumStatusBloc>()
+                  .add(QualificationPremiumStatusEvent.requested(qualification: qualification));
             },
           ),
         ],

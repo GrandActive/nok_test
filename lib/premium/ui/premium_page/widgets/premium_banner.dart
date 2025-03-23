@@ -9,11 +9,13 @@ import 'premium_description_list_item.dart';
 class PremiumBanner extends StatelessWidget {
   const PremiumBanner({
     super.key,
+    required this.cost,
     this.withDescription = false,
     this.paid = false,
     this.disabled = false,
   });
 
+  final int cost;
   final bool withDescription;
   final bool paid;
   final bool disabled;
@@ -79,7 +81,7 @@ class PremiumBanner extends StatelessWidget {
                     ),
                     padding: const EdgeInsets.all(8),
                     child: Text(
-                      '299 руб.',
+                      '$cost руб.',
                       style: AppTextStyles.body1.copyWith(color: Colors.white),
                     ),
                   )

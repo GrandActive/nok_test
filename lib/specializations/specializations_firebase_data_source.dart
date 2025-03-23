@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:injectable/injectable.dart';
 import 'package:nok_test/common/firebase_data_source.dart';
 import 'package:nok_test/specializations/models/qualification.dart';
 import 'package:nok_test/specializations/models/specialization.dart';
 
+@injectable
 class SpecializationsFirebaseDataSource extends FirebaseDataSource {
   Future<List<Specialization>> getAllSpecializations() async {
     await checkVersion();
@@ -32,5 +34,14 @@ class SpecializationsFirebaseDataSource extends FirebaseDataSource {
         .toList();
 
     return deserializedSpecializations;
+  }
+
+  Future<bool> isQualificationPurchased(String userId, String qualificationId) async {
+    final dateEvent = await database.ref('userPurchases/$userId').once();
+
+    final userPurchases = dateEvent.snapshot.value as Map?;
+    if (userPurchases == null) return false;
+
+    return userPurchases.containsKey(qualificationId);
   }
 }

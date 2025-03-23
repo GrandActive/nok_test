@@ -8,14 +8,9 @@ import 'package:nok_test/navigation.dart';
 import 'package:nok_test/specializations/bloc/specializations_bloc/specializations_bloc.dart';
 
 @RoutePage()
-class MainPage extends StatefulWidget {
+class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

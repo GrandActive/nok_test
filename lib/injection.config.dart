@@ -40,6 +40,8 @@ import 'package:nok_test/questions/sequence_question/sequence_question_bloc/sequ
     as _i876;
 import 'package:nok_test/questions/user_input_question/user_input_question_bloc/user_input_question_bloc.dart'
     as _i802;
+import 'package:nok_test/specializations/bloc/qualification_premium_status_bloc/qualification_premium_status_bloc.dart'
+    as _i559;
 import 'package:nok_test/specializations/bloc/qualification_select_bloc/qualification_select_bloc.dart'
     as _i926;
 import 'package:nok_test/specializations/bloc/specialization_select_bloc/specialization_select_bloc.dart'
@@ -81,6 +83,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i926.QualificationSelectBloc());
     gh.factory<_i462.SpecializationSelectBloc>(
         () => _i462.SpecializationSelectBloc());
+    gh.factory<_i349.SpecializationsFirebaseDataSource>(
+        () => _i349.SpecializationsFirebaseDataSource());
     gh.factory<_i28.QuestionsFirebaseDataSource>(
         () => _i28.QuestionsFirebaseDataSource());
     gh.factory<_i773.QuestionsRepository>(() =>
@@ -103,9 +107,6 @@ extension GetItInjectableX on _i174.GetIt {
       _,
     ) =>
         _i265.MatchingQuestionBloc(correctAnswer: correctAnswer));
-    gh.factory<_i985.SpecializationsRepository>(() =>
-        _i985.SpecializationsRepository(
-            gh<_i349.SpecializationsFirebaseDataSource>()));
     gh.factory<_i604.PremiumRepository>(() => _i604.PremiumRepository(
           gh<_i760.AuthRepository>(),
           gh<_i533.PremiumFirebaseDataSource>(),
@@ -121,6 +122,11 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i280.PremiumBloc>(
         () => _i280.PremiumBloc(gh<_i604.PremiumRepository>()));
+    gh.factory<_i985.SpecializationsRepository>(
+        () => _i985.SpecializationsRepository(
+              gh<_i760.AuthRepository>(),
+              gh<_i349.SpecializationsFirebaseDataSource>(),
+            ));
     gh.factory<_i875.QuestionListBloc>(
         () => _i875.QuestionListBloc(gh<_i773.QuestionsRepository>()));
     gh.factoryParam<_i802.UserInputQuestionBloc, String?, dynamic>((
@@ -137,6 +143,9 @@ extension GetItInjectableX on _i174.GetIt {
             repository: gh<_i773.QuestionsRepository>()));
     gh.factory<_i399.SpecializationsBloc>(
         () => _i399.SpecializationsBloc(gh<_i985.SpecializationsRepository>()));
+    gh.factory<_i559.QualificationPremiumStatusBloc>(() =>
+        _i559.QualificationPremiumStatusBloc(
+            gh<_i985.SpecializationsRepository>()));
     gh.factory<_i921.TestingBloc>(
         () => _i921.TestingBloc(gh<_i424.GetRandomQuestionsForTest>()));
     gh.factory<_i757.PaymentDataBloc>(

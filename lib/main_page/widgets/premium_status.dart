@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nok_test/premium/bloc/premium_bloc.dart';
 import 'package:nok_test/premium/ui/premium_page/widgets/premium_banner.dart';
+import 'package:nok_test/specializations/bloc/qualification_premium_status_bloc/qualification_premium_status_bloc.dart';
 
 class PremiumStatus extends StatelessWidget {
   const PremiumStatus({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PremiumBloc, PremiumState>(
-      builder: (context, state) {
-        return state.maybeWhen(
-          disabled: () => const Column(
-            children: [
-              PremiumBanner(),
-              SizedBox(height: 40),
-            ],
-          ),
-          orElse: () => const SizedBox.shrink(),
+    final (qualification, isPurchased) = context.watch<QualificationPremiumStatusBloc>().state.when(
+          initial: () => (null, null),
+          success: (qualification, isPurchased) => (qualification, isPurchased),
+          loading: (qualification) => (qualification, null),
+          failure: (qualification, message) => (qualification, null),
         );
-      },
+
+    if (qualification == null || (isPurchased ?? true)) return const SizedBox.shrink();
+
+    return Column(
+      children: [
+        PremiumBanner(cost: qualification.cost),
+        SizedBox(height: 40),
+      ],
     );
   }
 }
