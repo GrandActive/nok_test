@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Qualification {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  int get cost => throw _privateConstructorUsedError;
 
   /// Create a copy of Qualification
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +33,7 @@ abstract class $QualificationCopyWith<$Res> {
           Qualification value, $Res Function(Qualification) then) =
       _$QualificationCopyWithImpl<$Res, Qualification>;
   @useResult
-  $Res call({String id, String name});
+  $Res call({String id, String name, int cost});
 }
 
 /// @nodoc
@@ -52,6 +53,7 @@ class _$QualificationCopyWithImpl<$Res, $Val extends Qualification>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? cost = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -62,6 +64,10 @@ class _$QualificationCopyWithImpl<$Res, $Val extends Qualification>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      cost: null == cost
+          ? _value.cost
+          : cost // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -74,7 +80,7 @@ abstract class _$$QualificationImplCopyWith<$Res>
       __$$QualificationImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name});
+  $Res call({String id, String name, int cost});
 }
 
 /// @nodoc
@@ -92,6 +98,7 @@ class __$$QualificationImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? cost = null,
   }) {
     return _then(_$QualificationImpl(
       id: null == id
@@ -102,6 +109,10 @@ class __$$QualificationImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      cost: null == cost
+          ? _value.cost
+          : cost // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -109,16 +120,19 @@ class __$$QualificationImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$QualificationImpl implements _Qualification {
-  const _$QualificationImpl({required this.id, required this.name});
+  const _$QualificationImpl(
+      {required this.id, required this.name, required this.cost});
 
   @override
   final String id;
   @override
   final String name;
+  @override
+  final int cost;
 
   @override
   String toString() {
-    return 'Qualification(id: $id, name: $name)';
+    return 'Qualification(id: $id, name: $name, cost: $cost)';
   }
 
   @override
@@ -127,11 +141,12 @@ class _$QualificationImpl implements _Qualification {
         (other.runtimeType == runtimeType &&
             other is _$QualificationImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.cost, cost) || other.cost == cost));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(runtimeType, id, name, cost);
 
   /// Create a copy of Qualification
   /// with the given fields replaced by the non-null parameter values.
@@ -145,12 +160,15 @@ class _$QualificationImpl implements _Qualification {
 abstract class _Qualification implements Qualification {
   const factory _Qualification(
       {required final String id,
-      required final String name}) = _$QualificationImpl;
+      required final String name,
+      required final int cost}) = _$QualificationImpl;
 
   @override
   String get id;
   @override
   String get name;
+  @override
+  int get cost;
 
   /// Create a copy of Qualification
   /// with the given fields replaced by the non-null parameter values.

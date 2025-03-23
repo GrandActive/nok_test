@@ -7,5 +7,6 @@ class Qualification with _$Qualification {
   const factory Qualification({
     required String id,
     required String name,
+    required int cost,
   }) = _Qualification;
 }
