@@ -5,7 +5,6 @@ import 'package:nok_test/auth/bloc/auth_bloc/auth_bloc.dart';
 import 'package:nok_test/firebase_options.dart';
 import 'package:nok_test/injection.dart';
 import 'package:nok_test/navigation.dart';
-import 'package:nok_test/premium/bloc/premium_bloc.dart';
 import 'package:nok_test/styles/theme.dart';
 
 void main() async {
@@ -27,27 +26,11 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (context) => getIt()..add(const AuthEvent.started()),
         ),
-        BlocProvider<PremiumBloc>(
-          create: (context) => getIt(),
-        ),
       ],
-      child: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          final premiumBloc = context.read<PremiumBloc>();
-          state.whenOrNull(
-            authenticated: (user) {
-              premiumBloc.add(const PremiumEvent.statusRequested());
-            },
-            notAuthenticated: () {
-              premiumBloc.add(const PremiumEvent.reset());
-            },
-          );
-        },
-        child: MaterialApp.router(
-          routerConfig: _appRouter.config(),
-          title: 'Тест НОК',
-          theme: appTheme,
-        ),
+      child: MaterialApp.router(
+        routerConfig: _appRouter.config(),
+        title: 'Тест НОК',
+        theme: appTheme,
       ),
     );
   }

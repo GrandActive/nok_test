@@ -26,10 +26,6 @@ import 'package:nok_test/payments/payment_data_bloc/payment_data_bloc.dart'
     as _i757;
 import 'package:nok_test/payments/payment_status_bloc/payment_status_bloc.dart'
     as _i797;
-import 'package:nok_test/premium/bloc/premium_bloc.dart' as _i280;
-import 'package:nok_test/premium/data/premium_firebase_data_source.dart'
-    as _i533;
-import 'package:nok_test/premium/data/premium_repository.dart' as _i604;
 import 'package:nok_test/qualification_shop/bloc/qualification_premium_status_bloc/qualification_premium_status_bloc.dart'
     as _i1063;
 import 'package:nok_test/qualification_shop/bloc/user_purchases_bloc/user_purchases_bloc.dart'
@@ -82,8 +78,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i760.AuthRepository>(() => _i760.AuthRepository());
     gh.factory<_i361.Dio>(() => injectionModule.dio);
     gh.factory<_i888.PaymentsApi>(() => injectionModule.paymentsApi);
-    gh.factory<_i533.PremiumFirebaseDataSource>(
-        () => _i533.PremiumFirebaseDataSource());
     gh.factory<_i926.QualificationSelectBloc>(
         () => _i926.QualificationSelectBloc());
     gh.factory<_i462.SpecializationSelectBloc>(
@@ -121,10 +115,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i985.SpecializationsRepository>(() =>
         _i985.SpecializationsRepository(
             gh<_i349.SpecializationsFirebaseDataSource>()));
-    gh.factory<_i604.PremiumRepository>(() => _i604.PremiumRepository(
-          gh<_i760.AuthRepository>(),
-          gh<_i533.PremiumFirebaseDataSource>(),
-        ));
     gh.factoryParam<_i876.SequenceQuestionBloc, List<_i676.PossibleAnswer>,
         List<_i676.PossibleAnswer>>((
       defaultAnswer,
@@ -134,8 +124,6 @@ extension GetItInjectableX on _i174.GetIt {
           defaultAnswer: defaultAnswer,
           correctAnswer: correctAnswer,
         ));
-    gh.factory<_i280.PremiumBloc>(
-        () => _i280.PremiumBloc(gh<_i604.PremiumRepository>()));
     gh.factory<_i875.QuestionListBloc>(
         () => _i875.QuestionListBloc(gh<_i773.QuestionsRepository>()));
     gh.factoryParam<_i802.UserInputQuestionBloc, String?, dynamic>((

@@ -190,60 +190,6 @@ class PaymentResultRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [PremiumPage]
-class PremiumRoute extends PageRouteInfo<PremiumRouteArgs> {
-  PremiumRoute({
-    Key? key,
-    Specialization? specialization,
-    Qualification? qualification,
-    List<PageRouteInfo>? children,
-  }) : super(
-          PremiumRoute.name,
-          args: PremiumRouteArgs(
-            key: key,
-            specialization: specialization,
-            qualification: qualification,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'PremiumRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      final args =
-          data.argsAs<PremiumRouteArgs>(orElse: () => const PremiumRouteArgs());
-      return WrappedRoute(
-          child: PremiumPage(
-        key: args.key,
-        specialization: args.specialization,
-        qualification: args.qualification,
-      ));
-    },
-  );
-}
-
-class PremiumRouteArgs {
-  const PremiumRouteArgs({
-    this.key,
-    this.specialization,
-    this.qualification,
-  });
-
-  final Key? key;
-
-  final Specialization? specialization;
-
-  final Qualification? qualification;
-
-  @override
-  String toString() {
-    return 'PremiumRouteArgs{key: $key, specialization: $specialization, qualification: $qualification}';
-  }
-}
-
-/// generated route for
 /// [QualificationShopListPage]
 class QualificationShopListRoute extends PageRouteInfo<void> {
   const QualificationShopListRoute({List<PageRouteInfo>? children})
