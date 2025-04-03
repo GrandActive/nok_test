@@ -35,13 +35,4 @@ class SpecializationsFirebaseDataSource extends FirebaseDataSource {
 
     return deserializedSpecializations;
   }
-
-  Future<bool> isQualificationPurchased(String userId, String qualificationId) async {
-    final dateEvent = await database.ref('userPurchases/$userId').once();
-
-    final userPurchases = dateEvent.snapshot.value as Map?;
-    if (userPurchases == null) return false;
-
-    return userPurchases.containsKey(qualificationId);
-  }
 }

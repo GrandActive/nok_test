@@ -16,4 +16,8 @@ class AuthState with _$AuthState {
         authenticated: (_) => true,
         orElse: () => false,
       );
+
+  User? get user => whenOrNull(
+        authenticated: (user) => user,
+      );
 }

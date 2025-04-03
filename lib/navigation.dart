@@ -10,10 +10,15 @@ import 'package:nok_test/auth/ui/registration_page/registration_page.dart';
 import 'package:nok_test/main_page/main_page.dart';
 import 'package:nok_test/payments/ui/payment_result_page.dart';
 import 'package:nok_test/premium/ui/premium_page/premium_page.dart';
+import 'package:nok_test/qualification_shop/ui/qualification_shop_list_page.dart';
+import 'package:nok_test/qualification_shop/ui/qualification_shop_page.dart';
+import 'package:nok_test/qualification_shop/ui/user_purchases_page.dart';
 import 'package:nok_test/question_list/ui/question_list_page/question_list_page.dart';
 import 'package:nok_test/question_list/ui/question_list_wrapper_page.dart';
 import 'package:nok_test/question_list/ui/question_viewer_page/question_viewer_page.dart';
 import 'package:nok_test/questions/base/ui/question_review_page.dart';
+import 'package:nok_test/specializations/models/qualification.dart';
+import 'package:nok_test/specializations/models/specialization.dart';
 import 'package:nok_test/specializations/specialization_wrapper_page.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 import 'package:nok_test/testing/domain/model/test_question.dart';
@@ -50,9 +55,12 @@ class AppRouter extends RootStackRouter {
                 AutoRoute(page: QuestionViewerRoute.page),
               ],
             ),
+            AutoRoute(page: QualificationShopListRoute.page),
+            AutoRoute(page: UserPurchasesRoute.page),
+            AutoRoute(page: QualificationShopRoute.page),
+            AutoRoute(page: AboutRoute.page),
           ],
         ),
-        AutoRoute(page: AboutRoute.page),
         AutoRoute(page: PremiumRoute.page),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(

@@ -191,10 +191,19 @@ class PaymentResultRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [PremiumPage]
-class PremiumRoute extends PageRouteInfo<void> {
-  const PremiumRoute({List<PageRouteInfo>? children})
-      : super(
+class PremiumRoute extends PageRouteInfo<PremiumRouteArgs> {
+  PremiumRoute({
+    Key? key,
+    Specialization? specialization,
+    Qualification? qualification,
+    List<PageRouteInfo>? children,
+  }) : super(
           PremiumRoute.name,
+          args: PremiumRouteArgs(
+            key: key,
+            specialization: specialization,
+            qualification: qualification,
+          ),
           initialChildren: children,
         );
 
@@ -203,9 +212,112 @@ class PremiumRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return WrappedRoute(child: const PremiumPage());
+      final args =
+          data.argsAs<PremiumRouteArgs>(orElse: () => const PremiumRouteArgs());
+      return WrappedRoute(
+          child: PremiumPage(
+        key: args.key,
+        specialization: args.specialization,
+        qualification: args.qualification,
+      ));
     },
   );
+}
+
+class PremiumRouteArgs {
+  const PremiumRouteArgs({
+    this.key,
+    this.specialization,
+    this.qualification,
+  });
+
+  final Key? key;
+
+  final Specialization? specialization;
+
+  final Qualification? qualification;
+
+  @override
+  String toString() {
+    return 'PremiumRouteArgs{key: $key, specialization: $specialization, qualification: $qualification}';
+  }
+}
+
+/// generated route for
+/// [QualificationShopListPage]
+class QualificationShopListRoute extends PageRouteInfo<void> {
+  const QualificationShopListRoute({List<PageRouteInfo>? children})
+      : super(
+          QualificationShopListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QualificationShopListRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const QualificationShopListPage();
+    },
+  );
+}
+
+/// generated route for
+/// [QualificationShopPage]
+class QualificationShopRoute extends PageRouteInfo<QualificationShopRouteArgs> {
+  QualificationShopRoute({
+    Key? key,
+    required Specialization specialization,
+    required Qualification qualification,
+    bool bought = false,
+    List<PageRouteInfo>? children,
+  }) : super(
+          QualificationShopRoute.name,
+          args: QualificationShopRouteArgs(
+            key: key,
+            specialization: specialization,
+            qualification: qualification,
+            bought: bought,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'QualificationShopRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<QualificationShopRouteArgs>();
+      return QualificationShopPage(
+        key: args.key,
+        specialization: args.specialization,
+        qualification: args.qualification,
+        bought: args.bought,
+      );
+    },
+  );
+}
+
+class QualificationShopRouteArgs {
+  const QualificationShopRouteArgs({
+    this.key,
+    required this.specialization,
+    required this.qualification,
+    this.bought = false,
+  });
+
+  final Key? key;
+
+  final Specialization specialization;
+
+  final Qualification qualification;
+
+  final bool bought;
+
+  @override
+  String toString() {
+    return 'QualificationShopRouteArgs{key: $key, specialization: $specialization, qualification: $qualification, bought: $bought}';
+  }
 }
 
 /// generated route for
@@ -442,6 +554,25 @@ class TestingRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return WrappedRoute(child: const TestingPage());
+    },
+  );
+}
+
+/// generated route for
+/// [UserPurchasesPage]
+class UserPurchasesRoute extends PageRouteInfo<void> {
+  const UserPurchasesRoute({List<PageRouteInfo>? children})
+      : super(
+          UserPurchasesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserPurchasesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const UserPurchasesPage());
     },
   );
 }

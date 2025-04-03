@@ -5,7 +5,7 @@ import 'package:nok_test/common/widgets/app_filled_button.dart';
 import 'package:nok_test/common/widgets/app_outlined_button.dart';
 import 'package:nok_test/main_page/widgets/start_exam_button.dart';
 import 'package:nok_test/navigation.dart';
-import 'package:nok_test/specializations/bloc/qualification_premium_status_bloc/qualification_premium_status_bloc.dart';
+import 'package:nok_test/qualification_shop/bloc/qualification_premium_status_bloc/qualification_premium_status_bloc.dart';
 import 'package:nok_test/specializations/bloc/qualification_select_bloc/qualification_select_bloc.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 

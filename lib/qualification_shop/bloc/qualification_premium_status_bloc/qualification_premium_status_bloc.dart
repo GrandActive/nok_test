@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nok_test/qualification_shop/data/qualification_shop_repository.dart';
 import 'package:nok_test/specializations/models/qualification.dart';
-import 'package:nok_test/specializations/specializations_repository.dart';
 
 part 'qualification_premium_status_bloc.freezed.dart';
 part 'qualification_premium_status_event.dart';
@@ -15,10 +15,10 @@ class QualificationPremiumStatusBloc
       : super(const QualificationPremiumStatusState.initial()) {
     on<QualificationPremiumStatusEvent>((event, emit) async {
       await event.when(
-        requested: (qualification) async {
+        requested: (userId, qualification) async {
           emit(QualificationPremiumStatusState.loading(qualification: qualification));
           try {
-            final isPurchased = await _repository.isQualificationPurchased(qualification.id);
+            final isPurchased = await _repository.isQualificationPurchased(userId, qualification);
             emit(QualificationPremiumStatusState.success(
               qualification: qualification,
               isPurchased: isPurchased,
@@ -34,5 +34,5 @@ class QualificationPremiumStatusBloc
     });
   }
 
-  final SpecializationsRepository _repository;
+  final QualificationShopRepository _repository;
 }
