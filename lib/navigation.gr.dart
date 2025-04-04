@@ -203,7 +203,7 @@ class QualificationShopListRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const QualificationShopListPage();
+      return WrappedRoute(child: const QualificationShopListPage());
     },
   );
 }
@@ -500,25 +500,6 @@ class TestingRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return WrappedRoute(child: const TestingPage());
-    },
-  );
-}
-
-/// generated route for
-/// [UserPurchasesPage]
-class UserPurchasesRoute extends PageRouteInfo<void> {
-  const UserPurchasesRoute({List<PageRouteInfo>? children})
-      : super(
-          UserPurchasesRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UserPurchasesRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return WrappedRoute(child: const UserPurchasesPage());
     },
   );
 }

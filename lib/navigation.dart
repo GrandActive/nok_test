@@ -11,7 +11,6 @@ import 'package:nok_test/main_page/main_page.dart';
 import 'package:nok_test/payments/ui/payment_result_page.dart';
 import 'package:nok_test/qualification_shop/ui/qualification_shop_list_page.dart';
 import 'package:nok_test/qualification_shop/ui/qualification_shop_page.dart';
-import 'package:nok_test/qualification_shop/ui/user_purchases_page.dart';
 import 'package:nok_test/question_list/ui/question_list_page/question_list_page.dart';
 import 'package:nok_test/question_list/ui/question_list_wrapper_page.dart';
 import 'package:nok_test/question_list/ui/question_viewer_page/question_viewer_page.dart';
@@ -55,7 +54,6 @@ class AppRouter extends RootStackRouter {
               ],
             ),
             AutoRoute(page: QualificationShopListRoute.page),
-            AutoRoute(page: UserPurchasesRoute.page),
             AutoRoute(page: QualificationShopRoute.page),
             AutoRoute(page: AboutRoute.page),
           ],

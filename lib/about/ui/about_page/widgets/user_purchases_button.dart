@@ -10,7 +10,7 @@ class UserPurchasesButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BorderlessButton(
       onTap: () {
-        context.router.push(UserPurchasesRoute());
+        context.router.push(QualificationShopListRoute());
       },
       text: 'Мои покупки',
       icon: Icons.shopping_bag_outlined,
