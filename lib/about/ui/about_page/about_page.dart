@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/auth/bloc/auth_bloc/auth_bloc.dart';
+import 'package:nok_test/navigation.dart';
 import 'package:nok_test/qualification_shop/bloc/qualification_premium_status_bloc/qualification_premium_status_bloc.dart';
 import 'package:nok_test/qualification_shop/ui/premium_banner.dart';
 import 'package:nok_test/specializations/bloc/specializations_bloc/specializations_bloc.dart';
@@ -52,6 +53,7 @@ class AboutPage extends StatelessWidget {
                 child: PremiumBanner(
                   cost: minQualificationCost,
                   costAsLowerLimit: !allCostsEqual,
+                  onTap: () => context.router.push(QualificationShopListRoute()),
                 ),
               ),
               SizedBox(height: 40),
