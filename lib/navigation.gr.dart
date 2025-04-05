@@ -215,7 +215,7 @@ class QualificationShopRoute extends PageRouteInfo<QualificationShopRouteArgs> {
     Key? key,
     required Specialization specialization,
     required Qualification qualification,
-    bool bought = false,
+    required bool bought,
     List<PageRouteInfo>? children,
   }) : super(
           QualificationShopRoute.name,
@@ -249,7 +249,7 @@ class QualificationShopRouteArgs {
     this.key,
     required this.specialization,
     required this.qualification,
-    this.bought = false,
+    required this.bought,
   });
 
   final Key? key;

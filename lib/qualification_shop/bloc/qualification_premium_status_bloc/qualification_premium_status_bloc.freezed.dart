@@ -16,22 +16,22 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$QualificationPremiumStatusEvent {
-  String get userId => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
   Qualification get qualification => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId, Qualification qualification)
+    required TResult Function(String? userId, Qualification qualification)
         requested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId, Qualification qualification)? requested,
+    TResult? Function(String? userId, Qualification qualification)? requested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId, Qualification qualification)? requested,
+    TResult Function(String? userId, Qualification qualification)? requested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,7 +67,7 @@ abstract class $QualificationPremiumStatusEventCopyWith<$Res> {
       _$QualificationPremiumStatusEventCopyWithImpl<$Res,
           QualificationPremiumStatusEvent>;
   @useResult
-  $Res call({String userId, Qualification qualification});
+  $Res call({String? userId, Qualification qualification});
 
   $QualificationCopyWith<$Res> get qualification;
 }
@@ -88,14 +88,14 @@ class _$QualificationPremiumStatusEventCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? userId = freezed,
     Object? qualification = null,
   }) {
     return _then(_value.copyWith(
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       qualification: null == qualification
           ? _value.qualification
           : qualification // ignore: cast_nullable_to_non_nullable
@@ -122,7 +122,7 @@ abstract class _$$RequestedImplCopyWith<$Res>
       __$$RequestedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, Qualification qualification});
+  $Res call({String? userId, Qualification qualification});
 
   @override
   $QualificationCopyWith<$Res> get qualification;
@@ -141,14 +141,14 @@ class __$$RequestedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? userId = freezed,
     Object? qualification = null,
   }) {
     return _then(_$RequestedImpl(
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       qualification: null == qualification
           ? _value.qualification
           : qualification // ignore: cast_nullable_to_non_nullable
@@ -163,7 +163,7 @@ class _$RequestedImpl implements _Requested {
   const _$RequestedImpl({required this.userId, required this.qualification});
 
   @override
-  final String userId;
+  final String? userId;
   @override
   final Qualification qualification;
 
@@ -196,7 +196,7 @@ class _$RequestedImpl implements _Requested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId, Qualification qualification)
+    required TResult Function(String? userId, Qualification qualification)
         requested,
   }) {
     return requested(userId, qualification);
@@ -205,7 +205,7 @@ class _$RequestedImpl implements _Requested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId, Qualification qualification)? requested,
+    TResult? Function(String? userId, Qualification qualification)? requested,
   }) {
     return requested?.call(userId, qualification);
   }
@@ -213,7 +213,7 @@ class _$RequestedImpl implements _Requested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId, Qualification qualification)? requested,
+    TResult Function(String? userId, Qualification qualification)? requested,
     required TResult orElse(),
   }) {
     if (requested != null) {
@@ -253,11 +253,11 @@ class _$RequestedImpl implements _Requested {
 
 abstract class _Requested implements QualificationPremiumStatusEvent {
   const factory _Requested(
-      {required final String userId,
+      {required final String? userId,
       required final Qualification qualification}) = _$RequestedImpl;
 
   @override
-  String get userId;
+  String? get userId;
   @override
   Qualification get qualification;
 

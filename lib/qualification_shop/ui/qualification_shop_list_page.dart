@@ -16,12 +16,12 @@ class QualificationShopListPage extends StatelessWidget implements AutoRouteWrap
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    final user = context.watch<AuthBloc>().state.user!;
+    final user = context.watch<AuthBloc>().state.user;
 
     return BlocProvider(
       create: (context) => getIt<UserPurchasesBloc>()
         ..add(UserPurchasesEvent.requested(
-          userId: user.uid,
+          userId: user?.uid,
         )),
       child: this,
     );
@@ -29,7 +29,7 @@ class QualificationShopListPage extends StatelessWidget implements AutoRouteWrap
 
   @override
   Widget build(BuildContext context) {
-    final user = context.watch<AuthBloc>().state.user!;
+    final user = context.watch<AuthBloc>().state.user;
 
     final userPurchasedQualificationIds = context.watch<UserPurchasesBloc>().state.maybeWhen(
           success: (qualificationIds) => qualificationIds,
@@ -86,7 +86,7 @@ class QualificationShopListPage extends StatelessWidget implements AutoRouteWrap
                                 onPressed: () {
                                   context
                                       .read<UserPurchasesBloc>()
-                                      .add(UserPurchasesEvent.requested(userId: user.uid));
+                                      .add(UserPurchasesEvent.requested(userId: user?.uid));
                                 },
                                 child: Text('Повторить'),
                               ),

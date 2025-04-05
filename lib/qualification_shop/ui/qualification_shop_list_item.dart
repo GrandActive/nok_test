@@ -59,6 +59,7 @@ class QualificationShopListItem extends StatelessWidget {
                   context.router.push(QualificationShopRoute(
                     specialization: specialization,
                     qualification: qualification,
+                    bought: bought,
                   ));
                 },
                 child: Text('Подробнее'),

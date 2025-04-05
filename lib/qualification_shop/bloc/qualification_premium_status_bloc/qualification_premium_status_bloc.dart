@@ -17,6 +17,13 @@ class QualificationPremiumStatusBloc
       await event.when(
         requested: (userId, qualification) async {
           emit(QualificationPremiumStatusState.loading(qualification: qualification));
+          if (userId == null) {
+            emit(QualificationPremiumStatusState.success(
+              qualification: qualification,
+              isPurchased: false,
+            ));
+            return;
+          }
           try {
             final isPurchased = await _repository.isQualificationPurchased(userId, qualification);
             emit(QualificationPremiumStatusState.success(

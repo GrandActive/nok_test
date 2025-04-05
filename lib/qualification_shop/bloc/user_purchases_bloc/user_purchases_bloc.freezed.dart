@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserPurchasesEvent {
-  String get userId => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) requested,
+    required TResult Function(String? userId) requested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? requested,
+    TResult? Function(String? userId)? requested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? requested,
+    TResult Function(String? userId)? requested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +63,7 @@ abstract class $UserPurchasesEventCopyWith<$Res> {
           UserPurchasesEvent value, $Res Function(UserPurchasesEvent) then) =
       _$UserPurchasesEventCopyWithImpl<$Res, UserPurchasesEvent>;
   @useResult
-  $Res call({String userId});
+  $Res call({String? userId});
 }
 
 /// @nodoc
@@ -81,13 +81,13 @@ class _$UserPurchasesEventCopyWithImpl<$Res, $Val extends UserPurchasesEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? userId = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -100,7 +100,7 @@ abstract class _$$RequestedImplCopyWith<$Res>
       __$$RequestedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId});
+  $Res call({String? userId});
 }
 
 /// @nodoc
@@ -116,13 +116,13 @@ class __$$RequestedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? userId = freezed,
   }) {
     return _then(_$RequestedImpl(
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -133,7 +133,7 @@ class _$RequestedImpl implements _Requested {
   const _$RequestedImpl({required this.userId});
 
   @override
-  final String userId;
+  final String? userId;
 
   @override
   String toString() {
@@ -162,7 +162,7 @@ class _$RequestedImpl implements _Requested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String userId) requested,
+    required TResult Function(String? userId) requested,
   }) {
     return requested(userId);
   }
@@ -170,7 +170,7 @@ class _$RequestedImpl implements _Requested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? requested,
+    TResult? Function(String? userId)? requested,
   }) {
     return requested?.call(userId);
   }
@@ -178,7 +178,7 @@ class _$RequestedImpl implements _Requested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? requested,
+    TResult Function(String? userId)? requested,
     required TResult orElse(),
   }) {
     if (requested != null) {
@@ -217,10 +217,10 @@ class _$RequestedImpl implements _Requested {
 }
 
 abstract class _Requested implements UserPurchasesEvent {
-  const factory _Requested({required final String userId}) = _$RequestedImpl;
+  const factory _Requested({required final String? userId}) = _$RequestedImpl;
 
   @override
-  String get userId;
+  String? get userId;
 
   /// Create a copy of UserPurchasesEvent
   /// with the given fields replaced by the non-null parameter values.

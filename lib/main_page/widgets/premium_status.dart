@@ -31,6 +31,7 @@ class PremiumStatus extends StatelessWidget {
           onTap: () => context.router.push(QualificationShopRoute(
             specialization: specialization,
             qualification: qualification,
+            bought: false,
           )),
         ),
         SizedBox(height: 40),

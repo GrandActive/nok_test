@@ -9,7 +9,6 @@ import 'package:nok_test/qualification_shop/ui/premium_description_list_item.dar
 import 'package:nok_test/specializations/models/qualification.dart';
 import 'package:nok_test/specializations/models/specialization.dart';
 import 'package:nok_test/styles/app_text_styles.dart';
-import 'package:nok_test/styles/colors.dart';
 
 @RoutePage()
 class QualificationShopPage extends StatelessWidget {
@@ -17,7 +16,7 @@ class QualificationShopPage extends StatelessWidget {
     super.key,
     required this.specialization,
     required this.qualification,
-    this.bought = false,
+    required this.bought,
   });
 
   final Specialization specialization;
@@ -33,72 +32,58 @@ class QualificationShopPage extends StatelessWidget {
         leading: AutoLeadingButton(),
         title: Text('Платная версия'),
       ),
-      body: ListView(
+      body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-        children: [
-          Text('Профессиональный стандарт:', style: AppTextStyles.title2),
-          Text(specialization.name, style: AppTextStyles.body1),
-          SizedBox(height: 16),
-          Text('Квалификация:', style: AppTextStyles.title2),
-          Text(qualification.name, style: AppTextStyles.body1),
-          SizedBox(height: 24),
-          const Text(
-            'Платная версия включает в себя:',
-            style: AppTextStyles.body1,
-          ),
-          const SizedBox(height: 16),
-          const PremiumDescriptionListItem(
-            text: 'просмотр правильных ответов по завершению экзаменационного теста',
-          ),
-          const SizedBox(height: 16),
-          const PremiumDescriptionListItem(
-            text: 'тренировочный режим тестирования, '
-                'в котором результат ответа будет отображен сразу после ввода ответа',
-          ),
-          const SizedBox(height: 16),
-          const PremiumDescriptionListItem(
-            text: 'доступ к списку всех вопросов, '
-                'вы сможете просмотреть все вопросы по порядку с правильными ответами',
-          ),
-          SizedBox(height: 24),
-          Row(
-            children: [
-              Text('Цена', style: AppTextStyles.body1),
-              SizedBox(width: 8),
-              Text(
-                "${qualification.cost} руб.",
-                style: AppTextStyles.body1.copyWith(color: primaryColor),
-              ),
-            ],
-          ),
-          if (isAuthenticated) ...[
-            const SizedBox(height: 24),
-            const PaymentSection(),
-          ] else ...[
-            const SizedBox(height: 24),
-            const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Профессиональный стандарт:', style: AppTextStyles.title2),
+            Text(specialization.name, style: AppTextStyles.body1),
+            SizedBox(height: 16),
+            Text('Квалификация:', style: AppTextStyles.title2),
+            Text(qualification.name, style: AppTextStyles.body1),
+            SizedBox(height: 24),
+            const Text(
+              'Платная версия включает в себя:',
+              style: AppTextStyles.body1,
+            ),
+            const SizedBox(height: 16),
+            const PremiumDescriptionListItem(
+              text: 'просмотр правильных ответов по завершению экзаменационного теста',
+            ),
+            const SizedBox(height: 16),
+            const PremiumDescriptionListItem(
+              text: 'тренировочный режим тестирования, '
+                  'в котором результат ответа будет отображен сразу после ввода ответа',
+            ),
+            const SizedBox(height: 16),
+            const PremiumDescriptionListItem(
+              text: 'доступ к списку всех вопросов, '
+                  'вы сможете просмотреть все вопросы по порядку с правильными ответами',
+            ),
+            if (!bought)
+              if (isAuthenticated) ...[
+                const SizedBox(height: 24),
+                PaymentSection(qualification: qualification),
+              ] else ...[
+                const SizedBox(height: 16),
                 Text(
-                  'Для оплаты необходимо войти в аккаунт',
-                  style: AppTextStyles.body1,
+                  'Платная версия привязывается к вашему аккаунту. Для ее использования вам нужно авторизоваться.',
+                  style: AppTextStyles.body2.copyWith(color: Color(0xFF6D6D6D)),
                 ),
-                SizedBox(height: 8),
-                Text(
-                  'Если вы уже покупали платную версию, то войдите в аккаунт, чтобы её активировать.',
-                  style: AppTextStyles.body1,
+                const SizedBox(height: 24),
+                Align(
+                  alignment: Alignment.center,
+                  child: AppFilledButton(
+                    onPressed: () {
+                      context.router.push(const AuthRoute());
+                    },
+                    child: const Text('Войти в аккаунт'),
+                  ),
                 ),
               ],
-            ),
-            const SizedBox(height: 24),
-            AppFilledButton(
-              onPressed: () {
-                context.router.push(const AuthRoute());
-              },
-              child: const Text('Войти в аккаунт'),
-            ),
-          ]
-        ],
+          ],
+        ),
       ),
     );
   }

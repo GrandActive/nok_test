@@ -14,6 +14,10 @@ class UserPurchasesBloc extends Bloc<UserPurchasesEvent, UserPurchasesState> {
       await event.when(
         requested: (userId) async {
           emit(UserPurchasesState.loading());
+          if (userId == null) {
+            emit(UserPurchasesState.success(qualificationIds: []));
+            return;
+          }
           try {
             final qualificationIds = await _repository.getUserPurchasedQualificationIds(userId);
             emit(UserPurchasesState.success(qualificationIds: qualificationIds));
