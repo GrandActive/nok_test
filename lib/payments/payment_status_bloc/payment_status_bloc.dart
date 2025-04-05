@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:nok_test/payments/data/i_payments_repository.dart';
 import 'package:nok_test/payments/data/models/order_status.dart';
+import 'package:nok_test/payments/data/payments_repository.dart';
 
 part 'payment_status_bloc.freezed.dart';
 part 'payment_status_event.dart';
@@ -54,5 +54,5 @@ class PaymentStatusBloc extends Bloc<PaymentStatusEvent, PaymentStatusState> {
     });
   }
 
-  final IPaymentsRepository _repository;
+  final PaymentsRepository _repository;
 }

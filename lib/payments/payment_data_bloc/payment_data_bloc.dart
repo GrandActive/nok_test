@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:nok_test/payments/data/i_payments_repository.dart';
 import 'package:nok_test/payments/data/models/payment_data.dart';
+import 'package:nok_test/payments/data/payments_repository.dart';
 
 part 'payment_data_bloc.freezed.dart';
 part 'payment_data_event.dart';
@@ -30,5 +30,5 @@ class PaymentDataBloc extends Bloc<PaymentDataEvent, PaymentDataState> {
     });
   }
 
-  final IPaymentsRepository _repository;
+  final PaymentsRepository _repository;
 }

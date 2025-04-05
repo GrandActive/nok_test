@@ -1,8 +1,8 @@
-import 'package:nok_test/payments/data/i_payments_repository.dart';
 import 'package:nok_test/payments/data/models/order_status.dart';
 import 'package:nok_test/payments/data/models/payment_data.dart';
+import 'package:nok_test/payments/data/payments_repository.dart';
 
-class TestPaymentsRepository implements IPaymentsRepository {
+class TestPaymentsRepository implements PaymentsRepository {
   OrderStatus _status = OrderStatus.noOrder;
 
   void setPaymentStatus(OrderStatus status) {
