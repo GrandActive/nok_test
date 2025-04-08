@@ -24,16 +24,17 @@ class _PaymentsApi implements PaymentsApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<PaymentData> getPaymentData(Map<String, dynamic> userTokenJson) async {
+  Future<PaymentData> getPaymentData(GetPaymentDataBody body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(userTokenJson);
+    final _headers = <String, dynamic>{r'Content-Type': 'application/json'};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = body;
     final _options = _setStreamType<PaymentData>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/json',
     )
         .compose(
           _dio.options,
@@ -58,15 +59,18 @@ class _PaymentsApi implements PaymentsApi {
   }
 
   @override
-  Future<OrderStatusApiResponse> getPaymentStatus(String userToken) async {
+  Future<OrderStatusApiResponse> getPaymentStatus(
+      GetPaymentStatusBody body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = userToken;
+    final _headers = <String, dynamic>{r'Content-Type': 'application/json'};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = body;
     final _options = _setStreamType<OrderStatusApiResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'application/json',
     )
         .compose(
           _dio.options,

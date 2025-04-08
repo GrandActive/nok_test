@@ -13,9 +13,9 @@ class PaymentStatusBloc extends Bloc<PaymentStatusEvent, PaymentStatusState> {
   PaymentStatusBloc(this._repository) : super(const PaymentStatusState.noCurrentPayment()) {
     on<PaymentStatusEvent>((event, emit) async {
       await event.when(
-        requested: () async {
+        requested: (qualificationId) async {
           try {
-            final status = await _repository.getPaymentStatus();
+            final status = await _repository.getPaymentStatus(qualificationId);
             switch (status) {
               case OrderStatus.paid:
                 emit(const PaymentStatusState.paid());
@@ -34,7 +34,7 @@ class PaymentStatusBloc extends Bloc<PaymentStatusEvent, PaymentStatusState> {
                 emit(PaymentStatusState.waiting(time: time));
                 await Future.delayed(
                   const Duration(seconds: 1),
-                  () => add(const PaymentStatusEvent.requested()),
+                  () => add(PaymentStatusEvent.requested(qualificationId: qualificationId)),
                 );
                 break;
               case OrderStatus.cancelled:

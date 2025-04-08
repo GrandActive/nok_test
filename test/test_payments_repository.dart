@@ -1,6 +1,7 @@
 import 'package:nok_test/payments/data/models/order_status.dart';
 import 'package:nok_test/payments/data/models/payment_data.dart';
 import 'package:nok_test/payments/data/payments_repository.dart';
+import 'package:nok_test/specializations/models/qualification.dart';
 
 class TestPaymentsRepository implements PaymentsRepository {
   OrderStatus _status = OrderStatus.noOrder;
@@ -10,19 +11,16 @@ class TestPaymentsRepository implements PaymentsRepository {
   }
 
   @override
-  Future<OrderStatus> getPaymentStatus() async {
+  Future<OrderStatus> getPaymentStatus(String qualificationId) async {
     return _status;
   }
 
   @override
-  Future<PaymentData> getPaymentData() async {
+  Future<PaymentData> getPaymentData(Qualification qualification) async {
     final alreadyPaid = _status == OrderStatus.paid;
 
     return PaymentData(
       alreadyPaid: alreadyPaid,
-      publicId: 'publicId',
-      amount: 199,
-      orderId: 'orderId',
       formUrl: 'formUrl',
     );
   }

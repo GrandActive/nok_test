@@ -5,15 +5,24 @@ import 'package:nok_test/common/widgets/app_filled_button.dart';
 import 'package:nok_test/injection.dart';
 import 'package:nok_test/payments/payment_status_bloc/payment_status_bloc.dart';
 import 'package:nok_test/styles/app_text_styles.dart';
+import 'package:nok_test/styles/colors.dart';
 
 @RoutePage()
 class PaymentResultPage extends StatelessWidget implements AutoRouteWrapper {
-  const PaymentResultPage({super.key});
+  const PaymentResultPage({
+    super.key,
+    @PathParam() required this.qualificationId,
+  });
+
+  final String qualificationId;
 
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<PaymentStatusBloc>(
-      create: (context) => getIt()..add(const PaymentStatusEvent.requested()),
+      create: (context) => getIt()
+        ..add(PaymentStatusEvent.requested(
+          qualificationId: qualificationId,
+        )),
       child: this,
     );
   }
@@ -38,7 +47,7 @@ class PaymentResultPage extends StatelessWidget implements AutoRouteWrapper {
                       style: AppTextStyles.title1,
                     ),
                     const SizedBox(height: 40),
-                    const Icon(Icons.check, color: Color(0xFF1A7022), size: 82),
+                    const Icon(Icons.check, color: correctAnswerColor, size: 82),
                     const SizedBox(height: 50),
                     AppFilledButton(
                       child: const Text('Вернуться на главную'),

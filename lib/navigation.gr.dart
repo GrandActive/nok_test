@@ -172,10 +172,18 @@ class PasswordRestorationResultRouteArgs {
 
 /// generated route for
 /// [PaymentResultPage]
-class PaymentResultRoute extends PageRouteInfo<void> {
-  const PaymentResultRoute({List<PageRouteInfo>? children})
-      : super(
+class PaymentResultRoute extends PageRouteInfo<PaymentResultRouteArgs> {
+  PaymentResultRoute({
+    Key? key,
+    required String qualificationId,
+    List<PageRouteInfo>? children,
+  }) : super(
           PaymentResultRoute.name,
+          args: PaymentResultRouteArgs(
+            key: key,
+            qualificationId: qualificationId,
+          ),
+          rawPathParams: {'qualificationId': qualificationId},
           initialChildren: children,
         );
 
@@ -184,9 +192,33 @@ class PaymentResultRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return WrappedRoute(child: const PaymentResultPage());
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<PaymentResultRouteArgs>(
+          orElse: () => PaymentResultRouteArgs(
+              qualificationId: pathParams.getString('qualificationId')));
+      return WrappedRoute(
+          child: PaymentResultPage(
+        key: args.key,
+        qualificationId: args.qualificationId,
+      ));
     },
   );
+}
+
+class PaymentResultRouteArgs {
+  const PaymentResultRouteArgs({
+    this.key,
+    required this.qualificationId,
+  });
+
+  final Key? key;
+
+  final String qualificationId;
+
+  @override
+  String toString() {
+    return 'PaymentResultRouteArgs{key: $key, qualificationId: $qualificationId}';
+  }
 }
 
 /// generated route for

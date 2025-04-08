@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PaymentStatusEvent {
+  String get qualificationId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requested,
+    required TResult Function(String qualificationId) requested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requested,
+    TResult? Function(String qualificationId)? requested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requested,
+    TResult Function(String qualificationId)? requested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,12 @@ mixin _$PaymentStatusEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of PaymentStatusEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $PaymentStatusEventCopyWith<PaymentStatusEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +62,8 @@ abstract class $PaymentStatusEventCopyWith<$Res> {
   factory $PaymentStatusEventCopyWith(
           PaymentStatusEvent value, $Res Function(PaymentStatusEvent) then) =
       _$PaymentStatusEventCopyWithImpl<$Res, PaymentStatusEvent>;
+  @useResult
+  $Res call({String qualificationId});
 }
 
 /// @nodoc
@@ -69,13 +78,29 @@ class _$PaymentStatusEventCopyWithImpl<$Res, $Val extends PaymentStatusEvent>
 
   /// Create a copy of PaymentStatusEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? qualificationId = null,
+  }) {
+    return _then(_value.copyWith(
+      qualificationId: null == qualificationId
+          ? _value.qualificationId
+          : qualificationId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$RequestedImplCopyWith<$Res> {
+abstract class _$$RequestedImplCopyWith<$Res>
+    implements $PaymentStatusEventCopyWith<$Res> {
   factory _$$RequestedImplCopyWith(
           _$RequestedImpl value, $Res Function(_$RequestedImpl) then) =
       __$$RequestedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String qualificationId});
 }
 
 /// @nodoc
@@ -88,51 +113,77 @@ class __$$RequestedImplCopyWithImpl<$Res>
 
   /// Create a copy of PaymentStatusEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? qualificationId = null,
+  }) {
+    return _then(_$RequestedImpl(
+      qualificationId: null == qualificationId
+          ? _value.qualificationId
+          : qualificationId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$RequestedImpl implements _Requested {
-  const _$RequestedImpl();
+  const _$RequestedImpl({required this.qualificationId});
+
+  @override
+  final String qualificationId;
 
   @override
   String toString() {
-    return 'PaymentStatusEvent.requested()';
+    return 'PaymentStatusEvent.requested(qualificationId: $qualificationId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RequestedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$RequestedImpl &&
+            (identical(other.qualificationId, qualificationId) ||
+                other.qualificationId == qualificationId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, qualificationId);
+
+  /// Create a copy of PaymentStatusEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RequestedImplCopyWith<_$RequestedImpl> get copyWith =>
+      __$$RequestedImplCopyWithImpl<_$RequestedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() requested,
+    required TResult Function(String qualificationId) requested,
   }) {
-    return requested();
+    return requested(qualificationId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? requested,
+    TResult? Function(String qualificationId)? requested,
   }) {
-    return requested?.call();
+    return requested?.call(qualificationId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? requested,
+    TResult Function(String qualificationId)? requested,
     required TResult orElse(),
   }) {
     if (requested != null) {
-      return requested();
+      return requested(qualificationId);
     }
     return orElse();
   }
@@ -167,7 +218,18 @@ class _$RequestedImpl implements _Requested {
 }
 
 abstract class _Requested implements PaymentStatusEvent {
-  const factory _Requested() = _$RequestedImpl;
+  const factory _Requested({required final String qualificationId}) =
+      _$RequestedImpl;
+
+  @override
+  String get qualificationId;
+
+  /// Create a copy of PaymentStatusEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RequestedImplCopyWith<_$RequestedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

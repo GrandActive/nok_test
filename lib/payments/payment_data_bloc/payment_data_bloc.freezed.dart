@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PaymentDataEvent {
+  Qualification get qualification => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(Qualification qualification) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(Qualification qualification)? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(Qualification qualification)? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,12 @@ mixin _$PaymentDataEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of PaymentDataEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $PaymentDataEventCopyWith<PaymentDataEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +62,10 @@ abstract class $PaymentDataEventCopyWith<$Res> {
   factory $PaymentDataEventCopyWith(
           PaymentDataEvent value, $Res Function(PaymentDataEvent) then) =
       _$PaymentDataEventCopyWithImpl<$Res, PaymentDataEvent>;
+  @useResult
+  $Res call({Qualification qualification});
+
+  $QualificationCopyWith<$Res> get qualification;
 }
 
 /// @nodoc
@@ -69,13 +80,42 @@ class _$PaymentDataEventCopyWithImpl<$Res, $Val extends PaymentDataEvent>
 
   /// Create a copy of PaymentDataEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? qualification = null,
+  }) {
+    return _then(_value.copyWith(
+      qualification: null == qualification
+          ? _value.qualification
+          : qualification // ignore: cast_nullable_to_non_nullable
+              as Qualification,
+    ) as $Val);
+  }
+
+  /// Create a copy of PaymentDataEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $QualificationCopyWith<$Res> get qualification {
+    return $QualificationCopyWith<$Res>(_value.qualification, (value) {
+      return _then(_value.copyWith(qualification: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
+abstract class _$$StartedImplCopyWith<$Res>
+    implements $PaymentDataEventCopyWith<$Res> {
   factory _$$StartedImplCopyWith(
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Qualification qualification});
+
+  @override
+  $QualificationCopyWith<$Res> get qualification;
 }
 
 /// @nodoc
@@ -88,51 +128,77 @@ class __$$StartedImplCopyWithImpl<$Res>
 
   /// Create a copy of PaymentDataEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? qualification = null,
+  }) {
+    return _then(_$StartedImpl(
+      qualification: null == qualification
+          ? _value.qualification
+          : qualification // ignore: cast_nullable_to_non_nullable
+              as Qualification,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+  const _$StartedImpl({required this.qualification});
+
+  @override
+  final Qualification qualification;
 
   @override
   String toString() {
-    return 'PaymentDataEvent.started()';
+    return 'PaymentDataEvent.started(qualification: $qualification)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$StartedImpl &&
+            (identical(other.qualification, qualification) ||
+                other.qualification == qualification));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, qualification);
+
+  /// Create a copy of PaymentDataEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(Qualification qualification) started,
   }) {
-    return started();
+    return started(qualification);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(Qualification qualification)? started,
   }) {
-    return started?.call();
+    return started?.call(qualification);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(Qualification qualification)? started,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started();
+      return started(qualification);
     }
     return orElse();
   }
@@ -167,7 +233,18 @@ class _$StartedImpl implements _Started {
 }
 
 abstract class _Started implements PaymentDataEvent {
-  const factory _Started() = _$StartedImpl;
+  const factory _Started({required final Qualification qualification}) =
+      _$StartedImpl;
+
+  @override
+  Qualification get qualification;
+
+  /// Create a copy of PaymentDataEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

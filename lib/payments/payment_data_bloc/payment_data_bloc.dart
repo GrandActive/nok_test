@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nok_test/payments/data/models/payment_data.dart';
 import 'package:nok_test/payments/data/payments_repository.dart';
+import 'package:nok_test/specializations/models/qualification.dart';
 
 part 'payment_data_bloc.freezed.dart';
 part 'payment_data_event.dart';
@@ -13,10 +14,10 @@ class PaymentDataBloc extends Bloc<PaymentDataEvent, PaymentDataState> {
   PaymentDataBloc(this._repository) : super(const PaymentDataState.initial()) {
     on<PaymentDataEvent>((event, emit) async {
       await event.when(
-        started: () async {
+        started: (qualification) async {
           emit(const PaymentDataState.loading());
           try {
-            final data = await _repository.getPaymentData();
+            final data = await _repository.getPaymentData(qualification);
             if (data.alreadyPaid) {
               emit(const PaymentDataState.alreadyPaid());
             } else {

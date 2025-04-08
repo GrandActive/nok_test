@@ -26,7 +26,7 @@ void main() {
       },
       build: () => bloc,
       seed: () => const PaymentStatusState.noCurrentPayment(),
-      act: (bloc) => bloc.add(const PaymentStatusEvent.requested()),
+      act: (bloc) => bloc.add(PaymentStatusEvent.requested(qualificationId: 'testId')),
       expect: () => [const PaymentStatusState.waiting(time: Duration())],
     );
 
@@ -37,7 +37,7 @@ void main() {
       },
       build: () => bloc,
       seed: () => const PaymentStatusState.waiting(time: Duration(minutes: 1)),
-      act: (bloc) => bloc.add(const PaymentStatusEvent.requested()),
+      act: (bloc) => bloc.add(PaymentStatusEvent.requested(qualificationId: 'testId')),
       expect: () => [const PaymentStatusState.timeOut()],
     );
   });

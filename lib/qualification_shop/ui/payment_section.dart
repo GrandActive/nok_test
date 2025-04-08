@@ -65,7 +65,7 @@ class PaymentSection extends StatelessWidget {
                       SizedBox(height: 24),
                       Align(
                         alignment: Alignment.center,
-                        child: const PaymentButton(),
+                        child: PaymentButton(qualification: qualification),
                       ),
                     ],
                   ),

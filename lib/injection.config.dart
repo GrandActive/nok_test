@@ -20,7 +20,6 @@ import 'package:nok_test/auth/bloc/registration_bloc/registration_bloc.dart'
 import 'package:nok_test/auth/data/auth_repository.dart' as _i760;
 import 'package:nok_test/injection_module.dart' as _i542;
 import 'package:nok_test/payments/api/payments_api.dart' as _i888;
-import 'package:nok_test/payments/data/i_payments_repository.dart' as _i737;
 import 'package:nok_test/payments/data/payments_repository.dart' as _i441;
 import 'package:nok_test/payments/payment_data_bloc/payment_data_bloc.dart'
     as _i757;
@@ -78,6 +77,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i760.AuthRepository>(() => _i760.AuthRepository());
     gh.factory<_i361.Dio>(() => injectionModule.dio);
     gh.factory<_i888.PaymentsApi>(() => injectionModule.paymentsApi);
+    gh.factory<_i331.QualificationShopFirebaseDataSource>(
+        () => _i331.QualificationShopFirebaseDataSource());
     gh.factory<_i926.QualificationSelectBloc>(
         () => _i926.QualificationSelectBloc());
     gh.factory<_i462.SpecializationSelectBloc>(
@@ -87,8 +88,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i28.QuestionsFirebaseDataSource>(
         () => _i28.QuestionsFirebaseDataSource());
     gh.factory<_i580.Ticker>(() => const _i580.Ticker());
-    gh.factory<_i331.QualificationShopFirebaseDataSource>(
-        () => _i331.QualificationShopFirebaseDataSource());
     gh.factory<_i773.QuestionsRepository>(() =>
         _i773.QuestionsRepository(gh<_i28.QuestionsFirebaseDataSource>()));
     gh.factory<_i627.AuthBloc>(
@@ -126,31 +125,31 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i875.QuestionListBloc>(
         () => _i875.QuestionListBloc(gh<_i773.QuestionsRepository>()));
+    gh.factory<_i441.PaymentsRepository>(() => _i441.PaymentsRepository(
+          gh<_i888.PaymentsApi>(),
+          gh<_i760.AuthRepository>(),
+        ));
     gh.factoryParam<_i802.UserInputQuestionBloc, String?, dynamic>((
       correctAnswer,
       _,
     ) =>
         _i802.UserInputQuestionBloc(correctAnswer: correctAnswer));
-    gh.factory<_i737.IPaymentsRepository>(() => _i441.PaymentsRepository(
-          gh<_i888.PaymentsApi>(),
-          gh<_i760.AuthRepository>(),
-        ));
     gh.factory<_i424.GetRandomQuestionsForTest>(() =>
         _i424.GetRandomQuestionsForTest(
             repository: gh<_i773.QuestionsRepository>()));
-    gh.factory<_i961.UserPurchasesBloc>(
-        () => _i961.UserPurchasesBloc(gh<_i50.QualificationShopRepository>()));
     gh.factory<_i1063.QualificationPremiumStatusBloc>(() =>
         _i1063.QualificationPremiumStatusBloc(
             gh<_i50.QualificationShopRepository>()));
+    gh.factory<_i961.UserPurchasesBloc>(
+        () => _i961.UserPurchasesBloc(gh<_i50.QualificationShopRepository>()));
     gh.factory<_i399.SpecializationsBloc>(
         () => _i399.SpecializationsBloc(gh<_i985.SpecializationsRepository>()));
+    gh.factory<_i757.PaymentDataBloc>(
+        () => _i757.PaymentDataBloc(gh<_i441.PaymentsRepository>()));
+    gh.factory<_i797.PaymentStatusBloc>(
+        () => _i797.PaymentStatusBloc(gh<_i441.PaymentsRepository>()));
     gh.factory<_i921.TestingBloc>(
         () => _i921.TestingBloc(gh<_i424.GetRandomQuestionsForTest>()));
-    gh.factory<_i757.PaymentDataBloc>(
-        () => _i757.PaymentDataBloc(gh<_i737.IPaymentsRepository>()));
-    gh.factory<_i797.PaymentStatusBloc>(
-        () => _i797.PaymentStatusBloc(gh<_i737.IPaymentsRepository>()));
     return this;
   }
 }

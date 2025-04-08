@@ -7,9 +7,6 @@ part 'payment_data.g.dart';
 class PaymentData with _$PaymentData {
   const factory PaymentData({
     required bool alreadyPaid,
-    required String publicId,
-    required double amount,
-    required String orderId,
     required String formUrl,
   }) = _PaymentData;
 

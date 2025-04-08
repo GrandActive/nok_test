@@ -60,7 +60,7 @@ class AppRouter extends RootStackRouter {
         ),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(
-          path: '/payment/result',
+          path: '/payment/result/:qualificationId',
           page: PaymentResultRoute.page,
         ),
         AutoRoute(
