@@ -64,7 +64,7 @@ class QualificationShopPage extends StatelessWidget {
             if (!bought)
               if (isAuthenticated) ...[
                 const SizedBox(height: 24),
-                PaymentSection(qualification: qualification),
+                Center(child: PaymentSection(qualification: qualification)),
               ] else ...[
                 const SizedBox(height: 16),
                 Text(

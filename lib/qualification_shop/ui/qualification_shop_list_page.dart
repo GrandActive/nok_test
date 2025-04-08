@@ -30,6 +30,7 @@ class QualificationShopListPage extends StatelessWidget implements AutoRouteWrap
   @override
   Widget build(BuildContext context) {
     final user = context.watch<AuthBloc>().state.user;
+    final isAuthenticated = user != null;
 
     final userPurchasedQualificationIds = context.watch<UserPurchasesBloc>().state.maybeWhen(
           success: (qualificationIds) => qualificationIds,
@@ -63,7 +64,7 @@ class QualificationShopListPage extends StatelessWidget implements AutoRouteWrap
                   BlocBuilder<UserPurchasesBloc, UserPurchasesState>(
                     builder: (context, state) {
                       return state.maybeWhen(
-                        success: (qualificationIds) => qualificationIds.isEmpty
+                        success: (qualificationIds) => qualificationIds.isEmpty && isAuthenticated
                             ? Column(
                                 children: [
                                   SizedBox(height: 16),
