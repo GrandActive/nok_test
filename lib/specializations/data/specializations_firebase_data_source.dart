@@ -14,7 +14,7 @@ class SpecializationsFirebaseDataSource extends FirebaseDataSource {
     final Map data = jsonDecode(jsonEncode(dataEvent.snapshot.value));
 
     final Map specializations = data["specializations"];
-    final Map qualifications = data["topics"];
+    final Map qualifications = data["qualifications"];
 
     final deserializedSpecializations = specializations.entries
         .map(

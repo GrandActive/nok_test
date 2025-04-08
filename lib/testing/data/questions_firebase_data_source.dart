@@ -6,16 +6,16 @@ import 'package:nok_test/testing/data/model/question.dart';
 
 @injectable
 class QuestionsFirebaseDataSource extends FirebaseDataSource {
-  Future<List<Question>?> getQuestions(String topic) async {
+  Future<List<Question>?> getQuestions(String qualificationId) async {
     await checkVersion();
 
     final dataEvent = await database.ref().once();
     final Map data = jsonDecode(jsonEncode(dataEvent.snapshot.value));
 
     final Map questions = data["questions"];
-    final Map topics = data["topics"];
+    final Map qualifications = data["qualifications"];
 
-    final questionsIds = (topics[topic]["questions"] as List);
+    final questionsIds = (qualifications[qualificationId]["questions"] as List);
     return questionsIds.whereType<String>().map((id) {
       final question = questions[id];
       switch (question["type"]) {

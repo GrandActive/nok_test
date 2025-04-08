@@ -49,10 +49,10 @@ import 'package:nok_test/specializations/bloc/specialization_select_bloc/special
     as _i462;
 import 'package:nok_test/specializations/bloc/specializations_bloc/specializations_bloc.dart'
     as _i399;
-import 'package:nok_test/specializations/specializations_firebase_data_source.dart'
-    as _i349;
-import 'package:nok_test/specializations/specializations_repository.dart'
-    as _i985;
+import 'package:nok_test/specializations/data/specializations_firebase_data_source.dart'
+    as _i242;
+import 'package:nok_test/specializations/data/specializations_repository.dart'
+    as _i1043;
 import 'package:nok_test/testing/bloc/testing_bloc/testing_bloc.dart' as _i921;
 import 'package:nok_test/testing/data/model/possible_answer.dart' as _i676;
 import 'package:nok_test/testing/data/questions_firebase_data_source.dart'
@@ -83,11 +83,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i926.QualificationSelectBloc());
     gh.factory<_i462.SpecializationSelectBloc>(
         () => _i462.SpecializationSelectBloc());
-    gh.factory<_i349.SpecializationsFirebaseDataSource>(
-        () => _i349.SpecializationsFirebaseDataSource());
     gh.factory<_i28.QuestionsFirebaseDataSource>(
         () => _i28.QuestionsFirebaseDataSource());
     gh.factory<_i580.Ticker>(() => const _i580.Ticker());
+    gh.factory<_i242.SpecializationsFirebaseDataSource>(
+        () => _i242.SpecializationsFirebaseDataSource());
     gh.factory<_i773.QuestionsRepository>(() =>
         _i773.QuestionsRepository(gh<_i28.QuestionsFirebaseDataSource>()));
     gh.factory<_i627.AuthBloc>(
@@ -111,9 +111,6 @@ extension GetItInjectableX on _i174.GetIt {
       _,
     ) =>
         _i265.MatchingQuestionBloc(correctAnswer: correctAnswer));
-    gh.factory<_i985.SpecializationsRepository>(() =>
-        _i985.SpecializationsRepository(
-            gh<_i349.SpecializationsFirebaseDataSource>()));
     gh.factoryParam<_i876.SequenceQuestionBloc, List<_i676.PossibleAnswer>,
         List<_i676.PossibleAnswer>>((
       defaultAnswer,
@@ -123,6 +120,9 @@ extension GetItInjectableX on _i174.GetIt {
           defaultAnswer: defaultAnswer,
           correctAnswer: correctAnswer,
         ));
+    gh.factory<_i1043.SpecializationsRepository>(() =>
+        _i1043.SpecializationsRepository(
+            gh<_i242.SpecializationsFirebaseDataSource>()));
     gh.factory<_i875.QuestionListBloc>(
         () => _i875.QuestionListBloc(gh<_i773.QuestionsRepository>()));
     gh.factory<_i441.PaymentsRepository>(() => _i441.PaymentsRepository(
@@ -142,14 +142,14 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i50.QualificationShopRepository>()));
     gh.factory<_i961.UserPurchasesBloc>(
         () => _i961.UserPurchasesBloc(gh<_i50.QualificationShopRepository>()));
-    gh.factory<_i399.SpecializationsBloc>(
-        () => _i399.SpecializationsBloc(gh<_i985.SpecializationsRepository>()));
     gh.factory<_i757.PaymentDataBloc>(
         () => _i757.PaymentDataBloc(gh<_i441.PaymentsRepository>()));
     gh.factory<_i797.PaymentStatusBloc>(
         () => _i797.PaymentStatusBloc(gh<_i441.PaymentsRepository>()));
     gh.factory<_i921.TestingBloc>(
         () => _i921.TestingBloc(gh<_i424.GetRandomQuestionsForTest>()));
+    gh.factory<_i399.SpecializationsBloc>(() =>
+        _i399.SpecializationsBloc(gh<_i1043.SpecializationsRepository>()));
     return this;
   }
 }

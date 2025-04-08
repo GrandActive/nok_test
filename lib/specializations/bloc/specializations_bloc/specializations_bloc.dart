@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nok_test/specializations/data/specializations_repository.dart';
 import 'package:nok_test/specializations/models/specialization.dart';
-import 'package:nok_test/specializations/specializations_repository.dart';
 
 part 'specializations_bloc.freezed.dart';
 part 'specializations_event.dart';
