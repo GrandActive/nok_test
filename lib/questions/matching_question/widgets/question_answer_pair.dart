@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nok_test/common/widgets/popup_select/popup_multiple_select/popup_multiple_select.dart';
 import 'package:nok_test/common/widgets/popup_select/popup_single_select/popup_single_select.dart';
+import 'package:nok_test/questions/matching_question/utils.dart';
 import 'package:nok_test/styles/app_text_styles.dart';
 import 'package:nok_test/testing/data/model/possible_answer.dart';
 
@@ -28,11 +29,11 @@ class QuestionAnswerPair extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(question.text, style: AppTextStyles.body1),
+        Text(makeNumberedQuestion(question), style: AppTextStyles.body1),
         const SizedBox(height: 8),
         if (isSingleAnswer)
           PopupSingleSelect(
-            options: answers.map((a) => a.text).toList(),
+            options: answers.map((a) => makeNumberedAnswer(a)).toList(),
             onSelect: (index) {
               final answer = answers[index];
               onAnswerSelected([answer]);

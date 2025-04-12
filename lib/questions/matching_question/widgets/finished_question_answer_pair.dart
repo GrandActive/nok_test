@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:nok_test/questions/matching_question/utils.dart';
 import 'package:nok_test/styles/colors.dart';
 import 'package:nok_test/testing/data/model/possible_answer.dart';
 import 'package:nok_test/utils/list_separated_extension.dart';
@@ -36,7 +37,7 @@ class FinishedQuestionAnswerPair extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          question.text,
+          makeNumberedQuestion(question),
           style: const TextStyle(fontSize: 16),
         ),
         const SizedBox(height: 8),
@@ -52,7 +53,7 @@ class FinishedQuestionAnswerPair extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: answers!
                       .map<Widget>((a) => Text(
-                            a.text,
+                            makeNumberedAnswer(a),
                             style: const TextStyle(fontSize: 16),
                           ))
                       .toList()
