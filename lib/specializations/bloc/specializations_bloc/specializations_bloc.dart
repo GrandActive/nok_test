@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:nok_test/common/firebase_data_source.dart';
 import 'package:nok_test/specializations/data/specializations_repository.dart';
 import 'package:nok_test/specializations/models/specialization.dart';
 
@@ -18,8 +19,9 @@ class SpecializationsBloc extends Bloc<SpecializationsEvent, SpecializationsStat
           try {
             final specializations = await _repository.getAllSpecializations();
             emit(SpecializationsState.success(specializations: specializations));
+          } on WrongDbVersionException {
+            emit(const SpecializationsState.updateRequired());
           } catch (e) {
-            print(e.toString());
             emit(SpecializationsState.failure(message: e.toString()));
           }
         },

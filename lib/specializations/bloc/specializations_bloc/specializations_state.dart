@@ -11,4 +11,6 @@ class SpecializationsState with _$SpecializationsState {
   const factory SpecializationsState.failure({
     required String message,
   }) = _Failure;
+
+  const factory SpecializationsState.updateRequired() = _UpdateRequired;
 }

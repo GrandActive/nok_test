@@ -178,6 +178,7 @@ mixin _$SpecializationsState {
     required TResult Function() loading,
     required TResult Function(List<Specialization> specializations) success,
     required TResult Function(String message) failure,
+    required TResult Function() updateRequired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -185,6 +186,7 @@ mixin _$SpecializationsState {
     TResult? Function()? loading,
     TResult? Function(List<Specialization> specializations)? success,
     TResult? Function(String message)? failure,
+    TResult? Function()? updateRequired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -192,6 +194,7 @@ mixin _$SpecializationsState {
     TResult Function()? loading,
     TResult Function(List<Specialization> specializations)? success,
     TResult Function(String message)? failure,
+    TResult Function()? updateRequired,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -200,6 +203,7 @@ mixin _$SpecializationsState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
+    required TResult Function(_UpdateRequired value) updateRequired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -207,6 +211,7 @@ mixin _$SpecializationsState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
+    TResult? Function(_UpdateRequired value)? updateRequired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -214,6 +219,7 @@ mixin _$SpecializationsState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
+    TResult Function(_UpdateRequired value)? updateRequired,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -285,6 +291,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(List<Specialization> specializations) success,
     required TResult Function(String message) failure,
+    required TResult Function() updateRequired,
   }) {
     return loading();
   }
@@ -295,6 +302,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(List<Specialization> specializations)? success,
     TResult? Function(String message)? failure,
+    TResult? Function()? updateRequired,
   }) {
     return loading?.call();
   }
@@ -305,6 +313,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(List<Specialization> specializations)? success,
     TResult Function(String message)? failure,
+    TResult Function()? updateRequired,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -319,6 +328,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
+    required TResult Function(_UpdateRequired value) updateRequired,
   }) {
     return loading(this);
   }
@@ -329,6 +339,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
+    TResult? Function(_UpdateRequired value)? updateRequired,
   }) {
     return loading?.call(this);
   }
@@ -339,6 +350,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
+    TResult Function(_UpdateRequired value)? updateRequired,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -431,6 +443,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() loading,
     required TResult Function(List<Specialization> specializations) success,
     required TResult Function(String message) failure,
+    required TResult Function() updateRequired,
   }) {
     return success(specializations);
   }
@@ -441,6 +454,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? loading,
     TResult? Function(List<Specialization> specializations)? success,
     TResult? Function(String message)? failure,
+    TResult? Function()? updateRequired,
   }) {
     return success?.call(specializations);
   }
@@ -451,6 +465,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? loading,
     TResult Function(List<Specialization> specializations)? success,
     TResult Function(String message)? failure,
+    TResult Function()? updateRequired,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -465,6 +480,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
+    required TResult Function(_UpdateRequired value) updateRequired,
   }) {
     return success(this);
   }
@@ -475,6 +491,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
+    TResult? Function(_UpdateRequired value)? updateRequired,
   }) {
     return success?.call(this);
   }
@@ -485,6 +502,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
+    TResult Function(_UpdateRequired value)? updateRequired,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -578,6 +596,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function() loading,
     required TResult Function(List<Specialization> specializations) success,
     required TResult Function(String message) failure,
+    required TResult Function() updateRequired,
   }) {
     return failure(message);
   }
@@ -588,6 +607,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? loading,
     TResult? Function(List<Specialization> specializations)? success,
     TResult? Function(String message)? failure,
+    TResult? Function()? updateRequired,
   }) {
     return failure?.call(message);
   }
@@ -598,6 +618,7 @@ class _$FailureImpl implements _Failure {
     TResult Function()? loading,
     TResult Function(List<Specialization> specializations)? success,
     TResult Function(String message)? failure,
+    TResult Function()? updateRequired,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -612,6 +633,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
+    required TResult Function(_UpdateRequired value) updateRequired,
   }) {
     return failure(this);
   }
@@ -622,6 +644,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
+    TResult? Function(_UpdateRequired value)? updateRequired,
   }) {
     return failure?.call(this);
   }
@@ -632,6 +655,7 @@ class _$FailureImpl implements _Failure {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
+    TResult Function(_UpdateRequired value)? updateRequired,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -651,4 +675,121 @@ abstract class _Failure implements SpecializationsState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateRequiredImplCopyWith<$Res> {
+  factory _$$UpdateRequiredImplCopyWith(_$UpdateRequiredImpl value,
+          $Res Function(_$UpdateRequiredImpl) then) =
+      __$$UpdateRequiredImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateRequiredImplCopyWithImpl<$Res>
+    extends _$SpecializationsStateCopyWithImpl<$Res, _$UpdateRequiredImpl>
+    implements _$$UpdateRequiredImplCopyWith<$Res> {
+  __$$UpdateRequiredImplCopyWithImpl(
+      _$UpdateRequiredImpl _value, $Res Function(_$UpdateRequiredImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SpecializationsState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UpdateRequiredImpl implements _UpdateRequired {
+  const _$UpdateRequiredImpl();
+
+  @override
+  String toString() {
+    return 'SpecializationsState.updateRequired()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateRequiredImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Specialization> specializations) success,
+    required TResult Function(String message) failure,
+    required TResult Function() updateRequired,
+  }) {
+    return updateRequired();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<Specialization> specializations)? success,
+    TResult? Function(String message)? failure,
+    TResult? Function()? updateRequired,
+  }) {
+    return updateRequired?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Specialization> specializations)? success,
+    TResult Function(String message)? failure,
+    TResult Function()? updateRequired,
+    required TResult orElse(),
+  }) {
+    if (updateRequired != null) {
+      return updateRequired();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_UpdateRequired value) updateRequired,
+  }) {
+    return updateRequired(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_UpdateRequired value)? updateRequired,
+  }) {
+    return updateRequired?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_UpdateRequired value)? updateRequired,
+    required TResult orElse(),
+  }) {
+    if (updateRequired != null) {
+      return updateRequired(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateRequired implements SpecializationsState {
+  const factory _UpdateRequired() = _$UpdateRequiredImpl;
 }

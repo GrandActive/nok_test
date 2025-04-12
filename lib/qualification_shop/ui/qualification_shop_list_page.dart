@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/auth/bloc/auth_bloc/auth_bloc.dart';
 import 'package:nok_test/common/widgets/no_connection_banner.dart';
+import 'package:nok_test/common/widgets/update_needed_page.dart';
 import 'package:nok_test/injection.dart';
 import 'package:nok_test/qualification_shop/bloc/user_purchases_bloc/user_purchases_bloc.dart';
 import 'package:nok_test/qualification_shop/ui/qualification_shop_list_item.dart';
@@ -45,6 +46,7 @@ class QualificationShopListPage extends StatelessWidget implements AutoRouteWrap
       body: BlocBuilder<SpecializationsBloc, SpecializationsState>(
         builder: (context, state) {
           return state.when(
+            updateRequired: () => UpdateNeededPage(),
             loading: () => Center(
               child: CircularProgressIndicator(),
             ),
