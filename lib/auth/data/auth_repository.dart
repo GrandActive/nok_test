@@ -10,6 +10,8 @@ import 'package:nok_test/auth/data/exceptions/registration_exception.dart'
 class AuthRepository {
   final _firebase = FirebaseAuth.instance;
 
+  Stream<User?> get authStream => _firebase.authStateChanges();
+
   User? getCurrentUser() {
     return _firebase.currentUser;
   }

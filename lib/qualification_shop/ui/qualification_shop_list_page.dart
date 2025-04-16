@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nok_test/auth/bloc/auth_bloc/auth_bloc.dart';
 import 'package:nok_test/common/widgets/no_connection_banner.dart';
 import 'package:nok_test/common/widgets/update_needed_page.dart';
-import 'package:nok_test/injection.dart';
 import 'package:nok_test/qualification_shop/bloc/user_purchases_bloc/user_purchases_bloc.dart';
 import 'package:nok_test/qualification_shop/ui/qualification_shop_list_item.dart';
 import 'package:nok_test/specializations/bloc/specializations_bloc/specializations_bloc.dart';
@@ -12,21 +11,8 @@ import 'package:nok_test/styles/app_text_styles.dart';
 import 'package:nok_test/utils/list_separated_extension.dart';
 
 @RoutePage()
-class QualificationShopListPage extends StatelessWidget implements AutoRouteWrapper {
+class QualificationShopListPage extends StatelessWidget {
   const QualificationShopListPage({super.key});
-
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    final user = context.watch<AuthBloc>().state.user;
-
-    return BlocProvider(
-      create: (context) => getIt<UserPurchasesBloc>()
-        ..add(UserPurchasesEvent.requested(
-          userId: user?.uid,
-        )),
-      child: this,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +75,7 @@ class QualificationShopListPage extends StatelessWidget implements AutoRouteWrap
                                 onPressed: () {
                                   context
                                       .read<UserPurchasesBloc>()
-                                      .add(UserPurchasesEvent.requested(userId: user?.uid));
+                                      .add(const UserPurchasesEvent.started());
                                 },
                                 child: Text('Повторить'),
                               ),

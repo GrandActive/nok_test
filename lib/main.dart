@@ -5,6 +5,7 @@ import 'package:nok_test/auth/bloc/auth_bloc/auth_bloc.dart';
 import 'package:nok_test/firebase_options.dart';
 import 'package:nok_test/injection.dart';
 import 'package:nok_test/navigation.dart';
+import 'package:nok_test/qualification_shop/bloc/user_purchases_bloc/user_purchases_bloc.dart';
 import 'package:nok_test/styles/theme.dart';
 
 void main() async {
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<AuthBloc>(
           create: (context) => getIt()..add(const AuthEvent.started()),
+        ),
+        BlocProvider<UserPurchasesBloc>(
+          create: (context) => getIt()..add(const UserPurchasesEvent.started()),
         ),
       ],
       child: MaterialApp.router(

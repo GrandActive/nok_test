@@ -83,11 +83,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i926.QualificationSelectBloc());
     gh.factory<_i462.SpecializationSelectBloc>(
         () => _i462.SpecializationSelectBloc());
+    gh.factory<_i242.SpecializationsFirebaseDataSource>(
+        () => _i242.SpecializationsFirebaseDataSource());
     gh.factory<_i28.QuestionsFirebaseDataSource>(
         () => _i28.QuestionsFirebaseDataSource());
     gh.factory<_i580.Ticker>(() => const _i580.Ticker());
-    gh.factory<_i242.SpecializationsFirebaseDataSource>(
-        () => _i242.SpecializationsFirebaseDataSource());
     gh.factory<_i773.QuestionsRepository>(() =>
         _i773.QuestionsRepository(gh<_i28.QuestionsFirebaseDataSource>()));
     gh.factory<_i627.AuthBloc>(
@@ -98,9 +98,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1050.PasswordRestorationBloc(gh<_i760.AuthRepository>()));
     gh.factory<_i184.RegistrationBloc>(
         () => _i184.RegistrationBloc(gh<_i760.AuthRepository>()));
-    gh.factory<_i50.QualificationShopRepository>(() =>
-        _i50.QualificationShopRepository(
-            gh<_i331.QualificationShopFirebaseDataSource>()));
     gh.factoryParam<_i816.SelectionQuestionBloc, Set<int>, dynamic>((
       correctAnswer,
       _,
@@ -120,6 +117,11 @@ extension GetItInjectableX on _i174.GetIt {
           defaultAnswer: defaultAnswer,
           correctAnswer: correctAnswer,
         ));
+    gh.factory<_i50.QualificationShopRepository>(
+        () => _i50.QualificationShopRepository(
+              gh<_i331.QualificationShopFirebaseDataSource>(),
+              gh<_i760.AuthRepository>(),
+            ));
     gh.factory<_i1043.SpecializationsRepository>(() =>
         _i1043.SpecializationsRepository(
             gh<_i242.SpecializationsFirebaseDataSource>()));

@@ -14,12 +14,12 @@ class QualificationShopFirebaseDataSource extends FirebaseDataSource {
     return userPurchases.containsKey(qualificationId);
   }
 
-  Future<List<String>> getUserPurchasedQualificationIds(String userId) async {
-    final dataEvent = await database.ref('userPurchases/$userId').once();
-
-    final Map<String, dynamic>? userPurchases = jsonDecode(jsonEncode(dataEvent.snapshot.value));
-    if (userPurchases == null) return List.empty();
-
-    return userPurchases.keys.toList();
-  }
+  Stream<List<String>> getUserPurchasedQualificationIds(String userId) =>
+      database.ref('userPurchases/$userId').onValue.map(
+        (event) {
+          final Map<String, dynamic>? userPurchases = jsonDecode(jsonEncode(event.snapshot.value));
+          if (userPurchases == null) return List.empty();
+          return userPurchases.keys.toList();
+        },
+      );
 }

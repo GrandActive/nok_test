@@ -16,44 +16,37 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserPurchasesEvent {
-  String? get userId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? userId) requested,
+    required TResult Function() started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? userId)? requested,
+    TResult? Function()? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? userId)? requested,
+    TResult Function()? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Requested value) requested,
+    required TResult Function(_Started value) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Requested value)? requested,
+    TResult? Function(_Started value)? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Requested value)? requested,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of UserPurchasesEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserPurchasesEventCopyWith<UserPurchasesEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,8 +55,6 @@ abstract class $UserPurchasesEventCopyWith<$Res> {
   factory $UserPurchasesEventCopyWith(
           UserPurchasesEvent value, $Res Function(UserPurchasesEvent) then) =
       _$UserPurchasesEventCopyWithImpl<$Res, UserPurchasesEvent>;
-  @useResult
-  $Res call({String? userId});
 }
 
 /// @nodoc
@@ -78,111 +69,70 @@ class _$UserPurchasesEventCopyWithImpl<$Res, $Val extends UserPurchasesEvent>
 
   /// Create a copy of UserPurchasesEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userId = freezed,
-  }) {
-    return _then(_value.copyWith(
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$RequestedImplCopyWith<$Res>
-    implements $UserPurchasesEventCopyWith<$Res> {
-  factory _$$RequestedImplCopyWith(
-          _$RequestedImpl value, $Res Function(_$RequestedImpl) then) =
-      __$$RequestedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? userId});
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RequestedImplCopyWithImpl<$Res>
-    extends _$UserPurchasesEventCopyWithImpl<$Res, _$RequestedImpl>
-    implements _$$RequestedImplCopyWith<$Res> {
-  __$$RequestedImplCopyWithImpl(
-      _$RequestedImpl _value, $Res Function(_$RequestedImpl) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$UserPurchasesEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of UserPurchasesEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userId = freezed,
-  }) {
-    return _then(_$RequestedImpl(
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$RequestedImpl implements _Requested {
-  const _$RequestedImpl({required this.userId});
-
-  @override
-  final String? userId;
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
-    return 'UserPurchasesEvent.requested(userId: $userId)';
+    return 'UserPurchasesEvent.started()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RequestedImpl &&
-            (identical(other.userId, userId) || other.userId == userId));
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId);
-
-  /// Create a copy of UserPurchasesEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RequestedImplCopyWith<_$RequestedImpl> get copyWith =>
-      __$$RequestedImplCopyWithImpl<_$RequestedImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? userId) requested,
+    required TResult Function() started,
   }) {
-    return requested(userId);
+    return started();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? userId)? requested,
+    TResult? Function()? started,
   }) {
-    return requested?.call(userId);
+    return started?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? userId)? requested,
+    TResult Function()? started,
     required TResult orElse(),
   }) {
-    if (requested != null) {
-      return requested(userId);
+    if (started != null) {
+      return started();
     }
     return orElse();
   }
@@ -190,44 +140,34 @@ class _$RequestedImpl implements _Requested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Requested value) requested,
+    required TResult Function(_Started value) started,
   }) {
-    return requested(this);
+    return started(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Requested value)? requested,
+    TResult? Function(_Started value)? started,
   }) {
-    return requested?.call(this);
+    return started?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Requested value)? requested,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) {
-    if (requested != null) {
-      return requested(this);
+    if (started != null) {
+      return started(this);
     }
     return orElse();
   }
 }
 
-abstract class _Requested implements UserPurchasesEvent {
-  const factory _Requested({required final String? userId}) = _$RequestedImpl;
-
-  @override
-  String? get userId;
-
-  /// Create a copy of UserPurchasesEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RequestedImplCopyWith<_$RequestedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _Started implements UserPurchasesEvent {
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
