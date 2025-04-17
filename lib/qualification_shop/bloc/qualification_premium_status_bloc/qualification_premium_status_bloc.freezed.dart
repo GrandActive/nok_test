@@ -16,47 +16,47 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$QualificationPremiumStatusEvent {
-  String? get userId => throw _privateConstructorUsedError;
-  Qualification get qualification => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? userId, Qualification qualification)
-        requested,
+    required TResult Function(Qualification qualification)
+        qualificationSelected,
+    required TResult Function(List<String> qualificationIds)
+        userPurchasesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? userId, Qualification qualification)? requested,
+    TResult? Function(Qualification qualification)? qualificationSelected,
+    TResult? Function(List<String> qualificationIds)? userPurchasesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? userId, Qualification qualification)? requested,
+    TResult Function(Qualification qualification)? qualificationSelected,
+    TResult Function(List<String> qualificationIds)? userPurchasesUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Requested value) requested,
+    required TResult Function(_QualificationSelected value)
+        qualificationSelected,
+    required TResult Function(_UserPurchasesUpdated value) userPurchasesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Requested value)? requested,
+    TResult? Function(_QualificationSelected value)? qualificationSelected,
+    TResult? Function(_UserPurchasesUpdated value)? userPurchasesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Requested value)? requested,
+    TResult Function(_QualificationSelected value)? qualificationSelected,
+    TResult Function(_UserPurchasesUpdated value)? userPurchasesUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  /// Create a copy of QualificationPremiumStatusEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $QualificationPremiumStatusEventCopyWith<QualificationPremiumStatusEvent>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -66,10 +66,6 @@ abstract class $QualificationPremiumStatusEventCopyWith<$Res> {
           $Res Function(QualificationPremiumStatusEvent) then) =
       _$QualificationPremiumStatusEventCopyWithImpl<$Res,
           QualificationPremiumStatusEvent>;
-  @useResult
-  $Res call({String? userId, Qualification qualification});
-
-  $QualificationCopyWith<$Res> get qualification;
 }
 
 /// @nodoc
@@ -85,22 +81,42 @@ class _$QualificationPremiumStatusEventCopyWithImpl<$Res,
 
   /// Create a copy of QualificationPremiumStatusEvent
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$QualificationSelectedImplCopyWith<$Res> {
+  factory _$$QualificationSelectedImplCopyWith(
+          _$QualificationSelectedImpl value,
+          $Res Function(_$QualificationSelectedImpl) then) =
+      __$$QualificationSelectedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Qualification qualification});
+
+  $QualificationCopyWith<$Res> get qualification;
+}
+
+/// @nodoc
+class __$$QualificationSelectedImplCopyWithImpl<$Res>
+    extends _$QualificationPremiumStatusEventCopyWithImpl<$Res,
+        _$QualificationSelectedImpl>
+    implements _$$QualificationSelectedImplCopyWith<$Res> {
+  __$$QualificationSelectedImplCopyWithImpl(_$QualificationSelectedImpl _value,
+      $Res Function(_$QualificationSelectedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of QualificationPremiumStatusEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
     Object? qualification = null,
   }) {
-    return _then(_value.copyWith(
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+    return _then(_$QualificationSelectedImpl(
       qualification: null == qualification
           ? _value.qualification
           : qualification // ignore: cast_nullable_to_non_nullable
               as Qualification,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of QualificationPremiumStatusEvent
@@ -109,31 +125,142 @@ class _$QualificationPremiumStatusEventCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   $QualificationCopyWith<$Res> get qualification {
     return $QualificationCopyWith<$Res>(_value.qualification, (value) {
-      return _then(_value.copyWith(qualification: value) as $Val);
+      return _then(_value.copyWith(qualification: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$RequestedImplCopyWith<$Res>
-    implements $QualificationPremiumStatusEventCopyWith<$Res> {
-  factory _$$RequestedImplCopyWith(
-          _$RequestedImpl value, $Res Function(_$RequestedImpl) then) =
-      __$$RequestedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? userId, Qualification qualification});
+
+class _$QualificationSelectedImpl implements _QualificationSelected {
+  const _$QualificationSelectedImpl({required this.qualification});
 
   @override
-  $QualificationCopyWith<$Res> get qualification;
+  final Qualification qualification;
+
+  @override
+  String toString() {
+    return 'QualificationPremiumStatusEvent.qualificationSelected(qualification: $qualification)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$QualificationSelectedImpl &&
+            (identical(other.qualification, qualification) ||
+                other.qualification == qualification));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, qualification);
+
+  /// Create a copy of QualificationPremiumStatusEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$QualificationSelectedImplCopyWith<_$QualificationSelectedImpl>
+      get copyWith => __$$QualificationSelectedImplCopyWithImpl<
+          _$QualificationSelectedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Qualification qualification)
+        qualificationSelected,
+    required TResult Function(List<String> qualificationIds)
+        userPurchasesUpdated,
+  }) {
+    return qualificationSelected(qualification);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Qualification qualification)? qualificationSelected,
+    TResult? Function(List<String> qualificationIds)? userPurchasesUpdated,
+  }) {
+    return qualificationSelected?.call(qualification);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Qualification qualification)? qualificationSelected,
+    TResult Function(List<String> qualificationIds)? userPurchasesUpdated,
+    required TResult orElse(),
+  }) {
+    if (qualificationSelected != null) {
+      return qualificationSelected(qualification);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_QualificationSelected value)
+        qualificationSelected,
+    required TResult Function(_UserPurchasesUpdated value) userPurchasesUpdated,
+  }) {
+    return qualificationSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_QualificationSelected value)? qualificationSelected,
+    TResult? Function(_UserPurchasesUpdated value)? userPurchasesUpdated,
+  }) {
+    return qualificationSelected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_QualificationSelected value)? qualificationSelected,
+    TResult Function(_UserPurchasesUpdated value)? userPurchasesUpdated,
+    required TResult orElse(),
+  }) {
+    if (qualificationSelected != null) {
+      return qualificationSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _QualificationSelected
+    implements QualificationPremiumStatusEvent {
+  const factory _QualificationSelected(
+          {required final Qualification qualification}) =
+      _$QualificationSelectedImpl;
+
+  Qualification get qualification;
+
+  /// Create a copy of QualificationPremiumStatusEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$QualificationSelectedImplCopyWith<_$QualificationSelectedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class __$$RequestedImplCopyWithImpl<$Res>
-    extends _$QualificationPremiumStatusEventCopyWithImpl<$Res, _$RequestedImpl>
-    implements _$$RequestedImplCopyWith<$Res> {
-  __$$RequestedImplCopyWithImpl(
-      _$RequestedImpl _value, $Res Function(_$RequestedImpl) _then)
+abstract class _$$UserPurchasesUpdatedImplCopyWith<$Res> {
+  factory _$$UserPurchasesUpdatedImplCopyWith(_$UserPurchasesUpdatedImpl value,
+          $Res Function(_$UserPurchasesUpdatedImpl) then) =
+      __$$UserPurchasesUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> qualificationIds});
+}
+
+/// @nodoc
+class __$$UserPurchasesUpdatedImplCopyWithImpl<$Res>
+    extends _$QualificationPremiumStatusEventCopyWithImpl<$Res,
+        _$UserPurchasesUpdatedImpl>
+    implements _$$UserPurchasesUpdatedImplCopyWith<$Res> {
+  __$$UserPurchasesUpdatedImplCopyWithImpl(_$UserPurchasesUpdatedImpl _value,
+      $Res Function(_$UserPurchasesUpdatedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of QualificationPremiumStatusEvent
@@ -141,83 +268,90 @@ class __$$RequestedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
-    Object? qualification = null,
+    Object? qualificationIds = null,
   }) {
-    return _then(_$RequestedImpl(
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      qualification: null == qualification
-          ? _value.qualification
-          : qualification // ignore: cast_nullable_to_non_nullable
-              as Qualification,
+    return _then(_$UserPurchasesUpdatedImpl(
+      qualificationIds: null == qualificationIds
+          ? _value._qualificationIds
+          : qualificationIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$RequestedImpl implements _Requested {
-  const _$RequestedImpl({required this.userId, required this.qualification});
+class _$UserPurchasesUpdatedImpl implements _UserPurchasesUpdated {
+  const _$UserPurchasesUpdatedImpl(
+      {required final List<String> qualificationIds})
+      : _qualificationIds = qualificationIds;
 
+  final List<String> _qualificationIds;
   @override
-  final String? userId;
-  @override
-  final Qualification qualification;
+  List<String> get qualificationIds {
+    if (_qualificationIds is EqualUnmodifiableListView)
+      return _qualificationIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_qualificationIds);
+  }
 
   @override
   String toString() {
-    return 'QualificationPremiumStatusEvent.requested(userId: $userId, qualification: $qualification)';
+    return 'QualificationPremiumStatusEvent.userPurchasesUpdated(qualificationIds: $qualificationIds)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RequestedImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.qualification, qualification) ||
-                other.qualification == qualification));
+            other is _$UserPurchasesUpdatedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._qualificationIds, _qualificationIds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId, qualification);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_qualificationIds));
 
   /// Create a copy of QualificationPremiumStatusEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$RequestedImplCopyWith<_$RequestedImpl> get copyWith =>
-      __$$RequestedImplCopyWithImpl<_$RequestedImpl>(this, _$identity);
+  _$$UserPurchasesUpdatedImplCopyWith<_$UserPurchasesUpdatedImpl>
+      get copyWith =>
+          __$$UserPurchasesUpdatedImplCopyWithImpl<_$UserPurchasesUpdatedImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? userId, Qualification qualification)
-        requested,
+    required TResult Function(Qualification qualification)
+        qualificationSelected,
+    required TResult Function(List<String> qualificationIds)
+        userPurchasesUpdated,
   }) {
-    return requested(userId, qualification);
+    return userPurchasesUpdated(qualificationIds);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? userId, Qualification qualification)? requested,
+    TResult? Function(Qualification qualification)? qualificationSelected,
+    TResult? Function(List<String> qualificationIds)? userPurchasesUpdated,
   }) {
-    return requested?.call(userId, qualification);
+    return userPurchasesUpdated?.call(qualificationIds);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? userId, Qualification qualification)? requested,
+    TResult Function(Qualification qualification)? qualificationSelected,
+    TResult Function(List<String> qualificationIds)? userPurchasesUpdated,
     required TResult orElse(),
   }) {
-    if (requested != null) {
-      return requested(userId, qualification);
+    if (userPurchasesUpdated != null) {
+      return userPurchasesUpdated(qualificationIds);
     }
     return orElse();
   }
@@ -225,104 +359,61 @@ class _$RequestedImpl implements _Requested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Requested value) requested,
+    required TResult Function(_QualificationSelected value)
+        qualificationSelected,
+    required TResult Function(_UserPurchasesUpdated value) userPurchasesUpdated,
   }) {
-    return requested(this);
+    return userPurchasesUpdated(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Requested value)? requested,
+    TResult? Function(_QualificationSelected value)? qualificationSelected,
+    TResult? Function(_UserPurchasesUpdated value)? userPurchasesUpdated,
   }) {
-    return requested?.call(this);
+    return userPurchasesUpdated?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Requested value)? requested,
+    TResult Function(_QualificationSelected value)? qualificationSelected,
+    TResult Function(_UserPurchasesUpdated value)? userPurchasesUpdated,
     required TResult orElse(),
   }) {
-    if (requested != null) {
-      return requested(this);
+    if (userPurchasesUpdated != null) {
+      return userPurchasesUpdated(this);
     }
     return orElse();
   }
 }
 
-abstract class _Requested implements QualificationPremiumStatusEvent {
-  const factory _Requested(
-      {required final String? userId,
-      required final Qualification qualification}) = _$RequestedImpl;
+abstract class _UserPurchasesUpdated
+    implements QualificationPremiumStatusEvent {
+  const factory _UserPurchasesUpdated(
+          {required final List<String> qualificationIds}) =
+      _$UserPurchasesUpdatedImpl;
 
-  @override
-  String? get userId;
-  @override
-  Qualification get qualification;
+  List<String> get qualificationIds;
 
   /// Create a copy of QualificationPremiumStatusEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RequestedImplCopyWith<_$RequestedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserPurchasesUpdatedImplCopyWith<_$UserPurchasesUpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$QualificationPremiumStatusState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(Qualification qualification) loading,
-    required TResult Function(Qualification qualification, bool isPurchased)
-        success,
-    required TResult Function(Qualification qualification, String message)
-        failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(Qualification qualification)? loading,
-    TResult? Function(Qualification qualification, bool isPurchased)? success,
-    TResult? Function(Qualification qualification, String message)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(Qualification qualification)? loading,
-    TResult Function(Qualification qualification, bool isPurchased)? success,
-    TResult Function(Qualification qualification, String message)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  Qualification? get qualification => throw _privateConstructorUsedError;
+  List<String> get userPurchases => throw _privateConstructorUsedError;
+
+  /// Create a copy of QualificationPremiumStatusState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $QualificationPremiumStatusStateCopyWith<QualificationPremiumStatusState>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -332,6 +423,10 @@ abstract class $QualificationPremiumStatusStateCopyWith<$Res> {
           $Res Function(QualificationPremiumStatusState) then) =
       _$QualificationPremiumStatusStateCopyWithImpl<$Res,
           QualificationPremiumStatusState>;
+  @useResult
+  $Res call({Qualification? qualification, List<String> userPurchases});
+
+  $QualificationCopyWith<$Res>? get qualification;
 }
 
 /// @nodoc
@@ -347,144 +442,62 @@ class _$QualificationPremiumStatusStateCopyWithImpl<$Res,
 
   /// Create a copy of QualificationPremiumStatusState
   /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$QualificationPremiumStatusStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? qualification = freezed,
+    Object? userPurchases = null,
+  }) {
+    return _then(_value.copyWith(
+      qualification: freezed == qualification
+          ? _value.qualification
+          : qualification // ignore: cast_nullable_to_non_nullable
+              as Qualification?,
+      userPurchases: null == userPurchases
+          ? _value.userPurchases
+          : userPurchases // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ) as $Val);
+  }
 
   /// Create a copy of QualificationPremiumStatusState
   /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $QualificationCopyWith<$Res>? get qualification {
+    if (_value.qualification == null) {
+      return null;
+    }
+
+    return $QualificationCopyWith<$Res>(_value.qualification!, (value) {
+      return _then(_value.copyWith(qualification: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
+abstract class _$$QualificationPremiumStatusStateImplCopyWith<$Res>
+    implements $QualificationPremiumStatusStateCopyWith<$Res> {
+  factory _$$QualificationPremiumStatusStateImplCopyWith(
+          _$QualificationPremiumStatusStateImpl value,
+          $Res Function(_$QualificationPremiumStatusStateImpl) then) =
+      __$$QualificationPremiumStatusStateImplCopyWithImpl<$Res>;
   @override
-  String toString() {
-    return 'QualificationPremiumStatusState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(Qualification qualification) loading,
-    required TResult Function(Qualification qualification, bool isPurchased)
-        success,
-    required TResult Function(Qualification qualification, String message)
-        failure,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(Qualification qualification)? loading,
-    TResult? Function(Qualification qualification, bool isPurchased)? success,
-    TResult? Function(Qualification qualification, String message)? failure,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(Qualification qualification)? loading,
-    TResult Function(Qualification qualification, bool isPurchased)? success,
-    TResult Function(Qualification qualification, String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements QualificationPremiumStatusState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Qualification qualification});
+  $Res call({Qualification? qualification, List<String> userPurchases});
 
-  $QualificationCopyWith<$Res> get qualification;
+  @override
+  $QualificationCopyWith<$Res>? get qualification;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$QualificationPremiumStatusStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$QualificationPremiumStatusStateImplCopyWithImpl<$Res>
+    extends _$QualificationPremiumStatusStateCopyWithImpl<$Res,
+        _$QualificationPremiumStatusStateImpl>
+    implements _$$QualificationPremiumStatusStateImplCopyWith<$Res> {
+  __$$QualificationPremiumStatusStateImplCopyWithImpl(
+      _$QualificationPremiumStatusStateImpl _value,
+      $Res Function(_$QualificationPremiumStatusStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of QualificationPremiumStatusState
@@ -492,503 +505,92 @@ class __$$LoadingImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? qualification = null,
+    Object? qualification = freezed,
+    Object? userPurchases = null,
   }) {
-    return _then(_$LoadingImpl(
-      qualification: null == qualification
+    return _then(_$QualificationPremiumStatusStateImpl(
+      qualification: freezed == qualification
           ? _value.qualification
           : qualification // ignore: cast_nullable_to_non_nullable
-              as Qualification,
+              as Qualification?,
+      userPurchases: null == userPurchases
+          ? _value._userPurchases
+          : userPurchases // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
-  }
-
-  /// Create a copy of QualificationPremiumStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $QualificationCopyWith<$Res> get qualification {
-    return $QualificationCopyWith<$Res>(_value.qualification, (value) {
-      return _then(_value.copyWith(qualification: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl({required this.qualification});
+class _$QualificationPremiumStatusStateImpl
+    extends _QualificationPremiumStatusState {
+  const _$QualificationPremiumStatusStateImpl(
+      {this.qualification = null, final List<String> userPurchases = const []})
+      : _userPurchases = userPurchases,
+        super._();
 
   @override
-  final Qualification qualification;
+  @JsonKey()
+  final Qualification? qualification;
+  final List<String> _userPurchases;
+  @override
+  @JsonKey()
+  List<String> get userPurchases {
+    if (_userPurchases is EqualUnmodifiableListView) return _userPurchases;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_userPurchases);
+  }
 
   @override
   String toString() {
-    return 'QualificationPremiumStatusState.loading(qualification: $qualification)';
+    return 'QualificationPremiumStatusState(qualification: $qualification, userPurchases: $userPurchases)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadingImpl &&
-            (identical(other.qualification, qualification) ||
-                other.qualification == qualification));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, qualification);
-
-  /// Create a copy of QualificationPremiumStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
-      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(Qualification qualification) loading,
-    required TResult Function(Qualification qualification, bool isPurchased)
-        success,
-    required TResult Function(Qualification qualification, String message)
-        failure,
-  }) {
-    return loading(qualification);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(Qualification qualification)? loading,
-    TResult? Function(Qualification qualification, bool isPurchased)? success,
-    TResult? Function(Qualification qualification, String message)? failure,
-  }) {
-    return loading?.call(qualification);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(Qualification qualification)? loading,
-    TResult Function(Qualification qualification, bool isPurchased)? success,
-    TResult Function(Qualification qualification, String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(qualification);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements QualificationPremiumStatusState {
-  const factory _Loading({required final Qualification qualification}) =
-      _$LoadingImpl;
-
-  Qualification get qualification;
-
-  /// Create a copy of QualificationPremiumStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Qualification qualification, bool isPurchased});
-
-  $QualificationCopyWith<$Res> get qualification;
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$QualificationPremiumStatusStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of QualificationPremiumStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? qualification = null,
-    Object? isPurchased = null,
-  }) {
-    return _then(_$SuccessImpl(
-      qualification: null == qualification
-          ? _value.qualification
-          : qualification // ignore: cast_nullable_to_non_nullable
-              as Qualification,
-      isPurchased: null == isPurchased
-          ? _value.isPurchased
-          : isPurchased // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-
-  /// Create a copy of QualificationPremiumStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $QualificationCopyWith<$Res> get qualification {
-    return $QualificationCopyWith<$Res>(_value.qualification, (value) {
-      return _then(_value.copyWith(qualification: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required this.qualification, required this.isPurchased});
-
-  @override
-  final Qualification qualification;
-  @override
-  final bool isPurchased;
-
-  @override
-  String toString() {
-    return 'QualificationPremiumStatusState.success(qualification: $qualification, isPurchased: $isPurchased)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$QualificationPremiumStatusStateImpl &&
             (identical(other.qualification, qualification) ||
                 other.qualification == qualification) &&
-            (identical(other.isPurchased, isPurchased) ||
-                other.isPurchased == isPurchased));
+            const DeepCollectionEquality()
+                .equals(other._userPurchases, _userPurchases));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, qualification, isPurchased);
+  int get hashCode => Object.hash(runtimeType, qualification,
+      const DeepCollectionEquality().hash(_userPurchases));
 
   /// Create a copy of QualificationPremiumStatusState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(Qualification qualification) loading,
-    required TResult Function(Qualification qualification, bool isPurchased)
-        success,
-    required TResult Function(Qualification qualification, String message)
-        failure,
-  }) {
-    return success(qualification, isPurchased);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(Qualification qualification)? loading,
-    TResult? Function(Qualification qualification, bool isPurchased)? success,
-    TResult? Function(Qualification qualification, String message)? failure,
-  }) {
-    return success?.call(qualification, isPurchased);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(Qualification qualification)? loading,
-    TResult Function(Qualification qualification, bool isPurchased)? success,
-    TResult Function(Qualification qualification, String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(qualification, isPurchased);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
+  _$$QualificationPremiumStatusStateImplCopyWith<
+          _$QualificationPremiumStatusStateImpl>
+      get copyWith => __$$QualificationPremiumStatusStateImplCopyWithImpl<
+          _$QualificationPremiumStatusStateImpl>(this, _$identity);
 }
 
-abstract class _Success implements QualificationPremiumStatusState {
-  const factory _Success(
-      {required final Qualification qualification,
-      required final bool isPurchased}) = _$SuccessImpl;
+abstract class _QualificationPremiumStatusState
+    extends QualificationPremiumStatusState {
+  const factory _QualificationPremiumStatusState(
+          {final Qualification? qualification,
+          final List<String> userPurchases}) =
+      _$QualificationPremiumStatusStateImpl;
+  const _QualificationPremiumStatusState._() : super._();
 
-  Qualification get qualification;
-  bool get isPurchased;
+  @override
+  Qualification? get qualification;
+  @override
+  List<String> get userPurchases;
 
   /// Create a copy of QualificationPremiumStatusState
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Qualification qualification, String message});
-
-  $QualificationCopyWith<$Res> get qualification;
-}
-
-/// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$QualificationPremiumStatusStateCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of QualificationPremiumStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? qualification = null,
-    Object? message = null,
-  }) {
-    return _then(_$FailureImpl(
-      qualification: null == qualification
-          ? _value.qualification
-          : qualification // ignore: cast_nullable_to_non_nullable
-              as Qualification,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-
-  /// Create a copy of QualificationPremiumStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $QualificationCopyWith<$Res> get qualification {
-    return $QualificationCopyWith<$Res>(_value.qualification, (value) {
-      return _then(_value.copyWith(qualification: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl({required this.qualification, required this.message});
-
-  @override
-  final Qualification qualification;
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'QualificationPremiumStatusState.failure(qualification: $qualification, message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.qualification, qualification) ||
-                other.qualification == qualification) &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, qualification, message);
-
-  /// Create a copy of QualificationPremiumStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(Qualification qualification) loading,
-    required TResult Function(Qualification qualification, bool isPurchased)
-        success,
-    required TResult Function(Qualification qualification, String message)
-        failure,
-  }) {
-    return failure(qualification, message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(Qualification qualification)? loading,
-    TResult? Function(Qualification qualification, bool isPurchased)? success,
-    TResult? Function(Qualification qualification, String message)? failure,
-  }) {
-    return failure?.call(qualification, message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(Qualification qualification)? loading,
-    TResult Function(Qualification qualification, bool isPurchased)? success,
-    TResult Function(Qualification qualification, String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(qualification, message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failure implements QualificationPremiumStatusState {
-  const factory _Failure(
-      {required final Qualification qualification,
-      required final String message}) = _$FailureImpl;
-
-  Qualification get qualification;
-  String get message;
-
-  /// Create a copy of QualificationPremiumStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$QualificationPremiumStatusStateImplCopyWith<
+          _$QualificationPremiumStatusStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -266,8 +266,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl() : super._();
 
   @override
   String toString() {
@@ -358,8 +358,9 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements UserPurchasesState {
+abstract class _Initial extends UserPurchasesState {
   const factory _Initial() = _$InitialImpl;
+  const _Initial._() : super._();
 }
 
 /// @nodoc
@@ -383,8 +384,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
@@ -475,8 +476,9 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements UserPurchasesState {
+abstract class _Loading extends UserPurchasesState {
   const factory _Loading() = _$LoadingImpl;
+  const _Loading._() : super._();
 }
 
 /// @nodoc
@@ -514,9 +516,10 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
+class _$SuccessImpl extends _Success {
   const _$SuccessImpl({required final List<String> qualificationIds})
-      : _qualificationIds = qualificationIds;
+      : _qualificationIds = qualificationIds,
+        super._();
 
   final List<String> _qualificationIds;
   @override
@@ -628,9 +631,10 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements UserPurchasesState {
+abstract class _Success extends UserPurchasesState {
   const factory _Success({required final List<String> qualificationIds}) =
       _$SuccessImpl;
+  const _Success._() : super._();
 
   List<String> get qualificationIds;
 
@@ -676,8 +680,8 @@ class __$$FailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl({required this.message});
+class _$FailureImpl extends _Failure {
+  const _$FailureImpl({required this.message}) : super._();
 
   @override
   final String message;
@@ -781,8 +785,9 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements UserPurchasesState {
+abstract class _Failure extends UserPurchasesState {
   const factory _Failure({required final String message}) = _$FailureImpl;
+  const _Failure._() : super._();
 
   String get message;
 

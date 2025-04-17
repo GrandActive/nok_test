@@ -5,7 +5,7 @@ import 'package:nok_test/common/widgets/app_filled_button.dart';
 import 'package:nok_test/common/widgets/app_outlined_button.dart';
 import 'package:nok_test/main_page/widgets/start_exam_button.dart';
 import 'package:nok_test/navigation.dart';
-import 'package:nok_test/qualification_shop/bloc/qualification_premium_status_bloc/qualification_premium_status_bloc.dart';
+import 'package:nok_test/qualification_shop/bloc/user_purchases_bloc/user_purchases_bloc.dart';
 import 'package:nok_test/specializations/bloc/qualification_select_bloc/qualification_select_bloc.dart';
 import 'package:nok_test/testing/domain/model/test_mode.dart';
 
@@ -14,13 +14,14 @@ class MainActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isPurchased = context.watch<QualificationPremiumStatusBloc>().state.maybeWhen(
-          success: (qualification, isPurchased) => isPurchased,
-          orElse: () => false,
-        );
+    final userPurchases = context.watch<UserPurchasesBloc>().state.userPurchases;
 
-    final buttonsEnabled =
-        context.watch<QualificationSelectBloc>().state.selectedQualification != null;
+    final selectedQualification =
+        context.watch<QualificationSelectBloc>().state.selectedQualification;
+
+    final isPurchased = userPurchases.contains(selectedQualification?.id);
+
+    final buttonsEnabled = selectedQualification != null;
 
     if (isPurchased) {
       return Column(

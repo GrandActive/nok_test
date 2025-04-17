@@ -2,19 +2,12 @@ part of 'qualification_premium_status_bloc.dart';
 
 @freezed
 class QualificationPremiumStatusState with _$QualificationPremiumStatusState {
-  const factory QualificationPremiumStatusState.initial() = _Initial;
+  const QualificationPremiumStatusState._();
 
-  const factory QualificationPremiumStatusState.loading({
-    required Qualification qualification,
-  }) = _Loading;
+  const factory QualificationPremiumStatusState({
+    @Default(null) Qualification? qualification,
+    @Default([]) List<String> userPurchases,
+  }) = _QualificationPremiumStatusState;
 
-  const factory QualificationPremiumStatusState.success({
-    required Qualification qualification,
-    required bool isPurchased,
-  }) = _Success;
-
-  const factory QualificationPremiumStatusState.failure({
-    required Qualification qualification,
-    required String message,
-  }) = _Failure;
+  bool? get isPurchased => qualification == null ? null : userPurchases.contains(qualification?.id);
 }

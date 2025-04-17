@@ -13,24 +13,21 @@ class PremiumStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     final specialization = context.watch<SpecializationSelectBloc>().state.selectedSpecialization;
 
-    final (qualification, isPurchased) = context.watch<QualificationPremiumStatusBloc>().state.when(
-          initial: () => (null, null),
-          success: (qualification, isPurchased) => (qualification, isPurchased),
-          loading: (qualification) => (qualification, null),
-          failure: (qualification, message) => (qualification, null),
-        );
+    final premiumState = context.watch<QualificationPremiumStatusBloc>().state;
 
-    if (specialization == null || qualification == null || (isPurchased ?? true)) {
+    if (specialization == null ||
+        premiumState.qualification == null ||
+        (premiumState.isPurchased ?? true)) {
       return const SizedBox.shrink();
     }
 
     return Column(
       children: [
         PremiumBanner(
-          cost: qualification.cost,
+          cost: premiumState.qualification!.cost,
           onTap: () => context.router.push(QualificationShopRoute(
             specialization: specialization,
-            qualification: qualification,
+            qualification: premiumState.qualification!,
             bought: false,
           )),
         ),

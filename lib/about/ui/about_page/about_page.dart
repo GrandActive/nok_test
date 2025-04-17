@@ -22,10 +22,7 @@ class AboutPage extends StatelessWidget {
     final user = context.watch<AuthBloc>().state.user;
     final isAuthenticated = user != null;
 
-    final isPaid = context.watch<QualificationPremiumStatusBloc>().state.maybeWhen(
-          success: (qualification, isPurchased) => isPurchased,
-          orElse: () => false,
-        );
+    final isPaid = context.watch<QualificationPremiumStatusBloc>().state.isPurchased;
 
     final (minQualificationCost, allCostsEqual) =
         context.watch<SpecializationsBloc>().state.whenOrNull(
@@ -47,7 +44,7 @@ class AboutPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 24),
         child: Column(
           children: [
-            if (!isPaid && minQualificationCost != null) ...[
+            if (!(isPaid ?? true) && minQualificationCost != null) ...[
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: PremiumBanner(

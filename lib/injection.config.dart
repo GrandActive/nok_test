@@ -77,6 +77,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i760.AuthRepository>(() => _i760.AuthRepository());
     gh.factory<_i361.Dio>(() => injectionModule.dio);
     gh.factory<_i888.PaymentsApi>(() => injectionModule.paymentsApi);
+    gh.factory<_i1063.QualificationPremiumStatusBloc>(
+        () => _i1063.QualificationPremiumStatusBloc());
     gh.factory<_i331.QualificationShopFirebaseDataSource>(
         () => _i331.QualificationShopFirebaseDataSource());
     gh.factory<_i926.QualificationSelectBloc>(
@@ -139,9 +141,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i424.GetRandomQuestionsForTest>(() =>
         _i424.GetRandomQuestionsForTest(
             repository: gh<_i773.QuestionsRepository>()));
-    gh.factory<_i1063.QualificationPremiumStatusBloc>(() =>
-        _i1063.QualificationPremiumStatusBloc(
-            gh<_i50.QualificationShopRepository>()));
     gh.factory<_i961.UserPurchasesBloc>(
         () => _i961.UserPurchasesBloc(gh<_i50.QualificationShopRepository>()));
     gh.factory<_i757.PaymentDataBloc>(

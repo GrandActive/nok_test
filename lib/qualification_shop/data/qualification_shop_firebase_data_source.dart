@@ -5,15 +5,6 @@ import 'package:nok_test/common/firebase_data_source.dart';
 
 @injectable
 class QualificationShopFirebaseDataSource extends FirebaseDataSource {
-  Future<bool> isQualificationPurchased(String userId, String qualificationId) async {
-    final dataEvent = await database.ref('userPurchases/$userId').once();
-
-    final userPurchases = dataEvent.snapshot.value as Map?;
-    if (userPurchases == null) return false;
-
-    return userPurchases.containsKey(qualificationId);
-  }
-
   Stream<List<String>> getUserPurchasedQualificationIds(String userId) =>
       database.ref('userPurchases/$userId').onValue.map(
         (event) {
