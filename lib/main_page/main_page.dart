@@ -43,8 +43,6 @@ class MainPage extends StatelessWidget {
                     SpecializationSelect(),
                     SizedBox(height: 24),
                     QualificationSelect(),
-                    SizedBox(height: 32),
-                    TestInfo(),
                     SizedBox(height: 40),
                     MainActionButtons(),
                   ],

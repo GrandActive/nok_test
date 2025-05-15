@@ -19,6 +19,8 @@ mixin _$Qualification {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get cost => throw _privateConstructorUsedError;
+  int get testQuestionCount => throw _privateConstructorUsedError;
+  int get correctAnswerCount => throw _privateConstructorUsedError;
 
   /// Create a copy of Qualification
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +35,12 @@ abstract class $QualificationCopyWith<$Res> {
           Qualification value, $Res Function(Qualification) then) =
       _$QualificationCopyWithImpl<$Res, Qualification>;
   @useResult
-  $Res call({String id, String name, int cost});
+  $Res call(
+      {String id,
+      String name,
+      int cost,
+      int testQuestionCount,
+      int correctAnswerCount});
 }
 
 /// @nodoc
@@ -54,6 +61,8 @@ class _$QualificationCopyWithImpl<$Res, $Val extends Qualification>
     Object? id = null,
     Object? name = null,
     Object? cost = null,
+    Object? testQuestionCount = null,
+    Object? correctAnswerCount = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -68,6 +77,14 @@ class _$QualificationCopyWithImpl<$Res, $Val extends Qualification>
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
               as int,
+      testQuestionCount: null == testQuestionCount
+          ? _value.testQuestionCount
+          : testQuestionCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      correctAnswerCount: null == correctAnswerCount
+          ? _value.correctAnswerCount
+          : correctAnswerCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -80,7 +97,12 @@ abstract class _$$QualificationImplCopyWith<$Res>
       __$$QualificationImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, int cost});
+  $Res call(
+      {String id,
+      String name,
+      int cost,
+      int testQuestionCount,
+      int correctAnswerCount});
 }
 
 /// @nodoc
@@ -99,6 +121,8 @@ class __$$QualificationImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? cost = null,
+    Object? testQuestionCount = null,
+    Object? correctAnswerCount = null,
   }) {
     return _then(_$QualificationImpl(
       id: null == id
@@ -113,6 +137,14 @@ class __$$QualificationImplCopyWithImpl<$Res>
           ? _value.cost
           : cost // ignore: cast_nullable_to_non_nullable
               as int,
+      testQuestionCount: null == testQuestionCount
+          ? _value.testQuestionCount
+          : testQuestionCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      correctAnswerCount: null == correctAnswerCount
+          ? _value.correctAnswerCount
+          : correctAnswerCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -121,7 +153,11 @@ class __$$QualificationImplCopyWithImpl<$Res>
 
 class _$QualificationImpl implements _Qualification {
   const _$QualificationImpl(
-      {required this.id, required this.name, required this.cost});
+      {required this.id,
+      required this.name,
+      required this.cost,
+      required this.testQuestionCount,
+      required this.correctAnswerCount});
 
   @override
   final String id;
@@ -129,10 +165,14 @@ class _$QualificationImpl implements _Qualification {
   final String name;
   @override
   final int cost;
+  @override
+  final int testQuestionCount;
+  @override
+  final int correctAnswerCount;
 
   @override
   String toString() {
-    return 'Qualification(id: $id, name: $name, cost: $cost)';
+    return 'Qualification(id: $id, name: $name, cost: $cost, testQuestionCount: $testQuestionCount, correctAnswerCount: $correctAnswerCount)';
   }
 
   @override
@@ -142,11 +182,16 @@ class _$QualificationImpl implements _Qualification {
             other is _$QualificationImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.cost, cost) || other.cost == cost));
+            (identical(other.cost, cost) || other.cost == cost) &&
+            (identical(other.testQuestionCount, testQuestionCount) ||
+                other.testQuestionCount == testQuestionCount) &&
+            (identical(other.correctAnswerCount, correctAnswerCount) ||
+                other.correctAnswerCount == correctAnswerCount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, cost);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, cost, testQuestionCount, correctAnswerCount);
 
   /// Create a copy of Qualification
   /// with the given fields replaced by the non-null parameter values.
@@ -161,7 +206,9 @@ abstract class _Qualification implements Qualification {
   const factory _Qualification(
       {required final String id,
       required final String name,
-      required final int cost}) = _$QualificationImpl;
+      required final int cost,
+      required final int testQuestionCount,
+      required final int correctAnswerCount}) = _$QualificationImpl;
 
   @override
   String get id;
@@ -169,6 +216,10 @@ abstract class _Qualification implements Qualification {
   String get name;
   @override
   int get cost;
+  @override
+  int get testQuestionCount;
+  @override
+  int get correctAnswerCount;
 
   /// Create a copy of Qualification
   /// with the given fields replaced by the non-null parameter values.

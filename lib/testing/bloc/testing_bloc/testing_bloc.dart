@@ -20,7 +20,7 @@ class TestingBloc extends Bloc<TestingEvent, TestingState> {
         started: (mode, qualification) async {
           emit(TestingState(mode: mode));
           try {
-            final questions = await getQuestions(count: 50, qualification: qualification);
+            final questions = await getQuestions(qualification: qualification);
             emit(state.copyWith(questions: questions, isLoading: false, selectedIndex: 0));
           } on WrongDbVersionException {
             emit(state.copyWith(isUpdateNeeded: true, isLoading: false));

@@ -14,7 +14,6 @@ class GetRandomQuestionsForTest {
 
   Future<List<TestQuestion>> call({
     required Qualification qualification,
-    int count = 50,
   }) async {
     final repoQuestions = await repository.getQuestions(qualification);
     if (repoQuestions == null) throw Exception("Received no questions");
@@ -26,7 +25,7 @@ class GetRandomQuestionsForTest {
               MatchingQuestion() => TestMatchingQuestion(source: question),
             })
         .toList(growable: false);
-    final randomSelection = _generateRandomSelection(questions, count);
+    final randomSelection = _generateRandomSelection(questions, qualification.testQuestionCount);
     return randomSelection;
   }
 

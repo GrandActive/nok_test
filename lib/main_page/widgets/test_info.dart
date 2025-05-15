@@ -4,7 +4,12 @@ import 'package:nok_test/styles/app_text_styles.dart';
 class TestInfo extends StatelessWidget {
   const TestInfo({
     super.key,
+    required this.questionCount,
+    required this.correctAnswerCount,
   });
+
+  final int questionCount;
+  final int correctAnswerCount;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +30,14 @@ class TestInfo extends StatelessWidget {
               children: [
                 Icon(Icons.help_outline),
                 SizedBox(width: 8),
-                Text("50 вопросов", style: AppTextStyles.body1),
+                Text("$questionCount вопросов", style: AppTextStyles.body1),
               ],
             ),
           ],
         ),
         SizedBox(height: 16),
         Text(
-          "Для успешного завершения теста необходимо правильно ответить минимум на 36 вопросов",
+          "Для успешного завершения теста необходимо правильно ответить минимум на $correctAnswerCount вопросов",
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w400,

@@ -28,6 +28,8 @@ class SpecializationsFirebaseDataSource extends FirebaseDataSource {
                   id: id,
                   name: qualification['shortName'],
                   cost: qualification['cost'],
+                  testQuestionCount: qualification['testQuestionCount'],
+                  correctAnswerCount: qualification['correctAnswerCount'],
                 );
               }).toList()),
         )
