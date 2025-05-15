@@ -23,23 +23,22 @@ class FinishedSelectionQuestion extends StatelessWidget {
     final answers = selectedAnswers ?? {};
 
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
-        child: Column(
-          children: [
-            QuestionText(text: question.text),
-            const SizedBox(height: 24),
-            SelectionAnswerList(
-              possibleAnswers: question.possibleAnswers,
-              selectedIndices: answers,
-              correctAnswers: question.correctAnswerIds,
-              showCorrectnessOfSelected: answers.isNotEmpty,
-              showCorrectAnswer: showCorrectAnswer,
-              showResult: showResult,
-              disabled: true,
-            ),
-          ],
-        ),
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          QuestionText(text: question.text),
+          const SizedBox(height: 24),
+          SelectionAnswerList(
+            possibleAnswers: question.possibleAnswers,
+            selectedIndices: answers,
+            correctAnswers: question.correctAnswerIds,
+            showCorrectnessOfSelected: answers.isNotEmpty,
+            showCorrectAnswer: showCorrectAnswer,
+            showResult: showResult,
+            disabled: true,
+          ),
+        ],
       ),
     );
   }

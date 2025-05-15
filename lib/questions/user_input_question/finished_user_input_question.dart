@@ -21,30 +21,29 @@ class FinishedUserInputQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
-        child: Column(
-          children: [
-            Text(
-              "${question.title}:",
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              question.text,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 40),
-            FinishedUserInput(
-              question: question,
-              showCorrectness: selectedAnswer != null,
-              showResult: showResult,
-              showCorrectAnswer: showCorrectAnswer,
-              isAnsweredCorrectly: isAnsweredCorrectly,
-              selectedAnswer: selectedAnswer,
-            ),
-          ],
-        ),
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 36, top: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "${question.title}:",
+            style: const TextStyle(fontSize: 16),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            question.text,
+            style: const TextStyle(fontSize: 16),
+          ),
+          const SizedBox(height: 40),
+          FinishedUserInput(
+            question: question,
+            showCorrectness: selectedAnswer != null,
+            showResult: showResult,
+            showCorrectAnswer: showCorrectAnswer,
+            isAnsweredCorrectly: isAnsweredCorrectly,
+            selectedAnswer: selectedAnswer,
+          ),
+        ],
       ),
     );
   }

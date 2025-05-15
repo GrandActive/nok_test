@@ -24,24 +24,23 @@ class FinishedMatchingQuestion extends StatelessWidget {
     final answerIsNotEmpty = selectedAnswer?.values.any((e) => e != null) ?? false;
 
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
-        child: Column(
-          children: [
-            Text(
-              question.text,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 24),
-            FinishedMatchingAnswerList(
-              question: question,
-              answer: answer,
-              showCorrectness: answerIsNotEmpty,
-              showCorrectAnswer: showCorrectAnswer,
-              showResult: showResult ?? answerIsNotEmpty,
-            ),
-          ],
-        ),
+      padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            question.text,
+            style: const TextStyle(fontSize: 16),
+          ),
+          const SizedBox(height: 24),
+          FinishedMatchingAnswerList(
+            question: question,
+            answer: answer,
+            showCorrectness: answerIsNotEmpty,
+            showCorrectAnswer: showCorrectAnswer,
+            showResult: showResult ?? answerIsNotEmpty,
+          ),
+        ],
       ),
     );
   }

@@ -61,6 +61,7 @@ class SelectionQuestion extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 24, bottom: 36),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   QuestionText(text: question.source.text),
                   const SizedBox(height: 24),

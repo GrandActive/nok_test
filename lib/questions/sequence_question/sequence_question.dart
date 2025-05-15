@@ -71,6 +71,7 @@ class SequenceQuestion extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     question.source.title,

@@ -23,25 +23,24 @@ class FinishedSequenceQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
-        child: Column(
-          children: [
-            Text(
-              question.title,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 24),
-            FinishedSequenceAnswerList(
-              question: question,
-              showCorrectness: selectedAnswers != null,
-              showResult: showResult,
-              showCorrectAnswer: showCorrectAnswer,
-              isAnsweredCorrectly: isAnsweredCorrectly,
-              selectedAnswers: selectedAnswers,
-            ),
-          ],
-        ),
+      padding: const EdgeInsets.only(left: 16, top: 24, right: 16, bottom: 36),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            question.title,
+            style: const TextStyle(fontSize: 16),
+          ),
+          const SizedBox(height: 24),
+          FinishedSequenceAnswerList(
+            question: question,
+            showCorrectness: selectedAnswers != null,
+            showResult: showResult,
+            showCorrectAnswer: showCorrectAnswer,
+            isAnsweredCorrectly: isAnsweredCorrectly,
+            selectedAnswers: selectedAnswers,
+          ),
+        ],
       ),
     );
   }
