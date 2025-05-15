@@ -10,7 +10,7 @@ class AppFilledButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FilledButton(
       style: const ButtonStyle(
-        minimumSize: MaterialStatePropertyAll(Size(156, 41)),
+        minimumSize: WidgetStatePropertyAll(Size(156, 41)),
       ),
       onPressed: onPressed,
       child: child,

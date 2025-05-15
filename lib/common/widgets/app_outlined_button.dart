@@ -25,7 +25,7 @@ class AppOutlinedButton extends StatelessWidget {
             }
           },
         ),
-        minimumSize: MaterialStatePropertyAll(Size(156, 41)),
+        minimumSize: WidgetStatePropertyAll(Size(156, 41)),
       ),
       child: child,
     );

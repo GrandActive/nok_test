@@ -22,8 +22,8 @@ class LogoutConfirmationDialog extends StatelessWidget {
         ),
         TextButton(
           style: ButtonStyle(
-            foregroundColor: const MaterialStatePropertyAll(wrongAnswerColor),
-            overlayColor: MaterialStatePropertyAll(wrongAnswerColor.withOpacity(0.15)),
+            foregroundColor: const WidgetStatePropertyAll(wrongAnswerColor),
+            overlayColor: WidgetStatePropertyAll(wrongAnswerColor.withOpacity(0.15)),
           ),
           onPressed: () {
             context.read<AuthBloc>().add(const AuthEvent.logOut());

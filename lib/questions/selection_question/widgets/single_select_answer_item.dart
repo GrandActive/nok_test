@@ -73,10 +73,10 @@ class SingleSelectAnswerItem extends StatelessWidget {
           style: AppTextStyles.body1,
         ),
         dense: true,
-        fillColor: MaterialStateProperty.resolveWith(
+        fillColor: WidgetStateProperty.resolveWith(
           (states) {
-            if (states.contains(MaterialState.selected)) return selectedRadioColor;
-            if (states.contains(MaterialState.disabled)) return const Color(0xFFD9D9D9);
+            if (states.contains(WidgetState.selected)) return selectedRadioColor;
+            if (states.contains(WidgetState.disabled)) return const Color(0xFFD9D9D9);
             return const Color(0xff277ADB);
           },
         ),

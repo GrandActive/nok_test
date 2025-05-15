@@ -20,7 +20,7 @@ class FinishTestDialog extends StatelessWidget {
         TextButton(
           onPressed: () => context.maybePop(true),
           style: const ButtonStyle(
-            foregroundColor: MaterialStatePropertyAll(Colors.red),
+            foregroundColor: WidgetStatePropertyAll(Colors.red),
           ),
           child: const Text("Завершить"),
         )

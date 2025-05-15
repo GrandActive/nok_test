@@ -25,7 +25,7 @@ class UpdateNeededPage extends StatelessWidget {
                   androidAppBundleId: "ru.nok_test.mobile",
                 );
               },
-              style: const ButtonStyle(minimumSize: MaterialStatePropertyAll(Size(156, 41))),
+              style: const ButtonStyle(minimumSize: WidgetStatePropertyAll(Size(156, 41))),
               child: const Text("Обновить"),
             )
           ],

@@ -58,7 +58,7 @@ class FinishTestButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: const ButtonStyle(
-        foregroundColor: MaterialStatePropertyAll(Colors.white),
+        foregroundColor: WidgetStatePropertyAll(Colors.white),
       ),
       onPressed: () {
         context.read<TestingBloc>().add(const TestingEvent.finishRequested());

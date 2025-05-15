@@ -49,13 +49,13 @@ class QuestionMapItem extends StatelessWidget {
       width: size,
       child: FilledButton.tonal(
         style: ButtonStyle(
-          shape: const MaterialStatePropertyAll(
+          shape: const WidgetStatePropertyAll(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(8)),
             ),
           ),
-          padding: const MaterialStatePropertyAll(EdgeInsets.all(4)),
-          backgroundColor: MaterialStateProperty.all(backgroundColor),
+          padding: const WidgetStatePropertyAll(EdgeInsets.all(4)),
+          backgroundColor: WidgetStateProperty.all(backgroundColor),
         ),
         onPressed: onPressed,
         child: Text(

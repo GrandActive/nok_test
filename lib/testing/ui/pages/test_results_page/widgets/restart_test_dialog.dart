@@ -31,8 +31,8 @@ class RestartTestDialog extends StatelessWidget {
                 context.router.replaceAll([const MainRoute()]);
               },
               style: const ButtonStyle(
-                side: MaterialStatePropertyAll(BorderSide(color: primaryColor)),
-                minimumSize: MaterialStatePropertyAll(Size(156, 41)),
+                side: WidgetStatePropertyAll(BorderSide(color: primaryColor)),
+                minimumSize: WidgetStatePropertyAll(Size(156, 41)),
               ),
               child: const Text("Нет"),
             ),
@@ -45,7 +45,7 @@ class RestartTestDialog extends StatelessWidget {
                 context.router.replace(const TestingRoute());
               },
               style: const ButtonStyle(
-                minimumSize: MaterialStatePropertyAll(Size(156, 41)),
+                minimumSize: WidgetStatePropertyAll(Size(156, 41)),
               ),
               child: const Text("Да"),
             )

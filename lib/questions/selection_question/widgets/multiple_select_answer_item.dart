@@ -43,21 +43,21 @@ class MultipleSelectAnswerItem extends StatelessWidget {
   }
 
   Color _resolveCheckboxColor(
-    Set<MaterialState> states, {
+    Set<WidgetState> states, {
     Color disabledColor = Colors.transparent,
     Color defaultColor = Colors.transparent,
   }) {
-    if (states.contains(MaterialState.selected) && states.contains(MaterialState.disabled)) {
+    if (states.contains(WidgetState.selected) && states.contains(WidgetState.disabled)) {
       if (showCorrectness) {
         return isSelectedAsCorrectAnswer ? correctAnswerColor : wrongAnswerColor;
       } else {
         return const Color(0xff277ADB);
       }
     }
-    if (states.contains(MaterialState.disabled)) {
+    if (states.contains(WidgetState.disabled)) {
       return disabledColor;
     }
-    if (states.contains(MaterialState.selected)) {
+    if (states.contains(WidgetState.selected)) {
       return const Color(0xff277ADB);
     }
     return defaultColor;
@@ -91,11 +91,11 @@ class MultipleSelectAnswerItem extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           side: BorderSide(color: _tileSideColor),
         ),
-        fillColor: MaterialStateColor.resolveWith(_resolveCheckboxColor),
+        fillColor: WidgetStateColor.resolveWith(_resolveCheckboxColor),
         checkboxShape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(2)),
         ),
-        side: MaterialStateBorderSide.resolveWith(
+        side: WidgetStateBorderSide.resolveWith(
           (states) => BorderSide(
             width: 1,
             color: _resolveCheckboxColor(
