@@ -75,18 +75,15 @@ class SelectionQuestion extends StatelessWidget {
                     disabled: state is Answered,
                   ),
                   const SizedBox(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SubmitButton(
-                        isActive: selectedAnswers.isNotEmpty,
-                        isFinishing: state.isLast,
-                        isSubmitting: state.mode == TestMode.training && state is! Answered,
-                        onSubmit: () => context
-                            .read<SelectionQuestionBloc>()
-                            .add(const QuestionEvent.answerSubmitted()),
-                      ),
-                    ],
+                  Center(
+                    child: SubmitButton(
+                      isActive: selectedAnswers.isNotEmpty,
+                      isFinishing: state.isLast,
+                      isSubmitting: state.mode == TestMode.training && state is! Answered,
+                      onSubmit: () => context
+                          .read<SelectionQuestionBloc>()
+                          .add(const QuestionEvent.answerSubmitted()),
+                    ),
                   ),
                 ],
               ),

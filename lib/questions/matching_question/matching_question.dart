@@ -73,13 +73,15 @@ class MatchingQuestion extends StatelessWidget {
                   else
                     MatchingAnswerList(question: question, selectedAnswers: selectedAnswers),
                   const SizedBox(height: 40),
-                  SubmitButton(
-                    isActive: selectedAnswers.values.any((e) => e != null),
-                    isFinishing: state.isLast,
-                    isSubmitting: state.mode == TestMode.training && state is! Answered,
-                    onSubmit: () => context
-                        .read<MatchingQuestionBloc>()
-                        .add(const QuestionEvent.answerSubmitted()),
+                  Center(
+                    child: SubmitButton(
+                      isActive: selectedAnswers.values.any((e) => e != null),
+                      isFinishing: state.isLast,
+                      isSubmitting: state.mode == TestMode.training && state is! Answered,
+                      onSubmit: () => context
+                          .read<MatchingQuestionBloc>()
+                          .add(const QuestionEvent.answerSubmitted()),
+                    ),
                   ),
                 ],
               ),

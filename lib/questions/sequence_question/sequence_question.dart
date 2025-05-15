@@ -101,13 +101,15 @@ class SequenceQuestion extends StatelessWidget {
                           _updateAnswer(context, answers, oldIndex, newIndex),
                     ),
                   const SizedBox(height: 24),
-                  SubmitButton(
-                    isActive: true,
-                    isFinishing: state.isLast,
-                    isSubmitting: state.mode == TestMode.training && state is! Answered,
-                    onSubmit: () => context
-                        .read<SequenceQuestionBloc>()
-                        .add(const QuestionEvent.answerSubmitted()),
+                  Center(
+                    child: SubmitButton(
+                      isActive: true,
+                      isFinishing: state.isLast,
+                      isSubmitting: state.mode == TestMode.training && state is! Answered,
+                      onSubmit: () => context
+                          .read<SequenceQuestionBloc>()
+                          .add(const QuestionEvent.answerSubmitted()),
+                    ),
                   ),
                 ],
               ),

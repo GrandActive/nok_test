@@ -77,13 +77,15 @@ class UserInputQuestion extends StatelessWidget {
                   else
                     const UserInput(),
                   const SizedBox(height: 40),
-                  SubmitButton(
-                    isActive: state.selectedAnswers != null,
-                    isFinishing: state.isLast,
-                    isSubmitting: state.mode == TestMode.training && state is! Answered,
-                    onSubmit: () => context
-                        .read<UserInputQuestionBloc>()
-                        .add(const QuestionEvent.answerSubmitted()),
+                  Center(
+                    child: SubmitButton(
+                      isActive: state.selectedAnswers != null,
+                      isFinishing: state.isLast,
+                      isSubmitting: state.mode == TestMode.training && state is! Answered,
+                      onSubmit: () => context
+                          .read<UserInputQuestionBloc>()
+                          .add(const QuestionEvent.answerSubmitted()),
+                    ),
                   ),
                 ],
               ),
